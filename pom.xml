@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.djimenez.utilities</groupId>
+	<artifactId>djimenez-utilities</artifactId>
+	<version>1.0</version>
+	<name>djimenez-utilities</name>
+	<url>http://maven.apache.org</url>
+	<packaging>pom</packaging>
+
+	<description>
+		Utilidades generales.
+    </description>
+
+	<!--
+		<scm>
+		<connection>scm:svn:https://desarrollo.germinus.com/svn/xpression/portlet-tools</connection>
+		<developerConnection>scm:svn:https://desarrollo.germinus.com/svn/xpression/portlet-tools</developerConnection>
+		<url>https://desarrollo.germinus.com/svn/xpression/portlet-tools</url>
+		</scm>
+	-->
+
+	<!--
+		<issueManagement> <system>trac</system>
+		<url>http://europa.lares.dsd/projects/N2A/</url> </issueManagement>
+	-->
+	<!--
+		<ciManagement> <system>hudson</system>
+		<url>http://europa.lares.dsd/hudson/</url> </ciManagement>
+	-->
+	<dependencies>
+		<!--
+			<dependency> <groupId>com.sun.jdmk</groupId>
+			<artifactId>jmxtools</artifactId> <version>1.2.1</version>
+			</dependency> <dependency> <groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId> <version>1.1</version>
+			</dependency>
+		-->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+			<!--
+				<exclusions> <exclusion> <groupId>com.sun.jdmk</groupId>
+				<artifactId>jmxtools</artifactId> </exclusion> <exclusion>
+				<groupId>com.sun.jmx</groupId> <artifactId>jmxri</artifactId>
+				</exclusion> <exclusion> <groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId> </exclusion> <exclusion>
+				<groupId>javax.jms</groupId> <artifactId>jms</artifactId>
+				</exclusion> </exclusions>
+			-->
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>aopalliance</groupId>
+				<artifactId>aopalliance</artifactId>
+				<version>1.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>c3p0</groupId>
+				<artifactId>c3p0</artifactId>
+				<version>0.9.1.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib-nodep</artifactId>
+				<version>2.1_3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>1.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.1.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>1.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
+				<exclusions>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>1.8.0.7</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javatar</groupId>
+				<artifactId>javatar</artifactId>
+				<version>2.5</version>
+			</dependency>
+
+			<!--
+				<dependency> <groupId>javax.comm</groupId>
+				<artifactId>comm</artifactId> <version>3.0-u1-DIA</version>
+				</dependency> <dependency> <groupId>jpos</groupId>
+				<artifactId>jpos</artifactId> <version>1.12.2</version>
+				<scope>provided</scope> </dependency> <dependency>
+				<groupId>jpos</groupId> <artifactId>jpos-controls</artifactId>
+				<version>1.12.2</version> <scope>provided</scope> </dependency>
+			-->
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.6</version>
+			</dependency>
+
+			<!--
+				<dependency> <groupId>org.apache.ibatis</groupId>
+				<artifactId>ibatis-sqlmap</artifactId> <version>2.3.4.726</version>
+				</dependency> <dependency> <groupId>org.apache.mina</groupId>
+				<artifactId>mina-core</artifactId> <version>2.0.0-M6</version>
+				</dependency>
+			-->
+
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>1.6.5</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.6.5</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.dbunit</groupId>
+				<artifactId>dbunit</artifactId>
+				<version>2.4.4</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-server</artifactId>
+				<version>7.0.0.v20091005</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-servlet</artifactId>
+				<version>7.0.0.v20091005</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.5.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.5.2</version>
+				<exclusions>
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>p6spy</groupId>
+				<artifactId>p6spy</artifactId>
+				<version>1.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>jta</artifactId>
+				<version>1.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.caucho</groupId>
+				<artifactId>hessian</artifactId>
+				<version>3.1.5</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<modules>
+    <module>testing</module>
+    <module>castor</module>
+    <module>tuenti</module>
+    <module>core</module>
+  </modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4.2</version>
+				<configuration>
+					<skipTests>false</skipTests>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>2.0-beta-2</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!--
+		<distributionManagement> <repository> <id>europa-releases</id>
+		<name>europa-releases</name>
+		<url>http://europa.lares.dsd/artifactory/n2a-libs-releases-local</url>
+		</repository> </distributionManagement>
+	-->
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.1.2</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>index</report>
+							<report>dependencies</report>
+							<report>project-team</report>
+							<report>cim</report>
+							<report>issue-tracking</report>
+							<report>scm</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.5</version>
+				<reportSets>
+					<reportSet>
+						<id>html</id>
+						<configuration>
+							<doctitle>N2A API for ${project.name} ${project.version}</doctitle>
+							<windowtitle>N2A API for ${project.name} ${project.version}</windowtitle>
+						</configuration>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<configuration>
+					<tags>
+						<tag>TODO</tag>
+						<tag>@todo</tag>
+						<tag>FIXME</tag>
+						<tag>XXX</tag>
+					</tags>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.4.3</version>
+
+				<reportSets>
+					<reportSet>
+						<id>integration-tests</id>
+						<reports>
+							<report>report-only</report>
+						</reports>
+						<configuration>
+							<outputName>failsafe-report</outputName>
+							<reportsDirectories>
+								<reportsDirectory>target/failsafe-reports</reportsDirectory>
+							</reportsDirectories>
+						</configuration>
+					</reportSet>
+					<reportSet>
+						<id>junit-tests</id>
+						<reports>
+							<report>report-only</report>
+						</reports>
+						<configuration>
+							<outputName>surefire-report</outputName>
+							<reportsDirectories>
+								<reportsDirectory>target/surefire-reports</reportsDirectory>
+							</reportsDirectories>
+						</configuration>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+		</plugins>
+	</reporting>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>2.5.6</spring.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>maven-central</id>
+			<name>Central Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+
+
+		<repository>
+			<id>central</id>
+			<url>http://repo1.maven.org/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<!--
+			<repository> <id>central-n2a-repo</id>
+			<url>http://europa.lares.dsd/artifactory/n2a-repo</url> <snapshots>
+			<enabled>false</enabled> </snapshots> </repository> <repository>
+			<id>europa-ext-releases</id> <name>europa-ext-releases</name>
+			<url>http://europa.lares.dsd/artifactory/n2a-ext-releases-local</url>
+			<snapshots> <enabled>false</enabled> </snapshots> </repository>
+
+			<repository> <id>europa-releases</id> <name>europa-releases</name>
+			<url>http://europa.lares.dsd/artifactory/n2a-libs-releases-local</url>
+			<snapshots> <enabled>false</enabled> </snapshots> </repository>
+		-->
+	</repositories>
+
+
+	<!--
+		<pluginRepositories> <pluginRepository>
+		<id>central-n2a-plugins-repo</id>
+		<url>http://europa.lares.dsd/artifactory/n2a-plugins-repo</url>
+		<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository>
+
+		<pluginRepository> <id>snapshots-n2a-plugins-repo</id>
+		<url>http://europa.lares.dsd/artifactory/n2a-plugins-repo</url>
+		<releases> <enabled>false</enabled> </releases> </pluginRepository>
+
+		</pluginRepositories>
+	-->
+
+
+</project>
