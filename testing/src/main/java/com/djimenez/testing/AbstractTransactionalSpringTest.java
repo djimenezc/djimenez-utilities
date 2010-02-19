@@ -14,9 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
  * 
  * @author a.vergara.andres
  */
-public abstract class AbstractN2ATest {
+public abstract class AbstractTransactionalSpringTest {
 
   protected static final Logger logger =
-    Logger.getLogger(AbstractN2ATest.class);
+    Logger.getLogger(AbstractTransactionalSpringTest.class);
 
 }
