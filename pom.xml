@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.djimenez.utilities</groupId>
 	<artifactId>djimenez-utilities</artifactId>
+	<groupId>com.djimenez.utilities</groupId>
 	<version>1.0</version>
 	<name>djimenez-utilities</name>
 	<url>http://maven.apache.org</url>
@@ -28,38 +29,43 @@
 		<ciManagement> <system>hudson</system>
 		<url>http://europa.lares.dsd/hudson/</url> </ciManagement>
 	-->
-	<dependencies>
-		<!--
-			<dependency> <groupId>com.sun.jdmk</groupId>
-			<artifactId>jmxtools</artifactId> <version>1.2.1</version>
-			</dependency> <dependency> <groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId> <version>1.1</version>
-			</dependency>
-		-->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.15</version>
-			<!--
-				<exclusions> <exclusion> <groupId>com.sun.jdmk</groupId>
-				<artifactId>jmxtools</artifactId> </exclusion> <exclusion>
-				<groupId>com.sun.jmx</groupId> <artifactId>jmxri</artifactId>
-				</exclusion> <exclusion> <groupId>javax.mail</groupId>
-				<artifactId>mail</artifactId> </exclusion> <exclusion>
-				<groupId>javax.jms</groupId> <artifactId>jms</artifactId>
-				</exclusion> </exclusions>
-			-->
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.4</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
+
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.15</version>
+
+				<exclusions>
+					<exclusion>
+						<groupId>com.sun.jdmk</groupId>
+						<artifactId>jmxtools</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.jmx</groupId>
+						<artifactId>jmxri</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.mail</groupId>
+						<artifactId>mail</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.jms</groupId>
+						<artifactId>jms</artifactId>
+					</exclusion>
+				</exclusions>
+
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.4</version>
+				<scope>test</scope>
+			</dependency>
+
 			<dependency>
 				<groupId>aopalliance</groupId>
 				<artifactId>aopalliance</artifactId>
@@ -138,15 +144,25 @@
 				<version>2.5</version>
 			</dependency>
 
-			<!--
-				<dependency> <groupId>javax.comm</groupId>
-				<artifactId>comm</artifactId> <version>3.0-u1-DIA</version>
-				</dependency> <dependency> <groupId>jpos</groupId>
-				<artifactId>jpos</artifactId> <version>1.12.2</version>
-				<scope>provided</scope> </dependency> <dependency>
-				<groupId>jpos</groupId> <artifactId>jpos-controls</artifactId>
-				<version>1.12.2</version> <scope>provided</scope> </dependency>
-			-->
+
+			<dependency>
+				<groupId>javax.comm</groupId>
+				<artifactId>comm</artifactId>
+				<version>3.0-u1-DIA</version>
+			</dependency>
+			<dependency>
+				<groupId>jpos</groupId>
+				<artifactId>jpos</artifactId>
+				<version>1.12.2</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>jpos</groupId>
+				<artifactId>jpos-controls</artifactId>
+				<version>1.12.2</version>
+				<scope>provided</scope>
+			</dependency>
+
 
 			<dependency>
 				<groupId>mysql</groupId>
@@ -154,13 +170,18 @@
 				<version>5.1.6</version>
 			</dependency>
 
-			<!--
-				<dependency> <groupId>org.apache.ibatis</groupId>
-				<artifactId>ibatis-sqlmap</artifactId> <version>2.3.4.726</version>
-				</dependency> <dependency> <groupId>org.apache.mina</groupId>
-				<artifactId>mina-core</artifactId> <version>2.0.0-M6</version>
-				</dependency>
-			-->
+
+			<dependency>
+				<groupId>org.apache.ibatis</groupId>
+				<artifactId>ibatis-sqlmap</artifactId>
+				<version>2.3.4.726</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.mina</groupId>
+				<artifactId>mina-core</artifactId>
+				<version>2.0.0-M6</version>
+			</dependency>
+
 
 			<dependency>
 				<groupId>org.aspectj</groupId>
@@ -282,11 +303,11 @@
 	</dependencyManagement>
 
 	<modules>
-    <module>testing</module>
-    <module>castor</module>
-    <module>tuenti</module>
-    <module>core</module>
-  </modules>
+		<module>testing</module>
+		<module>castor</module>
+		<module>tuenti</module>
+		<module>core</module>
+	</modules>
 
 	<build>
 		<plugins>
@@ -435,6 +456,11 @@
 			<url>http://repo1.maven.org/maven2</url>
 		</repository>
 
+		<repository>
+			<id>codehaus</id>
+			<name>Maven Codehaus repository</name>
+			<url>http://repository.codehaus.org/</url>
+		</repository>
 
 		<repository>
 			<id>central</id>
