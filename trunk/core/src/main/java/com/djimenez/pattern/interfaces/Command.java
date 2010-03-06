@@ -1,4 +1,4 @@
-package com.djimenez.pattern;
+package com.djimenez.pattern.interfaces;
 
 public interface Command {
 

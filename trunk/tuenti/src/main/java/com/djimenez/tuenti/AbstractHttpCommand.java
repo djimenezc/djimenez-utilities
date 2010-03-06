@@ -2,7 +2,7 @@ package com.djimenez.tuenti;
 
 import org.apache.commons.httpclient.HttpClient;
 
-import com.djimenez.pattern.Command;
+import com.djimenez.pattern.interfaces.Command;
 
 public abstract class AbstractHttpCommand implements Command {
 
