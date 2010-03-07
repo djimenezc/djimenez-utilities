@@ -68,21 +68,9 @@ import org.apache.commons.httpclient.methods.GetMethod;
  */
 public class ClientApp {
 
-  public static void main(final String[] args) {
-    final HttpClientFrame f = new HttpClientFrame();
-    f.setTitle("HttpClient demo application");
-    f.setSize(700, 500);
-    f.addWindowListener(new WindowAdapter() {
-
-      @Override
-      public void windowClosing(final WindowEvent e) {
-        System.exit(0);
-      }
-    });
-    f.setVisible(true);
-  }
-
   public static class HttpClientFrame extends JFrame {
+
+    private static final long serialVersionUID = 3993595664069855531L;
 
     private final JComboBox cmbURL;
     private final JTextArea taTextResponse;
@@ -147,38 +135,6 @@ public class ClientApp {
     }
 
     /**
-     * Sets the HTML content to be displayed.
-     * 
-     * @param content
-     *          an HTML document
-     */
-    private void setDocumentContent(final String content) {
-
-      final HTMLDocument doc = new HTMLDocument();
-      try {
-        doc.remove(0, doc.getLength());
-      }
-      catch (final BadLocationException e) {
-        e.printStackTrace();
-      }
-      doc.putProperty("IgnoreCharsetDirective", Boolean.TRUE);
-
-      try {
-        htmlPane.read(new ByteArrayInputStream(content.getBytes()), doc);
-      }
-      catch (final IOException e) {
-        e.printStackTrace();
-      }
-
-      htmlPane.setDocument(doc);
-      htmlPane.setCaretPosition(0);
-
-      taTextResponse.setText(content);
-      taTextResponse.setCaretPosition(0);
-      taTextResponse.requestFocus();
-    }
-
-    /**
      * Loads the page at the given URL from a separate thread.
      * 
      * @param url
@@ -217,6 +173,52 @@ public class ClientApp {
       }.start();
     }
 
+    /**
+     * Sets the HTML content to be displayed.
+     * 
+     * @param content
+     *          an HTML document
+     */
+    private void setDocumentContent(final String content) {
+
+      final HTMLDocument doc = new HTMLDocument();
+      try {
+        doc.remove(0, doc.getLength());
+      }
+      catch (final BadLocationException e) {
+        e.printStackTrace();
+      }
+      doc.putProperty("IgnoreCharsetDirective", Boolean.TRUE);
+
+      try {
+        htmlPane.read(new ByteArrayInputStream(content.getBytes()), doc);
+      }
+      catch (final IOException e) {
+        e.printStackTrace();
+      }
+
+      htmlPane.setDocument(doc);
+      htmlPane.setCaretPosition(0);
+
+      taTextResponse.setText(content);
+      taTextResponse.setCaretPosition(0);
+      taTextResponse.requestFocus();
+    }
+
+  }
+
+  public static void main(final String[] args) {
+    final HttpClientFrame f = new HttpClientFrame();
+    f.setTitle("HttpClient demo application");
+    f.setSize(700, 500);
+    f.addWindowListener(new WindowAdapter() {
+
+      @Override
+      public void windowClosing(final WindowEvent e) {
+        System.exit(0);
+      }
+    });
+    f.setVisible(true);
   }
 
 }
