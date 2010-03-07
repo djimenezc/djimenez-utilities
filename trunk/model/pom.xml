@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <parent>
+    <artifactId>djimenez-utilities</artifactId>
+    <groupId>com.djimenez.utilities</groupId>
+    <version>1.0</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.djimenez.utilities</groupId>
+  <artifactId>model</artifactId>
+  <name>model</name>
+  <version>1.0</version>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    
+    <dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>20030203.000129</version>
+		</dependency>
+  </dependencies>
+</project>
