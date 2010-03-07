@@ -1,0 +1,44 @@
+[Dcs]
+Path=.
+Path Call Send=/usr/local/n2a/var/data/communications/temp/
+Path Call Receive=/usr/local/n2a/var/data/communications/in/
+Path Listen Send=/usr/local/n2a/var/data/communications/temp/
+Path Listen Receive=/usr/local/n2a/var/data/communications/in/
+Path DIA=/usr/local/dia/var/log/dcs/diadcs.log
+Server=MASTER
+Pack=50,44
+Address=10.208.152.21
+Connection Port=7223
+Connection Timeout=45000
+Commands=30
+Command Queue=32
+Command Ready=32
+Error Inactive=30000
+DB Tablespace=n2a
+DB Server=127.0.0.1
+DB User=root
+DB Pass=
+
+[DcsApi]
+Path=.
+DB Tablespace=n2a
+DB Server=127.0.0.1
+DB User=root
+DB Pass=
+
+[Modem]
+Port=/dev/modem
+Baud=115200
+Initialize Command=AT&F0E0T&K0S91=8S0=0
+
+[Ppp]
+PPP Path Exec=/usr/sbin/pppd
+PPP Path Config=/etc/ppp/
+PPP Path Data File=ppp-data
+Ppp Timeout=40000
+Dial Time=45000
+Answer Time=5000
+Hangup Time=5000
+Ring Time=10000
+Telephone=18
+User=TPV
