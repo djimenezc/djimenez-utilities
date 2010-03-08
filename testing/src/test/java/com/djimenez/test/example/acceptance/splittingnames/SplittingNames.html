@@ -1,0 +1,37 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+
+    <head>
+        <link href="../concordion.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+
+        <h1>Separando Nombres</h1>
+
+        <p>
+            Para ayudar a personalizar nuestros envíos postales, queremos tener
+            el nombre y el apellido del cliente. Desgraciadamente los datos del
+            cliente que nos han proporcionado sólo contienen nombres completos.
+        </p>
+
+        <p>
+            Por lo tanto el sistema intenta separar un nombre completo en sus
+            componentes separándolos por el espacio en blanco.
+        </p>
+
+        <div class="example">
+
+            <h3>Ejemplo</h3>
+
+            <p>
+                El nombre completo
+                <span concordion:execute="#result = split(#TEXT)">Juan Pérez</span>
+                se separará en nombre
+                <span concordion:assertEquals="#result.firstName">Juan</span>
+                y apellido
+                <span concordion:assertEquals="#result.lastName">Pérez</span>.
+            </p>
+
+        </div>
+    </body>
+</html>
