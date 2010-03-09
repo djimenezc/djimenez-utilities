@@ -1,8 +1,10 @@
 package com.djimenez.test.example.acceptance.hellopepe;
 
-import org.concordion.integration.junit3.ConcordionTestCase;
+import org.concordion.integration.junit4.ConcordionRunner;
+import org.junit.runner.RunWith;
 
-public class HelloPepeTest extends ConcordionTestCase {
+@RunWith(ConcordionRunner.class)
+public class HelloPepeTest {
 
   public String greetingFor(final String firstName) {
 
