@@ -8,7 +8,7 @@ package com.djimenez.util.helper;
  * @see es.dia.pos.n2a.util.StringHelperFO, DateHelperFO
  */
 
-public final class NumberHelperFO {
+public final class NumberHelper {
 
   public static long stringToLong(final String value) {
     return Long.parseLong(value);

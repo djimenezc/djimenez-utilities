@@ -4,15 +4,15 @@ package com.djimenez.util.properties;
  * @author jlp002es
  * @version 1.0
  */
-public class ConfigurationException extends RuntimeException {
+public class PropertyException extends RuntimeException {
 
   private static final long serialVersionUID = 1L;
 
-  public ConfigurationException() {
+  public PropertyException() {
     super();
   }
 
-  public ConfigurationException(final String message) {
+  public PropertyException(final String message) {
     super(message);
   }
 

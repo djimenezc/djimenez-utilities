@@ -30,6 +30,7 @@ public abstract class DefaultValues {
 
   // double
   public static final double DOUBLE_ZERO = 0.0;
+  public static final int DEFAULT_INT = 0;
 
   /************************************ STATIC METHODS **********************************/
 

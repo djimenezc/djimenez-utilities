@@ -7,7 +7,8 @@ import java.util.TimeZone;
 
 import org.apache.log4j.Logger;
 
-import com.djimenez.util.configuration.ConfigurationHelper;
+import com.djimenez.util.configuration.date.DateConfigurationFileHelper;
+import com.djimenez.util.constants.SystemConstants;
 
 /**
  * @author a.pastoriza.barcia
@@ -18,7 +19,6 @@ public final class DateContextHolder implements DateContext {
   private static final Logger logger =
     Logger.getLogger(DateContextHolder.class);
   private static DateContext instance;
-  private static final String DEFAULT_TIMEZONE = "Europe/Madrid";
 
   public static DateContext getInstance(final Locale locale) {
     if (instance == null) {
@@ -28,13 +28,17 @@ public final class DateContextHolder implements DateContext {
   }
 
   private final DateFormat dateFormatter;
+
   private final DateFormat timeFormatter;
+
   private final DateFormat dateAndTimeFormatter;
+
   private final TimeZone timeZone;
 
   private final Locale locale;
 
   private DateContextHolder(final Locale locale) {
+
     this.locale = locale;
     this.timeZone = this.defineTimeZone();
     this.dateFormatter = this.defineDateFormat(locale, this.timeZone);
@@ -56,33 +60,45 @@ public final class DateContextHolder implements DateContext {
 
   private DateFormat defineDateFormat(final Locale currentLocale,
     final TimeZone currentTimeZone) {
+
     final DateFormat dateFormat =
       DateFormat.getDateInstance(DateFormat.DEFAULT, currentLocale);
+
     dateFormat.setTimeZone(currentTimeZone);
 
     logger.debug("Date formatted as " + dateFormat);
+
     return dateFormat;
   }
 
   private DateFormat defineTimeFormat(final Locale currentLocale,
     final TimeZone currentTimeZone) {
+
     final DateFormat dateFormat =
       DateFormat.getTimeInstance(DateFormat.DEFAULT, currentLocale);
+
     dateFormat.setTimeZone(currentTimeZone);
 
     logger.debug("Time formatted as " + dateFormat);
+
     return dateFormat;
   }
 
   private TimeZone defineTimeZone() {
-    String id = DEFAULT_TIMEZONE;
+
+    String id = SystemConstants.DEFAULT_TIMEZONE;
+
     TimeZone tz = null;
+
     try {
-      id = ConfigurationHelper.getInstance().getProperty("date.timezone");
+      id =
+        DateConfigurationFileHelper.getInstance().getProperty("date.timezone");
+    }
+    catch (final Exception e) {
     }
     finally {
       tz = TimeZone.getTimeZone(id);
-      logger.debug("Timezone defined as " + tz);
+      logger.debug("Timezone defined as " + tz.toString());
     }
     return tz;
   }

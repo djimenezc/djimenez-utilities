@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import com.djimenez.util.configuration.ConfigurationException;
-import com.djimenez.util.configuration.ConfigurationHelper;
+import com.djimenez.util.configuration.AbstractConfigurationFileHelper;
+import com.djimenez.util.configuration.exception.ConfigurationFileException;
 
 public final class UnicodeToAscii437MapperHelper {
 
@@ -41,10 +41,10 @@ public final class UnicodeToAscii437MapperHelper {
 
     try {
       inputStreamUnicode =
-        ConfigurationHelper.class.getClassLoader().getResourceAsStream(
+        AbstractConfigurationFileHelper.class.getClassLoader().getResourceAsStream(
           CHARACTERS_UNICODE_FILE_NAME);
       inputStreamAscii437 =
-        ConfigurationHelper.class.getClassLoader().getResourceAsStream(
+        AbstractConfigurationFileHelper.class.getClassLoader().getResourceAsStream(
           CHARACTERS_ASCII437_FILE_NAME);
       charactersUnicode.load(inputStreamUnicode);
       charactersAscii437.load(inputStreamAscii437);
@@ -65,7 +65,7 @@ public final class UnicodeToAscii437MapperHelper {
 
     }
     catch (final IOException e) {
-      throw new ConfigurationException(e.getMessage(), e.getCause());
+      throw new ConfigurationFileException(e.getMessage(), e.getCause());
     }
     finally {
       try {
@@ -77,7 +77,7 @@ public final class UnicodeToAscii437MapperHelper {
         }
       }
       catch (final IOException e) {
-        throw new ConfigurationException(e.getMessage(), e.getCause());
+        throw new ConfigurationFileException(e.getMessage(), e.getCause());
       }
     }
   }

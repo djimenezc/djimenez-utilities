@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import com.djimenez.util.configuration.ConfigurationException;
-import com.djimenez.util.configuration.ConfigurationHelper;
+import com.djimenez.util.configuration.AbstractConfigurationFileHelper;
+import com.djimenez.util.configuration.exception.ConfigurationFileException;
 
 public final class UnicodeToAscii850MapperHelper {
 
@@ -74,10 +74,10 @@ public final class UnicodeToAscii850MapperHelper {
 
     try {
       inputStreamUnicode =
-        ConfigurationHelper.class.getClassLoader().getResourceAsStream(
+        AbstractConfigurationFileHelper.class.getClassLoader().getResourceAsStream(
           CHARACTERS_UNICODE_FILE_NAME);
       inputStreamAscii850 =
-        ConfigurationHelper.class.getClassLoader().getResourceAsStream(
+        AbstractConfigurationFileHelper.class.getClassLoader().getResourceAsStream(
           CHARACTERS_ASCII850_FILE_NAME);
       charactersUnicode.load(inputStreamUnicode);
       charactersAscii850.load(inputStreamAscii850);
@@ -106,7 +106,7 @@ public final class UnicodeToAscii850MapperHelper {
 
     }
     catch (final IOException e) {
-      throw new ConfigurationException(e.getMessage(), e.getCause());
+      throw new ConfigurationFileException(e.getMessage(), e.getCause());
     }
     finally {
       try {
@@ -118,7 +118,7 @@ public final class UnicodeToAscii850MapperHelper {
         }
       }
       catch (final IOException e) {
-        throw new ConfigurationException(e.getMessage(), e.getCause());
+        throw new ConfigurationFileException(e.getMessage(), e.getCause());
       }
 
     }
