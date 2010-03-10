@@ -1,4 +1,4 @@
-package com.djimenez.test.bdd.selenium;
+package com.djimenez.test.example.bdd.selenium;
 
 import java.io.IOException;
 

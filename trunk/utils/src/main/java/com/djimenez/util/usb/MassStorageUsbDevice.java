@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-import com.djimenez.util.configuration.ConfigurationHelper;
+import com.djimenez.util.configuration.main.MainConfigurationFileHelper;
 
 /**
  * @author javier.perdices
@@ -17,10 +17,11 @@ public class MassStorageUsbDevice {
 
   private static final String N2A_HOME = System.getProperty("N2A_HOME");
   private static final String USB_SCRIPT =
-    ConfigurationHelper.getInstance().getProperty(
+    MainConfigurationFileHelper.getInstance().getProperty(
       "massStorageUsbDeviceMountScriptPath");
   private static final String USB_PATH =
-    ConfigurationHelper.getInstance().getProperty("massStorageUsbDevicePath");
+    MainConfigurationFileHelper.getInstance().getProperty(
+      "massStorageUsbDevicePath");
   private static final String MOUNT = "mount";
   private static final String UMOUNT = "umount";
 

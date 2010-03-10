@@ -128,7 +128,7 @@ public final class StringHelperFO {
     final String outputSite = "" + prefix;
     final String outputWorkstation = "" + middle;
     final String outputCounter = "" + suffix;
-    final String currentDate = DateHelperFO.getStringCurrentDate();
+    final String currentDate = DateHelper.getInstance().getStringCurrentDate();
     return fillsLeftWithZeros(outputSite, FIVE)
       + fillsLeftWithZeros(outputWorkstation, TWO)
       + fillsLeftWithZeros(outputCounter, FIVE) + currentDate;

@@ -4,7 +4,8 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
-import com.djimenez.util.configuration.ConfigurationHelper;
+import com.djimenez.util.constants.SystemConstants;
+import com.djimenez.util.properties.internationalization.InternationalizationConfigurationFileHelper;
 
 /**
  * @author a.pastoriza.barcia
@@ -15,12 +16,10 @@ public final class InternationalizationContextHolder {
   private static final Logger logger =
     Logger.getLogger(InternationalizationContextHolder.class);
 
-  private static final String DEFAULT_LANGUAGE = "es";
-  private static final String DEFAULT_COUNTRY = "ES";
-
   private static InternationalizationContextHolder instance;
 
   public static InternationalizationContextHolder getInstance() {
+
     if (instance == null) {
       instance = new InternationalizationContextHolder();
     }
@@ -30,21 +29,30 @@ public final class InternationalizationContextHolder {
   private final Locale locale;
 
   private InternationalizationContextHolder() {
+
     this.locale = this.defineLocale();
   }
 
   private Locale defineLocale() {
-    String language = DEFAULT_LANGUAGE;
-    String country = DEFAULT_COUNTRY;
-    Locale loc = null;
+
+    String language = SystemConstants.DEFAULT_LANGUAGE;
+    String country = SystemConstants.DEFAULT_COUNTRY;
+
+    Locale loc;
+
     try {
-      country = ConfigurationHelper.getInstance().getProperty("locale.country");
+      country =
+        InternationalizationConfigurationFileHelper.getInstance().getProperty(
+          "locale.country");
       language =
-        ConfigurationHelper.getInstance().getProperty("locale.language");
+        InternationalizationConfigurationFileHelper.getInstance().getProperty(
+          "locale.language");
+    }
+    catch (final Exception e) {
     }
     finally {
       loc = new Locale(language, country);
-      logger.debug("Locale defined as " + loc);
+      logger.debug("Locale defined as " + loc.toString());
     }
     return loc;
   }
@@ -54,6 +62,7 @@ public final class InternationalizationContextHolder {
   }
 
   public DateContext getDateContext() {
+
     return DateContextHolder.getInstance(this.locale);
   }
 
