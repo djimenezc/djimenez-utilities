@@ -1,4 +1,4 @@
-package com.djimenez.testing;
+package com.djimenez.testing.spring;
 
 import org.apache.log4j.Logger;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
