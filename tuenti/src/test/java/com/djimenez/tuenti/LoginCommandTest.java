@@ -3,7 +3,7 @@ package com.djimenez.tuenti;
 import org.junit.Test;
 
 import com.djimenez.core.patterns.interfaces.Command;
-import com.djimenez.testing.AbstractSpringTest;
+import com.djimenez.testing.spring.AbstractSpringTest;
 
 public class LoginCommandTest extends AbstractSpringTest {
 
