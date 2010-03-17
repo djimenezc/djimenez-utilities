@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author a.vergara.andres
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:dataBase-tx-config.xml" })
+@ContextConfiguration(locations = { "classpath*:dataBase-jdbc-config-test.xml" })
 @Transactional
 public abstract class AbstractTransactionalSpringTest {
 

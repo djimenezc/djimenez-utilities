@@ -359,6 +359,33 @@
 				<version>2.0-beta-2</version>
 			</plugin>
 		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources/common</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>messages*.properties</exclude>
+					<exclude>context/**/*</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources/common</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>context/**/*</include>
+				</includes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources/common</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>messages*.properties</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
 	</build>
 
 	<!--
@@ -450,9 +477,9 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-
 		</plugins>
 	</reporting>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>2.5.6</spring.version>
@@ -479,33 +506,109 @@
 			</snapshots>
 		</repository>
 
-		<!--
-			<repository> <id>central-n2a-repo</id>
-			<url>http://europa.lares.dsd/artifactory/n2a-repo</url> <snapshots>
-			<enabled>false</enabled> </snapshots> </repository> <repository>
-			<id>europa-ext-releases</id> <name>europa-ext-releases</name>
-			<url>http://europa.lares.dsd/artifactory/n2a-ext-releases-local</url>
-			<snapshots> <enabled>false</enabled> </snapshots> </repository>
-
-			<repository> <id>europa-releases</id> <name>europa-releases</name>
-			<url>http://europa.lares.dsd/artifactory/n2a-libs-releases-local</url>
-			<snapshots> <enabled>false</enabled> </snapshots> </repository>
-		-->
 	</repositories>
 
 
-	<!--
-		<pluginRepositories> <pluginRepository>
-		<id>central-n2a-plugins-repo</id>
-		<url>http://europa.lares.dsd/artifactory/n2a-plugins-repo</url>
-		<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository>
+	<profiles>
+		<!-- Environment profiles -->
+		<profile>
+			<id>env-development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>development</value>
+				</property>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources/development</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
 
-		<pluginRepository> <id>snapshots-n2a-plugins-repo</id>
-		<url>http://europa.lares.dsd/artifactory/n2a-plugins-repo</url>
-		<releases> <enabled>false</enabled> </releases> </pluginRepository>
+		<profile>
+			<id>env-production</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>production</value>
+				</property>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources/production</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
 
-		</pluginRepositories>
-	-->
+		<!-- Database profiles -->
+		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>development</value>
+				</property>
+
+			</activation>
+			<properties>
+				<hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
+				<jdbc.groupId>hsqldb</jdbc.groupId>
+				<jdbc.artifactId>hsqldb</jdbc.artifactId>
+				<jdbc.version>1.8.0.1</jdbc.version>
+				<jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
+				<jdbc.url><![CDATA[jdbc:hsqldb:/tmp/hsqldb/sample-portlet;shutdown=true]]></jdbc.url>
+				<jdbc.username>sa</jdbc.username>
+				<jdbc.password></jdbc.password>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>mysql</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+				<jdbc.groupId>mysql</jdbc.groupId>
+				<jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
+				<jdbc.version>5.0.4</jdbc.version>
+				<jdbc.driverClassName>org.gjt.mm.mysql.Driver</jdbc.driverClassName>
+				<jdbc.url><![CDATA[jdbc:mysql://localhost:3306/sample_portlet]]></jdbc.url>
+				<jdbc.username>lportal</jdbc.username>
+				<jdbc.password>lportal</jdbc.password>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>postgresql</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>production</value>
+				</property>
+			</activation>
+			<properties>
+				<hibernate.dialect>org.hibernate.dialect.PostgreSQLDialect</hibernate.dialect>
+				<jdbc.groupId>postgresql</jdbc.groupId>
+				<jdbc.artifactId>postgresql</jdbc.artifactId>
+				<jdbc.version>8.2-504.jdbc3</jdbc.version>
+				<jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
+				<jdbc.url><![CDATA[jdbc:postgresql://localhost/sample-portlet]]></jdbc.url>
+				<jdbc.username>lportal</jdbc.username>
+				<jdbc.password>lportal</jdbc.password>
+			</properties>
+		</profile>
+	</profiles>
 
 
 </project>
