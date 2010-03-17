@@ -51,6 +51,7 @@ public class DateHelper {
 
   public Boolean checkDateIntoRange(final Date dateToCheck, final Date refDate,
     final int days) {
+
     final Calendar cal = new GregorianCalendar();
     cal.setTimeInMillis(refDate.getTime());
     cal.add(Calendar.DATE, days);
@@ -79,9 +80,11 @@ public class DateHelper {
    * @return true if (date <= today && date >= today - days)
    */
   public Boolean checkDateNotAfterLimit(final Date date, final Integer days) {
+
     final Calendar actualDateCalendar =
       InternationalizationContextHolder.getInstance().getDateContext()
         .getCalendar();
+
     actualDateCalendar.set(Calendar.HOUR_OF_DAY, 0);
     actualDateCalendar.set(Calendar.MINUTE, 0);
     actualDateCalendar.set(Calendar.SECOND, 0);
@@ -234,6 +237,16 @@ public class DateHelper {
   public Date getCurrentDatetime() {
 
     return new Date(getLongCurrentDate());
+  }
+
+  public Integer getCurrentDay() {
+
+    // 4 days before today
+    final Calendar calendar = Calendar.getInstance();
+
+    final int day = calendar.get(Calendar.DATE);
+
+    return day;
   }
 
   /**

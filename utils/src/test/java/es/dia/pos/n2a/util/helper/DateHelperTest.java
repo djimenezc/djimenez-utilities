@@ -61,16 +61,25 @@ public class DateHelperTest extends TestCase {
 
   @Test
   public void testCheckDateNotAfterLimit() {
+
     // 4 days before today
     final Calendar calendar = new GregorianCalendar();
-    calendar.set(Calendar.DAY_OF_MONTH, 15);
-    final Date date = calendar.getTime();
-    assertTrue(DateHelper.getInstance().checkDateNotAfterLimit(date,
+
+    calendar.roll(Calendar.DAY_OF_MONTH, -4);
+
+    final Date dateLimit = calendar.getTime();
+
+    assertTrue(DateHelper.getInstance().checkDateNotAfterLimit(dateLimit,
       Integer.valueOf(30)).booleanValue());
-    assertTrue(DateHelper.getInstance().checkDateNotAfterLimit(date,
+
+    assertTrue(DateHelper.getInstance().checkDateNotAfterLimit(dateLimit,
       Integer.valueOf(15)).booleanValue());
-    assertFalse(DateHelper.getInstance().checkDateNotAfterLimit(date,
+
+    assertTrue(DateHelper.getInstance().checkDateNotAfterLimit(dateLimit,
       Integer.valueOf(5)).booleanValue());
+
+    assertFalse(DateHelper.getInstance().checkDateNotAfterLimit(dateLimit,
+      Integer.valueOf(3)).booleanValue());
   }
 
   @Test
