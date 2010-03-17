@@ -1,10 +1,9 @@
-package com.djimenez.core.components.view;
+package com.djimenez.core.patterns.interfaces.mvc;
 
 import java.util.Collection;
 
 import org.apache.log4j.Logger;
 
-import com.djimenez.core.patterns.interfaces.mvc.Mediator;
 
 /**
  * @author djimenez

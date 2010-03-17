@@ -1,4 +1,8 @@
-package com.djimenez.core.patterns.interfaces;
+package com.djimenez.core.patterns.interfaces.command;
+
+import com.djimenez.core.patterns.interfaces.Event;
+import com.djimenez.core.patterns.interfaces.Facade;
+import com.djimenez.core.patterns.interfaces.Notification;
 
 /**
  * Encapsulate a request as an object, thereby letting you parameterize clients

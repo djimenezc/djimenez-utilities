@@ -8,7 +8,7 @@ package com.djimenez.core.patterns.interfaces;
  * @author djimenez
  * @version 1.0
  * @since 1.0
- * @see es.dia.pos.n2a.mvc.interfaces.Command
+ * @see com.djimenez.core.patterns.interfaces.command.mvc.interfaces.Command
  * @see es.com.djimenez.pattern.interfaces.mvc.interfaces.View
  * @see es.dia.pos.n2a.mvc.patterns.observer.AbstractNotifier
  */

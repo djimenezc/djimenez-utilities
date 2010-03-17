@@ -5,7 +5,7 @@ package com.djimenez.core.exception;
  * 
  * @author djimenez
  * @version 1.0
- * @see es.dia.pos.n2a.mvc.interfaces.Command
+ * @see com.djimenez.core.patterns.interfaces.command.mvc.interfaces.Command
  * @see es.com.djimenez.pattern.interfaces.mvc.interfaces.Controller
  */
 public class DuplicateNotificationException extends RuntimeException {
