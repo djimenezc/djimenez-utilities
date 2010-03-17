@@ -1,22 +1,25 @@
-package com.djimenez.test.example.spring.injection;
+package com.djimenez.test.example.spring;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 
 import com.djimenez.model.user.User;
 import com.djimenez.test.spring.service.SpringTestService;
 import com.djimenez.testing.spring.AbstractSpringTest;
 
-@ContextConfiguration(locations = { "classpath:spring/test-springExample.xml" })
 public class SpringExampleTest extends AbstractSpringTest {
 
   @Autowired
   private SpringTestService springTestService;
 
+  @Override
+  protected String[] getConfigLocations() {
+    return new String[] { "/spring/test-springExample-applicationContext.xml" };
+  }
+
   @Test
-  void testSpringExample() throws ConfigurationException {
+  public void testSpringExample() throws ConfigurationException {
 
     final User user =
       SpringExampleTestConfiguration.getInstance().retrieveSpringTestData();

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<testclass>ConfigurationServiceTest</testclass>
+	<testclass>SpringExampleTest</testclass>
 	<testcases>
-		<testcase name="testCase">
+		<testcase name="springTest">
 			<user>
 
 				<id>1</id>

@@ -1,4 +1,4 @@
-package com.djimenez.test.example.spring.injection;
+package com.djimenez.test.example.spring;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.HierarchicalConfiguration;
