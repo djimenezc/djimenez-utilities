@@ -84,13 +84,16 @@ public class DateHelperTest extends TestCase {
 
   @Test
   public void testCheckDateNotExceedLimit() {
+
     final Calendar calendar = new GregorianCalendar();
+
     calendar.set(Calendar.DAY_OF_MONTH, 4);
     calendar.set(Calendar.MONTH, 0);
     calendar.set(Calendar.YEAR, 1970);
     calendar.set(Calendar.HOUR_OF_DAY, 0);
     calendar.set(Calendar.MINUTE, 0);
     calendar.set(Calendar.SECOND, 0);
+
     final Date date1 = calendar.getTime();
 
     calendar.set(Calendar.DAY_OF_MONTH, 1);
@@ -99,7 +102,9 @@ public class DateHelperTest extends TestCase {
     calendar.set(Calendar.HOUR_OF_DAY, 0);
     calendar.set(Calendar.MINUTE, 0);
     calendar.set(Calendar.SECOND, 0);
+
     final Date date2 = calendar.getTime();
+
     assertFalse(DateHelper.getInstance().checkDateNotExceedLimit(date1, date2,
       2).booleanValue());
     assertTrue(DateHelper.getInstance()
