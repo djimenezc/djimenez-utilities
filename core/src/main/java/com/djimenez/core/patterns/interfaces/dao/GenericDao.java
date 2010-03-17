@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Generic DAO Pattern
  * 
- * @author fgp002es
+ * @author djimenez
  * @param <I>
  * @param <E>
  */

@@ -1,7 +1,7 @@
 package com.djimenez.core.patterns.interfaces.worker;
 
-import com.djimenez.core.patterns.interfaces.Command;
 import com.djimenez.core.patterns.interfaces.Notification;
+import com.djimenez.core.patterns.interfaces.command.Command;
 import com.djimenez.core.patterns.interfaces.mvc.Mediator;
 import com.djimenez.model.keys.KeyType;
 

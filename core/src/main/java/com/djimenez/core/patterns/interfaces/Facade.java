@@ -3,10 +3,11 @@ package com.djimenez.core.patterns.interfaces;
 import java.util.Collection;
 import java.util.List;
 
-import com.djimenez.core.components.controller.CommandContainer;
-import com.djimenez.core.components.view.MediatorContainer;
+import com.djimenez.core.patterns.interfaces.command.Command;
+import com.djimenez.core.patterns.interfaces.command.CommandContainer;
 import com.djimenez.core.patterns.interfaces.mvc.Controller;
 import com.djimenez.core.patterns.interfaces.mvc.Mediator;
+import com.djimenez.core.patterns.interfaces.mvc.MediatorContainer;
 import com.djimenez.core.patterns.interfaces.mvc.View;
 
 /**

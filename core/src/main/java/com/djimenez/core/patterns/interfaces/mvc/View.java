@@ -2,8 +2,8 @@ package com.djimenez.core.patterns.interfaces.mvc;
 
 import java.util.Map;
 
-import com.djimenez.core.components.view.ViewState;
 import com.djimenez.core.exception.ViewException;
+import com.djimenez.core.patterns.enumetates.view.ViewState;
 import com.djimenez.core.patterns.interfaces.EventListener;
 import com.djimenez.core.patterns.interfaces.Notification;
 import com.djimenez.core.patterns.interfaces.Observer;

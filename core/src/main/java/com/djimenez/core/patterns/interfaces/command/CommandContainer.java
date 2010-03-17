@@ -1,10 +1,9 @@
-package com.djimenez.core.components.controller;
+package com.djimenez.core.patterns.interfaces.command;
 
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.djimenez.core.patterns.interfaces.Command;
 
 /**
  * The Command container.

@@ -1,9 +1,9 @@
 package com.djimenez.core.patterns.interfaces.mvc;
 
-import com.djimenez.core.patterns.interfaces.Command;
-import com.djimenez.core.patterns.interfaces.CommandNotification;
 import com.djimenez.core.patterns.interfaces.EventListener;
 import com.djimenez.core.patterns.interfaces.Notification;
+import com.djimenez.core.patterns.interfaces.command.Command;
+import com.djimenez.core.patterns.interfaces.command.CommandNotification;
 
 /**
  * When it is initialized (typically by an Facade implementation), the
