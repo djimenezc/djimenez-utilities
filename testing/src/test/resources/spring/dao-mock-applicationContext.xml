@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-	<bean id="factoryMockTest" class="com.djimenez.test.factory.mock.TestFactoryMockImpl"></bean>
+	<bean id="factoryMockTest" class="com.djimenez.test.factory.mock.FactoryTestMockImpl"></bean>
 
-	<bean id="springDaoTest" factory-bean="factoryMockTest"
+	<bean id="springTestDao" factory-bean="factoryMockTest"
 		factory-method="getMockSpringTestDao"></bean>
 
 </beans>

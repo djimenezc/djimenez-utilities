@@ -44,7 +44,8 @@ public final class SpringExampleTestConfiguration {
       RetrieveConfiguration.getTestCaseHierarchicalConfiguration(
         CONFIGURATION_TEST_XML, TEST_NAME);
 
-    return ParserUtilTestExample.getInstance().buildUser(node);
+    return ParserUtilTestExample.getInstance().buildUser(
+      node.configurationAt("user"));
 
   }
 }
