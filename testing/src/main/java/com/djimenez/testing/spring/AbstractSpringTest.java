@@ -11,7 +11,7 @@ import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 public abstract class AbstractSpringTest extends
   AbstractDependencyInjectionSpringContextTests {
 
-  protected static final Logger logger =
+  public static final Logger logger =
     Logger.getLogger(AbstractSpringTest.class);
 
 }

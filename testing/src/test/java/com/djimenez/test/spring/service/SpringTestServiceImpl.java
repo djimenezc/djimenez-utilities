@@ -9,27 +9,24 @@ public class SpringTestServiceImpl implements SpringTestService {
 
   @Override
   public int addUser(final User user) {
-    // TODO Auto-generated method stub
-    return 0;
-  }
 
-  /**
-   * @return the springTestDao
-   */
-  public SpringTestDao getSpringTestDao() {
-    return springTestDao;
+    springTestDao.save(user);
+
+    return 1;
   }
 
   @Override
   public int getUserNumber() {
-    // TODO Auto-generated method stub
+
+    springTestDao.calculateUserNumber();
+
     return 0;
   }
 
   @Override
   public User retrieveUser(final int id) {
-    // TODO Auto-generated method stub
-    return null;
+
+    return springTestDao.findById(id);
   }
 
   /**

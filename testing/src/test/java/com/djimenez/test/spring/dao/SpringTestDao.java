@@ -1,9 +1,10 @@
 package com.djimenez.test.spring.dao;
 
+import com.djimenez.core.patterns.interfaces.dao.GenericDao;
 import com.djimenez.model.user.User;
 
-public interface SpringTestDao {
+public interface SpringTestDao extends GenericDao<Integer, User> {
 
-  public User retrieveUser(int id);
+  public void calculateUserNumber();
 
 }
