@@ -201,19 +201,19 @@
 
 	</dependencies>
 
-	<repositories>
-		<repository>
-			<id>openqa</id>
-			<name>OpenQA Repository</name>
-			<url>http://nexus.openqa.org/content/repositories/releases/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-	</repositories>
+	<properties>
+		<jdbc.test.url><![CDATA[jdbc:mysql://127.0.0.1:3306/n2a]]></jdbc.test.url>
+		
+		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
+		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
+		<jdbc.test.version>1.8.0.1</jdbc.test.version>
+		<jdbc.test.driverClassName>org.hsqldb.jdbcDriver</jdbc.test.driverClassName>
+<!--		<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/sample-portlet;shutdown=true]]></jdbc.test.url>-->
+		<jdbc.username>sa</jdbc.username>
+		<jdbc.password></jdbc.password>
+		
+	</properties>
+
 </project>
 
 
