@@ -26,10 +26,6 @@
 	<property name="local.sql.driver" value="${tpv.sql.driver}" />
 	<property name="local.sql.url" value="jdbc:mysql://localhost" />
 
-	<property name="n2a.compile.projects"
-	          value="n2a-project/${n2a.trunk},n2a-core/${n2a.trunk},n2a-cross/${n2a.trunk},n2a-testing/${n2a.trunk},n2a-frontOffice/${n2a.trunk},n2a-charge/${n2a.trunk},n2a-sale/${n2a.trunk},n2a-server-embedded/${n2a.trunk},
-		             n2a-assembly/${n2a.trunk},n2a-runnerFo/${n2a.trunk}" />
-
 	<target name="compile-all" description="">
 
 		<tstamp>
@@ -40,7 +36,7 @@
 		<echo>
 		     ------------------------------------------
 			Compile djimenez-utilities : ${start.timestamp}
-			Projetcs: ${n2a.compile.projects}
+			Projetcs: ${compile.projects}
 			PATH= ${env.PATH}:${maven.home}/bin
 		     ------------------------------------------
 	    </echo>
@@ -48,8 +44,8 @@
 
 		<exec executable="${src.dir}/n2a-frontOffice/common/mvninstall.sh"
 		      failonerror="true">
-			<arg value="${src.dir.compilar}" />
-			<arg value="${n2a.compile.projects}" />
+			<arg value="${src.dir.compile}" />
+			<arg value="${compile.projects}" />
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
 		</exec>
 
@@ -65,7 +61,7 @@
 			<echo>
 			     ------------------------------------------
 				Compile N2A without test: ${start.timestamp}
-				Projetcs: ${n2a.compile.projects}
+				Projetcs: ${compile.projects}
 				PATH= ${env.PATH}:${maven.home}/bin
 			     ------------------------------------------
 		    </echo>
@@ -73,8 +69,8 @@
 
 			<exec executable="${src.dir}/n2a-frontOffice/${n2a.trunk}/common/mvninstall-quick.sh"
 			      failonerror="true">
-				<arg value="${src.dir.compilar}" />
-				<arg value="${n2a.compile.projects}" />
+				<arg value="${src.dir.compile}" />
+				<arg value="${compile.projects}" />
 				<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
 			</exec>
 
@@ -89,16 +85,16 @@
 		<property environment="env" />
 		<echo>
 			     ------------------------------------------
-				Clean N2A : ${start.timestamp}
-				Projetcs: ${n2a.compile.projects}
+				Clean djimenez-utilities : ${start.timestamp}
+				Projetcs: ${compile.projects}
 				PATH= ${env.PATH}:${maven.home}/bin
 			     ------------------------------------------
 		    </echo>
 
 
-		<exec executable="${src.dir}/n2a-frontOffice/${n2a.trunk}/common/mvnclean.sh">
-			<arg value="${src.dir.compilar}" />
-			<arg value="${n2a.compile.projects}" />
+		<exec executable="${scripts.dir}/mvnclean.sh">
+			<arg value="${src.dir.compile}" />
+			<arg value="${compile.projects}" />
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
 		</exec>
 			
@@ -115,20 +111,20 @@
 		<echo>
 			     ------------------------------------------
 				Clean N2A : ${start.timestamp}
-				Projetcs: ${n2a.compile.projects}
+				Projetcs: ${compile.projects}
 				PATH= ${env.PATH}:${maven.home}/bin
 			     ------------------------------------------
 		    </echo>
 
 
 		<exec executable="${src.dir}/n2a-frontOffice/${n2a.trunk}/common/mvnclean.sh">
-			<arg value="${src.dir.compilar}" />
+			<arg value="${src.dir.compile}" />
 			<arg value="n2a-assembly/${n2a.trunk}" />
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
 		</exec>
 		<exec executable="${src.dir}/n2a-frontOffice/${n2a.trunk}/common/mvninstall-quick.sh"
 					      failonerror="true">
-						<arg value="${src.dir.compilar}" />
+						<arg value="${src.dir.compile}" />
 						<arg value="n2a-assembly/${n2a.trunk}" />
 						<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
 					</exec>	
