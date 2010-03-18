@@ -172,7 +172,7 @@
 			<artifactId>test-support</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>model</artifactId>
@@ -185,32 +185,41 @@
 			<version>1.0.1</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.openqa.selenium.server</groupId>
 			<artifactId>selenium-server</artifactId>
 			<version>1.0.1</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>core</artifactId>
 			<version>1.0</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>${jdbc.test.groupId}</groupId>
+			<artifactId>${jdbc.test.artifactId}</artifactId>
+			<version>${jdbc.test.version}</version>
+		</dependency>
 
 	</dependencies>
 
 	<properties>
-		<jdbc.test.url><![CDATA[jdbc:mysql://127.0.0.1:3306/n2a]]></jdbc.test.url>
-		
+	
+		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
+		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
+		<jdbc.test.version>1.8.0.1</jdbc.test.version>	
+	
 		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
 		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
 		<jdbc.test.version>1.8.0.1</jdbc.test.version>
 		<jdbc.test.driverClassName>org.hsqldb.jdbcDriver</jdbc.test.driverClassName>
-<!--		<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/sample-portlet;shutdown=true]]></jdbc.test.url>-->
-		<jdbc.username>sa</jdbc.username>
-		<jdbc.password></jdbc.password>
+		<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/sample-portlet;shutdown=true]]></jdbc.test.url>
+		<jdbc.test.username>sa</jdbc.test.username>
+		<jdbc.test.password></jdbc.test.password>
 		
 	</properties>
 
