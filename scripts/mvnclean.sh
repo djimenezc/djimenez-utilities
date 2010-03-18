@@ -32,6 +32,7 @@ function logError()
 
 main()
 {
+	
 	projects=$(trasformCommaList "$projects")
 	
 	if [ -d $projectDir/src ]; then
@@ -40,6 +41,8 @@ main()
 	fi
 	touch $errorLogFile
 	touch $logFile
+	
+	
 	
 	for project in $projects
 	do
@@ -51,7 +54,7 @@ main()
 		
 		if [ ! $res -eq 0 ];then
 			cd - 1> $errorLogFile
-			logError "Compilando el proyecto $proyect"            
+			logError "Compilando el proyecto $project"            
 			exit -1
        		 fi
 		echo Proyecto $project limpiado con éxito
