@@ -1,4 +1,4 @@
-package com.djimenez.testing;
+package com.djimenez.test;
 
 import junit.framework.TestCase;
 

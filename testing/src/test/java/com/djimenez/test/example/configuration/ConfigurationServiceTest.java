@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.djimenez.model.user.User;
-import com.djimenez.testing.AbstractTest;
+import com.djimenez.test.AbstractTest;
 
 /**
  * Test that use a Configuration test class to retrieve a dummy information

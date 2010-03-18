@@ -6,8 +6,8 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 
 import com.djimenez.model.user.User;
+import com.djimenez.test.configuration.retrieve.RetrieveConfiguration;
 import com.djimenez.test.example.util.ParserUtilTestExample;
-import com.djimenez.testing.configuration.retrieve.RetrieveConfiguration;
 
 /**
  * Class that retrieve a dummy information

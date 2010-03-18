@@ -4,8 +4,8 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.junit.Test;
 
 import com.djimenez.model.user.User;
+import com.djimenez.test.spring.AbstractSpringTest;
 import com.djimenez.test.spring.service.SpringTestService;
-import com.djimenez.testing.spring.AbstractSpringTest;
 
 public class SpringExampleTest extends AbstractSpringTest {
 

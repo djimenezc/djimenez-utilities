@@ -3,7 +3,7 @@ package com.djimenez.test.example.util;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 
 import com.djimenez.model.user.User;
-import com.djimenez.testing.configuration.parser.ParserConfigurations;
+import com.djimenez.test.configuration.parser.ParserConfigurations;
 
 public class ParserUtilTestExample {
 

@@ -254,7 +254,7 @@ public class ReflectionWorkerHelper {
       final KeyType keyType = KeyType.fromString(keyTypesString.get(i));
       keyTypes[i] = keyType;
     }
-    // TODO apb002es : Se ha hecho publico porque teniamos una dependencia con
+    // Se ha hecho publico porque teniamos una dependencia con
     // mvc-componentes
     // ((AbstractMediator) mediator).setSubmitKeys(keyTypes);
   }

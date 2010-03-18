@@ -7,8 +7,8 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.djimenez.model.user.User;
 import com.djimenez.test.example.spring.SpringExampleTestConfiguration;
+import com.djimenez.test.spring.AbstractTransactionalSpringTest;
 import com.djimenez.test.spring.service.SpringTestService;
-import com.djimenez.testing.spring.AbstractTransactionalSpringTest;
 
 @ContextConfiguration(locations = { "classpath:spring/test-transactional-applicationContext.xml" })
 public class TransactionalExampleTest extends AbstractTransactionalSpringTest {
