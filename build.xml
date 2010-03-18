@@ -1,0 +1,333 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied.  See the License for the
+   specific language governing permissions and limitations
+   under the License.    
+-->
+<project name="djimenez-utilities" default="load-database">
+
+	<property file="build.${user.name}.properties" />
+
+	<property name="tpv.sql.driver" value="com.mysql.jdbc.Driver" />
+	<property name="tpv.sql.url" value="jdbc:mysql://${tpv.ip}/mysql" />
+
+	<property name="local.sql.driver" value="${tpv.sql.driver}" />
+	<property name="local.sql.url" value="jdbc:mysql://localhost" />
+
+	<property name="n2a.compile.projects"
+	          value="n2a-project/${n2a.trunk},n2a-core/${n2a.trunk},n2a-cross/${n2a.trunk},n2a-testing/${n2a.trunk},n2a-frontOffice/${n2a.trunk},n2a-charge/${n2a.trunk},n2a-sale/${n2a.trunk},n2a-server-embedded/${n2a.trunk},
+		             n2a-assembly/${n2a.trunk},n2a-runnerFo/${n2a.trunk}" />
+
+	<target name="compile-all" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<property environment="env" />
+		<echo>
+		     ------------------------------------------
+			Compile djimenez-utilities : ${start.timestamp}
+			Projetcs: ${n2a.compile.projects}
+			PATH= ${env.PATH}:${maven.home}/bin
+		     ------------------------------------------
+	    </echo>
+
+
+		<exec executable="${src.dir}/n2a-frontOffice/common/mvninstall.sh"
+		      failonerror="true">
+			<arg value="${src.dir.compilar}" />
+			<arg value="${n2a.compile.projects}" />
+			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
+		</exec>
+
+	</target>
+	
+	<target name="compile-all-quick" description="">
+
+			<tstamp>
+				<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+			</tstamp>
+
+			<property environment="env" />
+			<echo>
+			     ------------------------------------------
+				Compile N2A without test: ${start.timestamp}
+				Projetcs: ${n2a.compile.projects}
+				PATH= ${env.PATH}:${maven.home}/bin
+			     ------------------------------------------
+		    </echo>
+
+
+			<exec executable="${src.dir}/n2a-frontOffice/${n2a.trunk}/common/mvninstall-quick.sh"
+			      failonerror="true">
+				<arg value="${src.dir.compilar}" />
+				<arg value="${n2a.compile.projects}" />
+				<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
+			</exec>
+
+		</target>
+
+	<target name="clean-all" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<property environment="env" />
+		<echo>
+			     ------------------------------------------
+				Clean N2A : ${start.timestamp}
+				Projetcs: ${n2a.compile.projects}
+				PATH= ${env.PATH}:${maven.home}/bin
+			     ------------------------------------------
+		    </echo>
+
+
+		<exec executable="${src.dir}/n2a-frontOffice/${n2a.trunk}/common/mvnclean.sh">
+			<arg value="${src.dir.compilar}" />
+			<arg value="${n2a.compile.projects}" />
+			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
+		</exec>
+			
+		
+	</target>
+	
+	<target name="n2a-assembly" description="Genera el paquete a desplegar">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<property environment="env" />
+		<echo>
+			     ------------------------------------------
+				Clean N2A : ${start.timestamp}
+				Projetcs: ${n2a.compile.projects}
+				PATH= ${env.PATH}:${maven.home}/bin
+			     ------------------------------------------
+		    </echo>
+
+
+		<exec executable="${src.dir}/n2a-frontOffice/${n2a.trunk}/common/mvnclean.sh">
+			<arg value="${src.dir.compilar}" />
+			<arg value="n2a-assembly/${n2a.trunk}" />
+			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
+		</exec>
+		<exec executable="${src.dir}/n2a-frontOffice/${n2a.trunk}/common/mvninstall-quick.sh"
+					      failonerror="true">
+						<arg value="${src.dir.compilar}" />
+						<arg value="n2a-assembly/${n2a.trunk}" />
+						<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
+					</exec>	
+
+	</target>
+	
+	<target name="dump-database" description="">
+
+			<tstamp>
+				<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+			</tstamp>
+
+			<property environment="env" />
+			<echo>
+				     ------------------------------------------
+					Generate N2A database: ${start.timestamp}
+					 ------------------------------------------
+			    </echo>
+
+
+			<exec executable="${n2a.db.dir}/front-office/scripts/generaBD.sh">
+				<arg value="${n2a.db.dir}" />
+			</exec>
+
+		</target>
+
+	<target name="tar-n2a" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			     ------------------------------------------
+				Tar N2A : ${start.timestamp}
+				Ip: ${tpv.ip}
+				Folder: ${n2a.standalone}
+			     ------------------------------------------
+	    </echo>
+
+		<tar destfile="${n2a.deploy}/target/n2a.tar">
+			<fileset dir="${n2a.deploy}/target/n2a" id="n2a">
+				<include name="**/*" />
+			</fileset>
+
+		</tar>
+	</target>
+
+	<target name="deploy-N2A-tpv"
+	        depends="tar-n2a"
+	        description="Deploy the folder ${n2a.standalone} in the folder ${tpv.deployFolder}
+					of the remote machine ${tpv.ip}">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+	     ------------------------------------------
+		Deploy N2A : ${start.timestamp}
+		Ip: ${tpv.ip}
+		Folder: ${tpv.deployFolder}
+	     ------------------------------------------
+	    </echo>
+
+		<scp todir="${tpv.user}@${tpv.ip}:/tmp"
+		     password="${tpv.pass}"
+		     port="${tpv.port}"
+		     trust="true">
+			<fileset dir="${n2a.deploy}/target">
+				<include name="n2a.tar" />
+			</fileset>
+		</scp>
+
+		<sshexec host="${tpv.ip}"
+		         username="${tpv.user}"
+		         password="${tpv.pass}"
+		         port="${tpv.port}"
+		         trust="yes"
+		         command="
+				rm -rf ${tpv.deployFolder}/../n2a_old;
+			    mv ${tpv.deployFolder} ${tpv.deployFolder}/../n2a_old; 
+    			mkdir ${tpv.deployFolder};
+				tar xfv /tmp/n2a.tar -C ${tpv.deployFolder}" />
+
+		<sshexec host="${tpv.ip}"
+		         username="${tpv.user}"
+		         password="${tpv.pass}"
+		         port="${tpv.port}"
+		         trust="yes"
+		         command="cp ${tpv.deployFolder}/WEB-INF/web-master.xml ${tpv.deployFolder}/WEB-INF/web.xml;" />		
+	</target>
+
+	<target name="kill-N2A-tpv"
+	        description="Kill the java process in the remote machine 
+					${tpv.ip}">
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			     ------------------------------------------
+				Kill N2A process: ${start.timestamp}
+				Ip: ${tpv.ip}
+			     ------------------------------------------
+		</echo>
+
+		<sshexec host="${tpv.ip}"
+		         username="${tpv.user}"
+		         password="${tpv.pass}"
+		         port="${tpv.port}"
+		         trust="yes"
+		         command="pkill -9 java" />
+	</target>
+
+	<target name="runN2A-tpv"
+	        description="Start the N2A process in the remote machine 
+					${tpv.ip}">
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			     ------------------------------------------
+				Start N2A process: ${start.timestamp}
+				Ip: ${tpv.ip}
+			     ------------------------------------------
+		</echo>
+		<sshexec host="${tpv.ip}"
+		         username="${tpv.user}"
+		         password="${tpv.pass}"
+		         port="${tpv.port}"
+		         trust="yes"
+		         command="pkill -9 java;		                  
+						  service n2a start;" />		
+
+
+	</target>
+
+	<target name="shutDown-tpv"
+	        description="Shutdown the the remote machine ${tpv.ip}">
+		<sshexec host="${tpv.ip}"
+		         username="${tpv.user}"
+		         password="${tpv.pass}"
+		         trust="yes"
+		         port="${tpv.port}"
+		         command="shutdown -h now" />
+	</target>
+
+	<target name="load-database"
+	        depends=""
+	        description="Load the frontoffice data in local">
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			     ------------------------------------------
+			      Database deploy N2A : ${start.timestamp}
+			      Ip: Localhost
+			     ------------------------------------------
+		
+			</echo>
+
+		<sql driver="${local.sql.driver}"
+		     url="${local.sql.url}"
+		     userid="${local.sql.user}"
+		     password="${local.sql.pass}">
+			<transaction src="${bbdd.dir}/front-office/createDatabase.sql" />
+			<transaction src="${bbdd.dir}/front-office/dump_bd/bd_pruebas_na/dump_bd_n2a.sql" />
+			<transaction src="${bbdd.dir}/front-office/Insert_Sale.sql" />
+		</sql>
+
+		<delete file="${bbdd.dir}/clean-create_fo.sql">
+		</delete>
+	</target>
+
+	<target name="load-database-tpv"
+	        depends=""
+	        description="Load the frontoffice data in tpv">
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			     ------------------------------------------
+			      Database deploy N2A : ${start.timestamp}
+			      Ip: ${tpv.ip}
+			     ------------------------------------------
+			</echo>
+
+		<sql driver="${tpv.sql.driver}"
+		     url="${tpv.sql.url}"
+		     userid="${tpv.sql.user}"
+		     password="${tpv.sql.pass}">
+			<transaction src="${bbdd.dir}/front-office/createDatabase.sql" />
+			<transaction src="${bbdd.dir}/front-office/dump_bd/bd_pruebas_na/dump_bd_n2a.sql" />
+			<transaction src="${bbdd.dir}/front-office/Insert_Sale.sql" />
+		</sql>
+	</target>
+
+</project>
