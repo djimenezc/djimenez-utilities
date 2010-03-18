@@ -1,4 +1,4 @@
-package com.djimenez.testing.dbunit;
+package com.djimenez.test.dbunit;
 
 import org.apache.log4j.Logger;
 import org.junit.runner.RunWith;

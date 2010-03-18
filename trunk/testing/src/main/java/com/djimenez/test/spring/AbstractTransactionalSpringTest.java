@@ -1,4 +1,4 @@
-package com.djimenez.testing.spring;
+package com.djimenez.test.spring;
 
 import org.apache.log4j.Logger;
 import org.junit.runner.RunWith;

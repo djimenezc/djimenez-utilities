@@ -1,4 +1,4 @@
-package com.djimenez.testing.configuration.util;
+package com.djimenez.test.configuration.util;
 
 import org.apache.commons.configuration.HierarchicalConfiguration;
 

@@ -1,4 +1,4 @@
-package com.djimenez.testing.configuration.parser;
+package com.djimenez.test.configuration.parser;
 
 import java.util.ArrayList;
 import java.util.Date;

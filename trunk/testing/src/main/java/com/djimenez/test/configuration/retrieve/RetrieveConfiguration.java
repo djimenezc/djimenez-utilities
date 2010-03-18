@@ -1,4 +1,4 @@
-package com.djimenez.testing.configuration.retrieve;
+package com.djimenez.test.configuration.retrieve;
 
 import java.util.Iterator;
 import java.util.List;
