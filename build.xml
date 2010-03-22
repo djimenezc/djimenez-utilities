@@ -21,14 +21,23 @@
 	<property file="build.${user.name}.properties" />
 
 	<property name="local.sql.url" value="jdbc:mysql://localhost" />
+	
+	<property environment="env" />
+	
+	<target name="clean-log"> 
 
-	<target name="compile-all" description="">
+		<delete>
+		    <fileset dir="${log.dir}" includes="*.log"/>
+		  </delete>
+
+	</target>
+	
+	<target name="compile-all" depends="clean-log" description="">
 
 		<tstamp>
 			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
 		</tstamp>
-
-		<property environment="env" />
+		
 		<echo>
 		     ------------------------------------------
 			Compile djimenez-utilities : ${start.timestamp}
@@ -41,18 +50,18 @@
 		<exec executable="${scripts.dir}/mvninstall.sh" failonerror="true">
 			<arg value="${src.dir.compile}" />
 			<arg value="${compile.projects}" />
+			<arg value="${log.dir}" />
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
 		</exec>
 
 	</target>
 
-	<target name="compile-all-quick" description="">
+	<target name="compile-all-quick" depends="clean-log" description="">
 
 		<tstamp>
 			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
 		</tstamp>
 
-		<property environment="env" />
 		<echo>
 			     ------------------------------------------
 				Compile without test: ${start.timestamp}
@@ -66,12 +75,13 @@
 		      failonerror="true">
 			<arg value="${src.dir.compile}" />
 			<arg value="${compile.projects}" />
+			<arg value="${log.dir}" />
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
 		</exec>
 
 	</target>
 
-	<target name="clean-all" description="">
+	<target name="clean-all" depends="clean-log" description="">
 
 		<tstamp>
 			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
@@ -90,7 +100,33 @@
 		<exec executable="${scripts.dir}/mvnclean.sh">
 			<arg value="${src.dir.compile}" />
 			<arg value="${compile.projects}" />
+			<arg value="${log.dir}" />
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
+		</exec>
+
+	</target>
+
+	<target name="last-operation-summary"
+	        depends=""
+	        description="Load the frontoffice data in local">
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+				     ------------------------------------------
+				      Last operation summary: ${start.timestamp}
+				      Ip: Localhost
+				      PATH= ${env.PATH}:${maven.home}/bin
+				     ------------------------------------------
+			
+			</echo>
+
+		<exec executable="${scripts.dir}/mvnsummary.sh">
+			<arg value="${src.dir.compile}" />
+			<arg value="${compile.projects}" />
+			<arg value="${log.dir}" />
+			<env key="PATH" path="${env.PATH}" />
 		</exec>
 
 	</target>
@@ -104,7 +140,7 @@
 
 		<echo>
 			     ------------------------------------------
-			      Database deploy : ${start.timestamp}
+			      Database Clean : ${start.timestamp}
 			      Ip: Localhost
 			     ------------------------------------------
 		
@@ -118,5 +154,6 @@
 		</sql>
 
 	</target>
+
 
 </project>
