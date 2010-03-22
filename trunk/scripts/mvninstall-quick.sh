@@ -11,7 +11,7 @@ trasformCommaList()
 	echo $1 | sed -e 's/,/ /g'
 }
 
-function log()
+log()
 {
     # Hechamos al /var/log/messages nuestros mensajes    
     logger "$(basename ${0})" -p local0.info "${1}"
@@ -19,13 +19,13 @@ function log()
 }
 
 # ------------------------------------------------------------------------
-function logInfo()
+logInfo()
 {
     log "[INFO]:  ${1}"
 }
 
 # ------------------------------------------------------------------------
-function logError()
+logError()
 {
     log "[ERROR]: ${1}"
 
