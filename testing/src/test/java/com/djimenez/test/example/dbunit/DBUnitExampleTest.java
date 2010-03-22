@@ -12,7 +12,7 @@ import com.djimenez.test.dbunit.AbstractDBUnitTest;
 import com.djimenez.test.example.spring.SpringExampleTestConfiguration;
 import com.djimenez.test.spring.service.SpringTestService;
 
-@ContextConfiguration(locations = { "classpath:test-persistence-dbunit-context.xml" })
+@ContextConfiguration(locations = { "classpath:spring/test-persistence-dbunit-context.xml" })
 public class DBUnitExampleTest extends AbstractDBUnitTest {
 
   @BeforeClass
