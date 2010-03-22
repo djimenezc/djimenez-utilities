@@ -2,8 +2,8 @@
 
 export srcFolder=$1
 export projects=$2
-export errorLogFile=/tmp/n2a-compile-error.log
-export logFile=/tmp/n2a-compile.log
+export errorLogFile=/tmp/compile-error.log
+export logFile=/tmp/compile.log
 
 trasformCommaList()
 {
