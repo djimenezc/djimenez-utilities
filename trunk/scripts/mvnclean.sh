@@ -2,8 +2,8 @@
 
 export srcFolder=$1
 export projects=$2
-export errorLogFile=/tmp/compile-error.log
-export logFile=/tmp/compile.log
+export errorLogFile=$3/compile-error.log
+export logFile=$3/compile.log
 
 trasformCommaList()
 {

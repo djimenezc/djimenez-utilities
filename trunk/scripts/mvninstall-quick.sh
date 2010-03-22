@@ -3,8 +3,8 @@
 # export PATH=$PATH:/home/djc001es/programs/maven-2.2.1/bin
 export srcFolder=$1
 export projects=$2
-export errorLogFile=/tmp/compile-error.log
-export logFile=/tmp/compile.log
+export errorLogFile=$3/compile-error.log
+export logFile=$3/compile.log
 
 trasformCommaList()
 {
