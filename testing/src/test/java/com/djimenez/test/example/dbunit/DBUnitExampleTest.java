@@ -5,6 +5,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.carbonfive.testutils.spring.dbunit.DataSet;
 import com.djimenez.model.user.User;
@@ -13,6 +14,7 @@ import com.djimenez.test.example.spring.SpringExampleTestConfiguration;
 import com.djimenez.test.spring.service.SpringTestService;
 
 @ContextConfiguration(locations = { "classpath:spring/test-persistence-dbunit-context.xml" })
+@TransactionConfiguration(defaultRollback = true)
 public class DBUnitExampleTest extends AbstractDBUnitTest {
 
   @BeforeClass
@@ -33,4 +35,5 @@ public class DBUnitExampleTest extends AbstractDBUnitTest {
     springTestService.addUser(user);
 
   }
+
 }
