@@ -8,15 +8,45 @@
 	<artifactId>plugins</artifactId>
 	<packaging>pom</packaging>
 	<name>Plugins djimenez utilities</name>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<inceptionYear>2010</inceptionYear>
 
 	<description>
 		
     </description>
+	
+	<dependencyManagement>
+		<dependencies>
+			
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-plugin-api</artifactId>
+				<version>2.0.7</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-project</artifactId>
+				<version>2.0.7</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-utils</artifactId>
+				<version>1.4.6</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.7.0</version>
+			</dependency>		
+		
+		</dependencies>
+	</dependencyManagement>
 
 	<modules>
 		<module>remote-deploy</module>
-	
+
 	</modules>
 </project>
