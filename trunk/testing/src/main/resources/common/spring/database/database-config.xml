@@ -7,19 +7,30 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-<!--	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">-->
-<!--		<property name="user" value="root"/>-->
-<!--		<property name="password" value=""/>-->
-<!--		<property name="driverClass" value="com.mysql.jdbc.Driver"/>-->
-<!--		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/n2a"/>-->
-<!--		<property name="initialPoolSize" value="3"/>-->
-<!--		<property name="maxPoolSize" value="10"/>-->
-<!--		<property name="minPoolSize" value="5"/>-->
-<!--		<property name="acquireIncrement" value="1"/>-->
-<!--		<property name="acquireRetryAttempts" value="5"/>-->
-<!--		<property name="acquireRetryDelay" value="1000"/>-->
-<!--		<property name="automaticTestTable" value="con_test"/>-->
-<!--		<property name="checkoutTimeout" value="5000"/>-->
+<!--	 DATABASE AND DAOS -->
+<!--	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"-->
+<!--		destroy-method="close">-->
+<!--		<property name="user" value="root" />-->
+<!--		<property name="password" value="root" />-->
+<!--		<property name="driverClass" value="com.mysql.jdbc.Driver" />-->
+<!--		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/tmp" />-->
+<!--		<property name="initialPoolSize" value="3" />-->
+<!--		<property name="maxPoolSize" value="10" />-->
+<!--		<property name="minPoolSize" value="5" />-->
+<!--		<property name="acquireIncrement" value="1" />-->
+<!--		<property name="acquireRetryAttempts" value="5" />-->
+<!--		<property name="acquireRetryDelay" value="1000" />-->
+<!--		<property name="automaticTestTable" value="con_test" />-->
+<!--		<property name="checkoutTimeout" value="5000" />-->
 <!--	</bean>-->
+<!---->
+<!--	<bean id="transactionManager"-->
+<!--		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+<!--		<property name="dataSource" ref="dataSource" />-->
+<!--	</bean>-->
+<!--	<tx:annotation-driven transaction-manager="transactionManager"-->
+<!--		proxy-target-class="true" />-->
 
+	<import resource="database-jdbc-config.xml"/>
+	
 </beans>

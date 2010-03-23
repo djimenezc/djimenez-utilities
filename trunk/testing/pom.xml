@@ -171,6 +171,7 @@
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>test-support</artifactId>
 			<version>1.0</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
@@ -198,13 +199,13 @@
 			<artifactId>core</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>${jdbc.test.groupId}</groupId>
 			<artifactId>${jdbc.test.artifactId}</artifactId>
 			<version>${jdbc.test.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>persistence</artifactId>
@@ -216,23 +217,29 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.5.0</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-core</artifactId>
+			<version>3.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<properties>
-	
+
 		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
 		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
-		<jdbc.test.version>1.8.0.1</jdbc.test.version>	
-	
+		<jdbc.test.version>1.8.0.1</jdbc.test.version>
+
 		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
 		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
 		<jdbc.test.version>1.8.0.1</jdbc.test.version>
 		<jdbc.test.driverClassName>org.hsqldb.jdbcDriver</jdbc.test.driverClassName>
-		<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/sample-portlet;shutdown=true]]></jdbc.test.url>
+		<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/tmp;shutdown=true]]></jdbc.test.url>
 		<jdbc.test.username>sa</jdbc.test.username>
 		<jdbc.test.password></jdbc.test.password>
-		
+
 	</properties>
 
 </project>
