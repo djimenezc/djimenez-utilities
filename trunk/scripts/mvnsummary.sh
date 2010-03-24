@@ -1,6 +1,8 @@
 #!/bin/bash
 
 export logFile="$3/compile.log"
+export tempFile="/tmp/awkTemp.tmp"
+
 
 PROJECT_PATH=$1
 
@@ -18,15 +20,36 @@ process_test_files()
 		
 		testFiles=$(echo `ls $projectFolder | grep .txt`)
 		
+		rm $tempFile
+		
 		for testFile in $testFiles
 		do
 			
-			cat $projectFolder/$testFile
-			echo
+			cat $projectFolder/$testFile | gawk ' /Test set/ { print "Class: " $3 }'
+				
+			cat $projectFolder/$testFile | gawk ' /Tests run/ { 
+				
+					 print $2 "" $3 $4 $5 $6 $7 
+				 }' \
+				| tee -a $tempFile
+			
 		done
 		
-		echo -------------------------------------------------------------------------------
-		echo
+		cat $tempFile | gawk ' BEGIN {  FS = "," } ; { print $1 " " $2 " " $3 }' | \
+			gawk ' BEGIN {}; 
+				{
+					 split($1, a, ":")
+					 split($2, b, ":")
+					 split($3, c, ":")
+					 
+					 run = a[2] + run
+					 failures = b[2] + failures
+					 errors = c[2] + errors
+				}; 
+				END { 
+					print "TOTAL=> run:" run " failures: " failures " errors: " errors
+					print 
+					} '
 	done
 
 }
