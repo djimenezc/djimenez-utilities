@@ -6,7 +6,7 @@
 	<artifactId>djimenez-utilities</artifactId>
 	<groupId>com.djimenez.utilities</groupId>
 	<version>1.0</version>
-	<name>djimenez-utilities</name>
+	<name>Parent Project</name>
 	<url>http://maven.apache.org</url>
 	<packaging>pom</packaging>
 
@@ -365,6 +365,42 @@
 				<artifactId>commons-beanutils</artifactId>
 				<version>1.7.0</version>
 			</dependency>
+
+			<dependency>
+				<groupId>net.sf.twip</groupId>
+				<artifactId>twip</artifactId>
+				<version>3.0</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jmock</groupId>
+				<artifactId>jmock</artifactId>
+				<version>2.5.1</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jmock</groupId>
+				<artifactId>jmock-junit4</artifactId>
+				<version>${lib.jmock.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jmock</groupId>
+				<artifactId>jmock</artifactId>
+				<version>${lib.jmock.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.8.4</version>
+				<scope>test</scope>
+			</dependency>
+
 		</dependencies>
 
 	</dependencyManagement>
@@ -382,6 +418,7 @@
 		<module>test-support</module>
 		<module>WebServiceProject</module>
 		<module>core-impl</module>
+		<module>web</module>
 	</modules>
 
 	<build>
@@ -552,7 +589,8 @@
 		<spring.version>2.5.6</spring.version>
 		<lib.log4j.version>1.2.15</lib.log4j.version>
 		<lib.dbunit.version>2.4.4</lib.dbunit.version>
-		<lib.junit.version>4.8.1</lib.junit.version>
+		<lib.junit.version>4.5</lib.junit.version>
+		<lib.jmock.version>2.5.1</lib.jmock.version>
 		<lib.aopalliance.version>1.0</lib.aopalliance.version>
 		<lib.c3p0.version>0.9.1.2</lib.c3p0.version>
 		<lib.cglib-nodep.version>2.1_3</lib.cglib-nodep.version>
