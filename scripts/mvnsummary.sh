@@ -25,11 +25,17 @@ process_test_files()
 		for testFile in $testFiles
 		do
 			
-			cat $projectFolder/$testFile | gawk ' /Test set/ { print "Class: " $3 }'
-				
-			cat $projectFolder/$testFile | gawk ' /Tests run/ { 
-				
-					 print $2 "" $3 $4 $5 $6 $7 
+			cat $projectFolder/$testFile | \
+			gawk '
+				/Test set/ { class = $3 }
+				 
+				/Tests run/ { 
+					
+					split($1, a, ":")
+					
+					
+					
+					 print class " "  "run:"$3 " failures:" $5 " errors:"$7 
 				 }' \
 				| tee -a $tempFile
 			
@@ -47,9 +53,8 @@ process_test_files()
 					 errors = c[2] + errors
 				}; 
 				END { 
-					print "TOTAL=> run:" run " failures: " failures " errors: " errors
-					print 
-					} '
+					print "TOTAL=> run:" run " failures:" failures " errors:" errors
+				} '
 	done
 
 }
