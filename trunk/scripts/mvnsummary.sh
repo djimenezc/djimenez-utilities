@@ -20,8 +20,6 @@ process_test_files()
 		
 		testFiles=$(echo `ls $projectFolder | grep .txt`)
 		
-		rm $tempFile
-		
 		for testFile in $testFiles
 		do
 			
@@ -55,6 +53,8 @@ process_test_files()
 				END { 
 					print "TOTAL=> run:" run " failures:" failures " errors:" errors
 				} '
+
+		rm $tempFile
 	done
 
 }
