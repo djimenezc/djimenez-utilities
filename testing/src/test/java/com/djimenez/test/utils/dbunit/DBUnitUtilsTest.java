@@ -1,11 +1,11 @@
-package com.djimenez.test.dbunit;
+package com.djimenez.test.utils.dbunit;
 
 import org.junit.Test;
 
 import com.djimenez.test.AbstractTest;
 import com.djimenez.test.utils.dbunit.DBUnitUtils;
 
-public class DBUnitTest extends AbstractTest {
+public class DBUnitUtilsTest extends AbstractTest {
 
   private static final String USER_DATABASE = "root";
   private static final String PASSWORD_DATABASE = "root";
