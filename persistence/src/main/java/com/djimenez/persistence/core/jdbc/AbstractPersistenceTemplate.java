@@ -1,4 +1,4 @@
-package com.djimenez.persistence.core;
+package com.djimenez.persistence.core.jdbc;
 
 import java.util.List;
 import java.util.Map;

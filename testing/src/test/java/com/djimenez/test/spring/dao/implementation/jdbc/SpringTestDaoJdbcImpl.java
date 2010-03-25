@@ -3,7 +3,7 @@ package com.djimenez.test.spring.dao.implementation.jdbc;
 import java.util.Collection;
 
 import com.djimenez.model.user.User;
-import com.djimenez.persistence.core.AbstractPersistenceTemplate;
+import com.djimenez.persistence.core.jdbc.AbstractPersistenceTemplate;
 import com.djimenez.test.spring.dao.SpringTestDao;
 
 public class SpringTestDaoJdbcImpl extends AbstractPersistenceTemplate

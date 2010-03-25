@@ -1,4 +1,4 @@
-package com.djimenez.persistence.core;
+package com.djimenez.persistence.core.jdbc;
 
 /**
  * Runtime Exceptions due to Persistence Layer Failure
