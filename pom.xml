@@ -348,7 +348,7 @@
 			<dependency>
 				<groupId>org.openqa.selenium.server</groupId>
 				<artifactId>selenium-server</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.3</version>
 				<scope>test</scope>
 			</dependency>
 
@@ -376,7 +376,19 @@
 				<artifactId>core</artifactId>
 				<version>1.0</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>com.djimenez.utilities</groupId>
+				<artifactId>persistence</artifactId>
+				<version>1.0</version>
+			</dependency>
 
+			<dependency>
+				<groupId>com.djimenez.utilities</groupId>
+				<artifactId>utils</artifactId>
+				<version>1.0</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>org.apache.maven</groupId>
 				<artifactId>maven-plugin-api</artifactId>
@@ -495,18 +507,18 @@
 				<artifactId>persistence-api</artifactId>
 				<version>1.0</version>
 			</dependency>
-		
-		<dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-web</artifactId>
-            <version>${lib.ehcache.web.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>ehcache</artifactId>
-                    <groupId>net.sf.ehcache</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-web</artifactId>
+				<version>${lib.ehcache.web.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>ehcache</artifactId>
+						<groupId>net.sf.ehcache</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
@@ -528,6 +540,7 @@
 	</modules>
 
 	<build>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -567,6 +580,7 @@
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>2.0-beta-2</version>
 			</plugin>
+
 		</plugins>
 
 		<resources>
@@ -595,14 +609,22 @@
 				</excludes>
 			</testResource>
 		</testResources>
+		<extensions>
+			<extension>
+				<groupId>org.jvnet.wagon-svn</groupId>
+				<artifactId>wagon-svn</artifactId>
+				<version>1.8</version>
+			</extension>
+		</extensions>
 	</build>
 
-	<!--
-		<distributionManagement> <repository> <id>europa-releases</id>
-		<name>europa-releases</name>
-		<url>http://europa.lares.dsd/artifactory/n2a-libs-releases-local</url>
-		</repository> </distributionManagement>
-	-->
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>googlecode</id>
+			<url>svn:https://djimenez-utilities.googlecode.com/svn/maven-repo</url>
+		</repository>
+	</distributionManagement>
 
 	<reporting>
 		<plugins>
@@ -719,7 +741,7 @@
 		<lib.hibernate.annotations.version>3.4.0.GA</lib.hibernate.annotations.version>
 		<lib.hibernate.version>3.3.2.GA</lib.hibernate.version>
 		<lib.ehcache.version>1.7.0</lib.ehcache.version>
-        <lib.ehcache.web.version>1.6.0-beta2</lib.ehcache.web.version>
+		<lib.ehcache.web.version>1.6.0-beta2</lib.ehcache.web.version>
 
 		<!--
 			<hibernate.test.dialect>org.hibernate.dialect.HSQLDialect</hibernate.test.dialect>
@@ -764,8 +786,13 @@
 			</snapshots>
 		</repository>
 
-	</repositories>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2/</url>
+		</repository>
 
+	</repositories>
 
 	<profiles>
 		<!-- Environment profiles -->
