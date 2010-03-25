@@ -54,6 +54,8 @@
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
 		</exec>
 
+		<subant target="last-operation-summary" buildpathref="../build.xml" />
+
 	</target>
 
 	<target name="compile-all-quick" depends="clean-log" description="">
