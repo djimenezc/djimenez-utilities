@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.openqa.selenium.server</groupId>
+  <artifactId>selenium-server</artifactId>
+  <version>1.0.3</version>
+  <versioning>
+    <versions>
+      <version>1.0.3</version>
+    </versions>
+    <lastUpdated>20100325230941</lastUpdated>
+  </versioning>
+</metadata>
