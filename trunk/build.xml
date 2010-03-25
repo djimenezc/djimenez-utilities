@@ -46,7 +46,6 @@
 		     ------------------------------------------
 	    </echo>
 
-
 		<exec executable="${scripts.dir}/mvninstall.sh" failonerror="true">
 			<arg value="${src.dir.compile}" />
 			<arg value="${compile.projects}" />
@@ -54,7 +53,10 @@
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
 		</exec>
 
-		<subant target="last-operation-summary" buildpathref="../build.xml" />
+		<subant>
+			<fileset dir="." includes="build.xml" />
+			<target name="last-operation-summary" />
+		</subant>
 
 	</target>
 
