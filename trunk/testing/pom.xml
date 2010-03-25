@@ -139,7 +139,6 @@
 		<dependency>
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>utils</artifactId>
-			<version>1.0</version>
 		</dependency>
 
 		<dependency>
@@ -200,7 +199,6 @@
 		<dependency>
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>core</artifactId>
-			<version>1.0</version>
 		</dependency>
 
 		<dependency>
@@ -212,7 +210,6 @@
 		<dependency>
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>persistence</artifactId>
-			<version>1.0</version>
 		</dependency>
 
 		<dependency>
