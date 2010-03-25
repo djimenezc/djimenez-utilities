@@ -2,14 +2,37 @@
 
 export logFile="$3/compile.log"
 export tempFile="/tmp/awkTemp.tmp"
+export generalTestFile="/tmp/generalTestTemp.tmp"
 
 
 PROJECT_PATH=$1
+
+addTest()
+{
+	cat $1 | gawk ' BEGIN {  FS = "," } ; { print $1 " " $2 " " $3 }' | \
+		gawk ' BEGIN {}; 
+			{
+				 split($2, a, ":")
+				 split($3, b, ":")
+				 split($4, c, ":")
+				 
+				 run = a[2] + run
+				 failures = b[2] + failures
+				 errors = c[2] + errors
+			}; 
+			END { 
+				
+				print "=> run:" run " failures:" failures " errors:" errors
+			} '
+	
+}
 
 process_test_files()
 {
 
 	PATH_PROJECT_TESTED=`find -name surefire-reports`
+	
+	touch $generalTestFile
 	
 	for projectFolder in $PATH_PROJECT_TESTED
 	do
@@ -39,24 +62,18 @@ process_test_files()
 			
 		done
 		
-		cat $tempFile | gawk ' BEGIN {  FS = "," } ; { print $1 " " $2 " " $3 }' | \
-			gawk ' BEGIN {}; 
-				{
-					 split($1, a, ":")
-					 split($2, b, ":")
-					 split($3, c, ":")
-					 
-					 run = a[2] + run
-					 failures = b[2] + failures
-					 errors = c[2] + errors
-				}; 
-				END { 
-					print "TOTAL=> run:" run " failures:" failures " errors:" errors
-				} '
+		
+		echo Total: $(addTest "$tempFile")
 
+		cat $tempFile >> $generalTestFile
 		rm $tempFile
 	done
 
+	
+	totalResult=$(addTest "$generalTestFile")
+	echo Total Result: $totalResult
+	
+	rm $generalTestFile
 }
 #grep "Tests run:" $logFile | grep "Time elapsed:" -v
 
