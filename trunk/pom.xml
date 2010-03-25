@@ -401,6 +401,54 @@
 				<scope>test</scope>
 			</dependency>
 
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${lib.hibernate.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-annotations</artifactId>
+				<version>${lib.hibernate.annotations.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>ejb3-persistence</artifactId>
+						<groupId>org.hibernate</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate</artifactId>
+				<version>${lib.hibernate.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${lib.hibernate.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-ehcache</artifactId>
+				<version>${lib.hibernate.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>ehcache</artifactId>
+						<groupId>net.sf.ehcache</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.4.GA</version>
+			</dependency>
+
 		</dependencies>
 
 	</dependencyManagement>
@@ -608,6 +656,8 @@
 		<lib.slf4j.version>1.5.2</lib.slf4j.version>
 		<lib.jta.version>1.1</lib.jta.version>
 		<lib.servlet-api.version>2.3</lib.servlet-api.version>
+		<lib.hibernate.annotations.version>3.4.0.GA</lib.hibernate.annotations.version>
+		<lib.hibernate.version>3.3.2.GA</lib.hibernate.version>
 
 	</properties>
 
