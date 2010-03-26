@@ -18,7 +18,8 @@ public class BookDeleteController extends AbstractController implements Initiali
             throw new IllegalArgumentException("A BookService is required");
     }
 
-	public void handleActionRequestInternal(ActionRequest request, ActionResponse response) throws Exception {
+	@Override
+  public void handleActionRequestInternal(ActionRequest request, ActionResponse response) throws Exception {
 	    // get the id and delete it
 	    Integer id = new Integer(request.getParameter("book"));
 		bookService.deleteBook(id);

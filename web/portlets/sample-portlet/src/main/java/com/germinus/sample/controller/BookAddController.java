@@ -29,6 +29,7 @@ class BookAddController extends AbstractWizardFormController {
             throw new IllegalArgumentException("A BookService is required");
     }
 
+    @Override
     protected void processFinish(
             ActionRequest request, ActionResponse response,
             Object command, BindException errors)
@@ -37,6 +38,7 @@ class BookAddController extends AbstractWizardFormController {
 		response.setRenderParameter("action","books");
     }
 
+    @Override
     protected void processCancel(
             ActionRequest request, ActionResponse response,
             Object command, BindException errors)
@@ -44,6 +46,7 @@ class BookAddController extends AbstractWizardFormController {
 		response.setRenderParameter("action","books");
     }
 
+    @Override
     protected void validatePage(
             Object command, Errors errors, int page, boolean finish) {
         if (finish) {
@@ -63,6 +66,7 @@ class BookAddController extends AbstractWizardFormController {
 		//errors.setNestedPath("");
     }
 
+    @Override
     protected void initBinder(PortletRequest request, PortletRequestDataBinder binder)
 			throws Exception {
 	    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -70,12 +74,14 @@ class BookAddController extends AbstractWizardFormController {
 	    binder.setAllowedFields(new String[] {"author","title","description","availability","count"});
     }
 
-	protected ModelAndView renderInvalidSubmit(RenderRequest request, RenderResponse response)
+	@Override
+  protected ModelAndView renderInvalidSubmit(RenderRequest request, RenderResponse response)
 			throws Exception {
 	    return null;
 	}
 
-	protected void handleInvalidSubmit(ActionRequest request, ActionResponse response)
+	@Override
+  protected void handleInvalidSubmit(ActionRequest request, ActionResponse response)
 			throws Exception {
 	    response.setRenderParameter("action","books");
 	}

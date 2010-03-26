@@ -19,7 +19,8 @@ public class BookViewController extends AbstractController implements Initializi
             throw new IllegalArgumentException("A BookService is required");
     }
     
-	public ModelAndView handleRenderRequestInternal(RenderRequest request, RenderResponse response) throws Exception {
+	@Override
+  public ModelAndView handleRenderRequestInternal(RenderRequest request, RenderResponse response) throws Exception {
 	    // get the id and display it
 	    Integer id = new Integer(request.getParameter("book"));
         return new ModelAndView("bookView", "book", bookService.getBook(id));

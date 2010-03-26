@@ -19,7 +19,8 @@ public class BookIncrementController extends AbstractController implements Initi
             throw new IllegalArgumentException("A BookService is required");
     }
 
-	public void handleActionRequestInternal(ActionRequest request, ActionResponse response) throws Exception {
+	@Override
+  public void handleActionRequestInternal(ActionRequest request, ActionResponse response) throws Exception {
 	    // get the id and delete it
 	    Integer id = new Integer(request.getParameter("book"));
 	    Integer increment = new Integer(request.getParameter("increment"));

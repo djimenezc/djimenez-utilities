@@ -46,6 +46,7 @@ public class Item {
         this.description = description;
     }
 
+    @Override
     public String toString() {
         return new ToStringCreator(this)
                 .append("id", getId())

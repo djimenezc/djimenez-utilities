@@ -36,6 +36,7 @@ public class DisplayTagsController extends AbstractController implements Initial
      * Process the render request and return a ModelAndView object which the
      * DispatcherPortlet will render.
      */
+    @Override
     public ModelAndView handleRenderRequestInternal(RenderRequest request, RenderResponse response) throws Exception {
         log.debug("handleRenderRequestInternal");
         return new ModelAndView("display-tags", "items", itemDao.getAll());
