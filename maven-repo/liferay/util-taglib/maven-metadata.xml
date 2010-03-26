@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>liferay</groupId>
+  <artifactId>util-taglib</artifactId>
+  <version>5.2.3</version>
+  <versioning>
+    <versions>
+      <version>5.2.3</version>
+    </versions>
+    <lastUpdated>20100326132250</lastUpdated>
+  </versioning>
+</metadata>
