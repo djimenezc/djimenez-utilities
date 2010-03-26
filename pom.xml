@@ -525,18 +525,10 @@
 	</dependencyManagement>
 
 	<modules>
-		<module>testing</module>
-		<module>castor</module>
-		<module>tuenti</module>
-		<module>core</module>
+		<module>applications</module>
+		<module>archetypes</module>
+		<module>components</module>
 		<module>plugins</module>
-		<module>utils</module>
-		<module>model</module>
-		<module>persistence</module>
-		<module>service</module>
-		<module>test-support</module>
-		<module>WebServiceProject</module>
-		<module>core-impl</module>
 		<module>web</module>
 	</modules>
 

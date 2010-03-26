@@ -5,10 +5,10 @@
 
     <parent>
         <artifactId>web</artifactId>
-        <groupId>djimenez.utilities</groupId>
+        <groupId>com.djimenez.utilities</groupId>
         <version>1.0</version>
     </parent>
-    <groupId>djimenez.utilities</groupId>
+    <groupId>com.djimenez.utilities</groupId>
     <artifactId>spring-mvc</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>

@@ -4,11 +4,12 @@
 		<artifactId>components</artifactId>
 		<groupId>com.djimenez.utilities</groupId>
 		<version>1.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.djimenez.utilities</groupId>
 	<artifactId>core</artifactId>
-	<name>core</name>
+	<name>Core</name>
 	<version>1.0</version>
 
 	<dependencies>
