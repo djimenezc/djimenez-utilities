@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <plugins>
+    <plugin>
+      <name>Plugin - Remote deploy</name>
+      <prefix>remote-deploy</prefix>
+      <artifactId>remote-deploy-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
+</metadata>
