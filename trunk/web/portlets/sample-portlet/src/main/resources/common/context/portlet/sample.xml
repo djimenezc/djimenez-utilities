@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+    <!-- Controllers -->
+	<bean id="sampleViewController" class="com.germinus.sample.controller.SampleController">
+    </bean>
+    
+    <bean id="javascriptViewController" class="com.germinus.sample.controller.JavascriptController">
+    </bean>
+
+	<bean id="sampleEditController" class="com.germinus.sample.controller.SampleController">
+    </bean>
+	<bean id="sampleHelpController" class="com.germinus.sample.controller.SampleController">
+    </bean>
+	<bean id="jqueryController" class="com.germinus.sample.controller.JQueryController"/>
+	
+	<bean id="scriptaculusController" class="com.germinus.sample.controller.ScriptaculusController"/>
+	
+	<bean id="displayTagsController" class="com.germinus.sample.controller.DisplayTagsController">
+		<property name="itemDao" ref="itemDao"/>
+	</bean>
+	
+	<bean id="dwrViewController" class="com.germinus.sample.controller.DwrViewController"/>
+	
+	<!-- Handler Mapping -->
+	<!--bean id="portletModeHandlerMapping" class="org.springframework.web.portlet.handler.PortletModeHandlerMapping">
+		<property name="portletModeMap">
+			<map>
+				<entry key="view" value-ref="sampleController"/>
+				<entry key="jqueryView" value-ref="ajaxController"/>
+			</map>
+		</property>
+	</bean-->
+	
+	<bean id="parameterMappingInterceptor" class="org.springframework.web.portlet.handler.ParameterMappingInterceptor"/>
+
+	<bean id="portletModeParameterHandlerMapping" class="org.springframework.web.portlet.handler.PortletModeParameterHandlerMapping">
+        <property name="order" value="10"/>
+		<property name="interceptors">
+			<list>
+				<ref bean="parameterMappingInterceptor"/>
+			</list>
+		</property>
+		<property name="portletModeParameterMap">
+			<map>
+				<entry key="view">
+					<map>
+						<entry key="dwrPage"><ref bean="dwrViewController"/></entry>
+						<entry key="javascript" > <ref bean="javascriptViewController"/></entry>
+						<entry key="sample" > <ref bean="sampleViewController"/></entry>
+						<entry key="jquery"><ref bean="jqueryController"/></entry>
+						<entry key="display-tags"><ref bean="displayTagsController"/></entry>
+						<entry key="scriptaculus"><ref bean="scriptaculusController"/></entry>
+						<entry key="books"><ref bean="booksController"/></entry>
+						<entry key="incrementBook"><ref bean="bookIncrementController"/></entry>
+						<entry key="viewBook"><ref bean="bookViewController"/></entry>
+						<entry key="editBook"><ref bean="bookEditController"/></entry>
+						<entry key="deleteBook"><ref bean="bookDeleteController"/></entry>
+						<entry key="addBook"><ref bean="bookAddController"/></entry>
+					</map>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="portletModeHandlerMapping" class="org.springframework.web.portlet.handler.PortletModeHandlerMapping">
+        <property name="order" value="20"/>
+		<property name="portletModeMap">
+			<map>
+				<entry key="view"><ref bean="sampleViewController"/></entry>
+				<entry key="edit"><ref bean="sampleEditController"/></entry>
+				<entry key="help"><ref bean="sampleHelpController"/></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- Exceptions Handler -->
+	<bean id="defaultExceptionHandler" parent="defaultExceptionHandlerTemplate"/>
+</beans>
