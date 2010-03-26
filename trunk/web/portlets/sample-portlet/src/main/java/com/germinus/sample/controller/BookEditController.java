@@ -29,7 +29,8 @@ public class BookEditController extends SimpleFormController implements Initiali
             throw new IllegalArgumentException("A BookService is required");
     }
 
-	public void onSubmitAction(ActionRequest request, ActionResponse response,
+	@Override
+  public void onSubmitAction(ActionRequest request, ActionResponse response,
 			Object command,	BindException errors) throws Exception {
 		
 		Book book = (Book) command;
@@ -50,6 +51,7 @@ public class BookEditController extends SimpleFormController implements Initiali
 		response.setRenderParameter("action","books");
 	}
 	
+    @Override
     protected Object formBackingObject(PortletRequest request)
     		throws Exception {
 
@@ -65,19 +67,22 @@ public class BookEditController extends SimpleFormController implements Initiali
 		return book;
 	}
     
-	protected void initBinder(PortletRequest request, PortletRequestDataBinder binder)
+	@Override
+  protected void initBinder(PortletRequest request, PortletRequestDataBinder binder)
 			throws Exception {
 	    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	    binder.registerCustomEditor(Date.class, null, new	CustomDateEditor(dateFormat, true));
 	    binder.setAllowedFields(new String[] {"author","title","description","availability","count"});
 	}
 
-	protected ModelAndView renderInvalidSubmit(RenderRequest request, RenderResponse response)
+	@Override
+  protected ModelAndView renderInvalidSubmit(RenderRequest request, RenderResponse response)
 			throws Exception {
 	    return null;
 	}
 	
-	protected void handleInvalidSubmit(ActionRequest request, ActionResponse response)
+	@Override
+  protected void handleInvalidSubmit(ActionRequest request, ActionResponse response)
 			throws Exception {
 		response.setRenderParameter("action","books");
 	}

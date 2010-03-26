@@ -1,36 +1,42 @@
 package com.germinus.sample.dao;
 
-import com.germinus.sample.model.Item;
-
 import java.util.List;
 
+import com.germinus.sample.model.Item;
+
 public class ItemDaoTest extends BaseDaoTestCase {
-    private GenericDao<Item, Long> dao;
 
-    public void setItemDao(GenericDao<Item, Long> dao) {
-        this.dao = dao;
+  private GenericDao<Item, Long> dao;
+
+  public void setItemDao(final GenericDao<Item, Long> dao) {
+    this.dao = dao;
+  }
+
+  public void testGetItemInvalid() throws Exception {
+
+    try {
+
+      final Item item = dao.get(1L);
+
+      assertNull(item);
+
     }
-
-    public void testGetItemInvalid() throws Exception {
-        Item item = null;
-        try {
-            item = dao.get(1L);
-        } catch (Exception e) {
-            assertNotNull(e);
-        }
+    catch (final Exception e) {
+      assertNotNull(e);
     }
+  }
 
-    public void testSaveItem() throws Exception {
-        Item newItem = new Item();
-        newItem.setName("Objetaco");
-        newItem.setDescription("Un objeto de prueba");
+  public void testSaveItem() throws Exception {
+    final Item newItem = new Item();
+    newItem.setName("Objetaco");
+    newItem.setDescription("Un objeto de prueba");
 
-        dao.save(newItem);
-        flush();
+    dao.save(newItem);
+    flush();
 
-        log.info("saved new item: " + newItem.toString());
+    log.info("saved new item: " + newItem.toString());
 
-        List<Item> items = dao.getAll();
-        assertNotNull(items.size() > 0);
-    }
+    final List<Item> items = dao.getAll();
+    assertNotNull(items.size() > 0);
+  }
 }

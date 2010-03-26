@@ -33,6 +33,7 @@ public class ScriptaculusController extends AbstractController implements Initia
      * Process the render request and return a ModelAndView object which the
      * DispatcherPortlet will render.
      */
+    @Override
     public ModelAndView handleRenderRequestInternal(RenderRequest request, RenderResponse response) throws Exception {
         log.debug("handleRenderRequestInternal");
         //mostramos la vista sample, no necesita parametros

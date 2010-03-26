@@ -21,6 +21,7 @@ public abstract class BaseDaoTestCase extends AbstractTransactionalDataSourceSpr
     protected final Log log = LogFactory.getLog(getClass());
     protected ResourceBundle rb;
 
+    @Override
     protected String[] getConfigLocations() {
         setAutowireMode(AUTOWIRE_BY_NAME);
         return new String[] {

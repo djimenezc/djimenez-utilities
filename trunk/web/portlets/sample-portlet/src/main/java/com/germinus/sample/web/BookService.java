@@ -1,6 +1,5 @@
 package com.germinus.sample.web;
 
-
 import java.util.Collections;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -14,83 +13,96 @@ import com.germinus.sample.model.Book;
 
 public class BookService extends ApplicationObjectSupport {
 
-    private SortedMap books = Collections.synchronizedSortedMap(new TreeMap());
+  private final SortedMap<Integer, Book> books =
+    Collections.synchronizedSortedMap(new TreeMap<Integer, Book>());
 
-    private int initBooks = -1;
-    
-	public void initApplicationContext() throws BeansException {
-        if (initBooks < 0 || initBooks > 0)
-            addBook("Neal Stephenson", "Snow Crash", 50);
-        if (initBooks < 0 || initBooks > 1)
-            addBook("William Gibson", "Neuromancer", 92);
-        if (initBooks < 0 || initBooks > 2)
-            addBook("Bruce Bethke", "Headcrash", 12);
-        if (initBooks < 0 || initBooks > 3)
-            addBook("Eric S. Nylund", "Signal To Noise", 44);
-        if (initBooks < 0 || initBooks > 4)
-            addBook("Noman", "Shouldn't See This Book", 10);
-	}
+  private int initBooks = -1;
 
-    public Book getBook (Integer key) {
-        synchronized (books) {
-            return (Book)this.books.get(key);
-        }
+  public int addBook(final Book book) {
+    int key;
+    synchronized (books) {
+      if (books.isEmpty()) {
+        key = 1;
+      }
+      else {
+        key = books.lastKey().intValue() + 1;
+      }
+      final Integer keyObj = new Integer(key);
+      book.setKey(keyObj);
+      this.books.put(keyObj, book);
     }
-    
-    public Book getBook (int key) {
-        return getBook(new Integer(key));
-    }
-    
-    public SortedSet getAllBooks () {
-        synchronized (books) {
-            return (SortedSet) new TreeSet(this.books.values());
-        }
-    }
-    
-    public int addBook (Book book) {
-        int key;
-        synchronized (books) {
-            if (books.isEmpty()) key = 1;
-            else key = ((Integer)books.lastKey()).intValue() + 1;
-            Integer keyObj = new Integer(key);
-            book.setKey(keyObj);
-            this.books.put(keyObj, book);
-        }
-        return key;
-    }
+    return key;
+  }
 
-    public int addBook (String author, String title, Integer count) {
-        Book book = new Book(author, title, count);
-        return addBook(book);
-    }
+  public int addBook(final String author, final String title, final int count) {
+    final Book book = new Book(author, title, count);
+    return addBook(book);
+  }
 
-    public int addBook (String author, String title, int count) {
-        Book book = new Book(author, title, count);
-        return addBook(book);
-    }
+  public int addBook(final String author, final String title,
+    final Integer count) {
+    final Book book = new Book(author, title, count);
+    return addBook(book);
+  }
 
-    public void saveBook (Book book) {
-        synchronized (books) {
-            this.books.put(book.getKey(),book);
-        }
-    }
+  public void deleteBook(final Book book) {
+    deleteBook(book.getKey());
+  }
 
-    public void deleteBook (Integer key) {
-        synchronized (books) {
-            this.books.remove(key);
-        }
-    }
+  public void deleteBook(final int key) {
+    deleteBook(new Integer(key));
+  }
 
-    public void deleteBook (Book book) {
-        deleteBook(book.getKey());
+  public void deleteBook(final Integer key) {
+    synchronized (books) {
+      this.books.remove(key);
     }
+  }
 
-    public void deleteBook (int key) {
-        deleteBook(new Integer(key));
-    }
+  public SortedSet<Book> getAllBooks() {
+    synchronized (books) {
 
-    public void setInitBooks(int initBooks) {
-        this.initBooks = initBooks;
+      return new TreeSet<Book>(this.books.values());
     }
-    
+  }
+
+  public Book getBook(final int key) {
+    return getBook(new Integer(key));
+  }
+
+  public Book getBook(final Integer key) {
+    synchronized (books) {
+      return this.books.get(key);
+    }
+  }
+
+  @Override
+  public void initApplicationContext() throws BeansException {
+    if ((initBooks < 0) || (initBooks > 0)) {
+      addBook("Neal Stephenson", "Snow Crash", 50);
+    }
+    if ((initBooks < 0) || (initBooks > 1)) {
+      addBook("William Gibson", "Neuromancer", 92);
+    }
+    if ((initBooks < 0) || (initBooks > 2)) {
+      addBook("Bruce Bethke", "Headcrash", 12);
+    }
+    if ((initBooks < 0) || (initBooks > 3)) {
+      addBook("Eric S. Nylund", "Signal To Noise", 44);
+    }
+    if ((initBooks < 0) || (initBooks > 4)) {
+      addBook("Noman", "Shouldn't See This Book", 10);
+    }
+  }
+
+  public void saveBook(final Book book) {
+    synchronized (books) {
+      this.books.put(book.getKey(), book);
+    }
+  }
+
+  public void setInitBooks(final int initBooks) {
+    this.initBooks = initBooks;
+  }
+
 }

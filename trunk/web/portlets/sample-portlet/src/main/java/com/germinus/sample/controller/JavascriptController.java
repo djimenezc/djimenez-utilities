@@ -16,7 +16,8 @@ public class JavascriptController extends AbstractController implements Initiali
     public void afterPropertiesSet() throws Exception {
     }
     
-	public ModelAndView handleRenderRequestInternal(RenderRequest request, RenderResponse response) throws Exception {
+	@Override
+  public ModelAndView handleRenderRequestInternal(RenderRequest request, RenderResponse response) throws Exception {
 	    
 		log.debug("handleRenderRequestInternal");
 	    
