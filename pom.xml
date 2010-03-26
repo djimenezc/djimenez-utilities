@@ -11,7 +11,8 @@
 	<packaging>pom</packaging>
 
 	<description>
-		Utilidades generales.
+		General utilities and examples
+		
     </description>
 
 	<!--
@@ -507,6 +508,12 @@
 				<artifactId>persistence-api</artifactId>
 				<version>1.0</version>
 			</dependency>
+        
+        <dependency>
+        	<groupId>net.sf.ehcache</groupId>
+        	<artifactId>ehcache</artifactId>
+        	<version>${lib.ehcache.web.version}</version>
+        </dependency>
 
 			<dependency>
 				<groupId>net.sf.ehcache</groupId>
@@ -779,17 +786,15 @@
 		</repository>
 
 		<repository>
-			<id>central</id>
-			<url>http://repo1.maven.org/maven2/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-
-		<repository>
 			<id>maven2-repository.dev.java.net</id>
 			<name>Java.net Repository for Maven</name>
 			<url>http://download.java.net/maven/2/</url>
+		</repository>
+		
+		<repository>
+			<id>djimenez-repo</id>
+			<name>Djimenez maven repository</name>
+			<url>http://djimenez-utilities.googlecode.com/svn/maven-repo</url>
 		</repository>
 
 	</repositories>
