@@ -421,13 +421,13 @@
 	</profiles>
 
 	<properties>
-		<hibernate.test.dialect>org.hibernate.dialect.HSQLDialect</hibernate.test.dialect>
-		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
-		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
-		<jdbc.test.version>1.8.0.1</jdbc.test.version>
-		<jdbc.test.driverClassName>org.hsqldb.jdbcDriver</jdbc.test.driverClassName>
-		<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/sample-portlet;shutdown=true]]></jdbc.test.url>
-		<jdbc.test.username>sa</jdbc.test.username>
-		<jdbc.test.password></jdbc.test.password>
+		<hibernate.test.dialect>org.hibernate.dialect.MySQLDialect</hibernate.test.dialect>
+		<jdbc.test.groupId>mysql</jdbc.test.groupId>
+		<jdbc.test.artifactId>mysql-connector-java</jdbc.test.artifactId>
+		<jdbc.test.version>5.0.4</jdbc.test.version>
+		<jdbc.test.driverClassName>org.gjt.mm.mysql.Driver</jdbc.test.driverClassName>
+		<jdbc.test.url><![CDATA[jdbc:mysql://localhost:3306/djimenez]]></jdbc.test.url>
+		<jdbc.test.username>lportal</jdbc.test.username>
+		<jdbc.test.password>lportal</jdbc.test.password>
 	</properties>
 </project>
