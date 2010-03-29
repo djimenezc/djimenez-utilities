@@ -389,6 +389,12 @@
 				<artifactId>utils</artifactId>
 				<version>1.0</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>com.djimenez.utilities</groupId>
+				<artifactId>utils</artifactId>
+				<version>1.0</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.apache.maven</groupId>
@@ -780,6 +786,7 @@
 		<lib.ehcache.version>1.7.0</lib.ehcache.version>
 		<lib.ehcache.web.version>1.6.0-beta2</lib.ehcache.web.version>
 
+		<remote-deploy-version>1.0</remote-deploy-version>
 		<!--
 			<hibernate.test.dialect>org.hibernate.dialect.HSQLDialect</hibernate.test.dialect>
 		-->
@@ -804,6 +811,12 @@
 
 	<repositories>
 		<repository>
+			<id>djimenez-repo</id>
+			<name>Djimenez maven repository</name>
+			<url>http://djimenez-utilities.googlecode.com/svn/maven-repo</url>
+		</repository>
+		
+		<repository>
 			<id>maven-central</id>
 			<name>Central Repository</name>
 			<url>http://repo1.maven.org/maven2</url>
@@ -819,12 +832,6 @@
 			<id>maven2-repository.dev.java.net</id>
 			<name>Java.net Repository for Maven</name>
 			<url>http://download.java.net/maven/2/</url>
-		</repository>
-
-		<repository>
-			<id>djimenez-repo</id>
-			<name>Djimenez maven repository</name>
-			<url>http://djimenez-utilities.googlecode.com/svn/maven-repo</url>
 		</repository>
 
 	</repositories>
