@@ -15,18 +15,17 @@
 		
     </description>
 
-	<!--
-		<scm>
-		<connection>scm:svn:https://desarrollo.germinus.com/svn/xpression/portlet-tools</connection>
-		<developerConnection>scm:svn:https://desarrollo.germinus.com/svn/xpression/portlet-tools</developerConnection>
-		<url>https://desarrollo.germinus.com/svn/xpression/portlet-tools</url>
-		</scm>
-	-->
+	<scm>
+		<connection>scm:svn:http://djimenez-utilities.googlecode.com/svn/trunk</connection>
+		<developerConnection>scm:svn:https://djimenez-utilities.googlecode.com/svn/trunk</developerConnection>
+		<url>https://djimenez-utilities.googlecode.com/svn/trunk</url>
+	</scm>
 
-	<!--
-		<issueManagement> <system>trac</system>
-		<url>http://europa.lares.dsd/projects/N2A/</url> </issueManagement>
-	-->
+	<issueManagement>
+		<system>google</system>
+		<url>http://code.google.com/p/djimenez-utilities/issues/list</url>
+	</issueManagement>
+
 	<!--
 		<ciManagement> <system>hudson</system>
 		<url>http://europa.lares.dsd/hudson/</url> </ciManagement>
@@ -377,7 +376,7 @@
 				<artifactId>core</artifactId>
 				<version>1.0</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.djimenez.utilities</groupId>
 				<artifactId>persistence</artifactId>
@@ -389,7 +388,7 @@
 				<artifactId>utils</artifactId>
 				<version>1.0</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.apache.maven</groupId>
 				<artifactId>maven-plugin-api</artifactId>
@@ -448,7 +447,7 @@
 				<version>1.8.4</version>
 				<scope>test</scope>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
@@ -502,12 +501,12 @@
 				<artifactId>persistence-api</artifactId>
 				<version>1.0</version>
 			</dependency>
-        
-        <dependency>
-        	<groupId>net.sf.ehcache</groupId>
-        	<artifactId>ehcache</artifactId>
-        	<version>${lib.ehcache.web.version}</version>
-        </dependency>
+
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache</artifactId>
+				<version>${lib.ehcache.web.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>net.sf.ehcache</groupId>
@@ -546,6 +545,32 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<additionalProjectnatures>
+						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+					</additionalProjectnatures>
+					<additionalBuildcommands>
+						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+					</additionalBuildcommands>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-idea-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<dependenciesAsLibraries>true</dependenciesAsLibraries>
+					<useFullNames>false</useFullNames>
+				</configuration>
+			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -776,7 +801,7 @@
 			<name>Java.net Repository for Maven</name>
 			<url>http://download.java.net/maven/2/</url>
 		</repository>
-		
+
 		<repository>
 			<id>djimenez-repo</id>
 			<name>Djimenez maven repository</name>
