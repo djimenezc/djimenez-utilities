@@ -18,6 +18,7 @@
 	<scm>
 		<connection>scm:svn:http://djimenez-utilities.googlecode.com/svn/trunk</connection>
 		<developerConnection>scm:svn:https://djimenez-utilities.googlecode.com/svn/trunk</developerConnection>
+		<tag>https://djimenez-utilities.googlecode.com/svn/tags</tag>
 		<url>https://djimenez-utilities.googlecode.com/svn/trunk</url>
 	</scm>
 
@@ -570,7 +571,7 @@
 					<useFullNames>false</useFullNames>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -597,6 +598,24 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>2.0-beta-2</version>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<!--
+						This is a 2.0 beta 6 bug. By default the goals are 'clean verify',
+						so the modules are not installed, so the dependencies between
+						modules are not met. With this configuration we force the module
+						installation.
+					-->
+					<preparationGoals>clean install</preparationGoals>
+					<username>${svn.username}</username>
+					<password>${svn.password}</password>
+					<tagBase>
+						  https://djimenez-utilities.googlecode.com/svn/tags
+           			</tagBase>
+				</configuration>
 			</plugin>
 
 		</plugins>
