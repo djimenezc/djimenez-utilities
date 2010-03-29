@@ -158,7 +158,7 @@
 			<plugin>
 				<groupId>com.djimenez.utilities</groupId>
 				<artifactId>remote-deploy-maven-plugin</artifactId>
-				<version>1.0</version>
+				<version>${remote-deploy-version}</version>
 				<configuration>
 					<deployDirectory>${liferay.deploy.directory}</deployDirectory>
 				</configuration>
@@ -330,6 +330,12 @@
 			<artifactId>dwr</artifactId>
 			<version>2.0.2</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.djimenez.utilities</groupId>
+			<artifactId>remote-deploy-maven-plugin</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 
 	<reporting>
@@ -420,7 +426,7 @@
 				<jdbc.artifactId>hsqldb</jdbc.artifactId>
 				<jdbc.version>1.8.0.1</jdbc.version>
 				<jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
-				<jdbc.url><![CDATA[jdbc:hsqldb:/tmp/hsqldb/sample-portlet;shutdown=true]]></jdbc.url>
+				<jdbc.url><![CDATA[jdbc:hsqldb:/tmp/hsqldb/djimenez;shutdown=true]]></jdbc.url>
 				<jdbc.username>sa</jdbc.username>
 				<jdbc.password></jdbc.password>
 			</properties>
@@ -437,7 +443,7 @@
 				<jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
 				<jdbc.version>5.0.4</jdbc.version>
 				<jdbc.driverClassName>org.gjt.mm.mysql.Driver</jdbc.driverClassName>
-				<jdbc.url><![CDATA[jdbc:mysql://localhost:3306/sample_portlet]]></jdbc.url>
+				<jdbc.url><![CDATA[jdbc:mysql://localhost:3306/djimenez]]></jdbc.url>
 				<jdbc.username>lportal</jdbc.username>
 				<jdbc.password>lportal</jdbc.password>
 			</properties>
@@ -458,14 +464,13 @@
 				<jdbc.artifactId>postgresql</jdbc.artifactId>
 				<jdbc.version>8.2-504.jdbc3</jdbc.version>
 				<jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-				<jdbc.url><![CDATA[jdbc:postgresql://localhost/sample-portlet]]></jdbc.url>
+				<jdbc.url><![CDATA[jdbc:postgresql://localhost/djimenez]]></jdbc.url>
 				<jdbc.username>lportal</jdbc.username>
 				<jdbc.password>lportal</jdbc.password>
 			</properties>
 		</profile>
 	</profiles>
-
-
+	
 	<properties>
 		<liferay.version>5.2.3</liferay.version>
 		<liferay.deploy.directory>/home/${user.name}/liferay/deploy </liferay.deploy.directory>
