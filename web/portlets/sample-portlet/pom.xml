@@ -208,13 +208,13 @@
 			<artifactId>servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>portlet-api</groupId>
 			<artifactId>portlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>liferay</groupId>
 			<artifactId>util-taglib</artifactId>
@@ -235,26 +235,31 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>${jdbc.groupId}</groupId>
 			<artifactId>${jdbc.artifactId}</artifactId>
 			<version>${jdbc.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>${jdbc.test.groupId}</groupId>
 			<artifactId>${jdbc.test.artifactId}</artifactId>
 			<version>${jdbc.test.version}</version>
 		</dependency>
-		
+
 		<!-- Compile -->
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -274,32 +279,32 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>displaytag</groupId>
 			<artifactId>displaytag</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>displaytag</groupId>
 			<artifactId>displaytag-portlet</artifactId>
@@ -318,7 +323,7 @@
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 		</dependency>
-		
+
 		<!--extra-->
 
 		<dependency>
@@ -329,6 +334,15 @@
 		<dependency>
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>remote-deploy-maven-plugin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.portlet</groupId>
+			<artifactId>portlet-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.djimenez.utilities</groupId>
+			<artifactId>testing</artifactId>
 		</dependency>
 	</dependencies>
 

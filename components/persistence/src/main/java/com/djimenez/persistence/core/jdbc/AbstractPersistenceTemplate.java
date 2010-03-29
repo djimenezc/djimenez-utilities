@@ -164,9 +164,12 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public List<?> query(final String sql, final ParameterizedRowMapper<?> rm,
     final Object... args) {
+
     List<?> result = null;
+
     try {
       result = this.getSimpleJdbcTemplate().query(sql, rm, args);
     }
@@ -255,9 +258,12 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public Object queryForObject(final String sql,
     final ParameterizedRowMapper<?> rm, final Object... args) {
+
     Object result;
+
     try {
       result = this.getSimpleJdbcTemplate().queryForObject(sql, rm, args);
     }
