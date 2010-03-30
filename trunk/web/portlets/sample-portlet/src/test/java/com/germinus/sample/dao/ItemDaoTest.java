@@ -1,39 +1,21 @@
 package com.germinus.sample.dao;
 
 import java.util.List;
-import java.util.ResourceBundle;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import org.springframework.test.context.ContextConfiguration;
 
+import com.djimenez.test.dao.BaseDaoTestCase;
 import com.germinus.sample.model.Item;
 
-@SuppressWarnings("deprecation")
-public class ItemDaoTest extends AbstractDependencyInjectionSpringContextTests {
-
-  protected final Log log = LogFactory.getLog(getClass());
-  protected ResourceBundle rb;
+@ContextConfiguration(locations = {
+  "classpath:/context/applicationContext-resources.xml",
+  "classpath:/context/applicationContext-dao.xml" })
+public class ItemDaoTest extends BaseDaoTestCase {
 
   @Autowired
   private GenericDao<Item, Long> itemDao;
-
-  @Override
-  protected String[] getConfigLocations() {
-    setAutowireMode(AUTOWIRE_BY_NAME);
-    return new String[] { "classpath:context/applicationContext-resources.xml",
-      "classpath:context/applicationContext-dao.xml", };
-  }
-
-  /**
-   * @param itemDao
-   *          the itemDao to set
-   */
-  public void setItemDao(final GenericDao<Item, Long> itemDao) {
-    this.itemDao = itemDao;
-  }
 
   @Test
   public void testGetItemInvalid() throws Exception {
@@ -59,13 +41,14 @@ public class ItemDaoTest extends AbstractDependencyInjectionSpringContextTests {
     newItem.setDescription("Un objeto de prueba");
 
     itemDao.save(newItem);
-    // flush();
+    flush();
 
     log.info("saved new item: " + newItem.toString());
 
     final List<Item> items = itemDao.getAll();
 
     org.junit.Assert.assertNotNull(items.size() > 0);
+
   }
 
 }

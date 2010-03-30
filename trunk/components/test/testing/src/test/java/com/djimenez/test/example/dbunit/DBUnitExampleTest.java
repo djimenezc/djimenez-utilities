@@ -13,7 +13,7 @@ import com.djimenez.test.dbunit.AbstractDBUnitTest;
 import com.djimenez.test.example.spring.SpringExampleTestConfiguration;
 import com.djimenez.test.spring.service.SpringTestService;
 
-@ContextConfiguration(locations = { "classpath:spring/test-persistence-dbunit-context.xml" })
+@ContextConfiguration(locations = { "classpath:context/test-persistence-dbunit-context.xml" })
 @TransactionConfiguration(defaultRollback = true)
 public class DBUnitExampleTest extends AbstractDBUnitTest {
 

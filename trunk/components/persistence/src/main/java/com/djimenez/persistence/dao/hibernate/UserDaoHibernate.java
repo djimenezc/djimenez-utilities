@@ -36,6 +36,12 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
     super(User.class);
   }
 
+  @Override
+  public int calculateUserNumber() {
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
   /**
    * {@inheritDoc}
    */

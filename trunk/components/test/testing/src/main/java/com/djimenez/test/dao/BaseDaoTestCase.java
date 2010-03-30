@@ -1,4 +1,4 @@
-package com.germinus.sample.dao;
+package com.djimenez.test.dao;
 
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -12,25 +12,25 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.test.context.ContextConfiguration;
-
-import com.djimenez.test.spring.AbstractSpringTest;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Base class for running DAO tests.
  * 
  * @author mraible
  */
-@ContextConfiguration(locations = {
-  "classpath:/context/applicationContext-resources.xml",
-  "classpath:/context/applicationContext-dao.xml" })
-public abstract class BaseDaoTestCase extends AbstractSpringTest {
+@TransactionConfiguration(defaultRollback = true, transactionManager = "transactionManager")
+@Transactional
+public abstract class BaseDaoTestCase extends
+  AbstractTransactionalJUnit4SpringContextTests {
 
   protected final Log log = LogFactory.getLog(getClass());
   protected ResourceBundle rb;
 
   @Autowired
-  private SessionFactory sessionFactory;
+  public SessionFactory sessionFactory;
 
   public BaseDaoTestCase() {
     // Since a ResourceBundle is not required for each class, just
@@ -51,8 +51,10 @@ public abstract class BaseDaoTestCase extends AbstractSpringTest {
    * http://issues.appfuse.org/browse/APF-178.
    */
   protected void flush() {
+
     final HibernateTemplate hibernateTemplate =
       new HibernateTemplate(sessionFactory);
+
     hibernateTemplate.flush();
     hibernateTemplate.clear();
   }
@@ -81,4 +83,5 @@ public abstract class BaseDaoTestCase extends AbstractSpringTest {
 
     return obj;
   }
+
 }

@@ -16,6 +16,8 @@ import com.djimenez.model.user.User;
  */
 public interface UserDao extends GenericDaoExtend<User, Long> {
 
+  int calculateUserNumber();
+
   /**
    * Retrieves the password in DB for a user
    * 

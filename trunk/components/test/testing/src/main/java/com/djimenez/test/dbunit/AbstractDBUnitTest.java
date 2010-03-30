@@ -16,7 +16,7 @@ import com.carbonfive.testutils.spring.dbunit.AbstractTransactionalDataSetTestCa
  * @author djimenez
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/spring/database/database-config.xml" })
+@ContextConfiguration(locations = { "classpath:/context/database/database-test-config.xml" })
 @TransactionConfiguration(defaultRollback = true, transactionManager = "transactionManager")
 @Transactional
 public abstract class AbstractDBUnitTest extends

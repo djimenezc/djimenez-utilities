@@ -9,7 +9,7 @@ import org.springframework.web.portlet.ModelAndView;
 import com.germinus.sample.controller.BookViewController;
 import com.germinus.sample.model.Book;
 
-public class TestBookViewController extends TestCase {
+public class TestBookViewController extends SimpleSpringTestCase {
 
   public void testBookViewController() throws Exception {
 

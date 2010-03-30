@@ -3,11 +3,9 @@ package com.djimenez.test.spring.dao.implementation.jdbc;
 import java.util.Collection;
 
 import com.djimenez.model.user.User;
-import com.djimenez.persistence.core.jdbc.AbstractPersistenceTemplate;
 import com.djimenez.test.spring.dao.SpringTestDao;
 
-public class SpringTestDaoJdbcImpl extends AbstractPersistenceTemplate
-  implements SpringTestDao {
+public class SpringTestDaoJdbcImpl implements SpringTestDao {
 
   public void calculateUserNumber() {
     // TODO Auto-generated method stub
