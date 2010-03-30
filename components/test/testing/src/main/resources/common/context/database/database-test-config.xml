@@ -31,6 +31,6 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 <!--	<tx:annotation-driven transaction-manager="transactionManager"-->
 <!--		proxy-target-class="true" />-->
 
-	<import resource="database-jdbc-config.xml"/>
+	<import resource="database-test-jdbc-config.xml"/>
 	
 </beans>

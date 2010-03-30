@@ -9,7 +9,7 @@ import com.djimenez.model.user.User;
 import com.djimenez.test.spring.AbstractSpringTest;
 import com.djimenez.test.spring.service.SpringTestService;
 
-@ContextConfiguration(locations = { "/spring/test-springExample-applicationContext.xml" })
+@ContextConfiguration(locations = { "/context/test-springExample-applicationContext.xml" })
 public class SpringExampleTest extends AbstractSpringTest {
 
   @Autowired

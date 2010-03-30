@@ -10,7 +10,7 @@ import com.djimenez.test.example.spring.SpringExampleTestConfiguration;
 import com.djimenez.test.spring.AbstractTransactionalSpringTest;
 import com.djimenez.test.spring.service.SpringTestService;
 
-@ContextConfiguration(locations = { "classpath:spring/test-transactional-applicationContext.xml" })
+@ContextConfiguration(locations = { "classpath:context/test-transactional-applicationContext.xml" })
 public class TransactionalExampleTest extends AbstractTransactionalSpringTest {
 
   @Autowired

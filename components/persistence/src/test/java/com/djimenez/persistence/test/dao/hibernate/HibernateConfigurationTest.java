@@ -1,4 +1,4 @@
-package com.djimenez.persistence.dao.hibernate;
+package com.djimenez.persistence.test.dao.hibernate;
 
 import java.util.Map;
 
@@ -8,9 +8,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.persister.entity.EntityPersister;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
-import com.djimenez.persistence.dao.BaseDaoTestCase;
+import com.djimenez.test.dao.BaseDaoTestCase;
 
+@ContextConfiguration(locations = { "classpath:/context/persistence/applicationContext-hibernate-dao.xml" })
 public class HibernateConfigurationTest extends BaseDaoTestCase {
 
   @Autowired

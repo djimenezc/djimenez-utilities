@@ -72,6 +72,12 @@
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>core</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.djimenez.utilities</groupId>
+			<artifactId>testing</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>${jdbc.groupId}</groupId>
