@@ -1,0 +1,150 @@
+#labels tomcat,apache
+Ejemplo de conexión entre Apache2 y Tomcat5.5
+
+1.- Instalamos los siguientes paquetes de Java:
+
+apt-get install sun-java6-jdk java-common libservlet2.4-java
+
+2.- Suponemos que ambas aplicaciones ya están instaladas y configuradas cada una para su uso particular (rendimiento, ssl...).
+
+apt-get install tomcat5.5 apache2 apache2.2-common apache2-utils ssl-cert
+
+3.- Configuración de Java:
+
+cp /usr/lib/jvm/java-6-sun/jre/lib/security/java.policy /usr/lib/jvm/java-6-sun/jre/lib/security/java.policy.`date +%d%m%g`
+vi /usr/lib/jvm/java-6-sun/jre/lib/security/java.policy
+
+#Sustituimos su contenido por:
+grant {
+    permission java.security.AllPermission;
+};
+
+4.- Configurar estructura
+
+El objetivo de esto es que Apache se encargue de las partes estáticas y Tomcat de las dinámicas.
+Para ello se va a seguir la siguiente estructura:
+
+ll /home/ulysse/datos/
+total 16
+drwxr-xr-x 4 ulysse   ulysse   4096 2009-10-06 17:30 .
+drwxr-xr-x 5 ulysse   ulysse   4096 2009-10-06 16:45 ..
+drwxr-s--- 3 tomcat55 www-data 4096 2009-10-07 17:17 webapps
+drwxr-s--- 3 ulysse   www-data 4096 2009-10-07 12:15 www
+
+Para cada proyecto se creará una carpeta con el mismo nombre tanto en webapps como en www. Por ejemplo:
+
+ll /home/ulysse/datos/webapps/
+total 10780
+drwxr-s--- 3 tomcat55 www-data     4096 2009-10-07 17:17 .
+drwxr-xr-x 4 ulysse   ulysse       4096 2009-10-06 17:30 ..
+drwxr-sr-x 9 tomcat55 www-data     4096 2009-10-07 17:17 wifimas
+-rw-r--r-- 1 tomcat55 www-data 11008997 2009-10-01 11:25 wifimas.war
+
+ll /home/ulysse/datos/www/
+total 12
+drwxr-s--- 3 ulysse www-data 4096 2009-10-07 12:15 .
+drwxr-xr-x 4 ulysse ulysse   4096 2009-10-06 17:30 ..
+drwxr-s--- 2 ulysse www-data 4096 2009-10-07 12:16 wifimas
+
+Se observa que en webapps está tanto el .war que despliega la aplicación como la propia aplicación, y en www una carpeta con el mismo nombre (ojo con los permisos y propietarios!!).
+
+En lugar de mover de webapps a www las partes estáticas (css, images, js), creamos enlaces simbólicos:
+
+/home/ulysse/datos/www/wifimas# ln -s ../../webapps/wifimas/css/
+/home/ulysse/datos/www/wifimas# ln -s ../../webapps/wifimas/images/
+/home/ulysse/datos/www/wifimas# ln -s ../../webapps/wifimas/js/
+
+chown ulysse:www-data /home/ulysse/datos/www/wifimas/*
+
+/home/ulysse/datos/www/wifimas# ll
+total 8
+drwxr-sr-x 2 root   www-data 4096 2009-10-07 12:16 .
+drwxr-s--- 3 ulysse www-data 4096 2009-10-07 12:15 ..
+lrwxrwxrwx 1 ulysse   www-data   26 2009-10-07 12:15 css -> ../../webapps/wifimas/css/
+lrwxrwxrwx 1 ulysse   www-data   29 2009-10-07 12:15 images -> ../../webapps/wifimas/images/
+lrwxrwxrwx 1 ulysse   www-data   24 2009-10-07 12:16 js -> ../../webapps/wifimas/js/
+
+5.- Configuración de Tomcat:
+
+Si se va a utlizar MySQL
+
+Añadir librería mysql-connector-java-5.1.6-bin.jar a /usr/share/tomcat5.5/common/lib/
+
+Conectores
+
+cp /var/lib/tomcat5.5/conf/server.xml /var/lib/tomcat5.5/conf/server.xml.`date +%d%m%g`
+
+#Asegurar que port="8180" 
+
+<!-- Define a non-SSL HTTP/1.1 Connector on port 8180 -->
+<Connector port="8180" maxHttpHeaderSize="8192" 
+    maxThreads="150" minSpareThreads="25" maxSpareThreads="75" 
+        enableLookups="false" redirectPort="443" acceptCount="100" 
+        connectionTimeout="20000" disableUploadTimeout="true" />
+
+Virtual Hosts
+
+#Añadir al final del archivo, antes de </Engine>
+<Host
+    appBase="/home/ulysse/datos/webapps" 
+    name="213.190.0.242">
+    <Context docBase="" path=""> </Context>
+</Host>
+
+name -> dns(www.wifimas.com) o ip de la máquina
+
+DocumentRoot
+
+cd /usr/share/tomcat5.5/
+mv webapps webapps.`date +%d%m%g`
+ln -s /home/ulysse/datos/webapps
+chown -h tomcat55:root webapps
+
+cd /var/lib/tomcat5.5/
+mv webapps webapps.`date +%d%m%g`
+ln -s /home/ulysse/datos/webapps
+chown -h tomcat55:root webapps
+
+6.- Configuración Apache y jk:
+
+modulo jk
+
+a2enmod jk (si no esta instalado, el paquete es libapache2-mod-jk)
+
+workers.properties
+
+cp /etc/libapache2-mod-jk/workers.properties /etc/libapache2-mod-jk/workers.properties.`date +%d%m%g`
+vi /etc/libapache2-mod-jk/workers.properties
+
+workers.tomcat_home=/var/lib/tomcat5.5/
+workers.java_home=/usr/lib/jvm/java-6-sun/
+
+jk.conf
+
+vi /etc/apache2/mods-available/jk.conf
+
+# Where to find workers.properties
+JkWorkersFile /etc/libapache2-mod-jk/workers.properties
+
+# Where to put jk logs
+JkLogFile /var/log/apache2/mod_jk.log
+
+# Set the jk log level [debug/error/info]
+JkLogLevel info
+
+JkShmFile /var/log/apache2/jk-runtime-status
+
+# Select the log format
+JkLogStampFormat "[%a %b %d %H:%M:%S %Y] " 
+
+JkMount /wifimas/ ajp13_worker
+
+JkMount /wifimas/*.do ajp13_worker
+
+cd /etc/apache2/mods-enabled/
+ln -s ../mods-available/jk.conf
+
+7.- Reiniciamos Tomcat y luego Apache:
+
+/etc/init.d/tomcat5.5 restart
+/etc/init.d/apache2 restart
