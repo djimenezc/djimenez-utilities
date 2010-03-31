@@ -564,6 +564,16 @@
 
 	<build>
 
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>hibernate3-maven-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -813,6 +823,16 @@
 		<remote-deploy-version>1.0</remote-deploy-version>
 
 		<jdk.version>1.6</jdk.version>
+
+		<hibernate.test.dialect>org.hibernate.dialect.MySQLDialect</hibernate.test.dialect>
+		<jdbc.test.groupId>mysql</jdbc.test.groupId>
+		<jdbc.test.artifactId>mysql-connector-java</jdbc.test.artifactId>
+		<jdbc.test.version>5.0.4</jdbc.test.version>
+		<jdbc.test.driverClassName>org.gjt.mm.mysql.Driver</jdbc.test.driverClassName>
+		<jdbc.test.url><![CDATA[jdbc:mysql://localhost:3306/djimenez]]></jdbc.test.url>
+		<jdbc.test.username>lportal</jdbc.test.username>
+		<jdbc.test.password>lportal</jdbc.test.password>
+
 	</properties>
 
 	<repositories>

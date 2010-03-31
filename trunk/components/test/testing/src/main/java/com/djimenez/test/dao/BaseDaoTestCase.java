@@ -30,7 +30,7 @@ public abstract class BaseDaoTestCase extends
   protected ResourceBundle rb;
 
   @Autowired
-  public SessionFactory sessionFactory;
+  private SessionFactory sessionFactory;
 
   public BaseDaoTestCase() {
     // Since a ResourceBundle is not required for each class, just

@@ -1,6 +1,5 @@
 package com.djimenez.model.user;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.GeneratedValue;
@@ -12,14 +11,10 @@ import org.compass.annotations.Searchable;
 import org.compass.annotations.SearchableId;
 import org.hibernate.annotations.Entity;
 
-import com.djimenez.model.BaseObject;
-
 @Entity
 @Table(name = "users")
 @Searchable
-public class User extends BaseObject implements Serializable {
-
-  private static final long serialVersionUID = 3832626162173359411L;
+public class User {
 
   private int id;
 
