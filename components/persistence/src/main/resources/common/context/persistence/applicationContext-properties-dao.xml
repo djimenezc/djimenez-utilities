@@ -10,7 +10,6 @@
 		<property name="locations">
 			<list>
 				<value>classpath:properties/jdbc.properties</value>
-				<value>classpath:properties/hibernate.properties</value>
 			</list>
 		</property>
 	</bean>

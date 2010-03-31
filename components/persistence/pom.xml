@@ -11,8 +11,165 @@
 	<name>persistence</name>
 	<version>1.0</version>
 	<url>http://maven.apache.org</url>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.0-alpha-1</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>hbm2ddl</goal>
+						</goals>
+						<configuration>
+							<components>
+								<component>
+									<name>hbm2ddl</name>
+									<implementation>annotationconfiguration</implementation>
+								</component>
+							</components>
+							<componentProperties>
+								<drop>true</drop>
+<!--								<jdk5>true</jdk5>-->
+								<propertyfile>target/classes/properties/hibernate.properties</propertyfile>
+								<propertyfile>target/classes/properties/jdbc.properties</propertyfile>
+								<configurationfile>src/main/resources/common/hibernate.cfg.xml
+								</configurationfile>
+								<outputfilename>target/schema.sql</outputfilename>
+							</componentProperties>
+						</configuration>
+					</execution>
+					<execution>
+						<id>test</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>hbm2ddl</goal>
+						</goals>
+						<configuration>
+							<components>
+								<component>
+									<name>hbm2ddl</name>
+									<implementation>annotationconfiguration</implementation>
+								</component>
+							</components>
+							<componentProperties>
+								<drop>true</drop>
+<!--								<jdk5>true</jdk5>-->
+								<propertyfile>target/test-classes/properties/jdbc.properties</propertyfile>
+								<configurationfile>src/main/resources/common/hibernate.cfg.xml
+								</configurationfile>
+								<outputfilename>target/schema-test.sql</outputfilename>
+							</componentProperties>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>${jdbc.groupId}</groupId>
+						<artifactId>${jdbc.artifactId}</artifactId>
+						<version>${jdbc.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>${jdbc.test.groupId}</groupId>
+						<artifactId>${jdbc.test.artifactId}</artifactId>
+						<version>${jdbc.test.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>dbunit-maven-plugin</artifactId>
+				<version>1.0-beta-1</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>operation</goal>
+						</goals>
+						<configuration>
+							<dataTypeFactoryName>org.dbunit.dataset.datatype.DefaultDataTypeFactory
+							</dataTypeFactoryName>
+							<driver>${jdbc.driverClassName}</driver>
+							<username>${jdbc.username}</username>
+							<password>${jdbc.password}</password>
+							<url>${jdbc.url}</url>
+							<src>src/main/resources/common/dbunit/default-persistence-data.xml
+							</src>
+							<type>CLEAN_INSERT</type>
+						</configuration>
+					</execution>
+					<execution>
+						<id>test</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>operation</goal>
+						</goals>
+						<configuration>
+							<dataTypeFactoryName>org.dbunit.dataset.datatype.DefaultDataTypeFactory
+							</dataTypeFactoryName>
+							<driver>${jdbc.test.driverClassName}</driver>
+							<username>${jdbc.test.username}</username>
+							<password>${jdbc.test.password}</password>
+							<url>${jdbc.test.url}</url>
+							<src>src/test/resources/common/dbunit/default-persistence-data.xml
+							</src>
+							<type>CLEAN_INSERT</type>
+							<skip>${maven.test.skip}</skip>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>${jdbc.groupId}</groupId>
+						<artifactId>${jdbc.artifactId}</artifactId>
+						<version>${jdbc.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>${jdbc.test.groupId}</groupId>
+						<artifactId>${jdbc.test.artifactId}</artifactId>
+						<version>${jdbc.test.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>native2ascii-maven-plugin</artifactId>
+				<version>1.0-alpha-1</version>
+				<configuration>
+					<dest>target/classes</dest>
+					<src>src/main/resources/common</src>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>native2ascii</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF8</encoding>
+							<includes>
+								messages*.properties
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -27,7 +184,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -72,7 +229,7 @@
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>core</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>testing</artifactId>
