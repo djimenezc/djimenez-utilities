@@ -30,6 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(locations = { "classpath:test-persistence-utils-context.xml" })
 @TransactionConfiguration(defaultRollback = false, transactionManager = "transactionManager")
 @Transactional
+@Deprecated
 public class DBUnitDataRemover {
 
   private static final Logger logger =
