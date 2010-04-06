@@ -1,4 +1,4 @@
-package com.djimenez.test.example.util;
+package com.djimenez.test.util;
 
 import org.apache.commons.configuration.HierarchicalConfiguration;
 
@@ -36,6 +36,7 @@ public class ParserUtilTestExample {
     user.setActive(parserConfigurations.getBoolean(node, "active"));
     user.setAddress(parserConfigurations.getString(node, "address"));
     user.setBornDate(parserConfigurations.getDate(node, "bornDate"));
+    user.setDescription(parserConfigurations.getString(node, "description"));
     user.setActiveDate(parserConfigurations.getDate(node, "activeDate"));
     user.setEmail(parserConfigurations.getString(node, "email"));
     user.setFirstSurname(parserConfigurations.getString(node, "firstSurname"));
@@ -48,8 +49,9 @@ public class ParserUtilTestExample {
     user
       .setSecondSurname(parserConfigurations.getString(node, "secondSurname"));
     user.setUserName(parserConfigurations.getString(node, "userName"));
+    user.setTelephoneNumber(parserConfigurations.getString(node,
+      "telephoneNumber"));
 
     return user;
   }
-
 }

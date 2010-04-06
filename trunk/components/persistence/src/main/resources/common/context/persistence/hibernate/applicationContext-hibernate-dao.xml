@@ -5,10 +5,6 @@
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
        default-lazy-init="true">
 
-	<import resource="applicationContext-properties-dao.xml"/>
-	
-	<import resource="database/database-config.xml"/>
-
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
     <!-- Hibernate SessionFactory -->

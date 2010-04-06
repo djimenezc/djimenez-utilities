@@ -8,7 +8,10 @@ import org.springframework.test.context.ContextConfiguration;
 import com.djimenez.persistence.dao.user.UserDao;
 import com.djimenez.test.dao.BaseDaoTestCase;
 
-@ContextConfiguration(locations = { "classpath:/context/persistence/applicationContext-hibernate-dao.xml" })
+@ContextConfiguration(locations = {
+  "classpath:/context/persistence/jdbc/applicationContext-jdbc-dao.xml",
+  "classpath:/context/persistence/database/database-config.xml",
+  "classpath:/context/persistence/properties/applicationContext-properties-dao-test.xml" })
 public class UserDaoJdbcTest extends BaseDaoTestCase {
 
   @Autowired

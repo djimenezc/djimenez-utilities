@@ -1,6 +1,6 @@
 package com.djimenez.persistence.database.mysql;
 
-import com.djimenez.test.utils.dbunit.DBUnitUtils;
+import com.djimenez.test.util.dbunit.DBUnitUtils;
 
 public class DBUnitMysqlUtils {
 
