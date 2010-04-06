@@ -33,13 +33,13 @@ public class ParserUtilTestExample {
 
     final User user = new User();
 
-    user.isActive(parserConfigurations.getBoolean(node, "active"));
+    user.setActive(parserConfigurations.getBoolean(node, "active"));
     user.setAddress(parserConfigurations.getString(node, "address"));
     user.setBornDate(parserConfigurations.getDate(node, "bornDate"));
     user.setActiveDate(parserConfigurations.getDate(node, "activeDate"));
     user.setEmail(parserConfigurations.getString(node, "email"));
     user.setFirstSurname(parserConfigurations.getString(node, "firstSurname"));
-    user.setId(parserConfigurations.getInteger(node, "id"));
+    user.setId(parserConfigurations.getLong(node, "id"));
     user.setNacionality(parserConfigurations.getString(node, "nacionality"));
     user.setName(parserConfigurations.getString(node, "name"));
     user.setNif(parserConfigurations.getString(node, "nif"));

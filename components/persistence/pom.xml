@@ -12,6 +12,10 @@
 	<version>1.0</version>
 	<url>http://maven.apache.org</url>
 
+	<properties>
+		<jdbc.schema>djimenez</jdbc.schema>
+	</properties>
+
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<plugins>
@@ -36,7 +40,6 @@
 							<componentProperties>
 								<drop>true</drop>
 <!--								<jdk5>true</jdk5>-->
-								<propertyfile>target/classes/properties/hibernate.properties</propertyfile>
 								<propertyfile>target/classes/properties/jdbc.properties</propertyfile>
 								<configurationfile>src/main/resources/common/hibernate.cfg.xml
 								</configurationfile>
@@ -99,7 +102,7 @@
 							<username>${jdbc.username}</username>
 							<password>${jdbc.password}</password>
 							<url>${jdbc.url}</url>
-							<src>src/main/resources/common/dbunit/default-persistence-data.xml
+							<src>src/main/resources/common/hibernate/hibernate-persistence-data.xml
 							</src>
 							<type>CLEAN_INSERT</type>
 						</configuration>
@@ -117,7 +120,7 @@
 							<username>${jdbc.test.username}</username>
 							<password>${jdbc.test.password}</password>
 							<url>${jdbc.test.url}</url>
-							<src>src/test/resources/common/dbunit/default-persistence-data.xml
+							<src>src/test/resources/common/hibernate/hibernate-persistence-data.xml
 							</src>
 							<type>CLEAN_INSERT</type>
 							<skip>${maven.test.skip}</skip>
