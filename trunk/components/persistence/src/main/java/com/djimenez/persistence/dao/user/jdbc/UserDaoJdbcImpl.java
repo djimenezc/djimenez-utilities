@@ -1,4 +1,4 @@
-package com.djimenez.persistence.dao.jdbc;
+package com.djimenez.persistence.dao.user.jdbc;
 
 import java.util.List;
 import java.util.Map;
@@ -7,7 +7,7 @@ import org.springframework.security.userdetails.UsernameNotFoundException;
 
 import com.djimenez.model.user.User;
 import com.djimenez.persistence.core.jdbc.AbstractPersistenceTemplate;
-import com.djimenez.persistence.dao.UserDao;
+import com.djimenez.persistence.dao.user.UserDao;
 
 public class UserDaoJdbcImpl extends AbstractPersistenceTemplate implements
   UserDao {

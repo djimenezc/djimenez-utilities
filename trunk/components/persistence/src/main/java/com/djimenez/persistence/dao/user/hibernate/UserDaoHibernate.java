@@ -1,4 +1,4 @@
-package com.djimenez.persistence.dao.hibernate;
+package com.djimenez.persistence.dao.user.hibernate;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.djimenez.model.user.User;
 import com.djimenez.persistence.core.orm.hibernate.GenericDaoHibernate;
-import com.djimenez.persistence.dao.UserDao;
+import com.djimenez.persistence.dao.user.UserDao;
 
 /**
  * This class interacts with Spring's HibernateTemplate to save/delete and
@@ -84,7 +84,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
   }
 
   /**
-   * Overridden simply to call the saveUser method. This is happenening because
+   * Overridden simply to call the saveUser method. This is happening because
    * saveUser flushes the session and saveObject of BaseDaoHibernate does not.
    * 
    * @param user
@@ -93,13 +93,6 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
    */
   @Override
   public User save(final User user) {
-    return this.saveUser(user);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public User saveUser(final User user) {
     if (log.isDebugEnabled()) {
       log.debug("user's id: " + user.getId());
     }
