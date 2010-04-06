@@ -98,10 +98,10 @@
 						<configuration>
 							<dataTypeFactoryName>org.dbunit.dataset.datatype.DefaultDataTypeFactory
 							</dataTypeFactoryName>
-							<driver>${jdbc.driverClassName}</driver>
-							<username>${jdbc.username}</username>
-							<password>${jdbc.password}</password>
-							<url>${jdbc.url}</url>
+							<driver>${jdbc.test.driverClassName}</driver>
+							<username>${jdbc.test.username}</username>
+							<password>${jdbc.test.password}</password>
+							<url>${jdbc.test.url}</url>
 							<src>src/main/resources/common/hibernate/hibernate-persistence-data.xml
 							</src>
 							<type>CLEAN_INSERT</type>
