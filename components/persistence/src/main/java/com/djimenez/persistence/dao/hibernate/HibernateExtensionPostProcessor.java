@@ -1,4 +1,4 @@
-package com.djimenez.persistence.dao.spring;
+package com.djimenez.persistence.dao.hibernate;
 
 import java.util.ArrayList;
 import java.util.List;

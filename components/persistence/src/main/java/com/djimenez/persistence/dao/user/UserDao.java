@@ -1,4 +1,4 @@
-package com.djimenez.persistence.dao;
+package com.djimenez.persistence.dao.user;
 
 import java.util.List;
 

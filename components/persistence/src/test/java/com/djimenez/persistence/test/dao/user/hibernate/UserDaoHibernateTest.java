@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
 
-import com.djimenez.persistence.dao.UserDao;
+import com.djimenez.persistence.dao.user.UserDao;
 import com.djimenez.persistence.test.dao.user.UserDaoTest;
 import com.djimenez.test.dao.BaseDaoTestCase;
 
