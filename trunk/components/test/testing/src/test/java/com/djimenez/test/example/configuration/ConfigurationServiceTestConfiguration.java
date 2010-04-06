@@ -41,13 +41,13 @@ public final class ConfigurationServiceTestConfiguration {
 
     final User userCompare = new User();
 
-    userCompare.isActive(true);
+    userCompare.setActive(true);
     userCompare.setAddress("C/Castellana 21");
     userCompare.setBornDate(new Date(412642800000L));
     userCompare.setActiveDate(new Date(1254434400000L));
     userCompare.setEmail("djimenezcalvo@gmail.com");
     userCompare.setFirstSurname("jimenez");
-    userCompare.setId(1);
+    userCompare.setId(1L);
     userCompare.setNacionality("spanish");
     userCompare.setName("david");
     userCompare.setNif("12345");

@@ -2,21 +2,28 @@ package com.djimenez.model.user;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.compass.annotations.Searchable;
-import org.compass.annotations.SearchableId;
-import org.hibernate.annotations.Entity;
+/**
+ * Created by IntelliJ IDEA. User: mjimenez Date: 01-ago-2007 Time: 10:28:04
+ */
 
 @Entity
 @Table(name = "users")
-@Searchable
 public class User {
 
-  private int id;
+  protected Long id;
+
+  protected String name;
+
+  protected String description;
+
+  private Date activeDate;
 
   private String userName;
 
@@ -25,10 +32,6 @@ public class User {
   private String nif;
 
   private boolean active;
-
-  private Date activeDate;
-
-  private String name;
 
   private String firstSurname;
 
@@ -189,8 +192,9 @@ public class User {
   }
 
   /**
-   * @return the activeDate
+   * @return the date
    */
+  @Column
   public Date getActiveDate() {
     return activeDate;
   }
@@ -205,13 +209,20 @@ public class User {
   /**
    * @return the fechaNac
    */
+  @Column
   public Date getBornDate() {
     return bornDate;
+  }
+
+  @Column(length = 150)
+  public String getDescription() {
+    return description;
   }
 
   /**
    * @return the email
    */
+  @Column
   public String getEmail() {
     return email;
   }
@@ -219,30 +230,26 @@ public class User {
   /**
    * @return the firstSurname
    */
+  @Column
   public String getFirstSurname() {
     return firstSurname;
   }
 
-  /**
-   * @return the id
-   */
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @SearchableId
-  public int getId() {
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  public Long getId() {
     return id;
   }
 
   /**
    * @return the nacionalidad
    */
+  @Column
   public String getNacionality() {
     return nacionality;
   }
 
-  /**
-   * @return the name
-   */
+  @Column(nullable = false, length = 50, unique = true)
   public String getName() {
     return name;
   }
@@ -250,6 +257,7 @@ public class User {
   /**
    * @return the nif
    */
+  @Column
   public String getNif() {
     return nif;
   }
@@ -257,6 +265,7 @@ public class User {
   /**
    * @return the password
    */
+  @Column
   public String getPassword() {
     return password;
   }
@@ -264,6 +273,7 @@ public class User {
   /**
    * @return the codigoPostal
    */
+  @Column
   public String getPostalCode() {
     return postalCode;
   }
@@ -271,6 +281,7 @@ public class User {
   /**
    * @return the secondSurname
    */
+  @Column
   public String getSecondSurname() {
     return secondSurname;
   }
@@ -278,6 +289,7 @@ public class User {
   /**
    * @return the telephoneNumber
    */
+  @Column
   public String getTelephoneNumber() {
     return telephoneNumber;
   }
@@ -285,6 +297,7 @@ public class User {
   /**
    * @return the userName
    */
+  @Column
   public String getUserName() {
     return userName;
   }
@@ -305,7 +318,7 @@ public class User {
     result = prime * result + ((email == null) ? 0 : email.hashCode());
     result =
       prime * result + ((firstSurname == null) ? 0 : firstSurname.hashCode());
-    result = prime * result + id;
+    result = (int) (prime * result + id);
     result =
       prime * result + ((nacionality == null) ? 0 : nacionality.hashCode());
     result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -333,16 +346,18 @@ public class User {
    * @param active
    *          the active to set
    */
-  public void isActive(final boolean active) {
+  public void setActive(final boolean active) {
     this.active = active;
   }
 
   /**
-   * @param activeDate
-   *          the activeDate to set
+   * s
+   * 
+   * @param date
+   *          the date to set
    */
-  public void setActiveDate(final Date activeDate) {
-    this.activeDate = activeDate;
+  public void setActiveDate(final Date date) {
+    this.activeDate = date;
   }
 
   /**
@@ -359,6 +374,10 @@ public class User {
    */
   public void setBornDate(final Date fechaNac) {
     this.bornDate = fechaNac;
+  }
+
+  public void setDescription(final String description) {
+    this.description = description;
   }
 
   /**
@@ -381,7 +400,7 @@ public class User {
    * @param id
    *          the id to set
    */
-  public void setId(final int id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
