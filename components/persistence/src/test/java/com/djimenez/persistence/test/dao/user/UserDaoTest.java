@@ -1,6 +1,6 @@
 package com.djimenez.persistence.test.dao.user;
 
-import org.junit.Test;
+import org.apache.commons.configuration.ConfigurationException;
 import org.springframework.security.userdetails.UsernameNotFoundException;
 
 public interface UserDaoTest {
@@ -11,11 +11,11 @@ public interface UserDaoTest {
 
   public void testFindByNamedQuery();
 
-  public void testGet();
-
   public void testGetAll();
 
   public void testGetAllDistinct();
+
+  void testGetUser() throws ConfigurationException;
 
   public void testGetUserPassword();
 

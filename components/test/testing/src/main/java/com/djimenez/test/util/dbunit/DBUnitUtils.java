@@ -1,4 +1,4 @@
-package com.djimenez.test.utils.dbunit;
+package com.djimenez.test.util.dbunit;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

@@ -7,7 +7,7 @@ import org.apache.commons.configuration.HierarchicalConfiguration;
 
 import com.djimenez.model.user.User;
 import com.djimenez.test.configuration.retrieve.RetrieveConfiguration;
-import com.djimenez.test.example.util.ParserUtilTestExample;
+import com.djimenez.test.util.ParserUtilTestExample;
 
 /**
  * Class that retrieve a dummy information
@@ -55,6 +55,7 @@ public final class ConfigurationServiceTestConfiguration {
     userCompare.setPostalCode("28529");
     userCompare.setSecondSurname("calvo");
     userCompare.setUserName("djimenez");
+    userCompare.setTelephoneNumber("6666666");
 
     return userCompare;
 

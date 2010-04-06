@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<testclass>ConfigurationServiceTest</testclass>
+	<testclass>UserDaoTest</testclass>
 	<testcases>
-		<testcase name="testCase">
+		<testcase name="getDefaultUser">
 			<user>
-
 				<id>1</id>
 
 				<userName>djimenez</userName>
+				
+				<description>default description</description>
 
 				<password>david</password>
 
@@ -34,11 +35,10 @@
 				<nacionality>spanish</nacionality>
 
 				<bornDate>1983-01-29</bornDate>
-
+				
 				<telephoneNumber>6666666</telephoneNumber>
 			</user>
 		</testcase>
 
 	</testcases>
 </root>
-

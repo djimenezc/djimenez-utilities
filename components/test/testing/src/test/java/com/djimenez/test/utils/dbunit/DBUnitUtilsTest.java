@@ -3,7 +3,7 @@ package com.djimenez.test.utils.dbunit;
 import org.junit.Test;
 
 import com.djimenez.test.AbstractTest;
-import com.djimenez.test.utils.dbunit.DBUnitUtils;
+import com.djimenez.test.util.dbunit.DBUnitUtils;
 
 public class DBUnitUtilsTest extends AbstractTest {
 

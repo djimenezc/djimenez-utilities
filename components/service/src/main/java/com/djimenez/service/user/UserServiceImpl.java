@@ -1,7 +1,7 @@
 package com.djimenez.service.user;
 
 import com.djimenez.model.user.User;
-import com.djimenez.persistence.dao.UserDao;
+import com.djimenez.persistence.dao.user.UserDao;
 
 public class UserServiceImpl implements UserService {
 
