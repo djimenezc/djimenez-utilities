@@ -63,7 +63,7 @@
 							<componentProperties>
 								<drop>true</drop>
 <!--								<jdk5>true</jdk5>-->
-								<propertyfile>target/test-classes/properties/jdbc.properties</propertyfile>
+								<propertyfile>target/test-classes/properties/jdbc.test.properties</propertyfile>
 								<configurationfile>src/main/resources/common/hibernate.cfg.xml
 								</configurationfile>
 								<outputfilename>target/schema-test.sql</outputfilename>
