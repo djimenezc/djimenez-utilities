@@ -27,10 +27,11 @@
 		<url>http://code.google.com/p/djimenez-utilities/issues/list</url>
 	</issueManagement>
 
-	<!--
-		<ciManagement> <system>hudson</system>
-		<url>http://europa.lares.dsd/hudson/</url> </ciManagement>
-	-->
+
+	<ciManagement>
+		<system>hudson</system>
+		<url>http://djimenez.es/hudson/</url>
+	</ciManagement>
 
 	<dependencyManagement>
 		<dependencies>
@@ -829,7 +830,7 @@
 		<jdbc.test.artifactId>mysql-connector-java</jdbc.test.artifactId>
 		<jdbc.test.version>5.0.4</jdbc.test.version>
 		<jdbc.test.driverClassName>org.gjt.mm.mysql.Driver</jdbc.test.driverClassName>
-		<jdbc.test.url><![CDATA[jdbc:mysql://localhost:3306/djimenez]]></jdbc.test.url>
+		<jdbc.test.url><![CDATA[jdbc:mysql://localhost:3306/djimenez_test]]></jdbc.test.url>
 		<jdbc.test.username>lportal</jdbc.test.username>
 		<jdbc.test.password>lportal</jdbc.test.password>
 
