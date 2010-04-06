@@ -1,6 +1,6 @@
 package com.djimenez.test.model;
 
-public class Persona {
+public class UserTest {
 
   private int id;
 
@@ -8,12 +8,12 @@ public class Persona {
 
   private String apellido;
 
-  public Persona(final int id, final String nombre) {
+  public UserTest(final int id, final String nombre) {
     this.id = id;
     this.nombre = nombre;
   }
 
-  public Persona(final int id, final String nombre, final String apellido) {
+  public UserTest(final int id, final String nombre, final String apellido) {
     this.id = id;
     this.nombre = nombre;
     this.apellido = apellido;
