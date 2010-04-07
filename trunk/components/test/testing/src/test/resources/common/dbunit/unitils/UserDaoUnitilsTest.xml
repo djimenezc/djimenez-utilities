@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+    <USERGROUP NAME="admin" />  
+    
+    <user userName="jdoe"  name="doe" FIRSTNAME="john"   userGroup="admin" />
+    
+    <usergroup name="sales" />    
+    
+</dataset>
