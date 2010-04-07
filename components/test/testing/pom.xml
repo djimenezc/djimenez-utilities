@@ -280,15 +280,18 @@
 		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
 		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
 		<jdbc.test.version>1.8.0.1</jdbc.test.version>
-
+		
 		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
 		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
 		<jdbc.test.version>1.8.0.1</jdbc.test.version>
+		
 		<jdbc.test.driverClassName>org.hsqldb.jdbcDriver</jdbc.test.driverClassName>
-		<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/tmp;shutdown=true]]></jdbc.test.url>
+		<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/${jdbc.test.schema};shutdown=true]]></jdbc.test.url>
 		<jdbc.test.username>sa</jdbc.test.username>
 		<jdbc.test.password></jdbc.test.password>
-
+		<jdbc.test.schema>public</jdbc.test.schema>
+		<jdbc.test.dialect>hsqldb</jdbc.test.dialect>
+		
 	</properties>
 
 </project>
