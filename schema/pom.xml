@@ -37,6 +37,7 @@
 
 								<ant antfile="../build.xml" target="database-load-test">
 									<property file="../build.${user.name}.properties" />
+									<property name="bbdd.dir" value="./target/classes/schemas"/>
 								</ant>
 
 								<echo level="info">Finish load test databases</echo>
@@ -62,6 +63,7 @@
 
 								<ant antfile="../build.xml" target="database-clean">
 									<property file="../build.${user.name}.properties" />
+									<property name="bbdd.dir" value="./target/classes/schemas"/>
 								</ant>
 
 								<echo level="info">Finish load databases</echo>

@@ -19,13 +19,23 @@
 <project name="djimenez-utilities" default="compile-all-quick">
 
 	<property file="build.${user.name}.properties" />
-
+	<property environment="env" />
+	
+	<property name="local.sql.user" value="root"/>
+	<property name="local.sql.pass" value="root"/>
+	<property name="local.sql.driver" value="com.mysql.jdbc.Driver"/>
 	<property name="local.sql.url" value="jdbc:mysql://localhost:3306/" />
 
-	<property environment="env" />
-
+	<property name="log.dir" value="/tmp"/>
+	<property name="src.dir" value="${basedir}"/>
+	<property name="compile.dir" value="${basedir}"/>
+	<property name="scripts.dir" value="${compile.dir}/scripts"/>
+	<property name="bbdd.dir" value="${src.dir}/schema/target/classes/schemas"/>
+	<property name="compile.projects" value="archetypes,plugins,components,applications,web"/>
+	
 	<target name="clean-log">
 
+		<echo>${maven.home}</echo>
 		<delete>
 			<fileset dir="${log.dir}" includes="compile-error.log" />
 			<fileset dir="${log.dir}" includes="compile.log" />
@@ -48,7 +58,7 @@
 	    </echo>
 
 		<exec executable="${scripts.dir}/mvninstall.sh" failonerror="true">
-			<arg value="${src.dir.compile}" />
+			<arg value="${compile.dir}" />
 			<arg value="${compile.projects}" />
 			<arg value="${log.dir}" />
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
@@ -78,7 +88,7 @@
 
 		<exec executable="${scripts.dir}/mvninstall-quick.sh"
 		      failonerror="true">
-			<arg value="${src.dir.compile}" />
+			<arg value="${compile.dir}" />
 			<arg value="${compile.projects}" />
 			<arg value="${log.dir}" />
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
@@ -103,7 +113,7 @@
 
 
 		<exec executable="${scripts.dir}/mvnclean.sh">
-			<arg value="${src.dir.compile}" />
+			<arg value="${compile.dir}" />
 			<arg value="${compile.projects}" />
 			<arg value="${log.dir}" />
 			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
@@ -129,7 +139,7 @@
 			</echo>
 
 		<exec executable="${scripts.dir}/mvnsummary.sh">
-			<arg value="${src.dir.compile}" />
+			<arg value="${compile.dir}" />
 			<arg value="${compile.projects}" />
 			<arg value="${log.dir}" />
 			<env key="PATH" path="${env.PATH}" />
