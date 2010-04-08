@@ -24,17 +24,17 @@ public class UserDaoUnitilsTest extends UnitilsJUnit4 {
   public static void generalSetup() {
 
     final DataBaseUtils dataBaseUtils =
-      new DataBaseUtils("jdbc:hsqldb:target/hsqldb/public;shutdown=true",
-        "org.hsqldb.jdbcDriver", "sa", "");
+      new DataBaseUtils("jdbc:mysql://localhost:3306/djimenez_test",
+        "org.gjt.mm.mysql.Driver", "lportal", "lportal");
 
-    dataBaseUtils.executeQuery("DROP SCHEMA PUBLIC CASCADE ;");
+    dataBaseUtils.resetSchema("djimenez_test");
 
     dataBaseUtils
-      .executeQuery("CREATE TABLE usergroup (name VARCHAR(25) PRIMARY KEY)");
+      .executeQuery("CREATE TABLE usergroup (name INT PRIMARY KEY);");
 
     dataBaseUtils.executeQuery("CREATE TABLE user(\n"
       + "userName VARCHAR(25) PRIMARY KEY,\n"
-      + "name VARCHAR(25),\n firstname VARCHAR(25),\n userGroup VARCHAR(25),\n"
+      + "name VARCHAR(25),\n firstName VARCHAR(25),\n userGroup VARCHAR(25),\n"
       + "age INT\n);");
 
   }

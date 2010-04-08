@@ -108,11 +108,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>compile</scope>
@@ -128,7 +123,7 @@
 			<groupId>org.unitils</groupId>
 			<artifactId>unitils-core</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.unitils</groupId>
 			<artifactId>unitils-database</artifactId>
@@ -138,12 +133,12 @@
 			<groupId>org.unitils</groupId>
 			<artifactId>unitils-dbunit</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.unitils</groupId>
 			<artifactId>unitils-test</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
@@ -235,11 +230,6 @@
 			<version>${jdbc.test.version}</version>
 		</dependency>
 
-		<!--		<dependency>-->
-		<!--			<groupId>com.djimenez.utilities</groupId>-->
-		<!--			<artifactId>persistence</artifactId>-->
-		<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
@@ -277,21 +267,37 @@
 
 	<properties>
 
-		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
-		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
-		<jdbc.test.version>1.8.0.1</jdbc.test.version>
-		
-		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>
-		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>
-		<jdbc.test.version>1.8.0.1</jdbc.test.version>
-		
-		<jdbc.test.driverClassName>org.hsqldb.jdbcDriver</jdbc.test.driverClassName>
-		<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/${jdbc.test.schema};shutdown=true]]></jdbc.test.url>
-		<jdbc.test.username>sa</jdbc.test.username>
-		<jdbc.test.password></jdbc.test.password>
-		<jdbc.test.schema>public</jdbc.test.schema>
-		<jdbc.test.dialect>hsqldb</jdbc.test.dialect>
-		
+
+		<hibernate.test.dialect>org.hibernate.dialect.MySQLDialect</hibernate.test.dialect>
+
+		<jdbc.test.groupId>mysql</jdbc.test.groupId>
+		<jdbc.test.artifactId>mysql-connector-java</jdbc.test.artifactId>
+		<jdbc.test.version>5.1.6</jdbc.test.version>
+
+		<jdbc.test.driverClassName>org.gjt.mm.mysql.Driver</jdbc.test.driverClassName>
+		<jdbc.test.url><![CDATA[jdbc:mysql://localhost:3306]]></jdbc.test.url>
+		<jdbc.test.url.database><![CDATA[jdbc:mysql://localhost:3306/${jdbc.test.databaseName}]]></jdbc.test.url.database>
+		<jdbc.test.dialect>mysql</jdbc.test.dialect>
+		<jdbc.test.username>lportal</jdbc.test.username>
+		<jdbc.test.password>lportal</jdbc.test.password>
+
+		<jdbc.test.schema>djimenez_test</jdbc.test.schema>
+		<jdbc.test.databaseName>djimenez_test</jdbc.test.databaseName>
+
+		<!--		<jdbc.test.groupId>hsqldb</jdbc.test.groupId>-->
+		<!--		<jdbc.test.artifactId>hsqldb</jdbc.test.artifactId>-->
+		<!--		<jdbc.test.version>1.8.0.1</jdbc.test.version>-->
+		<!--		-->
+		<!--
+			<jdbc.test.driverClassName>org.hsqldb.jdbcDriver</jdbc.test.driverClassName>
+		-->
+		<!--
+			<jdbc.test.url><![CDATA[jdbc:hsqldb:target/hsqldb/${jdbc.test.databaseName};shutdown=true]]></jdbc.test.url>
+		-->
+		<!--		<jdbc.test.dialect>hsqldb</jdbc.test.dialect>-->
+		<!--		<jdbc.test.username>sa</jdbc.test.username>-->
+		<!--		<jdbc.test.password></jdbc.test.password>-->
+
 	</properties>
 
 </project>
