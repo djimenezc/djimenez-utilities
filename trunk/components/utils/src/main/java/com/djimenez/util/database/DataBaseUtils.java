@@ -5,13 +5,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class DataBaseUtils {
 
-  private String password = "";
-  private String userName = "sa";
-  private String dbDriver = "org.hsqldb.jdbcDriver";
-  private String dbUrl = "jdbc:hsqldb:target/hsqldb/test;shutdown=true";
-  private String mensajeError = "";
+  protected final transient Log log = LogFactory.getLog(getClass());
+
+  private final String password;
+  private final String userName;
+  private final String dbDriver;
+  private final String dbUrl;
 
   /**
    * @param dbUrl
@@ -33,10 +37,6 @@ public class DataBaseUtils {
 
     final Connection con = getConnection(userName, password);
 
-    if (hasError()) {
-      return false;
-    }
-
     try {
       sentencias = con.createStatement();
       sentencias.executeUpdate(query);
@@ -45,7 +45,8 @@ public class DataBaseUtils {
     }
     catch (final Exception e) {
 
-      mensajeError = e.getMessage();
+      log.error(e.getMessage());
+
       return false;
     }
 
@@ -61,12 +62,18 @@ public class DataBaseUtils {
       Class.forName(dbDriver).newInstance();
     }
     catch (final ClassNotFoundException cnfe) {
+
+      log.error(cnfe.getMessage());
       return null;
     }
     catch (final InstantiationException ie) {
+
+      log.error(ie.getMessage());
       return null;
     }
     catch (final IllegalAccessException iae) {
+
+      log.error(iae.getMessage());
       return null;
     }
 
@@ -74,21 +81,36 @@ public class DataBaseUtils {
       con = DriverManager.getConnection(this.dbUrl, username, password);
     }
     catch (final SQLException sqle) {
+
+      log.error(sqle.getMessage());
       return null;
     }
 
     return con;
   }
 
-  public String getError() {
-    return this.mensajeError;
-  }
+  public boolean resetSchema(final String schemaName) {
 
-  public boolean hasError() {
+    Statement sentencias = null;
 
-    if (this.mensajeError.length() > 0) {
-      return true;
+    final Connection con = getConnection(userName, password);
+
+    try {
+      sentencias = con.createStatement();
+      sentencias.executeUpdate("DROP SCHEMA " + schemaName);
+      sentencias.executeUpdate("CREATE SCHEMA " + schemaName);
+      sentencias.close();
+      con.close();
     }
-    return false;
+    catch (final Exception e) {
+
+      log.error(e.getMessage());
+
+      return false;
+    }
+
+    return true;
+
   }
+
 }
