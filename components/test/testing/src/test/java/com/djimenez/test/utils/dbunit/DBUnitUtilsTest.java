@@ -16,7 +16,7 @@ public class DBUnitUtilsTest extends AbstractTest {
   private static final String MYSQL_DBUNIT_XML =
     "src/test/resources/common/dbunit/mysql-dbunit.xml";
   private static final String DESTINATION_DTD_XML = "target/mysql-dbunit.dtd";
-  private static final String DATABASE_NAME = "tmp";
+  private static final String DATABASE_NAME = "djimenez_test";
 
   private static final String URL_DB =
     "jdbc:mysql://localhost:3306/" + DATABASE_NAME;
