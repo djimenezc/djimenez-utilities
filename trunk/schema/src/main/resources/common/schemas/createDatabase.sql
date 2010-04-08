@@ -1,0 +1,4 @@
+
+DROP DATABASE IF EXISTS djimenez;
+
+CREATE DATABASE djimenez;

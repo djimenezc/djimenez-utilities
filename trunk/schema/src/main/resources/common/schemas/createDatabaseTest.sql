@@ -1,5 +1,8 @@
 
-use tmp;
+drop database IF EXISTS ${jdbc.test.databaseName};
+
+create database ${jdbc.test.databaseName};
+use ${jdbc.test.databaseName};
 
 -- -----------------------------------------------------
 -- Table `n2a`.`TRANSACTION`

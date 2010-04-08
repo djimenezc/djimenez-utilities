@@ -186,14 +186,14 @@
 				<version>3.1</version>
 				<scope>test</scope>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.unitils</groupId>
 				<artifactId>unitils-test</artifactId>
 				<version>3.1</version>
 				<scope>test</scope>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-server</artifactId>
@@ -584,6 +584,7 @@
 	</dependencyManagement>
 
 	<modules>
+		<module>schema</module>
 		<module>applications</module>
 		<module>archetypes</module>
 		<module>components</module>
@@ -686,7 +687,7 @@
            			</tagBase>
 				</configuration>
 			</plugin>
-
+			
 		</plugins>
 
 		<resources>
@@ -853,14 +854,17 @@
 
 		<jdk.version>1.6</jdk.version>
 
+		<!--Test properties-->
 		<hibernate.test.dialect>org.hibernate.dialect.MySQLDialect</hibernate.test.dialect>
 		<jdbc.test.groupId>mysql</jdbc.test.groupId>
 		<jdbc.test.artifactId>mysql-connector-java</jdbc.test.artifactId>
 		<jdbc.test.version>5.0.4</jdbc.test.version>
 		<jdbc.test.driverClassName>org.gjt.mm.mysql.Driver</jdbc.test.driverClassName>
-		<jdbc.test.url><![CDATA[jdbc:mysql://localhost:3306/djimenez_test]]></jdbc.test.url>
+		<jdbc.test.url><![CDATA[jdbc:mysql://localhost:3306/${jdbc.test.databaseName}]]></jdbc.test.url>
 		<jdbc.test.username>lportal</jdbc.test.username>
 		<jdbc.test.password>lportal</jdbc.test.password>
+		<jdbc.test.schema>djimenez_test</jdbc.test.schema>
+		<jdbc.test.databaseName>djimenez_test</jdbc.test.databaseName>
 
 	</properties>
 
@@ -969,7 +973,7 @@
 				<jdbc.url><![CDATA[jdbc:mysql://localhost:3306/${jdbc.databaseName}]]></jdbc.url>
 				<jdbc.username>lportal</jdbc.username>
 				<jdbc.password>lportal</jdbc.password>
-				
+
 			</properties>
 		</profile>
 
