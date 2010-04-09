@@ -6,15 +6,15 @@ import net.sf.twip.Values;
 
 import org.junit.Test;
 
-import com.djimenez.test.model.UserTest;
+import com.djimenez.test.model.UserTestBean;
 
 public class TwipExampleTest extends AbstractTwipTest {
 
   @AutoTwip
-  public static UserTest crearPersona(final int id, final String nombre,
+  public static UserTestBean crearPersona(final int id, final String nombre,
     final String apellido) {
 
-    return new UserTest(id, nombre, apellido);
+    return new UserTestBean(id, nombre, apellido);
   }
 
   @Test
@@ -24,8 +24,8 @@ public class TwipExampleTest extends AbstractTwipTest {
   }
 
   @Test
-  public void testWithOwnObject(final UserTest userTest) {
-    System.out.println(userTest);
+  public void testWithOwnObject(final UserTestBean userTestBean) {
+    System.out.println(userTestBean);
   }
 
   @Test

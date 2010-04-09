@@ -15,7 +15,7 @@ import com.djimenez.test.dao.BaseDaoTestCase;
 @ContextConfiguration(locations = {
   "classpath:/context/persistence/hibernate/applicationContext-hibernate-dao.xml",
   "classpath:/context/persistence/database/database-config.xml",
-  "classpath:/context/persistence/properties/applicationContext-properties-dao.xml" })
+  "classpath:/context/persistence/properties/applicationContext-properties-dao-test.xml" })
 public class HibernateConfigurationTest extends BaseDaoTestCase {
 
   @Autowired

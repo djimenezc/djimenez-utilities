@@ -1,6 +1,6 @@
 package com.djimenez.test.model;
 
-public class UserTest {
+public class UserTestBean {
 
   private int id;
 
@@ -12,12 +12,12 @@ public class UserTest {
 
   private Address address;
 
-  public UserTest(final int id, final String nombre) {
+  public UserTestBean(final int id, final String nombre) {
     this.id = id;
     this.name = nombre;
   }
 
-  public UserTest(final int id, final String nombre, final String apellido) {
+  public UserTestBean(final int id, final String nombre, final String apellido) {
 
     this.id = id;
     this.name = nombre;
@@ -29,7 +29,7 @@ public class UserTest {
    * @param firstSurname
    * @param address
    */
-  public UserTest(final String name, final String firstSurname,
+  public UserTestBean(final String name, final String firstSurname,
     final Address address) {
 
     this.name = name;

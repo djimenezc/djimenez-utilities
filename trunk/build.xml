@@ -31,11 +31,10 @@
 	<property name="compile.dir" value="${basedir}"/>
 	<property name="scripts.dir" value="${compile.dir}/scripts"/>
 	<property name="bbdd.dir" value="${src.dir}/schema/target/classes/schemas"/>
-	<property name="compile.projects" value="archetypes,plugins,components,applications,web"/>
+	<property name="compile.projects" value="archetypes,plugins,schema,components,applications,web"/>
 	
 	<target name="clean-log">
 
-		<echo>${maven.home}</echo>
 		<delete>
 			<fileset dir="${log.dir}" includes="compile-error.log" />
 			<fileset dir="${log.dir}" includes="compile.log" />
