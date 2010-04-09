@@ -14,7 +14,7 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.dbunit.datasetloadstrategy.impl.InsertLoadStrategy;
 
 import com.djimenez.test.example.unitils.dao.UserTestDao;
-import com.djimenez.test.model.UserTest;
+import com.djimenez.test.model.UserTestBean;
 import com.djimenez.util.database.DataBaseUtils;
 
 @Transactional(TransactionMode.DISABLED)
@@ -23,11 +23,12 @@ public class UserDaoUnitilsTest extends UnitilsJUnit4 {
   @BeforeClass
   public static void generalSetup() {
 
+    // TODO inject the parameter with spring
     final DataBaseUtils dataBaseUtils =
       new DataBaseUtils("jdbc:mysql://localhost:3306/djimenez_test",
         "org.gjt.mm.mysql.Driver", "lportal", "lportal");
 
-    dataBaseUtils.resetSchema("djimenez_test");
+    // dataBaseUtils.resetSchema("djimenez_test");
 
     dataBaseUtils
       .executeQuery("CREATE TABLE usergroup (name INT PRIMARY KEY);");
@@ -53,7 +54,7 @@ public class UserDaoUnitilsTest extends UnitilsJUnit4 {
   @DataSet(loadStrategy = InsertLoadStrategy.class, value = { "/dbunit/unitils/UserDaoUnitilsTest.xml" })
   public void testFindByMinimalAge() {
 
-    final List<UserTest> result = userTestDao.findByMinimalAge(18);
+    final List<UserTestBean> result = userTestDao.findByMinimalAge(18);
 
     assertPropertyLenientEquals("firstName", Arrays.asList("jack"), result);
   }

@@ -2,16 +2,16 @@ package com.djimenez.test.example.unitils.dao;
 
 import java.util.List;
 
-import com.djimenez.test.model.UserTest;
+import com.djimenez.test.model.UserTestBean;
 
 public class UserTestDao {
 
-  public List<UserTest> findByMinimalAge(final int i) {
+  public List<UserTestBean> findByMinimalAge(final int i) {
     // TODO Auto-generated method stub
     return null;
   }
 
-  public UserTest findByName(final String string, final String string2) {
+  public UserTestBean findByName(final String string, final String string2) {
     // TODO Auto-generated method stub
     return null;
   }

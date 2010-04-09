@@ -15,7 +15,7 @@ import org.unitils.reflectionassert.ReflectionAssert;
 import org.unitils.reflectionassert.ReflectionComparatorMode;
 
 import com.djimenez.test.model.Address;
-import com.djimenez.test.model.UserTest;
+import com.djimenez.test.model.UserTestBean;
 
 public class UnitilsAssertionTest extends TestCase {
 
@@ -26,19 +26,19 @@ public class UnitilsAssertionTest extends TestCase {
 
   public void testAssertionReflection() {
 
-    final UserTest userTest1 = new UserTest(1, "John", "Doe");
-    final UserTest userTest2 = new UserTest(1, "John", "Doe");
+    final UserTestBean userTest1 = new UserTestBean(1, "John", "Doe");
+    final UserTestBean userTest2 = new UserTestBean(1, "John", "Doe");
 
     assertReflectionEquals(userTest1, userTest2);
   }
 
   public void testAssertionReflectionIgnoringDefaults() {
 
-    final UserTest actualUser =
-      new UserTest("John", "Doe", new Address("First street", "12", "Brussels"));
+    final UserTestBean actualUser =
+      new UserTestBean("John", "Doe", new Address("First street", "12", "Brussels"));
 
-    final UserTest expectedUser =
-      new UserTest("John", null, new Address("First street", null, null));
+    final UserTestBean expectedUser =
+      new UserTestBean("John", null, new Address("First street", null, null));
 
     assertReflectionEquals(expectedUser, actualUser,
       ReflectionComparatorMode.IGNORE_DEFAULTS);
@@ -84,26 +84,26 @@ public class UnitilsAssertionTest extends TestCase {
 
   public void testAssertionReflectionProperty1() {
 
-    final UserTest userTest1 = new UserTest(1, "John", "Doe");
+    final UserTestBean userTest1 = new UserTestBean(1, "John", "Doe");
 
     assertPropertyLenientEquals("id", 1, userTest1);
   }
 
   public void testAssertionReflectionProperty2() {
 
-    final UserTest userTest2 =
-      new UserTest("John", "Doe", new Address("First street", "12", "Brussels"));
+    final UserTestBean userTest2 =
+      new UserTestBean("John", "Doe", new Address("First street", "12", "Brussels"));
 
     assertPropertyLenientEquals("address.street", "First street", userTest2);
   }
 
   public void testAssertionReflectionPropertyCollections1() {
 
-    final List<UserTest> users = new ArrayList<UserTest>();
+    final List<UserTestBean> users = new ArrayList<UserTestBean>();
 
-    users.add(new UserTest(1, ""));
-    users.add(new UserTest(2, ""));
-    users.add(new UserTest(3, ""));
+    users.add(new UserTestBean(1, ""));
+    users.add(new UserTestBean(2, ""));
+    users.add(new UserTestBean(3, ""));
 
     assertPropertyLenientEquals("id", Arrays.asList(1, 2, 3), users);
 
@@ -111,13 +111,13 @@ public class UnitilsAssertionTest extends TestCase {
 
   public void testAssertionReflectionPropertyCollections2() {
 
-    final List<UserTest> users = new ArrayList<UserTest>();
+    final List<UserTestBean> users = new ArrayList<UserTestBean>();
 
-    users.add(new UserTest("david", "jimenez", new Address("First street",
+    users.add(new UserTestBean("david", "jimenez", new Address("First street",
       "12", "Brussels")));
-    users.add(new UserTest("david", "jimenez", new Address("Second street",
+    users.add(new UserTestBean("david", "jimenez", new Address("Second street",
       "12", "Brussels")));
-    users.add(new UserTest("david", "jimenez", new Address("Third street",
+    users.add(new UserTestBean("david", "jimenez", new Address("Third street",
       "12", "Brussels")));
     
     assertPropertyLenientEquals("address.street", Arrays.asList("First street",
