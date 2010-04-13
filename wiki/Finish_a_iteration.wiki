@@ -1,0 +1,18 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+¿Qué se necesita para que el software esté "terminado terminado"? Esto depende de la organización. En general una historia sólo está completa cuando el cliente puede usarla como esperaba. Pueden crear una lista de muestre el criterio de completitud de una historia (conocido como Definición de Terminado en Scrum).
+
+= Comprobaciones =
+
+ * Probada (están terminadas todas las pruebas unitarias, de integración y de aceptación del cliente)
+ * Codificada (todo el código está escrito)
+ * Diseñada (el código tiene los refactors necesarios para la satisfacción del equipo)
+ * Integrada (la historia funciona de punta a punta - usualmente, desde el UI hasta la base de datos - y funciona con el resto del software)
+ * Construcción (los scripts de construcción incluyen cualquier módulo nuevo)
+ * Instalable (los scripts de construcción incluye a la historia en el instalador automatizado)
+ * Migración (los scripts de construcción actualizan la base de datos si es necesario; el instalador migra los datos cuando sea apropiado)
+ * Revisada (los clientes revisaron la historia y confirmaron que cumple sus expectativas)
+ * Corregida (se arreglaron todos los bugs conocidos, o se planificaron como historias propias)
+ * Aceptada (el cliente confirma que la historia está finalizada)
