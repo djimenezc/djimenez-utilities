@@ -18,16 +18,23 @@ public class GoogleTraductorEspecificacionTest {
   private static SeleniumServer seleniumServer;
 
   @BeforeClass
-  public static void setUpOnce() throws Throwable {
+  public static void setUpOnce() {
     // selenium =
     // new DefaultSelenium("localhost", 4444, "*iehta",
     // "http://www.google.com");
+
+    try {
+      seleniumServer = new SeleniumServer();
+      seleniumServer.start();
+    }
+    catch (final Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
     selenium =
       new DefaultSelenium("localhost", 4444, "*firefox",
         "http://www.google.com");
-
-    seleniumServer = new SeleniumServer();
-    seleniumServer.start();
     selenium.start();
   }
 
