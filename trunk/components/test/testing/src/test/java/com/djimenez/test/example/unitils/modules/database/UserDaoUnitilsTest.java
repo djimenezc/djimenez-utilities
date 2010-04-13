@@ -9,7 +9,7 @@ import org.unitils.database.util.TransactionMode;
 @Transactional(TransactionMode.DISABLED)
 public class UserDaoUnitilsTest extends UnitilsJUnit4 {
 
-  // TODO inject the parameter with spring
+  // TODO inject the parameter with spring. The test is not working.
   // final static DataBaseUtils dataBaseUtils =
   // new DataBaseUtils("jdbc:mysql://localhost:3306/djimenez_test",
   // "org.gjt.mm.mysql.Driver", "lportal", "lportal");
