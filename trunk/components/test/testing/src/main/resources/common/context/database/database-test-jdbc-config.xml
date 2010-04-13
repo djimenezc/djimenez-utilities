@@ -28,7 +28,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 		<property name="acquireIncrement" value="1" />
 		<property name="acquireRetryAttempts" value="5" />
 		<property name="acquireRetryDelay" value="1000" />
-		<property name="automaticTestTable" value="CON_TEST" />
+<!--		<property name="automaticTestTable" value="CON_TEST" />-->
 		<property name="checkoutTimeout" value="5000" />
 	</bean>
 
