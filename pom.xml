@@ -633,6 +633,13 @@
 					<artifactId>maven-antrun-plugin</artifactId>
 					<version>1.3</version>
 				</plugin>
+				
+				<plugin>
+					<groupId>com.djimenez.utilities</groupId>
+					<artifactId>remote-deploy-maven-plugin</artifactId>
+					<version>1.0</version>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 
@@ -899,6 +906,16 @@
 		<jdbc.test.databaseName>djimenez_test</jdbc.test.databaseName>
 
 	</properties>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>djimenez</id>
+			<url>http://djimenez-utilities.googlecode.com/svn/maven-repo</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<repositories>
 
