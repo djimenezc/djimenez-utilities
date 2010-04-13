@@ -18,7 +18,7 @@ import com.djimenez.test.spring.service.SpringTestService;
 public class DBUnitExampleTest extends AbstractDBUnitTest {
 
   @BeforeClass
-  public static void generalSetUp() {
+  public static void generalTearDown() {
 
   }
 
