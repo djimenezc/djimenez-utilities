@@ -32,9 +32,7 @@ public class TimestampConverter extends DateConverter {
    *          the String value
    * @return a converted date
    */
-  @SuppressWarnings("unchecked")
-  // TODO delete warning
-  protected Object convertToDate(final Class type, final Object value) {
+  protected Object convertToDate(final Class<?> type, final Object value) {
     final DateFormat df = new SimpleDateFormat(TS_FORMAT);
     if (value instanceof String) {
       try {
@@ -62,10 +60,8 @@ public class TimestampConverter extends DateConverter {
    *          the date instance
    * @return string version of date using default date pattern
    */
-  @SuppressWarnings("unchecked")
-  // TODO delete warning
   @Override
-  protected Object convertToString(final Class type, final Object value) {
+  protected Object convertToString(final Class<?> type, final Object value) {
     final DateFormat df = new SimpleDateFormat(TS_FORMAT);
     if (value instanceof Date) {
       try {

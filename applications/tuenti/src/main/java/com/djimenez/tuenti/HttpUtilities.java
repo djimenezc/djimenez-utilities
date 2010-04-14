@@ -16,6 +16,16 @@ import org.apache.commons.httpclient.methods.PostMethod;
 
 public class HttpUtilities {
 
+  public HttpClient configureRequest(final HttpClient client,
+    final String site, final int port) {
+
+    client.getHostConfiguration().setHost(site, port, "http");
+
+    client.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
+
+    return client;
+  }
+
   public Cookie[] getCookies(final HttpClient client, final String site,
     final int port) {
 
@@ -37,6 +47,51 @@ public class HttpUtilities {
     }
 
     return cookies;
+  }
+
+  public GetMethod getMethod(final HttpClient client, final String path)
+    throws HttpException, IOException {
+
+    final GetMethod getMethod = new GetMethod(path);
+
+    getMethod.setFollowRedirects(true);
+
+    client.executeMethod(getMethod);
+    System.out.println("Get status: " + getMethod.getStatusLine().toString());
+
+    // release any connection resources used by the method
+    getMethod.releaseConnection();
+
+    return getMethod;
+  }
+
+  /**
+   * Loads the page at the given URL from a separate thread.
+   * 
+   * @param url
+   */
+  public void loadPage(final String url, final HttpClient client) {
+
+    final GetMethod get = new GetMethod(url);
+    get.setFollowRedirects(true);
+
+    try {
+
+      // final int iGetResultCode = client.executeMethod(get);
+
+      final String strGetResponseBody = get.getResponseBodyAsString();
+
+      if (strGetResponseBody != null) {
+        // TODO ver que hacer cuando cargamos la página
+
+      }
+    }
+    catch (final Exception ex) {
+      ex.printStackTrace();
+    }
+    finally {
+      get.releaseConnection();
+    }
   }
 
   public PostMethod postAuthMethod(final HttpClient client, final String path)
@@ -64,60 +119,6 @@ public class HttpUtilities {
     authpost.releaseConnection();
 
     return authpost;
-  }
-
-  public GetMethod getMethod(final HttpClient client, final String path)
-    throws HttpException, IOException {
-
-    final GetMethod getMethod = new GetMethod(path);
-
-    getMethod.setFollowRedirects(true);
-
-    client.executeMethod(getMethod);
-    System.out.println("Get status: " + getMethod.getStatusLine().toString());
-
-    // release any connection resources used by the method
-    getMethod.releaseConnection();
-
-    return getMethod;
-  }
-
-  public HttpClient configureRequest(final HttpClient client,
-    final String site, final int port) {
-
-    client.getHostConfiguration().setHost(site, port, "http");
-
-    client.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
-
-    return client;
-  }
-
-  /**
-   * Loads the page at the given URL from a separate thread.
-   * 
-   * @param url
-   */
-  public void loadPage(final String url, final HttpClient client) {
-
-    final GetMethod get = new GetMethod(url);
-    get.setFollowRedirects(true);
-
-    try {
-      final int iGetResultCode = client.executeMethod(get);
-
-      final String strGetResponseBody = get.getResponseBodyAsString();
-
-      if (strGetResponseBody != null) {
-        // TODO ver que hacer cuando cargamos la página
-
-      }
-    }
-    catch (final Exception ex) {
-      ex.printStackTrace();
-    }
-    finally {
-      get.releaseConnection();
-    }
   }
 
   /**

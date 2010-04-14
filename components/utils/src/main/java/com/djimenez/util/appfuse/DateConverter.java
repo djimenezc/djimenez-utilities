@@ -59,9 +59,9 @@ public class DateConverter implements Converter {
    *          date pattern to parse with
    * @return Converted value for property population
    */
-  @SuppressWarnings("unchecked")
-  protected Object convertToDate(final Class type, final Object value,
+  protected Object convertToDate(final Class<?> type, final Object value,
     final String pattern) {
+
     final DateFormat df = new SimpleDateFormat(pattern);
     if (value instanceof String) {
       try {
@@ -94,8 +94,8 @@ public class DateConverter implements Converter {
    *          value to convert
    * @return Converted value for property population
    */
-  @SuppressWarnings("unchecked")
-  protected Object convertToString(final Class type, final Object value) {
+  // @SuppressWarnings("unchecked")
+  protected Object convertToString(final Class<?> type, final Object value) {
 
     if (value instanceof Date) {
       DateFormat df = new SimpleDateFormat(DateUtil.getDatePattern());

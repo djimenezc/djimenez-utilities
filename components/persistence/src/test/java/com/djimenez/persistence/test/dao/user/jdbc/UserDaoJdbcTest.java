@@ -1,11 +1,9 @@
 package com.djimenez.persistence.test.dao.user.jdbc;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
 
-import com.djimenez.persistence.dao.user.UserDao;
 import com.djimenez.test.dao.BaseDaoTestCase;
 
 @ContextConfiguration(locations = {
@@ -14,8 +12,9 @@ import com.djimenez.test.dao.BaseDaoTestCase;
   "classpath:/context/persistence/properties/applicationContext-properties-dao-test.xml" })
 public class UserDaoJdbcTest extends BaseDaoTestCase {
 
-  @Autowired
-  private UserDao userDao;
+  // TODO implement UserDaoJdbcTest
+  // @Autowired
+  // private UserDao userDao;
 
   @Test
   public void testCalculateUserNumber() {
