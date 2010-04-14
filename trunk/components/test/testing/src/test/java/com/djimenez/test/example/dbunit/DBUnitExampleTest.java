@@ -36,9 +36,9 @@ public class DBUnitExampleTest extends AbstractDBUnitTest {
 
   }
 
-  // @Test
-  // @DataSet(setupOperation = "INSERT", value = "classpath:/dbunit/dbunit.xml")
-  // public void testTransactionalExample2() throws ConfigurationException {
-  //
-  // }
+  @Test
+  @DataSet(setupOperation = "INSERT", value = "classpath:/dbunit/dbunit.xml")
+  public void testTransactionalExample2() throws ConfigurationException {
+
+  }
 }
