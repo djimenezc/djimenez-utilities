@@ -1,0 +1,607 @@
+= Replicación BD MySQL =
+
+Desde la versión 5 MySQL viene con soporte para la replicación maestro-maestro, resolviendo los problema que surgían de inmediato si un nodo A y un nodo B insertaban ambos una clave autonumérica en la misma tabla.
+
+Las ventajas de la replicación maestro-maestro sobre el tradicional maestro-esclavo son:
+
+- no se tienen que modificar las aplicaciones para hacer que los accesos de escrituras sólo accedan al maestro.
+- es más fácil proporcionar alta disponibilidad porque si el maestro falla todavía se tiene el otro maestro.
+
+= Details =
+
+En este ejemplo voy a mostrar cómo replicar varias bases de datos del servidor skinner.gowex.com con la dirección IP 192.168.0.2 al servidor cletus.gowex.com con la dirección IP 192.168.0.9 y viceversa. Cada sistema es el esclavo del otro maestro y el maestro del otro esclavo al mismo tiempo. Ambos sistemas están corriendo Ubuntu 8.0.4, sin embargo, la configuración debe aplicarse a casi todas las distribuciones con poca o ninguna modificación.
+
+Para asegurarse de que la replicación pueda funcionar, tenemos que hacer que MySQL escuche en todas las interfaces, por lo tanto, debemos comentar la línea
+'bind-address = 127.0.0.1' en /etc/mysql/my.cnf:
+
+<- líneas que salen
+-> líneas que entran
+
+<pre>
+skinner/cletus:
+
+vi /etc/mysql/my.cnf
+
+<- bind-address           = 127.0.0.1
+-> # bind-address           = 127.0.0.1
+</pre>
+
+Después hay que reiniciar mysql en ambos servidores y comprobar que escucha en todas las interfaces:
+
+<pre>
+/etc/init.d/mysql restart
+
+netstat -tap | grep mysql
+
+skinner:~# netstat -tap | grep mysql
+tcp        0      0 *:mysql                 *:*                     LISTEN      19928/mysqld
+</pre>
+
+Si root no tiene password la creamos:
+
+<pre>
+mysqladmin -u root password yourrootsqlpassword
+</pre>
+
+En skinner:
+
+<pre>
+mysqladmin -h skinner.gowex.com -u root password yourrootsqlpassword
+
+#Configuramos un usuario de replicacion 'slavecletus' que podrá ser usado por el servidor cletus para acceder a la base de datos MySQL en skinner:
+mysql -u root -p
+GRANT REPLICATION SLAVE ON *.* TO ’slavecletus’@'192.168.0.9’ IDENTIFIED BY ’slavecletus_password’;
+FLUSH PRIVILEGES;
+quit;
+</pre>
+
+En cletus:
+
+<pre>
+mysqladmin -h cletus.gowex.com -u root password yourrootsqlpassword
+
+#Configuramos un usuario de replicacion 'slaveskinner' que podrá ser usado por el servidor skinner para acceder a la base de datos MySQL en cletus:
+mysql -u root -p
+GRANT REPLICATION SLAVE ON *.* TO ’slaveskinner’@'192.168.0.2’ IDENTIFIED BY ’slaveskinner_password’;
+FLUSH PRIVILEGES;
+quit;
+</pre>
+
+Voy a suponer que las bases de datos telcommunity, webpanelsuzuki, wiloc, rss, GestorMarketing, plataforma y radiusSeasuntel  ya existen, que hay tablas con registros en ellas y que todas son de tipo InnoDB salvo las dos primeras que son MyIsam.
+
+Vamos a configurar la replicación de todas a cletus, y después configuraremos la replicación de todas de cletus a skinner.
+
+Lo primero es crear las bases de datos vacías en cletus:
+
+<pre>
+mysql -u root -p
+CREATE DATABASE exampledb;
+quit;
+</pre>
+
+Ahora configuraremos la replicación maestro-maestro en /etc/mysql/my.cnf. Las opciones de configuración cruciales para la replicación maestro-maestro son auto_increment_increment y auto_increment_offset:
+
+* Auto_increment_increment controla el incremento entre los sucesivos valores AUTO_INCREMENT.
+* Auto_increment_offset determina el punto de partida para los valores de la columna AUTO_INCREMENT.
+
+Supongamos que tenemos N nodos MySQL (N = 2 en este ejemplo), entonces auto_increment_increment tiene el valor N en todos los nodos, y cada nodo debe tener un valor diferente para auto_increment_offset (1, 2, …, N).
+
+Hay que tener en cuenta que para copiar las BD InnoDB voy a parar el servicio mysql (no ha reiniciarlo), por lo que primero vamos a realizar la replicación de las BD MyIsam.
+
+En skinner:
+
+<pre>
+vi /etc/mysql/my.cnf
+
+[mysqld]
+#
+#* Basic Settings
+#
+
+#
+#* IMPORTANT
+#If you make changes to these settings and your system uses apparmor, you may
+#also need to also adjust /etc/apparmor.d/usr.sbin.mysqld.
+#
+
+user            = mysql
+pid-file        = /var/run/mysqld/mysqld.pid
+socket          = /var/run/mysqld/mysqld.sock
+port            = 3306
+basedir         = /usr
+#datadir                = /var/lib/mysql
+datadir                = /home/datos/mysql
+tmpdir          = /tmp
+language        = /usr/share/mysql/english
+skip-external-locking
+#
+#Instead of skip-networking the default is now to listen only on
+#localhost which is more compatible and is not less secure.
+#bind-address           = 127.0.0.1
+#
+#* Fine Tuning
+#
+key_buffer              = 16M
+max_allowed_packet      = 16M
+thread_stack            = 128K
+thread_cache_size       = 8
+#This replaces the startup script and checks MyISAM tables if needed
+#the first time they are touched
+myisam-recover          = BACKUP
+#max_connections        = 100
+#table_cache            = 64
+#thread_concurrency     = 10
+#
+#* Query Cache Configuration
+#
+query_cache_limit       = 1M
+query_cache_size        = 16M
+#
+#* Logging and Replication
+#
+#Both location gets rotated by the cronjob.
+#Be aware that this log type is a performance killer.
+#log            = /var/log/mysql/mysql.log
+#
+#Error logging goes to syslog. This is a Debian improvement :)
+#
+#Here you can see queries with especially long duration
+#log_slow_queries       = /var/log/mysql/mysql-slow.log
+#long_query_time = 2
+#log-queries-not-using-indexes
+#
+#The following can be used as easy to replay backup logs or for replication.
+#note: if you are setting up a replication slave, see README.Debian about
+#other settings you may need to change.
+server-id               = 1
+replicate-same-server-id = 0
+auto-increment-increment = 2
+auto-increment-offset = 1
+
+master-host = 192.168.0.9
+master-user = slaveskinner
+master-password = slaveskinnerpassword
+master-connect-retry = 60
+replicate-do-db = telcommunity
+replicate-do-db = webpanelsuzuki
+#replicate-do-db = wiloc
+#replicate-do-db = GestorMarketing
+#replicate-do-db = plataforma
+#replicate-do-db = radiusSeasuntel
+#replicate-do-db = rss
+
+log_bin                 = /home/datos/mysql/mysql-bin.log
+expire_logs_days        = 10
+max_binlog_size         = 500M
+binlog_do_db            = telcommunity
+binlog_do_db            = webpanelsuzuki
+#binlog_do_db            = wiloc
+#binlog_do_db            = GestorMarketing
+#binlog_do_db            = plataforma
+#binlog_do_db            = radiusSeasuntel
+#binlog_do_db            = rss
+#binlog_ignore_db       = include_database_name
+
+relay-log = /home/datos/mysql/slave-relay.log
+relay-log-index = /home/datos/mysql/slave-relay-log.index
+
+#Y en el apartado de InnoDB:
+<- skip-innodb
+-> #skip-innodb
+</pre>
+
+Aunque configuremos el archivo para replicar todas las BD, comento las InnoDB para que una vez replicadas las MyIsam las descomentemos y hagamos su replicación.
+
+Reiniciamos el servicio:
+
+<pre>
+/etc/init.d/mysql restart
+</pre>
+
+En cletus:
+
+<pre>
+vi /etc/mysql/my.cnf
+
+[mysqld]
+#
+#* Basic Settings
+#
+
+#
+#* IMPORTANT
+#If you make changes to these settings and your system uses apparmor, you may
+#also need to also adjust /etc/apparmor.d/usr.sbin.mysqld.
+#
+
+user            = mysql
+pid-file        = /var/run/mysqld/mysqld.pid
+socket          = /var/run/mysqld/mysqld.sock
+port            = 3306
+basedir         = /usr
+datadir         = /var/lib/mysql
+tmpdir          = /tmp
+language        = /usr/share/mysql/english
+skip-external-locking
+#
+#Instead of skip-networking the default is now to listen only on
+#localhost which is more compatible and is not less secure.
+#bind-address           = 127.0.0.1
+#
+#* Fine Tuning
+#
+key_buffer              = 16M
+max_allowed_packet      = 16M
+thread_stack            = 128K
+thread_cache_size       = 8
+#max_connections        = 100
+#table_cache            = 64
+#thread_concurrency     = 10
+#
+#* Query Cache Configuration
+#
+query_cache_limit       = 1M
+query_cache_size        = 16M
+#
+#* Logging and Replication
+#
+#Both location gets rotated by the cronjob.
+#Be aware that this log type is a performance killer.
+#log            = /var/log/mysql/mysql.log
+#
+#Error logging goes to syslog. This is a Debian improvement :)
+#
+#Here you can see queries with especially long duration
+#log_slow_queries       = /var/log/mysql/mysql-slow.log
+#long_query_time = 2
+#log-queries-not-using-indexes
+#
+#The following can be used as easy to replay backup logs or for replication.
+#note: if you are setting up a replication slave, see README.Debian about
+#other settings you may need to change.
+server-id               = 2
+replicate-same-server-id = 0
+auto-increment-increment = 2
+auto-increment-offset = 2
+
+master-host = 192.168.0.2
+master-user = slavecletus
+master-password = slavecletuspassword
+master-connect-retry = 60
+replicate-do-db = telcommunity
+replicate-do-db = webpanelsuzuki
+#replicate-do-db = wiloc
+#replicate-do-db = GestorMarketing
+#replicate-do-db = plataforma
+#replicate-do-db = radiusSeasuntel
+#replicate-do-db = rss
+
+log_bin                 = /var/lib/mysql/mysql-bin.log
+expire_logs_days        = 10
+max_binlog_size         = 500M
+binlog_do_db            = telcommunity
+binlog_do_db            = webpanelsuzuki
+#binlog_do_db            = wiloc
+#binlog_do_db            = GestorMarketing
+#binlog_do_db            = plataforma
+#binlog_do_db            = radiusSeasuntel
+#binlog_do_db            = rss
+#binlog_ignore_db       = include_database_name
+
+relay-log = /var/lib/mysql/slave-relay.log
+relay-log-index = /var/lib/mysql/slave-relay-log.index
+
+#Y en el apartado de InnoDB:
+<- skip-innodb
+-> #skip-innodb
+</pre>
+
+Reiniciamos el servicio:
+
+<pre>
+/etc/init.d/mysql restart
+</pre>
+
+A continuación bloqueamos las bases de datos en skinner, vemos la situación del maestro skinner, creamos un volcado SQL de telcommunity y webpanelsuzuki (que vamos a importar en cletus a fin de que ambos servidores contengan las misma BD con los mismos datos), y desbloqueamos las bases de datos a fin de que pueda ser utilizada de nuevo:
+
+<pre>
+mysql -u root -p
+FLUSH TABLES WITH READ LOCK;
+SHOW MASTER STATUS;
+</pre>
+
+El último comando debería mostrar algo como esto (anotar File y Position, los necesitaremos más adelante):
+
+<pre>
++——————+———-+————–+——————+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++——————+———-+————–+——————+
+| mysql-bin.000009 |       98 | telcommunity,webpanelsuzuki  |                  |
++——————+———-+————–+——————+
+1 row in set (0.00 sec)
+</pre>
+
+Ahora sin salir del shell de MySQL, porque si la deja, el bloqueo de las bases de datos será removido. Mientras el shell de MySQL está todavía abierto, abrimos una segunda ventana de línea de comandos donde creamos los volcados SQL y los transferimos a cletus (usando scp):
+
+<pre>
+cd /tmp
+mysqldump -u root -pyourrootsqlpassword --opt telcommunity > telcommunity.sql
+mysqldump -u root -pyourrootsqlpassword --opt webpanelsuzuki > webpanelsuzuki.sql
+scp telcommunity.sql webpanelsuzuki.sql root@192.168.0.9:/tmp
+</pre>
+
+Ya puede cerrar la segunda ventana de línea de comandos. En la primera ventana ahora podemos desbloquear la base de datos y dejar el shell de MySQL:
+
+<pre>
+UNLOCK TABLES;
+quit;
+</pre>
+
+En cletus ahora podemos importar los volcados SQL:
+
+<pre>
+mysqladmin --user=root --password=yourrootsqlpassword stop-slave
+cd /tmp
+mysql -u root -pyourrootsqlpassword telcommunity < telcommunity.sql
+mysql -u root -pyourrootsqlpassword webpanelsuzuki < webpanelsuzuki.sql
+</pre>
+
+Después, vemos el estado del maestro en cletus y lo anotamos:
+
+<pre>
+mysql -u root -p
+FLUSH TABLES WITH READ LOCK;
+SHOW MASTER STATUS;
+
++——————+———-+————–+——————+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++——————+———-+————–+——————+
+| mysql-bin.000009 |      783 | telcommunity,webpanelsuzuki    |                  |
++——————+———-+————–+——————+
+1 row in set (0.00 sec)
+</pre>
+
+Desbloquee las tablas:
+
+<pre>
+UNLOCK TABLES;
+</pre>
+
+Ejecutamos el siguiente comando para hacer a cletus escalvo de skinner (es importante que reemplace los valores en el siguiente comando con los valores que anoto del comando SHOW MASTER STATUS; que fué ejecutado en skinner):
+
+<pre>
+CHANGE MASTER TO MASTER_HOST='192.168.0.2', MASTER_USER='slavecletus', MASTER_PASSWORD='slavecletuspassword', MASTER_LOG_FILE='mysql-bin.000009', MASTER_LOG_POS=98;
+</pre>
+
+Finalmente iniciamos el esclavo y verificamos su estado:
+
+<pre>
+START SLAVE;
+SHOW SLAVE STATUS;
+</pre>
+
+Es importante que ambos Slave_IO_Running y Slave_SQL_Running tengan el valor Yes en la salida (de otro modo algo salió mal, y deberiamos comprobar su configuración de nuevo y echar un vistazo a /var/log/syslog para averiguar acerca de cualquier error):
+
+<pre> +----------------------------------+---------------+-------------+-------------+---------------+------------------+---------------------+--------------------+---------------+-----------------------+------------------+-------------------+-----------------+---------------------+--------------------+------------------------+-------------------------+-----------------------------+------------+------------+--------------+---------------------+-----------------+-----------------+----------------+---------------+--------------------+--------------------+--------------------+-----------------+-------------------+----------------+-----------------------+
+| Slave_IO_State                   | Master_Host   | Master_User | Master_Port | Connect_Retry | Master_Log_File  | Read_Master_Log_Pos | Relay_Log_File     | Relay_Log_Pos | Relay_Master_Log_File | Slave_IO_Running | Slave_SQL_Running | Replicate_Do_DB | Replicate_Ignore_DB | Replicate_Do_Table | Replicate_Ignore_Table | Replicate_Wild_Do_Table | Replicate_Wild_Ignore_Table | Last_Errno | Last_Error | Skip_Counter | Exec_Master_Log_Pos | Relay_Log_Space | Until_Condition | Until_Log_File | Until_Log_Pos | Master_SSL_Allowed | Master_SSL_CA_File | Master_SSL_CA_Path | Master_SSL_Cert | Master_SSL_Cipher | Master_SSL_Key | Seconds_Behind_Master |
++----------------------------------+---------------+-------------+-------------+---------------+------------------+---------------------+--------------------+---------------+-----------------------+------------------+-------------------+-----------------+---------------------+--------------------+------------------------+-------------------------+-----------------------------+------------+------------+--------------+---------------------+-----------------+-----------------+----------------+---------------+--------------------+--------------------+--------------------+-----------------+-------------------+----------------+-----------------------+
+| Waiting for master to send event | 192.168.0.2 | slavecletus |        3306 |            60 | mysql-bin.000009 |                  98 | slave-relay.000002 |           235 | mysql-bin.000009      | Yes              | Yes               | telcommunity,webpanelsuzuki       |                     |                    |                        |                         |                             |          0 |            |            0 |                  98 |             235 | None            |                |             0 | No                 |                    |                    |                 |                   |                |                     0 |
++----------------------------------+---------------+-------------+-------------+---------------+------------------+---------------------+--------------------+---------------+-----------------------+------------------+-------------------+-----------------+---------------------+--------------------+------------------------+-------------------------+-----------------------------+------------+------------+--------------+---------------------+-----------------+-----------------+----------------+---------------+--------------------+--------------------+--------------------+-----------------+-------------------+----------------+-----------------------+
+1 row in set (0.00 sec)
+</pre>
+
+La replicación desde skinner a cletus ya está configurada, ahora debemos configurar la replicación desde cletus a skinner.
+
+Para hacer esto, paramos el esclavo en skinner y hacemos a este un esclavo de cletus
+
+<pre>
+mysql -u root -p
+STOP SLAVE;
+</pre>
+
+Asegurese de utilizar los valores del comando SHOW MASTER STATUS; que ejecutamos en cletus en el siguiente comando:
+
+<pre>
+CHANGE MASTER TO MASTER_HOST='192.168.0.9', MASTER_USER='slaveskinner', MASTER_PASSWORD='slaveskinnerpassword', MASTER_LOG_FILE='mysql-bin.000009', MASTER_LOG_POS=783;
+</pre>
+
+Iniciamos el esclavo en skinner y verificamos su estado:
+
+<pre>
+START SLAVE;
+SHOW SLAVE STATUS;
+</pre>
+
+Es importante que ambos Slave_IO_Running y Slave_SQL_Running tengan el valor Yes en la salida (de otro modo algo salió mal, y deberiamos comprobar su configuración de nuevo y echar un vistazo a /var/log/syslog para averiguar acerca de cualquier error):
+
+<pre> +----------------------------------+---------------+-------------+-------------+---------------+------------------+---------------------+--------------------+---------------+-----------------------+------------------+-------------------+-----------------+---------------------+--------------------+------------------------+-------------------------+-----------------------------+------------+------------+--------------+---------------------+-----------------+-----------------+----------------+---------------+--------------------+--------------------+--------------------+-----------------+-------------------+----------------+-----------------------+
+| Slave_IO_State                   | Master_Host   | Master_User | Master_Port | Connect_Retry | Master_Log_File  | Read_Master_Log_Pos | Relay_Log_File     | Relay_Log_Pos | Relay_Master_Log_File | Slave_IO_Running | Slave_SQL_Running | Replicate_Do_DB | Replicate_Ignore_DB | Replicate_Do_Table | Replicate_Ignore_Table | Replicate_Wild_Do_Table | Replicate_Wild_Ignore_Table | Last_Errno | Last_Error | Skip_Counter | Exec_Master_Log_Pos | Relay_Log_Space | Until_Condition | Until_Log_File | Until_Log_Pos | Master_SSL_Allowed | Master_SSL_CA_File | Master_SSL_CA_Path | Master_SSL_Cert | Master_SSL_Cipher | Master_SSL_Key | Seconds_Behind_Master |
++----------------------------------+---------------+-------------+-------------+---------------+------------------+---------------------+--------------------+---------------+-----------------------+------------------+-------------------+-----------------+---------------------+--------------------+------------------------+-------------------------+-----------------------------+------------+------------+--------------+---------------------+-----------------+-----------------+----------------+---------------+--------------------+--------------------+--------------------+-----------------+-------------------+----------------+-----------------------+
+| Waiting for master to send event | 192.168.0.101 | slave1_user |        3306 |            60 | mysql-bin.000009 |                 783 | slave-relay.000002 |           235 | mysql-bin.000009      | Yes              | Yes               | exampledb       |                     |                    |                        |                         |                             |          0 |            |            0 |                 783 |             235 | None            |                |             0 | No                 |                    |                    |                 |                   |                |                     0 |
++----------------------------------+---------------+-------------+-------------+---------------+------------------+---------------------+--------------------+---------------+-----------------------+------------------+-------------------+-----------------+---------------------+--------------------+------------------------+-------------------------+-----------------------------+------------+------------+--------------+---------------------+-----------------+-----------------+----------------+---------------+--------------------+--------------------+--------------------+-----------------+-------------------+----------------+-----------------------+
+1 row in set (0.00 sec)
+</pre>
+
+Si nada salió mal, la replicación MySQL maestro-maestro ahora debe estar funcionando. Si no es así, por favor consulte el /var/log/syslog por errores MySQL en skinner y cletus.
+
+Pasamos ahora a la replicación de las BD InnoDB:
+
+Paramos el servicio mysql en ambos servidores:
+
+<pre>
+/etc/init.d/mysql stop
+</pre>
+
+Pasamos la estructura de las BD de skinner a cletus:
+
+<pre>
+cd /home/datos/mysql
+tar -czvf /tmp/wiloc.gz wiloc/*
+tar -czvf /tmp/rss.gz rss/*
+tar -czvf /tmp/plataforma.gz plataforma/*
+tar -czvf /tmp/GestorMarketing.gz GestorMarketing/*
+tar -czvf /tmp/radiusSeasuntel.gz radiusSeasuntel/*
+cd /tmp
+scp -i /home/user/.ssh/id-rsa wiloc.gz rss.gz plataforma.gz GestorMarketing.gz radiusSeasuntel.gz user@192.168.0.9:/tmp
+</pre>
+
+Descomentamos las BD correspondientes en el archvo my.cnf de ambos servidores:
+
+<pre>
+vi /etc/mysql/my.cnf
+
+<- #replicate-do-db = wiloc
+<- #replicate-do-db = GestorMarketing
+<- #replicate-do-db = plataforma
+<- #replicate-do-db = radiusSeasuntel
+<- #replicate-do-db = rss
+-> replicate-do-db = wiloc
+-> replicate-do-db = GestorMarketing
+-> replicate-do-db = plataforma
+-> replicate-do-db = radiusSeasuntel
+-> replicate-do-db = rss
+
+<- #binlog_do_db            = wiloc
+<- #binlog_do_db            = GestorMarketing
+<- #binlog_do_db            = plataforma
+<- #binlog_do_db            = radiusSeasuntel
+<- #binlog_do_db            = rss
+-> binlog_do_db            = wiloc
+-> binlog_do_db            = GestorMarketing
+-> binlog_do_db            = plataforma
+-> binlog_do_db            = radiusSeasuntel
+-> binlog_do_db            = rss
+</pre>
+
+Iniciamos el servicio mysql y miramos el estado del maestro:
+
+<pre>
+/etc/init.d/mysql start
+mysql -u root -p
+show master status;
+</pre>
+
+En cletus:
+
+Copiamos las BD pasadas de skinner en mysql:
+
+<pre>
+cd /tmp
+tar -xzvf wiloc.gz /var/lib/mysql/wiloc/
+tar -xzvf rss.gz /var/lib/mysql/rss/
+tar -xzvf plataforma.gz /var/lib/mysql/plataforma/
+tar -xzvf GestorMarketing.gz /var/lib/mysql/GestorMarketing/
+tar -xzvf radiusSeasuntel.gz /var/lib/mysql/radiusSeasuntel/
+</pre>
+
+Iniciamos el servicio mysql:
+
+<pre>
+/etc/init.d/mysql start
+</pre>
+
+Hasta aquí nos ha servido para copiar la estructura de las BD de skinner a cletus, ahora traspasaremos los datos.
+
+En skinner:
+
+<pre>
+cd /tmp
+mysqldump --single-transaction -u root -pyourrootsqlpassword wiloc > wiloc.sql
+mysqldump --single-transaction -u root -pyourrootsqlpassword rss > rss.sql
+mysqldump --single-transaction -u root -pyourrootsqlpassword plataforma > plataforma.sql
+mysqldump --single-transaction -u root -pyourrootsqlpassword GestorMarketing > GestorMarketing.sql
+mysqldump --single-transaction -u root -pyourrootsqlpassword radiusSeasuntel > radiusSeasuntel.sql
+scp -i /home/user/.ssh/id-rsa wiloc.sql rss.sql plataforma.sql GestorMarketing.sql radiusSeasuntel.sql user@192.168.0.9:/tmp
+</pre>
+
+En cletus:
+
+Paramos el esclavo de mysql:
+
+<pre>
+mysqladmin --user=root --password=yourrootsqlpassword stop-slave
+</pre>
+
+Insertamos los datos en las tablas:
+
+<pre>
+cd /tmp
+mysql -u root -pyourrootsqlpassword wiloc < wiloc.sql
+mysql -u root -pyourrootsqlpassword rss < rss.sq
+mysql -u root -pyourrootsqlpassword plataforma < plataforma.sql
+mysql -u root -pyourrootsqlpassword GestorMarketing < GestorMarketing.sql
+mysql -u root -pyourrootsqlpassword radiusSeasuntel < radiusSeasuntel.sql
+</pre>
+
+Vemos el estado del maestro:
+
+<pre>
+mysql -u root -p
+show master status;
+</pre>
+
+Ejecutamos este comando con los datos obtenidos del estado del maestro en skinner:
+
+<pre>
+CHANGE MASTER TO MASTER_HOST='192.168.0.2', MASTER_USER='slavecletus', MASTER_PASSWORD='slavecletuspassword', MASTER_LOG_FILE='mysql-bin.0000XXX', MASTER_LOG_POS=XXX;
+</pre>
+
+Arrancamos el slave y miramos su estado:
+
+<pre>
+start slave;
+show slave status;
+</pre>
+
+Es importante que ambos Slave_IO_Running y Slave_SQL_Running tengan el valor Yes en la salida (de otro modo algo salió mal, y deberiamos comprobar su configuración de nuevo y echar un vistazo a /var/log/syslog para averiguar acerca de cualquier error):
+
+La replicación desde skinner a cletus ya está configurada, ahora debemos configurar la replicación desde cletus a skinner.
+
+Para hacer esto, paramos el esclavo en skinner y hacemos a este un esclavo de cletus
+
+<pre>
+mysql -u root -p
+STOP SLAVE;
+</pre>
+
+Asegurese de utilizar los valores del comando SHOW MASTER STATUS; que ejecutamos en cletus en el siguiente comando:
+
+<pre>
+CHANGE MASTER TO MASTER_HOST='192.168.0.9', MASTER_USER='slaveskinner', MASTER_PASSWORD='slaveskinnerpassword', MASTER_LOG_FILE='mysql-bin.000009', MASTER_LOG_POS=783;
+</pre>
+
+Iniciamos el esclavo en skinner y verificamos su estado:
+
+<pre>
+START SLAVE;
+SHOW SLAVE STATUS;
+</pre>
+
+Es importante que ambos Slave_IO_Running y Slave_SQL_Running tengan el valor Yes en la salida (de otro modo algo salió mal, y deberiamos comprobar su configuración de nuevo y echar un vistazo a /var/log/syslog para averiguar acerca de cualquier error):
+
+<pre> +----------------------------------+---------------+-------------+-------------+---------------+------------------+---------------------+--------------------+---------------+-----------------------+------------------+-------------------+-----------------+---------------------+--------------------+------------------------+-------------------------+-----------------------------+------------+------------+--------------+---------------------+-----------------+-----------------+----------------+---------------+--------------------+--------------------+--------------------+-----------------+-------------------+----------------+-----------------------+
+| Slave_IO_State                   | Master_Host   | Master_User | Master_Port | Connect_Retry | Master_Log_File  | Read_Master_Log_Pos | Relay_Log_File     | Relay_Log_Pos | Relay_Master_Log_File | Slave_IO_Running | Slave_SQL_Running | Replicate_Do_DB | Replicate_Ignore_DB | Replicate_Do_Table | Replicate_Ignore_Table | Replicate_Wild_Do_Table | Replicate_Wild_Ignore_Table | Last_Errno | Last_Error | Skip_Counter | Exec_Master_Log_Pos | Relay_Log_Space | Until_Condition | Until_Log_File | Until_Log_Pos | Master_SSL_Allowed | Master_SSL_CA_File | Master_SSL_CA_Path | Master_SSL_Cert | Master_SSL_Cipher | Master_SSL_Key | Seconds_Behind_Master |
++----------------------------------+---------------+-------------+-------------+---------------+------------------+---------------------+--------------------+---------------+-----------------------+------------------+-------------------+-----------------+---------------------+--------------------+------------------------+-------------------------+-----------------------------+------------+------------+--------------+---------------------+-----------------+-----------------+----------------+---------------+--------------------+--------------------+--------------------+-----------------+-------------------+----------------+-----------------------+
+| Waiting for master to send event | 192.168.0.101 | slave1_user |        3306 |            60 | mysql-bin.000009 |                 783 | slave-relay.000002 |           235 | mysql-bin.000009      | Yes              | Yes               | exampledb       |                     |                    |                        |                         |                             |          0 |            |            0 |                 783 |             235 | None            |                |             0 | No                 |                    |                    |                 |                   |                |                     0 |
++----------------------------------+---------------+-------------+-------------+---------------+------------------+---------------------+--------------------+---------------+-----------------------+------------------+-------------------+-----------------+---------------------+--------------------+------------------------+-------------------------+-----------------------------+------------+------------+--------------+---------------------+-----------------+-----------------+----------------+---------------+--------------------+--------------------+--------------------+-----------------+-------------------+----------------+-----------------------+
+1 row in set (0.00 sec)
+</pre>
+
+Si nada salió mal, la replicación MySQL maestro-maestro ahora debe estar funcionando. Si no es así, por favor consulte el /var/log/syslog por errores MySQL en skinner y cletus.
+
+Asegurese de utilizar los valores del comando SHOW MASTER STATUS; que ejecutamos en cletus en el siguiente comando:
+
+<pre>
+CHANGE MASTER TO MASTER_HOST=’192.168.0.9', MASTER_USER=’slaveskinner’, MASTER_PASSWORD=’slaveskinnerpassword’, MASTER_LOG_FILE=’mysql-bin.000XXX', MASTER_LOG_POS=XXX;
+</pre>
+
+Iniciamos el esclavo en skinner y verificamos su estado:
+
+<pre>
+START SLAVE;
+SHOW SLAVE STATUS;
+</pre>
+
+Es importante que ambos Slave_IO_Running y Slave_SQL_Running tengan el valor Yes en la salida (de otro modo algo salió mal, y deberiamos comprobar su configuración de nuevo y echar un vistazo a /var/log/syslog para averiguar acerca de cualquier error):
+
+Si nada salió mal, la replicación MySQL maestro-maestro ahora debe estar funcionando. Si no es así, por favor consulte el /var/log/syslog por errores MySQL en skinner y cletus.
