@@ -4,7 +4,7 @@ public class StringUtils {
 
   public static String deleteStrangeSimbols(final String string) {
 
-    String encodeString = new String(string);
+    String encodeString = String.valueOf(string);
 
     encodeString = encodeString.replace('Á', 'a');
     encodeString = encodeString.replace('É', 'e');

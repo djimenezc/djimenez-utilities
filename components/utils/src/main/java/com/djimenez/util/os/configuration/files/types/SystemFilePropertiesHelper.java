@@ -54,7 +54,12 @@ public class SystemFilePropertiesHelper {
    * @throws IOException
    */
   private void load() throws IOException {
-    this.propertiesFile.load(new FileInputStream(this.pathFile));
+
+    final FileInputStream file = new FileInputStream(this.pathFile);
+
+    this.propertiesFile.load(file);
+
+    file.close();
   }
 
   public void setPathFile(final String pathFile) {
@@ -131,6 +136,11 @@ public class SystemFilePropertiesHelper {
    * @throws NetException
    */
   private void store(final String comments) throws IOException {
-    this.propertiesFile.store(new FileOutputStream(this.pathFile), comments);
+
+    final FileOutputStream file = new FileOutputStream(this.pathFile);
+
+    this.propertiesFile.store(file, comments);
+
+    file.close();
   }
 }

@@ -22,16 +22,16 @@ public class NetServicesImpl implements NetServices {
   // private static final Logger logger = Logger.getLogger(NetInfoImpl.class);
 
   // Fichero asociado a la informacion de red
-  private final String DEFAULT_FILE =
+  private static final String DEFAULT_FILE =
     "/etc/sysconfig/network-scripts/ifcfg-eth0";
 
-  private final String NETWORK_SERVICE = "network";
+  private static final String NETWORK_SERVICE = "network";
 
   // Properties - Keys
-  private final String IPADDR = "IPADDR";
-  private final String BROADCAST = "BROADCAST";
-  private final String NETMASK = "NETMASK";
-  private final String NETWORK = "NETWORK";
+  private static final String IPADDR = "IPADDR";
+  private static final String BROADCAST = "BROADCAST";
+  private static final String NETMASK = "NETMASK";
+  private static final String NETWORK = "NETWORK";
 
   // Administracion de servicios Fedora
   ServiceManagement serviceManagement = new ServiceManagementImpl();
@@ -43,7 +43,7 @@ public class NetServicesImpl implements NetServices {
   private String comments = null;
 
   public NetServicesImpl() {
-    this.systemFilePropertiesHelper.setPathFile(this.DEFAULT_FILE);
+    this.systemFilePropertiesHelper.setPathFile(DEFAULT_FILE);
   }
 
   public NetServicesImpl(final String pathFile) {
@@ -53,7 +53,7 @@ public class NetServicesImpl implements NetServices {
   @Override
   public void bringUp(final String networkInterface) throws NetException {
     try {
-      this.serviceManagement.start(this.NETWORK_SERVICE);
+      this.serviceManagement.start(NETWORK_SERVICE);
     }
     catch (final ServiceManagementException e) {
       throw new NetException(e);
@@ -63,7 +63,7 @@ public class NetServicesImpl implements NetServices {
   @Override
   public void down(final String networkInterface) throws NetException {
     try {
-      this.serviceManagement.stop(this.NETWORK_SERVICE);
+      this.serviceManagement.stop(NETWORK_SERVICE);
     }
     catch (final ServiceManagementException e) {
       throw new NetException(e);
@@ -73,7 +73,7 @@ public class NetServicesImpl implements NetServices {
   @Override
   public String getBroadCast() throws NetException {
     try {
-      return this.systemFilePropertiesHelper.getProperty(this.BROADCAST);
+      return this.systemFilePropertiesHelper.getProperty(BROADCAST);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -90,7 +90,7 @@ public class NetServicesImpl implements NetServices {
   @Override
   public String getIPaddr() throws NetException {
     try {
-      return this.systemFilePropertiesHelper.getProperty(this.IPADDR);
+      return this.systemFilePropertiesHelper.getProperty(IPADDR);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -100,7 +100,7 @@ public class NetServicesImpl implements NetServices {
   @Override
   public String getNetMask() throws NetException {
     try {
-      return this.systemFilePropertiesHelper.getProperty(this.NETMASK);
+      return this.systemFilePropertiesHelper.getProperty(NETMASK);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -110,7 +110,7 @@ public class NetServicesImpl implements NetServices {
   @Override
   public String getNetwork() throws NetException {
     try {
-      return this.systemFilePropertiesHelper.getProperty(this.NETWORK);
+      return this.systemFilePropertiesHelper.getProperty(NETWORK);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -121,7 +121,7 @@ public class NetServicesImpl implements NetServices {
   public void setBroadCast(final String value) throws NetException {
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
-        this.BROADCAST, value, this.comments);
+        BROADCAST, value, this.comments);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -137,7 +137,7 @@ public class NetServicesImpl implements NetServices {
 
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
-        this.IPADDR, value, this.comments);
+        IPADDR, value, this.comments);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -149,7 +149,7 @@ public class NetServicesImpl implements NetServices {
 
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
-        this.NETMASK, value, this.comments);
+        NETMASK, value, this.comments);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -160,7 +160,7 @@ public class NetServicesImpl implements NetServices {
   public void setNetwork(final String value) throws NetException {
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
-        this.NETWORK, value, this.comments);
+        NETWORK, value, this.comments);
     }
     catch (final IOException e) {
       throw new NetException(e);

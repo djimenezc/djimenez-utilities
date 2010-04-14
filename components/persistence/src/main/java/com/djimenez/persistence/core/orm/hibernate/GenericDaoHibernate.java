@@ -3,9 +3,11 @@ package com.djimenez.persistence.core.orm.hibernate;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -91,13 +93,21 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
   @SuppressWarnings("unchecked")
   public List<T> findByNamedQuery(final String queryName,
     final Map<String, Object> queryParams) {
+
     final String[] params = new String[queryParams.size()];
     final Object[] values = new Object[queryParams.size()];
 
     int index = 0;
-    for (final String s : queryParams.keySet()) {
-      params[index] = s;
-      values[index++] = queryParams.get(s);
+
+    final Iterator<Entry<String, Object>> itr =
+      queryParams.entrySet().iterator();
+
+    while (itr.hasNext()) {
+
+      final Entry<String, Object> entry = itr.next();
+
+      params[index] = entry.getKey();
+      values[index++] = entry.getValue();
     }
 
     return hibernateTemplate.findByNamedQueryAndNamedParam(queryName, params,

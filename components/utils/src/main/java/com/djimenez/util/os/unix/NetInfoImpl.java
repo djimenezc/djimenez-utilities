@@ -20,23 +20,27 @@ public class NetInfoImpl implements NetInfo {
   // private static final Logger logger = Logger.getLogger(NetInfoImpl.class);
 
   // Fichero asociado a la informacion de red
-  private final String DEFAULT_FILE = "/etc/sysconfig/network";
+  private static final String DEFAULT_FILE = "/etc/sysconfig/network";
 
-  private final String HOSTNAME = "HOSTNAME";
-  private final String GATEWAY = "GATEWAY";
+  private static final String HOSTNAME = "HOSTNAME";
+  private static final String GATEWAY = "GATEWAY";
 
   // Wrapper for properties file
-  private final SystemFilePropertiesHelper systemFilePropertiesHelper =
-    new SystemFilePropertiesHelper();
+  private final SystemFilePropertiesHelper systemFilePropertiesHelper;
 
   // Getters and setters
   private final String comments = null;
 
   public NetInfoImpl() {
-    this.systemFilePropertiesHelper.setPathFile(this.DEFAULT_FILE);
+
+    systemFilePropertiesHelper = new SystemFilePropertiesHelper();
+
+    this.systemFilePropertiesHelper.setPathFile(DEFAULT_FILE);
   }
 
   public NetInfoImpl(final String pathFile) {
+
+    systemFilePropertiesHelper = new SystemFilePropertiesHelper();
     this.systemFilePropertiesHelper.setPathFile(pathFile);
   }
 
@@ -44,7 +48,7 @@ public class NetInfoImpl implements NetInfo {
   public String getGateWay() throws NetException {
 
     try {
-      return this.systemFilePropertiesHelper.getProperty(this.GATEWAY);
+      return this.systemFilePropertiesHelper.getProperty(GATEWAY);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -54,7 +58,7 @@ public class NetInfoImpl implements NetInfo {
   @Override
   public String getHostName() throws NetException {
     try {
-      return this.systemFilePropertiesHelper.getProperty(this.HOSTNAME);
+      return this.systemFilePropertiesHelper.getProperty(HOSTNAME);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -66,7 +70,7 @@ public class NetInfoImpl implements NetInfo {
 
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
-        this.GATEWAY, value, this.comments);
+        GATEWAY, value, this.comments);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -78,7 +82,7 @@ public class NetInfoImpl implements NetInfo {
   public void setHostName(final String value) throws NetException {
 
     try {
-      this.systemFilePropertiesHelper.setProperty(this.HOSTNAME, value,
+      this.systemFilePropertiesHelper.setProperty(HOSTNAME, value,
         this.comments);
     }
     catch (final IOException e) {

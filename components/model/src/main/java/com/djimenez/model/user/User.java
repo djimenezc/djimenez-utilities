@@ -95,6 +95,15 @@ public class User {
       if (!bornDate.equals(other.bornDate)) {
         return false;
       }
+    if (description == null) {
+      if (other.description != null) {
+        return false;
+      }
+    }
+    else
+      if (!description.equals(other.description)) {
+        return false;
+      }
     if (email == null) {
       if (other.email != null) {
         return false;
@@ -113,9 +122,15 @@ public class User {
       if (!firstSurname.equals(other.firstSurname)) {
         return false;
       }
-    if (id != other.id) {
-      return false;
+    if (id == null) {
+      if (other.id != null) {
+        return false;
+      }
     }
+    else
+      if (!id.equals(other.id)) {
+        return false;
+      }
     if (nacionality == null) {
       if (other.nacionality != null) {
         return false;
@@ -315,10 +330,12 @@ public class User {
       prime * result + ((activeDate == null) ? 0 : activeDate.hashCode());
     result = prime * result + ((address == null) ? 0 : address.hashCode());
     result = prime * result + ((bornDate == null) ? 0 : bornDate.hashCode());
+    result =
+      prime * result + ((description == null) ? 0 : description.hashCode());
     result = prime * result + ((email == null) ? 0 : email.hashCode());
     result =
       prime * result + ((firstSurname == null) ? 0 : firstSurname.hashCode());
-    result = (int) (prime * result + id);
+    result = prime * result + ((id == null) ? 0 : id.hashCode());
     result =
       prime * result + ((nacionality == null) ? 0 : nacionality.hashCode());
     result = prime * result + ((name == null) ? 0 : name.hashCode());
