@@ -33,8 +33,9 @@ public class DataProxy<T> extends AbstractNotifier implements Proxy {
    * Common constructor.
    */
   public DataProxy(final T data) {
-    this.proxyName = data.getClass().getName();
+
     if (data != null) {
+      this.proxyName = data.getClass().getName();
       this.data = data;
     }
   }

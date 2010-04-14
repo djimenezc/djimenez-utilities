@@ -26,11 +26,14 @@ public class NetServicesFedoraTest {
   @After
   public void finalizeTest() throws IOException {
     // Eliminamos el fichero temporal para pruebas
-    this.tempEth0File.delete();
+    if (!this.tempEth0File.delete()) {
+
+      throw new IOException();
+    }
   }
 
   /**
-   * Copia el fichero de test a /tmp/XXX.tmp para lanzar las pruebas sobre una
+   * Copia el fichero de test a /tmp/XX.tmp para lanzar las pruebas sobre una
    * copia del mismo.
    */
   private File generateTestFile() throws IOException {

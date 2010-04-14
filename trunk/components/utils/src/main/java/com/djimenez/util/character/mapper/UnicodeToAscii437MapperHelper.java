@@ -15,7 +15,7 @@ import com.djimenez.util.configuration.exception.ConfigurationFileException;
 public final class UnicodeToAscii437MapperHelper {
 
   private static UnicodeToAscii437MapperHelper instance;
-  private static Map<String, String> unicodeToAscii437Map;
+  private Map<String, String> unicodeToAscii437Map;
 
   private static final String CHARACTERS_UNICODE_FILE_NAME =
     "characters-unicode.properties";
@@ -41,11 +41,11 @@ public final class UnicodeToAscii437MapperHelper {
 
     try {
       inputStreamUnicode =
-        AbstractConfigurationFileHelper.class.getClassLoader().getResourceAsStream(
-          CHARACTERS_UNICODE_FILE_NAME);
+        AbstractConfigurationFileHelper.class.getClassLoader()
+          .getResourceAsStream(CHARACTERS_UNICODE_FILE_NAME);
       inputStreamAscii437 =
-        AbstractConfigurationFileHelper.class.getClassLoader().getResourceAsStream(
-          CHARACTERS_ASCII437_FILE_NAME);
+        AbstractConfigurationFileHelper.class.getClassLoader()
+          .getResourceAsStream(CHARACTERS_ASCII437_FILE_NAME);
       charactersUnicode.load(inputStreamUnicode);
       charactersAscii437.load(inputStreamAscii437);
 

@@ -320,6 +320,7 @@ public class DateHelper {
       }
     }
     catch (final ParseException e) {
+
       try {
         simpleHourMinFormat.parse(hour);
         final long hh = Long.parseLong(hour.substring(0, 2));
@@ -330,9 +331,10 @@ public class DateHelper {
           res = true;
         }
       }
-      catch (final Exception ex) {
+      catch (final ParseException e1) {
         res = false;
       }
+
     }
     catch (final Exception ex2) {
       res = false;

@@ -1,6 +1,7 @@
 package com.djimenez.core.components.worker.helper;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,9 +58,12 @@ public class ReflectionWorkerHelper {
           .newInstance(new Object[] { ((AbstractCommand) command).getFacade() });
 
     }
-    catch (final Exception e) {
+    catch (final ClassNotFoundException e) {
       logger
         .debug("AbstractWorkerCommand class not found. Reflection failed. ");
+    }
+    catch (final Exception e) {
+      e.printStackTrace();
     }
 
     // Return new instance of AbstractWorkerCommand
@@ -93,11 +97,13 @@ public class ReflectionWorkerHelper {
           .newInstance(new Object[] { ((AbstractMediator) mediator).getFacade() });
 
     }
-    catch (final Exception e) {
+    catch (final ClassNotFoundException e) {
       logger
         .debug("AbstractWorkerMediator class not found. Reflection failed. ");
     }
-
+    catch (final Exception e) {
+      e.printStackTrace();
+    }
     // Return new instance of AbstractWorkerMediator
     return abstractObject;
   }
@@ -114,8 +120,6 @@ public class ReflectionWorkerHelper {
     Class<?> enclosingClass = null, innerClass = null;
     // Object variables
     Object enclosingObject = null, innerObject = null;
-    // Constructor
-    Constructor<?> constructor;
     // First create the enclosing class for to invoke
     // the constructor of the inner class.
     try {
@@ -131,16 +135,20 @@ public class ReflectionWorkerHelper {
           break;
         }
       }
-      // Get Constructor
-      constructor = innerClass.getDeclaredConstructors()[0];
+      // Constructor
+      final Constructor<?> constructor =
+        innerClass.getDeclaredConstructors()[0];
       // Set accessible to create instancemapClasses
       constructor.setAccessible(true);
       // Get new instance of innerObject
       innerObject = constructor.newInstance(new Object[] { enclosingObject });
 
     }
-    catch (final Exception e) {
+    catch (final ClassNotFoundException e) {
       logger.debug("WorkerCommand inner class not found. Reflection failed. ");
+    }
+    catch (final Exception e) {
+      e.printStackTrace();
     }
 
     // Return new object
@@ -159,9 +167,6 @@ public class ReflectionWorkerHelper {
     Class<?> enclosingClass = null, innerClass = null;
     // Object variables
     Object enclosingObject = null, innerObject = null;
-    // Constructor
-    Constructor<?> constructor;
-
     try {
       // first create the enclosing class to invoke
       // the constructor of the inner class.
@@ -179,17 +184,22 @@ public class ReflectionWorkerHelper {
           break;
         }
       }
-      // Get Constructor
-      constructor = innerClass.getDeclaredConstructors()[0];
+      // Constructor
+      final Constructor<?> constructor =
+        innerClass.getDeclaredConstructors()[0];
       // Set accessible to create instancemapClasses
       constructor.setAccessible(true);
       // Get new instance of innerObject
       innerObject = constructor.newInstance(new Object[] { enclosingObject });
 
     }
-    catch (final Exception e) {
+    catch (final ClassNotFoundException e) {
       logger.debug("WorkerMediator inner class not found. Reflection failed. ");
     }
+    catch (final Exception e) {
+      e.printStackTrace();
+    }
+
     // Return new object
     return (WorkerMediator) innerObject;
   }
@@ -205,8 +215,8 @@ public class ReflectionWorkerHelper {
     // WorkerMediator Class(inner or abstract)
     final Class<?> workerClass = workerObject.getClass();
     Method method;
+    // Get submitKeyXXXX method (XXXX is submitKey pressed)
     try {
-      // Get submitKeyXXXX method (XXXX is submitKey pressed)
       method =
         workerClass.getMethod(SUBMIT_METHOD_PREFIX + submitKey.getValue(),
           String.class);
@@ -214,12 +224,23 @@ public class ReflectionWorkerHelper {
       method.setAccessible(true);
       // Invoke submitKey method of WorkerMediator object
       method.invoke(workerObject, operatorLine);
+    }
+    catch (final SecurityException e) {
+      e.printStackTrace();
+    }
+    catch (final NoSuchMethodException e) {
+      e.printStackTrace();
+    }
+    catch (final IllegalArgumentException e) {
+      e.printStackTrace();
+    }
+    catch (final IllegalAccessException e) {
+      e.printStackTrace();
+    }
+    catch (final InvocationTargetException e) {
+      e.printStackTrace();
+    }
 
-      // Reflection exceptions
-    }
-    catch (final Exception e) {
-      logger.debug("invoke submit method class not found. Reflection failed. ");
-    }
   }
 
   /**
@@ -258,4 +279,5 @@ public class ReflectionWorkerHelper {
     // mvc-componentes
     // ((AbstractMediator) mediator).setSubmitKeys(keyTypes);
   }
+
 }

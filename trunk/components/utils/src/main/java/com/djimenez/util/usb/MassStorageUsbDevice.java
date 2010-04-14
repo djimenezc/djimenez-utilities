@@ -60,12 +60,15 @@ public class MassStorageUsbDevice {
   }
 
   private String getError(final Process process) throws IOException {
+
     int counter = 0;
-    final String reason = "";
+    String reason = "";
+
     while (counter >= 0) {
+
       final byte[] b = new byte[256];
       counter = process.getErrorStream().read(b);
-      reason.concat(new String(b));
+      reason = reason.concat(new String(b));
     }
     return reason;
   }

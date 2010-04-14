@@ -12,11 +12,12 @@ import java.util.ResourceBundle;
 public class ValidatorIPFormat implements Validator<String> {
 
   // Messages
-  private final String UTIL_MESSAGES_FILE_NAME = "n2a-core-utils-messages";
+  private static final String UTIL_MESSAGES_FILE_NAME =
+    "n2a-core-utils-messages";
 
   @Override
   public String getErrorMesg() {
-    return ResourceBundle.getBundle(this.UTIL_MESSAGES_FILE_NAME).getString(
+    return ResourceBundle.getBundle(UTIL_MESSAGES_FILE_NAME).getString(
       "invalid.ip");
   }
 
