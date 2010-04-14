@@ -26,7 +26,7 @@ public class DBUnitExampleTest extends AbstractDBUnitTest {
   private SpringTestService springTestService;
 
   @Test
-  @DataSet(setupOperation = "CLEAN_INSERT", value = "classpath:/dbunit/dbunit.xml")
+  @DataSet(setupOperation = "INSERT", value = "classpath:/dbunit/dbunit.xml")
   public void testTransactionalExample() throws ConfigurationException {
 
     final User user =
@@ -36,4 +36,9 @@ public class DBUnitExampleTest extends AbstractDBUnitTest {
 
   }
 
+  // @Test
+  // @DataSet(setupOperation = "INSERT", value = "classpath:/dbunit/dbunit.xml")
+  // public void testTransactionalExample2() throws ConfigurationException {
+  //
+  // }
 }

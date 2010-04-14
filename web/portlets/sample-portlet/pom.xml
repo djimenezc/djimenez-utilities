@@ -423,7 +423,7 @@
 	</profiles>
 
 	<properties>
-		<hibernate.test.dialect>org.hibernate.dialect.MySQLDialect</hibernate.test.dialect>
+		<hibernate.test.dialect>org.hibernate.dialect.MySQLInnoDBDialect</hibernate.test.dialect>
 		<jdbc.test.groupId>mysql</jdbc.test.groupId>
 		<jdbc.test.artifactId>mysql-connector-java</jdbc.test.artifactId>
 		<jdbc.test.version>5.0.4</jdbc.test.version>

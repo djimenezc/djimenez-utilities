@@ -3,6 +3,7 @@
 
 <hibernate-configuration>
     <session-factory>
+    	<property name="hibernate.dialect">${hibernate.dialect}</property>
         <mapping class="com.djimenez.model.event.Event"/>
         <mapping class="com.djimenez.model.user.User"/>
     </session-factory>
