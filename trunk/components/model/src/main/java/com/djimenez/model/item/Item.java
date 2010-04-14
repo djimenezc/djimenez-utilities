@@ -1,4 +1,4 @@
-package com.germinus.sample.model;
+package com.djimenez.model.item;
 
 import org.springframework.core.style.ToStringCreator;
 

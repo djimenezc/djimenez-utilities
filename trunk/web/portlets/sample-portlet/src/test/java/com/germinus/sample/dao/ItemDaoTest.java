@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
+import com.djimenez.model.item.Item;
 import com.djimenez.test.dao.BaseDaoTestCase;
-import com.germinus.sample.model.Item;
 
 @ContextConfiguration(locations = {
   "classpath:/context/applicationContext-resources.xml",
