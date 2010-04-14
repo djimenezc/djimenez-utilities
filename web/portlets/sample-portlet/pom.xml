@@ -341,6 +341,12 @@
 			<groupId>com.djimenez.utilities</groupId>
 			<artifactId>testing</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.djimenez.utilities</groupId>
+			<artifactId>model</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<reporting>

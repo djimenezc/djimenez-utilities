@@ -11,8 +11,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.mvc.AbstractController;
 
+import com.djimenez.model.item.Item;
 import com.germinus.sample.dao.GenericDao;
-import com.germinus.sample.model.Item;
 
 public class DisplayTagsController extends AbstractController implements InitializingBean{
 	
