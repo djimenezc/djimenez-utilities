@@ -2,6 +2,8 @@ package com.djimenez.test.example.bdd.selenium;
 
 import java.io.IOException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.concordion.internal.ConcordionBuilder;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -12,6 +14,8 @@ import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.Selenium;
 
 public class GoogleTraductorEspecificacionTest {
+
+  protected final transient Log log = LogFactory.getLog(getClass());
 
   private static Selenium selenium;
 
@@ -28,8 +32,6 @@ public class GoogleTraductorEspecificacionTest {
       seleniumServer.start();
     }
     catch (final Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
     }
 
     selenium =
