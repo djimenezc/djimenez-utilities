@@ -21,7 +21,7 @@ public class Book implements Comparable<Object>, Serializable {
   }
 
   public Book(final String author, final String title, final int count) {
-    this(author, title, new Integer(count));
+    this(author, title, Integer.valueOf(count));
   }
 
   public Book(final String author, final String title, final Integer count) {
@@ -107,7 +107,7 @@ public class Book implements Comparable<Object>, Serializable {
     if (count < 0) {
       count = 0;
     }
-    this.count = new Integer(count);
+    this.count = Integer.valueOf(count);
   }
 
   public synchronized void setAuthor(final String author) {
