@@ -29,7 +29,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
     </bean>
 
     <bean id="itemDao" class="com.germinus.sample.dao.GenericDaoHibernate">
-        <constructor-arg value="com.germinus.sample.model.Item"/>
+        <constructor-arg value="com.djimenez.model.item.Item"/>
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
