@@ -27,7 +27,7 @@ public class BookService extends ApplicationObjectSupport {
       else {
         key = books.lastKey().intValue() + 1;
       }
-      final Integer keyObj = new Integer(key);
+      final Integer keyObj = Integer.valueOf(key);
       book.setKey(keyObj);
       this.books.put(keyObj, book);
     }
@@ -50,7 +50,7 @@ public class BookService extends ApplicationObjectSupport {
   }
 
   public void deleteBook(final int key) {
-    deleteBook(new Integer(key));
+    deleteBook(Integer.valueOf(key));
   }
 
   public void deleteBook(final Integer key) {
@@ -67,7 +67,7 @@ public class BookService extends ApplicationObjectSupport {
   }
 
   public Book getBook(final int key) {
-    return getBook(new Integer(key));
+    return getBook(Integer.valueOf(key));
   }
 
   public Book getBook(final Integer key) {
