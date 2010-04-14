@@ -79,12 +79,12 @@ public class HttpUtilities {
 
       // final int iGetResultCode = client.executeMethod(get);
 
-      final String strGetResponseBody = get.getResponseBodyAsString();
+      // final String strGetResponseBody = get.getResponseBodyAsString();
 
-      if (strGetResponseBody != null) {
-        // TODO ver que hacer cuando cargamos la página
+      // if (strGetResponseBody != null) {
+      // TODO ver que hacer cuando cargamos la página
 
-      }
+      // }
     }
     catch (final Exception ex) {
       ex.printStackTrace();
