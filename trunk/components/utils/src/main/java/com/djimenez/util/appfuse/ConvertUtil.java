@@ -21,7 +21,7 @@ import com.djimenez.model.label.LabelValue;
  */
 public final class ConvertUtil {
 
-  private static final Log log = LogFactory.getLog(ConvertUtil.class);
+  private static Log log = LogFactory.getLog(ConvertUtil.class);
 
   /**
    * Method to convert a ResourceBundle to a Map object.

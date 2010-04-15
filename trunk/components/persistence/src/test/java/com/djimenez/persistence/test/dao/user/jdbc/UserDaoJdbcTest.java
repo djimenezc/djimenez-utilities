@@ -1,7 +1,6 @@
 package com.djimenez.persistence.test.dao.user.jdbc;
 
 import org.junit.Test;
-import org.springframework.security.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.djimenez.test.dao.BaseDaoTestCase;
@@ -57,7 +56,7 @@ public class UserDaoJdbcTest extends BaseDaoTestCase {
   }
 
   @Test
-  public void testLoadUserByUsername() throws UsernameNotFoundException {
+  public void testLoadUserByUsername() {
     // TODO Auto-generated method stub
   }
 

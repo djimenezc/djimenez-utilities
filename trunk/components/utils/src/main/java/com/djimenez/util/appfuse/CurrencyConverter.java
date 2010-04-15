@@ -37,27 +37,8 @@ public class CurrencyConverter implements Converter {
     }
     else {
       if (value instanceof String) {
-        if (log.isDebugEnabled()) {
-          log.debug("value (" + value + ") instance of String");
-        }
 
-        try {
-          if (StringUtils.isBlank(String.valueOf(value))) {
-            return null;
-          }
-
-          if (log.isDebugEnabled()) {
-            log.debug("converting '" + value + "' to a decimal");
-          }
-
-          // formatter.setDecimalSeparatorAlwaysShown(true);
-          final Number num = formatter.parse(String.valueOf(value));
-
-          return num.doubleValue();
-        }
-        catch (final ParseException pe) {
-          pe.printStackTrace();
-        }
+        return stringConvert(value);
       }
       else
         if (value instanceof Double) {
@@ -74,7 +55,36 @@ public class CurrencyConverter implements Converter {
       + type.getName() + "!");
   }
 
-  public void setDecimalFormatter(final DecimalFormat df) {
+  public final void setDecimalFormatter(final DecimalFormat df) {
     this.formatter = df;
+  }
+
+  /**
+   * @param value
+   */
+  private Double stringConvert(final Object value) {
+
+    if (log.isDebugEnabled()) {
+      log.debug("value (" + value + ") instance of String");
+    }
+
+    try {
+      if (StringUtils.isBlank(String.valueOf(value))) {
+        return null;
+      }
+
+      if (log.isDebugEnabled()) {
+        log.debug("converting '" + value + "' to a decimal");
+      }
+
+      // formatter.setDecimalSeparatorAlwaysShown(true);
+      final Number num = formatter.parse(String.valueOf(value));
+
+      return Double.valueOf(num.doubleValue());
+    }
+    catch (final ParseException pe) {
+      pe.printStackTrace();
+    }
+    return null;
   }
 }

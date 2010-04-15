@@ -11,7 +11,7 @@ public class DBUnitMysqlUtils {
   private String destinationXML;
   private String schemaBD;
 
-  public int exportDatabase() {
+  public final int exportDatabase() {
 
     int status = 1;
 
@@ -32,46 +32,46 @@ public class DBUnitMysqlUtils {
   /**
    * @return the destinationXML
    */
-  public String getDestinationXML() {
+  public final String getDestinationXML() {
     return destinationXML;
   }
 
   /**
    * @return the driverName
    */
-  public String getDriverName() {
+  public final String getDriverName() {
     return driverName;
   }
 
   /**
    * @return the passwordDB
    */
-  public String getPasswordDB() {
+  public final String getPasswordDB() {
     return passwordDB;
   }
 
   /**
    * @return the schemaBD
    */
-  public String getSchemaBD() {
+  public final String getSchemaBD() {
     return schemaBD;
   }
 
   /**
    * @return the urlDB
    */
-  public String getUrlDB() {
+  public final String getUrlDB() {
     return urlDB;
   }
 
   /**
    * @return the userDB
    */
-  public String getUserDB() {
+  public final String getUserDB() {
     return userDB;
   }
 
-  public int partialImportDatabase() {
+  public final int partialImportDatabase() {
 
     int status = 1;
 
@@ -93,7 +93,7 @@ public class DBUnitMysqlUtils {
    * @param destinationXML
    *          the destinationXML to set
    */
-  public void setDestinationXML(final String destinationXML) {
+  public final void setDestinationXML(final String destinationXML) {
     this.destinationXML = destinationXML;
   }
 
@@ -101,7 +101,7 @@ public class DBUnitMysqlUtils {
    * @param driverName
    *          the driverName to set
    */
-  public void setDriverName(final String driverName) {
+  public final void setDriverName(final String driverName) {
     this.driverName = driverName;
   }
 
@@ -109,7 +109,7 @@ public class DBUnitMysqlUtils {
    * @param passwordDB
    *          the passwordDB to set
    */
-  public void setPasswordDB(final String passwordDB) {
+  public final void setPasswordDB(final String passwordDB) {
     this.passwordDB = passwordDB;
   }
 
@@ -117,7 +117,7 @@ public class DBUnitMysqlUtils {
    * @param schemaBD
    *          the schemaBD to set
    */
-  public void setSchemaBD(final String schemaBD) {
+  public final void setSchemaBD(final String schemaBD) {
     this.schemaBD = schemaBD;
   }
 
@@ -125,7 +125,7 @@ public class DBUnitMysqlUtils {
    * @param urlDB
    *          the urlDB to set
    */
-  public void setUrlDB(final String urlDB) {
+  public final void setUrlDB(final String urlDB) {
     this.urlDB = urlDB;
   }
 
@@ -133,7 +133,7 @@ public class DBUnitMysqlUtils {
    * @param userDB
    *          the userDB to set
    */
-  public void setUserDB(final String userDB) {
+  public final void setUserDB(final String userDB) {
     this.userDB = userDB;
   }
 

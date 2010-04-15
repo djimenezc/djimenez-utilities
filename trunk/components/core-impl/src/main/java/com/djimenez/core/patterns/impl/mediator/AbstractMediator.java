@@ -9,10 +9,7 @@ import com.djimenez.core.patterns.interfaces.mvc.Mediator;
 public abstract class AbstractMediator extends AbstractNotifier implements
   Mediator {
 
-  protected static final Logger logger =
-    Logger.getLogger(AbstractMediator.class);
-
-  private Facade facade;
+  private static Logger logger = Logger.getLogger(AbstractMediator.class);
 
   private String mediatorName = null;
 
@@ -60,14 +57,9 @@ public abstract class AbstractMediator extends AbstractNotifier implements
   }
 
   @Override
-  public void assignFacade(final Facade activefacade) {
+  public final void assignFacade(final Facade activefacade) {
 
-    this.facade = activefacade;
-  }
-
-  @Override
-  public Facade getFacade() {
-    return facade;
+    this.setFacade(activefacade);
   }
 
   @Override
@@ -76,17 +68,12 @@ public abstract class AbstractMediator extends AbstractNotifier implements
   }
 
   @Override
-  public Object getViewComponent() {
+  public final Object getViewComponent() {
     return this.viewComponent;
   }
 
   @Override
-  public void setFacade(final Facade facade) {
-    this.facade = facade;
-  }
-
-  @Override
-  public void setViewComponent(final Object viewComponent) {
+  public final void setViewComponent(final Object viewComponent) {
     this.viewComponent = viewComponent;
   }
 

@@ -25,10 +25,7 @@ public class SystemFilePropertiesHelper {
   // Properties JAVA Standard API
   private final Properties propertiesFile = new Properties();
 
-  //
-  // Getters and Setters
-  //
-  public String getPathFile() {
+  public final String getPathFile() {
     return this.pathFile;
   }
 
@@ -42,7 +39,7 @@ public class SystemFilePropertiesHelper {
    * @throws IOException
    *           On loading file error.
    */
-  public String getProperty(final String key) throws IOException {
+  public final String getProperty(final String key) throws IOException {
     this.load();
     return (String) this.propertiesFile.get(key);
   }
@@ -61,7 +58,7 @@ public class SystemFilePropertiesHelper {
     file.close();
   }
 
-  public void setPathFile(final String pathFile) {
+  public final void setPathFile(final String pathFile) {
     this.pathFile = pathFile;
   }
 
@@ -79,7 +76,7 @@ public class SystemFilePropertiesHelper {
    * @throws IOException
    *           On storing file error or validation error
    */
-  public void setProperty(final String key, final String value,
+  public final void setProperty(final String key, final String value,
     final String comment) throws IOException {
 
     this.load();
@@ -108,8 +105,9 @@ public class SystemFilePropertiesHelper {
    * @throws IOException
    *           On storing file error or validation error
    */
-  public void setProperty(final Validator<String> validator, final String key,
-    final String value, final String comment) throws IOException {
+  public final void setProperty(final Validator<String> validator,
+    final String key, final String value, final String comment)
+    throws IOException {
 
     if (validator.validate(value)) {
 

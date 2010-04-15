@@ -10,13 +10,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.djimenez.util.constants.GeneralConstants;
 import com.djimenez.util.net.NetException;
 import com.djimenez.util.os.unix.DCSInfoImpl;
 
 public class DCSInfoFedoraTest {
 
   // Test Files
-  private final String NETWORK_FILE_TEST = "dcs-ini-test";
+  private static final String NETWORK_FILE_TEST = "dcs-ini-test";
   // Fichero temporal
   private File tempNetworkFile = null;
 
@@ -24,7 +25,7 @@ public class DCSInfoFedoraTest {
   private DCSInfoImpl dcsInfo = null;
 
   @After
-  public void finalizeTest() throws IOException {
+  public final void finalizeTest() throws IOException {
     // Eliminamos el fichero temporal para pruebas
 
     if (!this.tempNetworkFile.delete()) {
@@ -45,12 +46,12 @@ public class DCSInfoFedoraTest {
     // Extraemos de los trecursos para test el fichero de pruebas final
     final InputStream fin =
       DCSInfoFedoraTest.class.getClassLoader().getResourceAsStream(
-        this.NETWORK_FILE_TEST);
+        NETWORK_FILE_TEST);
 
     // Generamos una copia con la que vamos a pasar las pruebas final
     final FileOutputStream fout = new FileOutputStream(tmpFile);
 
-    final byte[] buffer = new byte[1024];
+    final byte[] buffer = new byte[GeneralConstants.BYTE_FACTOR];
 
     int bytesRead;
     while ((bytesRead = fin.read(buffer)) > 0) {
@@ -64,7 +65,7 @@ public class DCSInfoFedoraTest {
   }
 
   @Before
-  public void prepareTest() throws IOException {
+  public final void prepareTest() throws IOException {
 
     // Generamos un fichero temporal para pruebas
     this.tempNetworkFile = this.generateTestFile();
@@ -73,14 +74,13 @@ public class DCSInfoFedoraTest {
     this.dcsInfo = new DCSInfoImpl(this.tempNetworkFile.getAbsolutePath());
   }
 
-  // ----------------------
   @Test
-  public void testGetGateway() throws NetException {
+  public final void testGetGateway() throws NetException {
     Assert.assertNotNull(this.dcsInfo.getIP());
   }
 
   @Test
-  public void testSetNotWellFormedGateway() {
+  public final void testSetNotWellFormedGateway() {
     boolean result = false;
 
     final String dataTest = "3.4.5.J";
@@ -94,7 +94,7 @@ public class DCSInfoFedoraTest {
   }
 
   @Test
-  public void testSetWellFormedGateway() throws NetException {
+  public final void testSetWellFormedGateway() throws NetException {
     final String dataTest = "3.4.5.6";
 
     this.dcsInfo.setIP(dataTest);

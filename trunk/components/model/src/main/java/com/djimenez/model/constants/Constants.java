@@ -1,4 +1,4 @@
-package com.djimenez.model;
+package com.djimenez.model.constants;
 
 /**
  * Constant values used throughout the application.

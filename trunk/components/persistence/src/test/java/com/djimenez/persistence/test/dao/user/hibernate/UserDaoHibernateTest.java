@@ -3,7 +3,6 @@ package com.djimenez.persistence.test.dao.user.hibernate;
 import org.apache.commons.configuration.ConfigurationException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.djimenez.model.user.User;
@@ -58,14 +57,15 @@ public class UserDaoHibernateTest extends BaseDaoTestCase implements
 
   @Test
   @Override
-  public void testGetUser() throws ConfigurationException {
+  public final void testGetUser() throws ConfigurationException {
 
     final User actualUser = userDao.get(Long.valueOf(1L));
 
     final User expectedUser =
       UserDaoHibernateTestConfiguration.getInstance().getUserTestGet();
 
-    org.junit.Assert.assertEquals(expectedUser, actualUser);
+    org.unitils.reflectionassert.ReflectionAssert.assertLenientEquals(
+      expectedUser, actualUser);
   }
 
   @Test
@@ -84,7 +84,7 @@ public class UserDaoHibernateTest extends BaseDaoTestCase implements
 
   @Test
   @Override
-  public void testLoadUserByUsername() throws UsernameNotFoundException {
+  public void testLoadUserByUsername() {
     // TODO Auto-generated method stub
 
   }

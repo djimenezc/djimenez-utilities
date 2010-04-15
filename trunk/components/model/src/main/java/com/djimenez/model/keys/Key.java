@@ -26,45 +26,45 @@ public class Key implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  protected List<ValueList> valueList;
+  private List<ValueList> valueList;
 
   @XmlAttribute(required = true)
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "NMTOKEN")
-  protected String code;
+  private String code;
 
   @XmlAttribute(required = true)
-  protected int id;
+  private int id;
 
-  public String getCode() {
+  public final String getCode() {
     return this.code;
   }
 
-  public int getId() {
+  public final int getId() {
     return this.id;
   }
 
-  public List<ValueList> getValueList() {
+  public final List<ValueList> getValueList() {
     if (this.valueList == null) {
       this.valueList = new ArrayList<ValueList>();
     }
     return this.valueList;
   }
 
-  public boolean isEchoable() {
+  public final boolean isEchoable() {
     return ((this.valueList != null) && (this.valueList.size() > 0));
   }
 
-  public void setCode(final String value) {
+  public final void setCode(final String value) {
     this.code = value;
   }
 
-  public void setId(final int value) {
+  public final void setId(final int value) {
     this.id = value;
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return new ToStringBuilder(this).append("id", this.id).append("valueList",
       this.valueList).append("code", this.code).toString();
   }

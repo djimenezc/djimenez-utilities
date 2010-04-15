@@ -13,7 +13,7 @@ import com.djimenez.util.properties.internationalization.InternationalizationCon
  */
 public final class InternationalizationContextHolder {
 
-  private static final Logger logger =
+  private static Logger logger =
     Logger.getLogger(InternationalizationContextHolder.class);
 
   private static InternationalizationContextHolder instance;

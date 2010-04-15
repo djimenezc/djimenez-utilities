@@ -8,8 +8,8 @@ import org.apache.log4j.Logger;
 
 public final class CurrencyContextHolder implements CurrencyContext {
 
-  private static final Logger logger =
-    Logger.getLogger(CurrencyContextHolder.class);
+  private static Logger logger = Logger.getLogger(CurrencyContextHolder.class);
+
   private static CurrencyContext instance;
 
   public static CurrencyContext getInstance(final Locale locale) {

@@ -59,15 +59,88 @@ public class HibernateExtensionPostProcessor implements
   private Properties hibernateProperties;
 
   /**
+   * @param propertyValues
+   */
+  @SuppressWarnings("unchecked")
+  private void handleAnnotedClasses(final MutablePropertyValues propertyValues) {
+    // do we have existing resources?
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("annotatedClasses");
+
+    if (propertyValue == null) {
+      propertyValue =
+        new PropertyValue("annotatedClasses", new ArrayList<Object>());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+
+    // value is expected to be a list.
+    final List existingMappingResources = (List<?>) propertyValue.getValue();
+
+    existingMappingResources.addAll(annotatedClasses);
+  }
+
+  /**
+   * @param propertyValues
+   */
+  @SuppressWarnings("unchecked")
+  private void handleConfigLocations(final MutablePropertyValues propertyValues) {
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("configLocations");
+    if (propertyValue == null) {
+      propertyValue = new PropertyValue("configLocations", new ArrayList());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+    final List existingConfigLocations = (List) propertyValue.getValue();
+    existingConfigLocations.addAll(configLocations);
+  }
+
+  /**
+   * @param propertyValues
+   */
+  private void handleHibernateProperties(
+    final MutablePropertyValues propertyValues) {
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("hibernateProperties");
+    if (propertyValue == null) {
+      propertyValue =
+        new PropertyValue("hibernateProperties", new Properties());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+    final Properties existingHibernateProperties =
+      (Properties) propertyValue.getValue();
+    existingHibernateProperties.putAll(hibernateProperties);
+  }
+
+  /**
+   * @param propertyValues
+   */
+  @SuppressWarnings("unchecked")
+  private void handleMappingResources(final MutablePropertyValues propertyValues) {
+    // do we have existing resourses?
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("mappingResources");
+
+    if (propertyValue == null) {
+      propertyValue = new PropertyValue("mappingResources", new ArrayList());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+
+    // value is expected to be a list.
+    final List existingMappingResources = (List) propertyValue.getValue();
+    existingMappingResources.addAll(mappingResources);
+  }
+
+  /**
    * Adds the annotated classes and the mapping resources to the existing
    * Session Factory configuration.
    * 
    * @param configurableListableBeanFactory
    *          the good ol' bean factory
    */
-  @SuppressWarnings("unchecked")
-  public void postProcessBeanFactory(
-    final ConfigurableListableBeanFactory configurableListableBeanFactory) {
+  public final void postProcessBeanFactory(
+
+  final ConfigurableListableBeanFactory configurableListableBeanFactory) {
+
     if (configurableListableBeanFactory.containsBean(sessionFactoryBeanName)) {
       final BeanDefinition sessionFactoryBeanDefinition =
         configurableListableBeanFactory
@@ -76,59 +149,19 @@ public class HibernateExtensionPostProcessor implements
         sessionFactoryBeanDefinition.getPropertyValues();
 
       if (mappingResources != null) {
-        // do we have existing resourses?
-        PropertyValue propertyValue =
-          propertyValues.getPropertyValue("mappingResources");
-
-        if (propertyValue == null) {
-          propertyValue =
-            new PropertyValue("mappingResources", new ArrayList());
-          propertyValues.addPropertyValue(propertyValue);
-        }
-
-        // value is expected to be a list.
-        final List existingMappingResources = (List) propertyValue.getValue();
-        existingMappingResources.addAll(mappingResources);
+        handleMappingResources(propertyValues);
       }
 
       if (annotatedClasses != null) {
-        // do we have existing resources?
-        PropertyValue propertyValue =
-          propertyValues.getPropertyValue("annotatedClasses");
-
-        if (propertyValue == null) {
-          propertyValue =
-            new PropertyValue("annotatedClasses", new ArrayList());
-          propertyValues.addPropertyValue(propertyValue);
-        }
-
-        // value is expected to be a list.
-        final List existingMappingResources = (List) propertyValue.getValue();
-        existingMappingResources.addAll(annotatedClasses);
+        handleAnnotedClasses(propertyValues);
       }
 
       if (configLocations != null) {
-        PropertyValue propertyValue =
-          propertyValues.getPropertyValue("configLocations");
-        if (propertyValue == null) {
-          propertyValue = new PropertyValue("configLocations", new ArrayList());
-          propertyValues.addPropertyValue(propertyValue);
-        }
-        final List existingConfigLocations = (List) propertyValue.getValue();
-        existingConfigLocations.addAll(configLocations);
+        handleConfigLocations(propertyValues);
       }
 
       if (hibernateProperties != null) {
-        PropertyValue propertyValue =
-          propertyValues.getPropertyValue("hibernateProperties");
-        if (propertyValue == null) {
-          propertyValue =
-            new PropertyValue("hibernateProperties", new Properties());
-          propertyValues.addPropertyValue(propertyValue);
-        }
-        final Properties existingHibernateProperties =
-          (Properties) propertyValue.getValue();
-        existingHibernateProperties.putAll(hibernateProperties);
+        handleHibernateProperties(propertyValues);
       }
     }
     else {
@@ -146,7 +179,7 @@ public class HibernateExtensionPostProcessor implements
    * @param annotatedClasses
    *          The list of annotated classes that need to be added.
    */
-  public void setAnnotatedClasses(final List<?> annotatedClasses) {
+  public final void setAnnotatedClasses(final List<?> annotatedClasses) {
     this.annotatedClasses = annotatedClasses;
   }
 
@@ -157,7 +190,7 @@ public class HibernateExtensionPostProcessor implements
    * @param configLocations
    *          The list of configuration locations that need to be added.
    */
-  public void setConfigLocations(final List<?> configLocations) {
+  public final void setConfigLocations(final List<?> configLocations) {
     this.configLocations = configLocations;
   }
 
@@ -167,7 +200,7 @@ public class HibernateExtensionPostProcessor implements
    * @param hibernateProperties
    *          The list of additional properties.
    */
-  public void setHibernateProperties(final Properties hibernateProperties) {
+  public final void setHibernateProperties(final Properties hibernateProperties) {
     this.hibernateProperties = hibernateProperties;
   }
 
@@ -178,7 +211,7 @@ public class HibernateExtensionPostProcessor implements
    * @param mappingResources
    *          The list of mapping resources.
    */
-  public void setMappingResources(final List<?> mappingResources) {
+  public final void setMappingResources(final List<?> mappingResources) {
     this.mappingResources = mappingResources;
   }
 
@@ -189,7 +222,8 @@ public class HibernateExtensionPostProcessor implements
    * @param sessionFactoryBeanName
    *          The name of the session factory bean.
    */
-  public void setSessionFactoryBeanName(final String sessionFactoryBeanName) {
+  public final void setSessionFactoryBeanName(
+    final String sessionFactoryBeanName) {
     this.sessionFactoryBeanName = sessionFactoryBeanName;
   }
 }

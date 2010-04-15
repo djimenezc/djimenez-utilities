@@ -2,7 +2,6 @@ package com.djimenez.core.patterns.interfaces.mvc;
 
 import java.util.Map;
 
-import com.djimenez.core.exception.ViewException;
 import com.djimenez.core.patterns.enumetates.view.ViewState;
 import com.djimenez.core.patterns.interfaces.EventListener;
 import com.djimenez.core.patterns.interfaces.Notification;
@@ -31,12 +30,11 @@ public interface View extends EventListener {
 
   boolean isCommandRunning();
 
-  void notifyObservers(Notification notification) throws Throwable;
+  void notifyObservers(Notification notification) throws Exception;
 
-  void registerMediator(Mediator mediator) throws ViewException;
+  void registerMediator(Mediator mediator);
 
-  void registerObserver(String noteName, Observer observer)
-    throws ViewException;
+  void registerObserver(String noteName, Observer observer);
 
   void removeAllMediators();
 

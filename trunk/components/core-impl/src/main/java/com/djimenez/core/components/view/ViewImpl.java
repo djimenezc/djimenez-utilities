@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.djimenez.core.exception.ViewException;
 import com.djimenez.core.patterns.enumetates.view.ViewState;
 import com.djimenez.core.patterns.impl.observer.ObserverEntry;
 import com.djimenez.core.patterns.interfaces.Event;
@@ -27,7 +26,8 @@ import com.djimenez.core.patterns.interfaces.mvc.View;
  */
 public final class ViewImpl implements View, ViewImplMBean {
 
-  protected static final Logger logger = Logger.getLogger(ViewImpl.class);
+  private static Logger logger = Logger.getLogger(ViewImpl.class);
+
   public static View getInstance() {
     if (instance == null) {
       instance = new ViewImpl();
@@ -118,7 +118,7 @@ public final class ViewImpl implements View, ViewImplMBean {
   }
 
   @Override
-  public void notifyObservers(final Notification note) throws Throwable {
+  public void notifyObservers(final Notification note) throws Exception {
 
   }
 
@@ -128,13 +128,13 @@ public final class ViewImpl implements View, ViewImplMBean {
   }
 
   @Override
-  public void registerMediator(final Mediator mediator) throws ViewException {
+  public void registerMediator(final Mediator mediator) {
 
   }
 
   @Override
   public void registerObserver(final String notificationName,
-    final Observer observer) throws ViewException {
+    final Observer observer) {
   }
 
   @Override

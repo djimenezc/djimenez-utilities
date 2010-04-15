@@ -16,8 +16,8 @@ import com.djimenez.util.constants.SystemConstants;
  */
 public final class DateContextHolder implements DateContext {
 
-  private static final Logger logger =
-    Logger.getLogger(DateContextHolder.class);
+  private static Logger logger = Logger.getLogger(DateContextHolder.class);
+
   private static DateContext instance;
 
   public static DateContext getInstance(final Locale locale) {

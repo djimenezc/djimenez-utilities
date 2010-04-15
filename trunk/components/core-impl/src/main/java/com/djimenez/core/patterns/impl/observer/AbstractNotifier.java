@@ -15,11 +15,12 @@ public abstract class AbstractNotifier implements Notifier {
   /**
    * Logger for this class
    */
-  private static final Logger logger = Logger.getLogger(AbstractNotifier.class);
-  protected Facade facade;
+  private static Logger logger = Logger.getLogger(AbstractNotifier.class);
+
+  private Facade facade;
 
   @Override
-  public Facade getFacade() {
+  public final Facade getFacade() {
     return this.facade;
   }
 
@@ -32,7 +33,7 @@ public abstract class AbstractNotifier implements Notifier {
   }
 
   @Override
-  public void sendNotification(final String notificationName,
+  public final void sendNotification(final String notificationName,
     final Object body, final String type) {
     if (logger.isDebugEnabled()) {
       logger.debug("From: " + this.getClass().getSimpleName());
@@ -55,7 +56,7 @@ public abstract class AbstractNotifier implements Notifier {
   }
 
   @Override
-  public void setFacade(final Facade facade) {
+  public final void setFacade(final Facade facade) {
     this.facade = facade;
   }
 }

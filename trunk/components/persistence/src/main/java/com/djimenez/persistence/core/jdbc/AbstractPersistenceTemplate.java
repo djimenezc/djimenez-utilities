@@ -20,7 +20,7 @@ import org.springframework.jdbc.support.KeyHolder;
 public abstract class AbstractPersistenceTemplate implements
   PersistenceTemplateOperations {
 
-  private static final Logger logger =
+  private static Logger logger =
     Logger.getLogger(AbstractPersistenceTemplate.class);
 
   private SimpleJdbcInsert simpleJdbcInsert;
@@ -28,7 +28,7 @@ public abstract class AbstractPersistenceTemplate implements
   private DataSource dataSource;
 
   @Override
-  public void batchUpdate(final String sql, final List<Object[]> batchArgs) {
+  public final void batchUpdate(final String sql, final List<Object[]> batchArgs) {
     try {
       this.getSimpleJdbcTemplate().batchUpdate(sql, batchArgs);
     }
@@ -38,13 +38,13 @@ public abstract class AbstractPersistenceTemplate implements
     }
   }
 
-  protected SimpleJdbcInsert createSimpleJdbcInsert() {
+  protected final SimpleJdbcInsert createSimpleJdbcInsert() {
     this.simpleJdbcInsert = new SimpleJdbcInsert(this.getDataSource());
     return this.simpleJdbcInsert;
   }
 
   @Override
-  public KeyHolder executeAndReturnKeyHolderJdbcInsert(
+  public final KeyHolder executeAndReturnKeyHolderJdbcInsert(
     final Map<String, Object> args) {
     KeyHolder keyHolder = null;
     try {
@@ -58,7 +58,7 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public KeyHolder executeAndReturnKeyHolderJdbcInsert(
+  public final KeyHolder executeAndReturnKeyHolderJdbcInsert(
     final SqlParameterSource parameterSource) {
     KeyHolder keyHolder = null;
     try {
@@ -73,7 +73,8 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public Number executeAndReturnKeyJdbcInsert(final Map<String, Object> args) {
+  public final Number executeAndReturnKeyJdbcInsert(
+    final Map<String, Object> args) {
     Number number = null;
     try {
       number = this.getSimpleJdbcInsert().executeAndReturnKey(args);
@@ -86,7 +87,7 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public Number executeAndReturnKeyJdbcInsert(
+  public final Number executeAndReturnKeyJdbcInsert(
     final SqlParameterSource parameterSource) {
     Number number = null;
     try {
@@ -100,7 +101,7 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public void executeBatchJdbcInsert(final Map<String, Object>[] batch) {
+  public final void executeBatchJdbcInsert(final Map<String, Object>[] batch) {
     try {
       this.getSimpleJdbcInsert().executeBatch(batch);
     }
@@ -111,7 +112,7 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public void executeBatchJdbcInsert(final SqlParameterSource[] batch) {
+  public final void executeBatchJdbcInsert(final SqlParameterSource[] batch) {
     try {
       this.getSimpleJdbcInsert().executeBatch(batch);
     }
@@ -122,7 +123,8 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public void executeInsertJdbcInsert(final SqlParameterSource parameterSource) {
+  public final void executeInsertJdbcInsert(
+    final SqlParameterSource parameterSource) {
     try {
       this.getSimpleJdbcInsert().execute(parameterSource);
     }
@@ -133,7 +135,7 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public void executeJdbcInsert(final Map<String, Object> args) {
+  public final void executeJdbcInsert(final Map<String, Object> args) {
     try {
       this.getSimpleJdbcInsert().execute(args);
     }
@@ -143,7 +145,7 @@ public abstract class AbstractPersistenceTemplate implements
     }
   }
 
-  public DataSource getDataSource() {
+  public final DataSource getDataSource() {
     if (this.dataSource == null) {
       throw new PersistenceTemplateException(
         "Trying to use DataSource but was null!!");
@@ -159,14 +161,14 @@ public abstract class AbstractPersistenceTemplate implements
     return this.simpleJdbcInsert;
   }
 
-  public SimpleJdbcTemplate getSimpleJdbcTemplate() {
+  public final SimpleJdbcTemplate getSimpleJdbcTemplate() {
     return this.simpleJdbcTemplate;
   }
 
   @Override
   @SuppressWarnings("deprecation")
-  public List<?> query(final String sql, final ParameterizedRowMapper<?> rm,
-    final Object... args) {
+  public final List<?> query(final String sql,
+    final ParameterizedRowMapper<?> rm, final Object... args) {
 
     List<?> result = null;
 
@@ -185,7 +187,7 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public Integer queryForInt(final String sql, final Object... args) {
+  public final Integer queryForInt(final String sql, final Object... args) {
     Integer result = null;
     try {
       result =
@@ -203,7 +205,7 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public Long queryForLong(final String sql, final Object... args) {
+  public final Long queryForLong(final String sql, final Object... args) {
     Long result = null;
     try {
       result =
@@ -221,7 +223,7 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public Long queryForLongLocal(final String sql, final Object... args) {
+  public final Long queryForLongLocal(final String sql, final Object... args) {
     Long result = null;
     try {
       result =
@@ -239,8 +241,8 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public Object queryForObject(final String sql, final Class<?> requiredType,
-    final Object... args) {
+  public final Object queryForObject(final String sql,
+    final Class<?> requiredType, final Object... args) {
     Object result;
     try {
       result =
@@ -259,7 +261,7 @@ public abstract class AbstractPersistenceTemplate implements
 
   @Override
   @SuppressWarnings("deprecation")
-  public Object queryForObject(final String sql,
+  public final Object queryForObject(final String sql,
     final ParameterizedRowMapper<?> rm, final Object... args) {
 
     Object result;
@@ -279,7 +281,7 @@ public abstract class AbstractPersistenceTemplate implements
   }
 
   @Override
-  public Object queryForObjectLocal(final String sql,
+  public final Object queryForObjectLocal(final String sql,
     final Class<?> requiredType, final Object... args) {
     Object result;
     try {
@@ -297,13 +299,13 @@ public abstract class AbstractPersistenceTemplate implements
     return result;
   }
 
-  public void setDataSource(final DataSource dataSource) {
+  public final void setDataSource(final DataSource dataSource) {
     this.dataSource = dataSource;
     this.simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
   }
 
   @Override
-  public int update(final String sql, final Object... args) {
+  public final int update(final String sql, final Object... args) {
     int result = 0;
     try {
       result = this.getSimpleJdbcTemplate().update(sql, args);

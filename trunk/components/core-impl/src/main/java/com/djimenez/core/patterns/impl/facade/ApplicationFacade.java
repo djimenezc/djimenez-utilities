@@ -33,13 +33,12 @@ import com.djimenez.core.patterns.interfaces.worker.Worker;
  */
 public abstract class ApplicationFacade implements Facade {
 
-  protected static final Logger logger =
-    Logger.getLogger(ApplicationFacade.class);
+  private static Logger logger = Logger.getLogger(ApplicationFacade.class);
 
-  protected Facade parentFacade;
+  private Facade parentFacade;
   private Map<String, EventInterceptor> eventInterceptorMap;
-  protected Controller controller = null;
-  protected View view = null;
+  private Controller controller = null;
+  private View view = null;
   private Model model = null;
   private Worker worker = null;
   private boolean enabledEventDispatching;
@@ -52,7 +51,7 @@ public abstract class ApplicationFacade implements Facade {
   }
 
   @Override
-  public void dispatchEvent(final Event event) {
+  public final void dispatchEvent(final Event event) {
     try {
       if (this.isEnabledEventDispatching()) {
         if (this.view != null) {
@@ -79,22 +78,30 @@ public abstract class ApplicationFacade implements Facade {
   }
 
   @Override
-  public Controller getController() {
+  public final Controller getController() {
     return controller;
   }
 
   @Override
-  public EventInterceptor getEventInterceptor(final String eventInterceptorName) {
+  public final EventInterceptor getEventInterceptor(
+    final String eventInterceptorName) {
     return this.eventInterceptorMap.get(eventInterceptorName);
   }
 
   @Override
-  public Model getModel() {
+  public final Model getModel() {
     return model;
   }
 
+  /**
+   * @return the parentFacade
+   */
+  public final Facade getParentFacade() {
+    return parentFacade;
+  }
+
   @Override
-  public View getView() {
+  public final View getView() {
     return view;
   }
 
@@ -150,12 +157,13 @@ public abstract class ApplicationFacade implements Facade {
     }
   }
 
-  public boolean isEnabledEventDispatching() {
+  public final boolean isEnabledEventDispatching() {
     return this.enabledEventDispatching;
   }
 
   @Override
-  public void notifyObservers(final Notification notification) throws Throwable {
+  public final void notifyObservers(final Notification notification)
+    throws Exception {
     if (this.view != null) {
       this.view.notifyObservers(notification);
     }
@@ -165,7 +173,8 @@ public abstract class ApplicationFacade implements Facade {
   }
 
   @Override
-  public void registerEventInterceptor(final EventInterceptor eventInterceptor) {
+  public final void registerEventInterceptor(
+    final EventInterceptor eventInterceptor) {
     eventInterceptor.setFacade(this);
     this.eventInterceptorMap.put(eventInterceptor.getName(), eventInterceptor);
   }
@@ -199,18 +208,18 @@ public abstract class ApplicationFacade implements Facade {
   // }
 
   @Override
-  public void registerProxy(final Proxy proxy) {
+  public final void registerProxy(final Proxy proxy) {
     proxy.assignFacade(this);
     this.model.registerProxy(proxy);
   }
 
   @Override
-  public void removeAllProxies() {
+  public final void removeAllProxies() {
     this.model.removeAllProxies();
   }
 
   @Override
-  public Proxy removeProxy(final String proxyName) {
+  public final Proxy removeProxy(final String proxyName) {
     Proxy returnedProxy = null;
     if (this.model != null) {
       returnedProxy = this.model.removeProxy(proxyName);
@@ -223,17 +232,17 @@ public abstract class ApplicationFacade implements Facade {
   }
 
   @Override
-  public Proxy retrieveProxy(final Class<?> proxyClass) {
+  public final Proxy retrieveProxy(final Class<?> proxyClass) {
     return this.model.retrieveProxy(proxyClass.getSimpleName());
   }
 
   @Override
-  public Proxy retrieveProxy(final String proxyName) {
+  public final Proxy retrieveProxy(final String proxyName) {
     return this.model.retrieveProxy(proxyName);
   }
 
   @Override
-  public void sendNotification(final String notificationName,
+  public final void sendNotification(final String notificationName,
     final Object body, final String type) {
     try {
       assert (notificationName != null) : "Notification name cannot be null";
@@ -253,7 +262,7 @@ public abstract class ApplicationFacade implements Facade {
   }
 
   @Override
-  public void setCommandContainerCollection(
+  public final void setCommandContainerCollection(
     final Collection<CommandContainer> commandContainerCollection) {
     for (final CommandContainer commandContainer : commandContainerCollection) {
       for (final Map.Entry<String, Command> entry : commandContainer
@@ -264,12 +273,13 @@ public abstract class ApplicationFacade implements Facade {
   }
 
   @Override
-  public void setEnabledEventDispatching(final boolean enabledEventDispatching) {
+  public final void setEnabledEventDispatching(
+    final boolean enabledEventDispatching) {
     this.enabledEventDispatching = enabledEventDispatching;
   }
 
   @Override
-  public void setEventInterceptorList(
+  public final void setEventInterceptorList(
     final List<EventInterceptor> eventInterceptorList) {
     for (final EventInterceptor eventInterceptor : eventInterceptorList) {
       this.registerEventInterceptor(eventInterceptor);
@@ -277,12 +287,12 @@ public abstract class ApplicationFacade implements Facade {
   }
 
   @Override
-  public void setFacade(final Facade parentFacade) {
+  public final void setFacade(final Facade parentFacade) {
     this.parentFacade = parentFacade;
   }
 
   @Override
-  public void setMediatorContainerCollection(
+  public final void setMediatorContainerCollection(
     final Collection<MediatorContainer> mediatorContainerCollection) {
     for (final MediatorContainer mediatorContainer : mediatorContainerCollection) {
       for (final Mediator mediator : mediatorContainer.getMediatorCollection()) {

@@ -23,32 +23,32 @@ public class SimpleNotification implements Notification {
   }
 
   @Override
-  public Object getBody() {
+  public final Object getBody() {
     return this.body;
   }
 
   @Override
-  public String getName() {
+  public final String getName() {
     return this.name;
   }
 
   @Override
-  public String getType() {
+  public final String getType() {
     return this.type;
   }
 
   @Override
-  public void setBody(final Object body) {
+  public final void setBody(final Object body) {
     this.body = body;
   }
 
   @Override
-  public void setType(final String type) {
+  public final void setType(final String type) {
     this.type = type;
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return new ToStringBuilder(this).append("name", this.name).append("type",
       this.type).append("body", this.body).toString();
   }

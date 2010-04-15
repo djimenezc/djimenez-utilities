@@ -22,12 +22,13 @@ import org.apache.log4j.Logger;
  */
 public final class ContextHelper {
 
-  private static final Logger logger = Logger.getLogger(ContextHelper.class);
+  private static Logger logger = Logger.getLogger(ContextHelper.class);
+
   private static final String PROPERTIES_FILE_NAME = "n2a-context.properties";
 
   private static ContextHelper instance;
 
-  public static final ContextHelper getInstance() {
+  public static ContextHelper getInstance() {
     if (instance == null) {
       instance = new ContextHelper();
     }

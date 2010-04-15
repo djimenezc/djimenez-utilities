@@ -19,10 +19,10 @@ import com.djimenez.test.dao.BaseDaoTestCase;
 public class HibernateConfigurationTest extends BaseDaoTestCase {
 
   @Autowired
-  SessionFactory sessionFactory;
+  private SessionFactory sessionFactory;
 
   @Test
-  public void testColumnMapping() throws Exception {
+  public final void testColumnMapping() throws Exception {
 
     final Session session = sessionFactory.openSession();
 

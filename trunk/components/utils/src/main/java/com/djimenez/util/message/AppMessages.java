@@ -14,7 +14,7 @@ import com.djimenez.util.internationalization.InternationalizationContextHolder;
  */
 public class AppMessages {
 
-  private static final Logger logger = Logger.getLogger(AppMessages.class);
+  private static Logger logger = Logger.getLogger(AppMessages.class);
 
   private final ResourceBundle resourceBundle;
   private final ResourceBundle crossResourceBundle;
@@ -28,7 +28,7 @@ public class AppMessages {
         InternationalizationContextHolder.getInstance().getLocale());
   }
 
-  public String getMessage(final String message) {
+  public final String getMessage(final String message) {
     String totalText = null;
     try {
       totalText = this.resourceBundle.getString(message);
@@ -59,17 +59,18 @@ public class AppMessages {
     return returnText;
   }
 
-  public String getMessage(final String message, final List<Object> arguments) {
+  public final String getMessage(final String message,
+    final List<Object> arguments) {
     return this.getMessage(message, arguments.toArray());
   }
 
-  public String getMessage(final String message, final Object[] arguments) {
+  public final String getMessage(final String message, final Object[] arguments) {
     final String text = this.getMessage(message);
     final MessageFormat messageFormat = new MessageFormat(text);
     return messageFormat.format(arguments);
   }
 
-  public String getValue(final String key) {
+  public final String getValue(final String key) {
     return this.getMessage(key);
   }
 }

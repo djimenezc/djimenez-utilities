@@ -36,32 +36,32 @@ public class SimpleEvent implements Event {
   }
 
   @Override
-  public Object getBody() {
+  public final Object getBody() {
     return this.body;
   }
 
   @Override
-  public String getName() {
+  public final String getName() {
     return this.name;
   }
 
   @Override
-  public Object getSource() {
+  public final Object getSource() {
     return this.source;
   }
 
   @Override
-  public String getType() {
+  public final String getType() {
     return this.type;
   }
 
   @Override
-  public long getWhen() {
+  public final long getWhen() {
     return this.when;
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
 
     return new ToStringBuilder(this).append("body", this.body).append("source",
       this.source).append("when", this.when).append("name", this.name).append(

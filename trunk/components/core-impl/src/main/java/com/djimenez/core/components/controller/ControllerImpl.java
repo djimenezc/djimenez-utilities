@@ -34,8 +34,8 @@ import com.djimenez.core.patterns.interfaces.worker.Worker;
  */
 public final class ControllerImpl implements Controller, ControllerImplMBean {
 
-  protected static final Logger logger = Logger.getLogger(ControllerImpl.class);
-  private volatile static Controller instance;
+  private static Logger logger = Logger.getLogger(ControllerImpl.class);
+  private static Controller instance;
 
   public static Controller getInstance() {
     if (instance == null) {

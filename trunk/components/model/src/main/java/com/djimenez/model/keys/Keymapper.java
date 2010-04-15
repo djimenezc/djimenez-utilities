@@ -21,9 +21,9 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 public class Keymapper {
 
   @XmlElement(required = true)
-  protected List<Key> key;
+  private List<Key> key;
 
-  public List<Key> getKey() {
+  public final List<Key> getKey() {
     if (this.key == null) {
       this.key = new ArrayList<Key>();
     }
@@ -31,7 +31,7 @@ public class Keymapper {
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return new ToStringBuilder(this).append("key", this.key).toString();
   }
 

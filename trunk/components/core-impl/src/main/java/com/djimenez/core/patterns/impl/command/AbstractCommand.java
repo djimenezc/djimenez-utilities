@@ -16,7 +16,7 @@ public abstract class AbstractCommand extends AbstractNotifier implements
   CommandNotification {
 
   @Override
-  public void assignFacade(final Facade commandFacade) {
+  public final void assignFacade(final Facade commandFacade) {
     this.setFacade(commandFacade);
   }
 

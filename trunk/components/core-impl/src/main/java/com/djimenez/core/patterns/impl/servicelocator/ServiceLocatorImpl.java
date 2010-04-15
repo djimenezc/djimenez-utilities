@@ -15,13 +15,12 @@ import com.djimenez.core.patterns.interfaces.ServiceLocator;
  */
 public final class ServiceLocatorImpl implements ServiceLocator {
 
-  private static final Logger logger =
-    Logger.getLogger(ServiceLocatorImpl.class);
+  private static Logger logger = Logger.getLogger(ServiceLocatorImpl.class);
 
   private static ServiceLocator instance;
   private static ApplicationContext context;
 
-  public synchronized static ServiceLocator getInstance() {
+  public static synchronized ServiceLocator getInstance() {
     if (instance == null) {
       instance = new ServiceLocatorImpl();
     }

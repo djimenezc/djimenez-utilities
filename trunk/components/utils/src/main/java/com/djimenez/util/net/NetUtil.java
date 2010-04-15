@@ -20,7 +20,7 @@ import com.djimenez.util.os.unix.NetServicesImpl;
  * @author Rodrigo Villamil Perez
  * @version 1.0
  */
-public class NetUtil {
+public final class NetUtil {
 
   /**
    * La gestion de los servicios de red (NetworkServices) y la informacio de
