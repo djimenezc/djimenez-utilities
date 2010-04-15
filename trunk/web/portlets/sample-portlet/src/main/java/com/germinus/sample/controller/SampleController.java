@@ -14,7 +14,7 @@ import org.springframework.web.portlet.mvc.AbstractController;
 public class SampleController extends AbstractController implements
   InitializingBean {
 
-  private static final Log log = LogFactory.getLog(SampleController.class);
+  private final Log log = LogFactory.getLog(SampleController.class);
 
   public void afterPropertiesSet() throws Exception {
     // TODO Auto-generated method stub
@@ -37,8 +37,9 @@ public class SampleController extends AbstractController implements
    * DispatcherPortlet will render.
    */
   @Override
-  public ModelAndView handleRenderRequestInternal(final RenderRequest request,
-    final RenderResponse response) throws Exception {
+  public final ModelAndView handleRenderRequestInternal(
+    final RenderRequest request, final RenderResponse response)
+    throws Exception {
     log.debug("handleRenderRequestInternal");
     // mostramos la vista sample, no necesita parametros
     return new ModelAndView("sample", "", null);

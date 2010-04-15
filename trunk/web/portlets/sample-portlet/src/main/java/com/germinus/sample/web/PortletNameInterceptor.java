@@ -14,60 +14,65 @@ import org.springframework.web.portlet.context.PortletApplicationObjectSupport;
 import org.springframework.web.portlet.context.PortletContextAware;
 
 public class PortletNameInterceptor extends PortletApplicationObjectSupport
-        implements HandlerInterceptor, PortletContextAware {
+  implements HandlerInterceptor, PortletContextAware {
 
-    PortletContext portletContext;
-    
-	public void setPortletConfig(PortletContext portletContext) {
-        this.portletContext = portletContext;
-    }
+  private PortletContext portletContext;
 
-	public boolean preHandle(PortletRequest request, PortletResponse response, Object handler)
-			throws Exception {
-        logger.debug("portletContextName : " +(portletContext == null ? "<no PortletContext!>" : portletContext.getPortletContextName()));
-        return true;
-	}
+  public final void afterActionCompletion(final ActionRequest arg0,
+    final ActionResponse arg1, final Object arg2, final Exception arg3)
+    throws Exception {
 
-	public void postHandle(
-			RenderRequest request, RenderResponse response, Object handler, ModelAndView modelAndView)
-			throws Exception {
-		logger.debug("PortletNameInterceptor postHandle : ");
-	}
+    logger.debug("PortletNameInterceptor postHandle : ");
+  }
 
-	public void afterCompletion(
-			PortletRequest request, PortletResponse response, Object handler, Exception ex)
-			throws Exception {
-		logger.debug("PortletNameInterceptor postHandle : ");
-	}
+  public final void afterCompletion(final PortletRequest request,
+    final PortletResponse response, final Object handler, final Exception ex)
+    throws Exception {
+    logger.debug("PortletNameInterceptor postHandle : ");
+  }
 
-	public void afterActionCompletion(ActionRequest arg0, ActionResponse arg1,
-			Object arg2, Exception arg3) throws Exception {
-		logger.debug("PortletNameInterceptor postHandle : ");
-		
-	}
+  public final void afterRenderCompletion(final RenderRequest arg0,
+    final RenderResponse arg1, final Object arg2, final Exception arg3)
+    throws Exception {
+    logger.debug("PortletNameInterceptor postHandle : ");
 
-	public void afterRenderCompletion(RenderRequest arg0, RenderResponse arg1,
-			Object arg2, Exception arg3) throws Exception {
-		logger.debug("PortletNameInterceptor postHandle : ");
-		
-	}
+  }
 
-	public void postHandleRender(RenderRequest arg0, RenderResponse arg1,
-			Object arg2, ModelAndView arg3) throws Exception {
-		logger.debug("PortletNameInterceptor postHandle : ");
-		
-	}
+  public final void postHandle(final RenderRequest request,
+    final RenderResponse response, final Object handler,
+    final ModelAndView modelAndView) throws Exception {
+    logger.debug("PortletNameInterceptor postHandle : ");
+  }
 
-	public boolean preHandleAction(ActionRequest arg0, ActionResponse arg1,
-			Object arg2) throws Exception {
-		logger.debug("PortletNameInterceptor postHandle : ");
-		return false;
-	}
+  public final void postHandleRender(final RenderRequest arg0,
+    final RenderResponse arg1, final Object arg2, final ModelAndView arg3)
+    throws Exception {
+    logger.debug("PortletNameInterceptor postHandle : ");
 
-	public boolean preHandleRender(RenderRequest arg0, RenderResponse arg1,
-			Object arg2) throws Exception {
-		logger.debug("PortletNameInterceptor postHandle : ");
-		return false;
-	}
+  }
+
+  public final boolean preHandle(final PortletRequest request,
+    final PortletResponse response, final Object handler) throws Exception {
+    logger.debug("portletContextName : "
+      + (portletContext == null ? "<no PortletContext!>" : portletContext
+        .getPortletContextName()));
+    return true;
+  }
+
+  public final boolean preHandleAction(final ActionRequest arg0,
+    final ActionResponse arg1, final Object arg2) throws Exception {
+    logger.debug("PortletNameInterceptor postHandle : ");
+    return false;
+  }
+
+  public final boolean preHandleRender(final RenderRequest arg0,
+    final RenderResponse arg1, final Object arg2) throws Exception {
+    logger.debug("PortletNameInterceptor postHandle : ");
+    return false;
+  }
+
+  public final void setPortletConfig(final PortletContext portletContext) {
+    this.portletContext = portletContext;
+  }
 
 }

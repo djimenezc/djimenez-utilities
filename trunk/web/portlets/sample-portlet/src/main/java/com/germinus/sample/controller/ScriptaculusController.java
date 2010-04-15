@@ -11,38 +11,42 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.mvc.AbstractController;
 
-public class ScriptaculusController extends AbstractController implements InitializingBean  {
+public class ScriptaculusController extends AbstractController implements
+  InitializingBean {
 
-    private static final Log log = LogFactory.getLog(ScriptaculusController.class);
+  private final Log log = LogFactory.getLog(ScriptaculusController.class);
 
-    /*private GenericDao<Item, Long> itemDao;
+  /*
+   * private GenericDao<Item, Long> itemDao; public void
+   * setItemDao(GenericDao<Item, Long> itemDao) { this.itemDao = itemDao; }
+   */
 
-    public void setItemDao(GenericDao<Item, Long> itemDao) {
-        this.itemDao = itemDao;
-    }*/
-
-    /**
-     * Process the action request. There is nothing to return.
+  public void afterPropertiesSet() throws Exception {
+    // TODO Auto-generated method stub
+    /*
+     * if (this.itemDao == null) throw new
+     * IllegalArgumentException("A Item is required");
      */
-    public void handleActionRequestVoid(ActionRequest request, ActionResponse response)
-        throws Exception    {
-	
-    }
-    
-    /**
-     * Process the render request and return a ModelAndView object which the
-     * DispatcherPortlet will render.
-     */
-    @Override
-    public ModelAndView handleRenderRequestInternal(RenderRequest request, RenderResponse response) throws Exception {
-        log.debug("handleRenderRequestInternal");
-        //mostramos la vista sample, no necesita parametros
-        return new ModelAndView("scriptaculus", "", null);
-    }
+  }
 
-	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
-	/*	if (this.itemDao == null)
-            throw new IllegalArgumentException("A Item is required");*/
-	}
+  /**
+   * Process the action request. There is nothing to return.
+   */
+  public void handleActionRequestVoid(final ActionRequest request,
+    final ActionResponse response) throws Exception {
+
+  }
+
+  /**
+   * Process the render request and return a ModelAndView object which the
+   * DispatcherPortlet will render.
+   */
+  @Override
+  public final ModelAndView handleRenderRequestInternal(
+    final RenderRequest request, final RenderResponse response)
+    throws Exception {
+    log.debug("handleRenderRequestInternal");
+    // mostramos la vista sample, no necesita parametros
+    return new ModelAndView("scriptaculus", "", null);
+  }
 }

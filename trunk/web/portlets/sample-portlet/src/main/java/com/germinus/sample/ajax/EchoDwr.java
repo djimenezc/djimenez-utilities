@@ -30,7 +30,7 @@ public class EchoDwr {
     return html;
   }
 
-  public String sayHello(final String name) {
+  public final String sayHello(final String name) {
     return "Hello, " + name;
   }
 }

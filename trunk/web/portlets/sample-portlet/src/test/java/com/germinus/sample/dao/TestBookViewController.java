@@ -11,10 +11,11 @@ import com.germinus.sample.model.Book;
 
 public class TestBookViewController extends SimpleSpringTestCase {
 
-  public void testBookViewController() throws Exception {
+  public final void testBookViewController() throws Exception {
 
     final BookViewController controller =
-      (BookViewController) booksPortletContext.getBean("bookViewController");
+      (BookViewController) getBooksPortletContext().getBean(
+        "bookViewController");
 
     final MockRenderRequest request = new MockRenderRequest();
     final MockRenderResponse response = new MockRenderResponse();
@@ -24,7 +25,7 @@ public class TestBookViewController extends SimpleSpringTestCase {
     final ModelAndView mav = controller.handleRenderRequest(request, response);
     assertNotNull(mav);
 
-    logger.info("view: " + mav.getViewName());
+    getLogger().info("view: " + mav.getViewName());
 
     @SuppressWarnings("unchecked")
     final Map<String, Book> model = mav.getModel();
@@ -32,10 +33,10 @@ public class TestBookViewController extends SimpleSpringTestCase {
     assertTrue(model.containsKey("book"));
     final Book book = model.get("book");
 
-    logger.info("book.author: " + book.getAuthor());
-    logger.info("book.title: " + book.getTitle());
-    logger.info("book.description: " + book.getDescription());
-    logger.info("book.count: " + book.getCount());
+    getLogger().info("book.author: " + book.getAuthor());
+    getLogger().info("book.title: " + book.getTitle());
+    getLogger().info("book.description: " + book.getDescription());
+    getLogger().info("book.count: " + book.getCount());
 
   }
 

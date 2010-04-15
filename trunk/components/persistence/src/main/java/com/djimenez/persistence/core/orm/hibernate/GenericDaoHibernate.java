@@ -184,6 +184,7 @@ public abstract class GenericDaoHibernate<T, PK extends Serializable>
   @Autowired
   @Required
   public final void setSessionFactory(final SessionFactory sessionFactory) {
+
     this.sessionFactory = sessionFactory;
     this.hibernateTemplate = new HibernateTemplate(sessionFactory);
   }
