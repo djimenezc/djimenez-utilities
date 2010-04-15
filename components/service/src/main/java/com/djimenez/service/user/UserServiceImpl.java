@@ -8,7 +8,7 @@ public class UserServiceImpl implements UserService {
   private UserDao userDao;
 
   @Override
-  public int addUser(final User user) {
+  public final int addUser(final User user) {
 
     userDao.save(user);
 
@@ -16,14 +16,14 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public int getUserNumber() {
+  public final int getUserNumber() {
 
     return userDao.calculateUserNumber();
 
   }
 
   @Override
-  public User retrieveUser(final int id) {
+  public final User retrieveUser(final int id) {
 
     return userDao.get(Long.valueOf(id));
   }
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
    * @param userDao
    *          the springTestDao to set
    */
-  public void setUserDao(final UserDao userDao) {
+  public final void setUserDao(final UserDao userDao) {
 
     this.userDao = userDao;
   }

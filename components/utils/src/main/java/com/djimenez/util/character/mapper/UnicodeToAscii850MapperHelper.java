@@ -86,23 +86,7 @@ public final class UnicodeToAscii850MapperHelper {
       this.unicodeToAscii850ProblematicCharactersMap =
         new HashMap<String, String>();
 
-      final Enumeration<Object> characters = charactersUnicode.keys();
-      while (characters.hasMoreElements()) {
-        final String character = (String) characters.nextElement();
-        final String characterUnicode =
-          (String) charactersUnicode.get(character);
-        final String characterAscii850 =
-          (String) charactersAscii850.get(character);
-        if (!characterAscii850.equals("")) {
-          if (!ProblematicCharacter.contains(character)) {
-            this.unicodeToAscii850Map.put(characterUnicode, characterAscii850);
-          }
-          else {
-            this.unicodeToAscii850ProblematicCharactersMap.put(
-              characterUnicode, characterAscii850);
-          }
-        }
-      }
+      filleUnicodeCharacter(charactersUnicode, charactersAscii850);
 
     }
     catch (final IOException e) {
@@ -123,6 +107,31 @@ public final class UnicodeToAscii850MapperHelper {
 
     }
 
+  }
+
+  /**
+   * @param charactersUnicode
+   * @param charactersAscii850
+   */
+  private void filleUnicodeCharacter(final Properties charactersUnicode,
+    final Properties charactersAscii850) {
+    final Enumeration<Object> characters = charactersUnicode.keys();
+    while (characters.hasMoreElements()) {
+      final String character = (String) characters.nextElement();
+      final String characterUnicode =
+        (String) charactersUnicode.get(character);
+      final String characterAscii850 =
+        (String) charactersAscii850.get(character);
+      if (!characterAscii850.equals("")) {
+        if (!ProblematicCharacter.contains(character)) {
+          this.unicodeToAscii850Map.put(characterUnicode, characterAscii850);
+        }
+        else {
+          this.unicodeToAscii850ProblematicCharactersMap.put(
+            characterUnicode, characterAscii850);
+        }
+      }
+    }
   }
 
   public String replaceUnicodeForAscii850(final String text) {

@@ -10,13 +10,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.djimenez.util.constants.GeneralConstants;
 import com.djimenez.util.net.NetException;
 import com.djimenez.util.os.unix.NetServicesImpl;
 
 public class NetServicesFedoraTest {
 
   // Test Files
-  private final String IFCFG_ETH0_FILE = "ifcfg-eth0-test";
+  private static final String IFCFG_ETH0_FILE = "ifcfg-eth0-test";
   // Fichero temporal
   private File tempEth0File = null;
 
@@ -24,7 +25,7 @@ public class NetServicesFedoraTest {
   private NetServicesImpl netServices = null;
 
   @After
-  public void finalizeTest() throws IOException {
+  public final void finalizeTest() throws IOException {
     // Eliminamos el fichero temporal para pruebas
     if (!this.tempEth0File.delete()) {
 
@@ -43,12 +44,12 @@ public class NetServicesFedoraTest {
     // Extraemos de los trecursos para test el fichero de pruebas final
     final InputStream fin =
       NetServicesFedoraTest.class.getClassLoader().getResourceAsStream(
-        this.IFCFG_ETH0_FILE);
+        IFCFG_ETH0_FILE);
 
     // Generamos una copia con la que vamos a pasar las pruebas final
     final FileOutputStream fout = new FileOutputStream(tmpFile);
 
-    final byte[] buffer = new byte[1024];
+    final byte[] buffer = new byte[GeneralConstants.BYTE_FACTOR];
 
     int bytesRead;
     while ((bytesRead = fin.read(buffer)) > 0) {
@@ -62,7 +63,7 @@ public class NetServicesFedoraTest {
   }
 
   @Before
-  public void prepareTest() throws IOException {
+  public final void prepareTest() throws IOException {
 
     // Generamos un fichero temporal para pruebas
     this.tempEth0File = this.generateTestFile();
@@ -75,29 +76,29 @@ public class NetServicesFedoraTest {
 
   // ----------------------
   @Test
-  public void testGetBroadCastIP() throws NetException {
+  public final void testGetBroadCastIP() throws NetException {
     Assert.assertNotNull(this.netServices.getBroadCast());
   }
 
   @Test
-  public void testGetIPaddr() throws NetException {
+  public final void testGetIPaddr() throws NetException {
     Assert.assertNotNull(this.netServices.getIPaddr());
   }
 
   // ----------------------
   @Test
-  public void testGetNetMask() throws NetException {
+  public final void testGetNetMask() throws NetException {
     Assert.assertNotNull(this.netServices.getNetMask());
   }
 
   // ----------------------
   @Test
-  public void testGetNetworkIP() throws NetException {
+  public final void testGetNetworkIP() throws NetException {
     Assert.assertNotNull(this.netServices.getNetwork());
   }
 
   @Test
-  public void testSetNotWellFormedBroadCastIP() {
+  public final void testSetNotWellFormedBroadCastIP() {
     boolean result = false;
 
     final String dataTest = "3.4.5.J";
@@ -111,7 +112,7 @@ public class NetServicesFedoraTest {
   }
 
   @Test
-  public void testSetNotWellFormedIPaddr() {
+  public final void testSetNotWellFormedIPaddr() {
     boolean result = false;
 
     final String dataTest = "3.4.5.J";
@@ -125,7 +126,7 @@ public class NetServicesFedoraTest {
   }
 
   @Test
-  public void testSetNotWellFormedNetMask() {
+  public final void testSetNotWellFormedNetMask() {
     boolean result = false;
 
     final String dataTest = "3.4.5.J";
@@ -139,7 +140,7 @@ public class NetServicesFedoraTest {
   }
 
   @Test
-  public void testSetNotWellFormedNetWorkIP() {
+  public final void testSetNotWellFormedNetWorkIP() {
     boolean result = false;
 
     final String dataTest = "3.4.5.J";
@@ -153,7 +154,7 @@ public class NetServicesFedoraTest {
   }
 
   @Test
-  public void testSetWellFormedBroadCastIP() throws NetException {
+  public final void testSetWellFormedBroadCastIP() throws NetException {
     final String dataTest = "3.4.5.6";
 
     this.netServices.setBroadCast(dataTest);
@@ -161,7 +162,7 @@ public class NetServicesFedoraTest {
   }
 
   @Test
-  public void testSetWellFormedIPaddr() throws NetException {
+  public final void testSetWellFormedIPaddr() throws NetException {
     final String dataTest = "3.4.5.6";
 
     this.netServices.setIPaddr(dataTest);
@@ -169,7 +170,7 @@ public class NetServicesFedoraTest {
   }
 
   @Test
-  public void testSetWellFormedNetMask() throws NetException {
+  public final void testSetWellFormedNetMask() throws NetException {
     final String dataTest = "3.4.5.6";
 
     this.netServices.setNetMask(dataTest);
@@ -177,7 +178,7 @@ public class NetServicesFedoraTest {
   }
 
   @Test
-  public void testSetWellFormedNetWorkIP() throws NetException {
+  public final void testSetWellFormedNetWorkIP() throws NetException {
     final String dataTest = "3.4.5.6";
 
     this.netServices.setNetwork(dataTest);

@@ -15,8 +15,7 @@ import org.apache.log4j.Logger;
  */
 public final class ConfigurationMessaging {
 
-  private static final Logger logger =
-    Logger.getLogger(ConfigurationMessaging.class);
+  private static Logger logger = Logger.getLogger(ConfigurationMessaging.class);
   private static final String PROPERTIES_FILE_NAME =
     "n2a-messaging-config.properties";
 

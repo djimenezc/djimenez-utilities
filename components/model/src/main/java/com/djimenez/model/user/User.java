@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.djimenez.model.constants.JpaConstants;
+
 /**
  * Created by IntelliJ IDEA. User: mjimenez Date: 01-ago-2007 Time: 10:28:04
  */
@@ -17,11 +19,11 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
 
-  protected Long id;
+  private Long id;
 
-  protected String name;
+  private String name;
 
-  protected String description;
+  private String description;
 
   private Date activeDate;
 
@@ -49,175 +51,18 @@ public class User {
 
   private Date bornDate;
 
-  /*
-   * (non-Javadoc)
-   * @see java.lang.Object#equals(java.lang.Object)
-   */
-  @Override
-  public boolean equals(final Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final User other = (User) obj;
-    if (active != other.active) {
-      return false;
-    }
-    if (activeDate == null) {
-      if (other.activeDate != null) {
-        return false;
-      }
-    }
-    else
-      if (!activeDate.equals(other.activeDate)) {
-        return false;
-      }
-    if (address == null) {
-      if (other.address != null) {
-        return false;
-      }
-    }
-    else
-      if (!address.equals(other.address)) {
-        return false;
-      }
-    if (bornDate == null) {
-      if (other.bornDate != null) {
-        return false;
-      }
-    }
-    else
-      if (!bornDate.equals(other.bornDate)) {
-        return false;
-      }
-    if (description == null) {
-      if (other.description != null) {
-        return false;
-      }
-    }
-    else
-      if (!description.equals(other.description)) {
-        return false;
-      }
-    if (email == null) {
-      if (other.email != null) {
-        return false;
-      }
-    }
-    else
-      if (!email.equals(other.email)) {
-        return false;
-      }
-    if (firstSurname == null) {
-      if (other.firstSurname != null) {
-        return false;
-      }
-    }
-    else
-      if (!firstSurname.equals(other.firstSurname)) {
-        return false;
-      }
-    if (id == null) {
-      if (other.id != null) {
-        return false;
-      }
-    }
-    else
-      if (!id.equals(other.id)) {
-        return false;
-      }
-    if (nacionality == null) {
-      if (other.nacionality != null) {
-        return false;
-      }
-    }
-    else
-      if (!nacionality.equals(other.nacionality)) {
-        return false;
-      }
-    if (name == null) {
-      if (other.name != null) {
-        return false;
-      }
-    }
-    else
-      if (!name.equals(other.name)) {
-        return false;
-      }
-    if (nif == null) {
-      if (other.nif != null) {
-        return false;
-      }
-    }
-    else
-      if (!nif.equals(other.nif)) {
-        return false;
-      }
-    if (password == null) {
-      if (other.password != null) {
-        return false;
-      }
-    }
-    else
-      if (!password.equals(other.password)) {
-        return false;
-      }
-    if (postalCode == null) {
-      if (other.postalCode != null) {
-        return false;
-      }
-    }
-    else
-      if (!postalCode.equals(other.postalCode)) {
-        return false;
-      }
-    if (secondSurname == null) {
-      if (other.secondSurname != null) {
-        return false;
-      }
-    }
-    else
-      if (!secondSurname.equals(other.secondSurname)) {
-        return false;
-      }
-    if (telephoneNumber == null) {
-      if (other.telephoneNumber != null) {
-        return false;
-      }
-    }
-    else
-      if (!telephoneNumber.equals(other.telephoneNumber)) {
-        return false;
-      }
-    if (userName == null) {
-      if (other.userName != null) {
-        return false;
-      }
-    }
-    else
-      if (!userName.equals(other.userName)) {
-        return false;
-      }
-    return true;
-  }
-
   /**
    * @return the date
    */
   @Column
-  public Date getActiveDate() {
+  public final Date getActiveDate() {
     return activeDate;
   }
 
   /**
    * @return the address
    */
-  public String getAddress() {
+  public final String getAddress() {
     return address;
   }
 
@@ -225,12 +70,12 @@ public class User {
    * @return the fechaNac
    */
   @Column
-  public Date getBornDate() {
+  public final Date getBornDate() {
     return bornDate;
   }
 
-  @Column(length = 150)
-  public String getDescription() {
+  @Column(length = JpaConstants.LENGTH_DESCRIPTION)
+  public final String getDescription() {
     return description;
   }
 
@@ -238,7 +83,7 @@ public class User {
    * @return the email
    */
   @Column
-  public String getEmail() {
+  public final String getEmail() {
     return email;
   }
 
@@ -246,13 +91,13 @@ public class User {
    * @return the firstSurname
    */
   @Column
-  public String getFirstSurname() {
+  public final String getFirstSurname() {
     return firstSurname;
   }
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public Long getId() {
+  public final Long getId() {
     return id;
   }
 
@@ -260,12 +105,12 @@ public class User {
    * @return the nacionalidad
    */
   @Column
-  public String getNacionality() {
+  public final String getNacionality() {
     return nacionality;
   }
 
-  @Column(nullable = false, length = 50, unique = true)
-  public String getName() {
+  @Column(nullable = false, length = JpaConstants.DEFAULT_LENGTH, unique = true)
+  public final String getName() {
     return name;
   }
 
@@ -273,7 +118,7 @@ public class User {
    * @return the nif
    */
   @Column
-  public String getNif() {
+  public final String getNif() {
     return nif;
   }
 
@@ -281,7 +126,7 @@ public class User {
    * @return the password
    */
   @Column
-  public String getPassword() {
+  public final String getPassword() {
     return password;
   }
 
@@ -289,7 +134,7 @@ public class User {
    * @return the codigoPostal
    */
   @Column
-  public String getPostalCode() {
+  public final String getPostalCode() {
     return postalCode;
   }
 
@@ -297,7 +142,7 @@ public class User {
    * @return the secondSurname
    */
   @Column
-  public String getSecondSurname() {
+  public final String getSecondSurname() {
     return secondSurname;
   }
 
@@ -305,7 +150,7 @@ public class User {
    * @return the telephoneNumber
    */
   @Column
-  public String getTelephoneNumber() {
+  public final String getTelephoneNumber() {
     return telephoneNumber;
   }
 
@@ -313,49 +158,14 @@ public class User {
    * @return the userName
    */
   @Column
-  public String getUserName() {
+  public final String getUserName() {
     return userName;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see java.lang.Object#hashCode()
-   */
-  @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + (active ? 1231 : 1237);
-    result =
-      prime * result + ((activeDate == null) ? 0 : activeDate.hashCode());
-    result = prime * result + ((address == null) ? 0 : address.hashCode());
-    result = prime * result + ((bornDate == null) ? 0 : bornDate.hashCode());
-    result =
-      prime * result + ((description == null) ? 0 : description.hashCode());
-    result = prime * result + ((email == null) ? 0 : email.hashCode());
-    result =
-      prime * result + ((firstSurname == null) ? 0 : firstSurname.hashCode());
-    result = prime * result + ((id == null) ? 0 : id.hashCode());
-    result =
-      prime * result + ((nacionality == null) ? 0 : nacionality.hashCode());
-    result = prime * result + ((name == null) ? 0 : name.hashCode());
-    result = prime * result + ((nif == null) ? 0 : nif.hashCode());
-    result = prime * result + ((password == null) ? 0 : password.hashCode());
-    result =
-      prime * result + ((postalCode == null) ? 0 : postalCode.hashCode());
-    result =
-      prime * result + ((secondSurname == null) ? 0 : secondSurname.hashCode());
-    result =
-      prime * result
-        + ((telephoneNumber == null) ? 0 : telephoneNumber.hashCode());
-    result = prime * result + ((userName == null) ? 0 : userName.hashCode());
-    return result;
   }
 
   /**
    * @return the active
    */
-  public boolean isActive() {
+  public final boolean isActive() {
     return active;
   }
 
@@ -363,7 +173,7 @@ public class User {
    * @param active
    *          the active to set
    */
-  public void setActive(final boolean active) {
+  public final void setActive(final boolean active) {
     this.active = active;
   }
 
@@ -373,7 +183,7 @@ public class User {
    * @param date
    *          the date to set
    */
-  public void setActiveDate(final Date date) {
+  public final void setActiveDate(final Date date) {
     this.activeDate = date;
   }
 
@@ -381,7 +191,7 @@ public class User {
    * @param address
    *          the address to set
    */
-  public void setAddress(final String address) {
+  public final void setAddress(final String address) {
     this.address = address;
   }
 
@@ -389,11 +199,11 @@ public class User {
    * @param fechaNac
    *          the fechaNac to set
    */
-  public void setBornDate(final Date fechaNac) {
+  public final void setBornDate(final Date fechaNac) {
     this.bornDate = fechaNac;
   }
 
-  public void setDescription(final String description) {
+  public final void setDescription(final String description) {
     this.description = description;
   }
 
@@ -401,7 +211,7 @@ public class User {
    * @param email
    *          the email to set
    */
-  public void setEmail(final String email) {
+  public final void setEmail(final String email) {
     this.email = email;
   }
 
@@ -409,7 +219,7 @@ public class User {
    * @param firstSurname
    *          the firstSurname to set
    */
-  public void setFirstSurname(final String firstSurname) {
+  public final void setFirstSurname(final String firstSurname) {
     this.firstSurname = firstSurname;
   }
 
@@ -417,7 +227,7 @@ public class User {
    * @param id
    *          the id to set
    */
-  public void setId(final Long id) {
+  public final void setId(final Long id) {
     this.id = id;
   }
 
@@ -425,7 +235,7 @@ public class User {
    * @param nacionalidad
    *          the nacionalidad to set
    */
-  public void setNacionality(final String nacionalidad) {
+  public final void setNacionality(final String nacionalidad) {
     this.nacionality = nacionalidad;
   }
 
@@ -433,7 +243,7 @@ public class User {
    * @param name
    *          the name to set
    */
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 
@@ -441,7 +251,7 @@ public class User {
    * @param nif
    *          the nif to set
    */
-  public void setNif(final String nif) {
+  public final void setNif(final String nif) {
     this.nif = nif;
   }
 
@@ -449,7 +259,7 @@ public class User {
    * @param password
    *          the password to set
    */
-  public void setPassword(final String password) {
+  public final void setPassword(final String password) {
     this.password = password;
   }
 
@@ -457,7 +267,7 @@ public class User {
    * @param codigoPostal
    *          the codigoPostal to set
    */
-  public void setPostalCode(final String codigoPostal) {
+  public final void setPostalCode(final String codigoPostal) {
     this.postalCode = codigoPostal;
   }
 
@@ -465,7 +275,7 @@ public class User {
    * @param secondSurname
    *          the secondSurname to set
    */
-  public void setSecondSurname(final String secondSurname) {
+  public final void setSecondSurname(final String secondSurname) {
     this.secondSurname = secondSurname;
   }
 
@@ -473,7 +283,7 @@ public class User {
    * @param telephoneNumber
    *          the telephoneNumber to set
    */
-  public void setTelephoneNumber(final String telephoneNumber) {
+  public final void setTelephoneNumber(final String telephoneNumber) {
     this.telephoneNumber = telephoneNumber;
   }
 
@@ -481,7 +291,7 @@ public class User {
    * @param userName
    *          the userName to set
    */
-  public void setUserName(final String userName) {
+  public final void setUserName(final String userName) {
     this.userName = userName;
   }
 
@@ -490,7 +300,7 @@ public class User {
    * @see java.lang.Object#toString()
    */
   @Override
-  public String toString() {
+  public final String toString() {
     return "User [active=" + active + ", activeDate=" + activeDate
       + ", address=" + address + ", bornDate=" + bornDate + ", email=" + email
       + ", firstSurname=" + firstSurname + ", id=" + id + ", nacionality="

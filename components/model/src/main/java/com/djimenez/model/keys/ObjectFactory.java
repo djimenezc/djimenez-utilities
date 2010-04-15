@@ -15,20 +15,20 @@ public class ObjectFactory {
     // do nothing yet
   }
 
-  public Key createKey() {
+  public final Key createKey() {
     return new Key();
   }
 
-  public Keymapper createKeymapper() {
+  public final Keymapper createKeymapper() {
     return new Keymapper();
   }
 
-  public ValueList createValueList() {
+  public final ValueList createValueList() {
     return new ValueList();
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return new ToStringBuilder(this).toString();
   }
 

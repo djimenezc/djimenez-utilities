@@ -14,21 +14,21 @@ import com.djimenez.util.configuration.exception.ConfigurationFileException;
  */
 public abstract class AbstractConfigurationFileHelper {
 
-  private static final Logger logger =
+  private static Logger logger =
     Logger.getLogger(AbstractConfigurationFileHelper.class);
 
   private Properties properties;
 
-  public Long getLong(final String key) {
+  public final Long getLong(final String key) {
     final String value = this.properties.getProperty(key);
     return Long.valueOf(value);
   }
 
-  public String getProperty(final String key) {
+  public final String getProperty(final String key) {
     return this.properties.getProperty(key);
   }
 
-  protected void loadBundle(final String filePath) {
+  protected final void loadBundle(final String filePath) {
 
     this.properties = new Properties();
 

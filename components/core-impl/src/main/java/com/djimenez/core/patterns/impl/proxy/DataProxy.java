@@ -41,25 +41,25 @@ public class DataProxy<T> extends AbstractNotifier implements Proxy {
   }
 
   @Override
-  public void assignFacade(final Facade proxyFacade) {
+  public final void assignFacade(final Facade proxyFacade) {
     this.setFacade(proxyFacade);
   }
 
-  public T getData() {
+  public final T getData() {
     return this.data;
   }
 
   @Override
-  public String getProxyName() {
+  public final String getProxyName() {
     return this.proxyName;
   }
 
-  public void setData(final T data) {
+  public final void setData(final T data) {
     this.data = data;
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return "DataProxy [data=" + this.data + ", proxyName=" + this.proxyName
       + "]";
   }

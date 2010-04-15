@@ -31,7 +31,7 @@ public class DataBaseUtils {
     this.password = password;
   }
 
-  public boolean executeQuery(final String query) {
+  public final boolean executeQuery(final String query) {
 
     Statement sentencias = null;
 
@@ -54,7 +54,8 @@ public class DataBaseUtils {
 
   }
 
-  public Connection getConnection(final String username, final String password) {
+  public final Connection getConnection(final String username,
+    final String password) {
 
     Connection con = null;
 
@@ -89,7 +90,7 @@ public class DataBaseUtils {
     return con;
   }
 
-  public boolean resetSchema(final String schemaName) {
+  public final boolean resetSchema(final String schemaName) {
 
     Statement sentencias = null;
 

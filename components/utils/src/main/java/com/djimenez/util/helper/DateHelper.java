@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 
 import org.apache.log4j.Logger;
 
+import com.djimenez.model.DefaultValues;
 import com.djimenez.util.internationalization.InternationalizationContextHolder;
 import com.djimenez.util.internationalization.InternationalizationException;
 import com.djimenez.util.properties.date.DatePropertyHelper;
@@ -17,9 +18,15 @@ import com.djimenez.util.properties.date.DatePropertyHelper;
  * 
  * @author djimenez
  */
-public class DateHelper {
+public final class DateHelper {
 
-  private static final Logger logger = Logger.getLogger(DateHelper.class);
+  private static final int SECONDS_PER_MINUTE = 60;
+
+  private static final int MINUTES_PER_HOUR = 60;
+
+  private static final int HOUR_PER_DAY = 24;
+
+  private final Logger logger = Logger.getLogger(DateHelper.class);
 
   private static DateHelper instance;
 
@@ -34,6 +41,23 @@ public class DateHelper {
 
   private DateHelper() {
     super();
+  }
+
+  private Boolean betweenDates(final Date dateToCheck, final Date refDate,
+    final Date calcDate) {
+
+    Boolean valid;
+
+    if ((dateToCheck.after(refDate) || dateToCheck.equals(refDate))
+      && dateToCheck.before(calcDate)) {
+
+      valid = Boolean.TRUE;
+    }
+    else {
+      valid = Boolean.FALSE;
+    }
+
+    return valid;
   }
 
   /**
@@ -53,22 +77,22 @@ public class DateHelper {
     final int days) {
 
     final Calendar cal = new GregorianCalendar();
+
     cal.setTimeInMillis(refDate.getTime());
+
     cal.add(Calendar.DATE, days);
+
     final Date calcDate = new Date(cal.getTimeInMillis());
+
     Boolean valid = Boolean.FALSE;
+
     if (days >= 0) {
-      if ((dateToCheck.after(refDate) || dateToCheck.equals(refDate))
-        && dateToCheck.before(calcDate)) {
-        valid = Boolean.TRUE;
-      }
+      valid = betweenDates(dateToCheck, refDate, calcDate);
     }
     else {
-      if ((dateToCheck.after(calcDate) || dateToCheck.equals(calcDate))
-        && dateToCheck.before(refDate)) {
-        valid = Boolean.TRUE;
-      }
+      valid = betweenDates(dateToCheck, calcDate, refDate);
     }
+
     return valid;
   }
 
@@ -296,6 +320,32 @@ public class DateHelper {
   }
 
   /**
+   * @param hour
+   * @param res
+   * @param simpleHourMinFormat
+   * @return
+   */
+  private boolean handleValidHourException(final String hour,
+    final SimpleDateFormat simpleHourMinFormat) {
+
+    Boolean valid = false;
+
+    try {
+      simpleHourMinFormat.parse(hour);
+      final long hh = Long.parseLong(hour.substring(0, 2));
+      final long mm = Long.parseLong(hour.substring(2, 4));
+      final long ss = Long.parseLong(hour.substring(4, 6));
+
+      valid = isTimeValid(hh, mm, ss);
+    }
+    catch (final ParseException e1) {
+      valid = false;
+    }
+
+    return valid;
+  }
+
+  /**
    * Check pattern hour (HHmm or HHmmSS)
    * 
    * @param date
@@ -312,34 +362,50 @@ public class DateHelper {
       new SimpleDateFormat(DatePropertyHelper.getInstance().getProperty(
         "hour.format"));
     try {
+
       simpleHourFormat.parse(hour);
+
       final long hh = Long.parseLong(hour.substring(0, 2));
       final long mm = Long.parseLong(hour.substring(2, 4));
-      if ((hh < 24) && (hh >= 0) && (mm < 60) && (mm >= 0)) {
+
+      if ((hh < HOUR_PER_DAY) && (hh >= DefaultValues.ZERO_LONG)
+        && (mm < MINUTES_PER_HOUR) && (mm >= DefaultValues.ZERO_LONG)) {
         res = true;
       }
     }
     catch (final ParseException e) {
 
-      try {
-        simpleHourMinFormat.parse(hour);
-        final long hh = Long.parseLong(hour.substring(0, 2));
-        final long mm = Long.parseLong(hour.substring(2, 4));
-        final long ss = Long.parseLong(hour.substring(4, 6));
-        if ((hh < 24) && (hh >= 0) && (mm < 60) && (mm >= 0) && (ss < 60)
-          && (ss >= 0)) {
-          res = true;
-        }
-      }
-      catch (final ParseException e1) {
-        res = false;
-      }
+      res = handleValidHourException(hour, simpleHourMinFormat);
 
     }
     catch (final Exception ex2) {
       res = false;
     }
     return res;
+  }
+
+  /**
+   * @param valid
+   * @param hh
+   * @param mm
+   * @param ss
+   * @return
+   */
+  private Boolean isTimeValid(final long hh, final long mm, final long ss) {
+
+    boolean valid = false;
+
+    if ((hh < HOUR_PER_DAY) && (hh >= DefaultValues.ZERO_LONG)) {
+
+      if ((mm < MINUTES_PER_HOUR) && (mm >= DefaultValues.ZERO_LONG)
+        && (ss < SECONDS_PER_MINUTE) && (ss >= DefaultValues.ZERO_LONG)) {
+        {
+          valid = true;
+        }
+      }
+    }
+
+    return valid;
   }
 
   /**

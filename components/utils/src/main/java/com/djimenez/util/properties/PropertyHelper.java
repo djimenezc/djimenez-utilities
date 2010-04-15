@@ -20,11 +20,11 @@ import com.djimenez.util.helper.NumberHelper;
  * @version 1.0
  * @see java.util.ResourceBundle
  */
-public class PropertyHelper {
+public final class PropertyHelper {
 
   private static PropertyHelper instance;
 
-  private static final Logger logger = Logger.getLogger(PropertyHelper.class);
+  private static Logger logger = Logger.getLogger(PropertyHelper.class);
 
   public static PropertyHelper getInstance() {
 
@@ -66,8 +66,7 @@ public class PropertyHelper {
    * @exception PropertyException
    *              if an I/O error occurs.
    */
-  public Properties getProperties(final String filePath)
-    throws PropertyException {
+  public Properties getProperties(final String filePath) {
 
     final Properties properties = new Properties();
 
@@ -100,8 +99,7 @@ public class PropertyHelper {
    * @exception PropertyException
    *              if an I/O error occurs.
    */
-  public String getProperty(final String key, final String fileName)
-    throws PropertyException {
+  public String getProperty(final String key, final String fileName) {
 
     return getProperties(fileName).getProperty(key);
   }
@@ -115,8 +113,7 @@ public class PropertyHelper {
    * @exception PropertyException
    *              if an I/O error occurs.
    */
-  public Integer getPropertyInteger(final String key, final String fileName)
-    throws PropertyException {
+  public Integer getPropertyInteger(final String key, final String fileName) {
 
     final String value = getProperties(fileName).getProperty(key);
 
@@ -138,8 +135,7 @@ public class PropertyHelper {
    * @exception PropertyException
    *              if an I/O error occurs.
    */
-  public Long getPropertyLong(final String key, final String fileName)
-    throws PropertyException {
+  public Long getPropertyLong(final String key, final String fileName) {
 
     final String value = getProperties(fileName).getProperty(key);
 

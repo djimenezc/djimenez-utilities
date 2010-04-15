@@ -34,7 +34,8 @@ public class NetServicesImpl implements NetServices {
   private static final String NETWORK = "NETWORK";
 
   // Administracion de servicios Fedora
-  ServiceManagement serviceManagement = new ServiceManagementImpl();
+  private final ServiceManagement serviceManagement =
+    new ServiceManagementImpl();
   // Wrapper for properties file
   private final SystemFilePropertiesHelper systemFilePropertiesHelper =
     new SystemFilePropertiesHelper();
@@ -51,7 +52,7 @@ public class NetServicesImpl implements NetServices {
   }
 
   @Override
-  public void bringUp(final String networkInterface) throws NetException {
+  public final void bringUp(final String networkInterface) throws NetException {
     try {
       this.serviceManagement.start(NETWORK_SERVICE);
     }
@@ -61,7 +62,7 @@ public class NetServicesImpl implements NetServices {
   }
 
   @Override
-  public void down(final String networkInterface) throws NetException {
+  public final void down(final String networkInterface) throws NetException {
     try {
       this.serviceManagement.stop(NETWORK_SERVICE);
     }
@@ -71,7 +72,7 @@ public class NetServicesImpl implements NetServices {
   }
 
   @Override
-  public String getBroadCast() throws NetException {
+  public final String getBroadCast() throws NetException {
     try {
       return this.systemFilePropertiesHelper.getProperty(BROADCAST);
     }
@@ -80,15 +81,12 @@ public class NetServicesImpl implements NetServices {
     }
   }
 
-  //
-  // Getters and Setters
-  //
-  public String getComments() {
+  public final String getComments() {
     return this.comments;
   }
 
   @Override
-  public String getIPaddr() throws NetException {
+  public final String getIPaddr() throws NetException {
     try {
       return this.systemFilePropertiesHelper.getProperty(IPADDR);
     }
@@ -98,7 +96,7 @@ public class NetServicesImpl implements NetServices {
   }
 
   @Override
-  public String getNetMask() throws NetException {
+  public final String getNetMask() throws NetException {
     try {
       return this.systemFilePropertiesHelper.getProperty(NETMASK);
     }
@@ -108,7 +106,7 @@ public class NetServicesImpl implements NetServices {
   }
 
   @Override
-  public String getNetwork() throws NetException {
+  public final String getNetwork() throws NetException {
     try {
       return this.systemFilePropertiesHelper.getProperty(NETWORK);
     }
@@ -118,7 +116,7 @@ public class NetServicesImpl implements NetServices {
   }
 
   @Override
-  public void setBroadCast(final String value) throws NetException {
+  public final void setBroadCast(final String value) throws NetException {
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
         BROADCAST, value, this.comments);
@@ -128,12 +126,12 @@ public class NetServicesImpl implements NetServices {
     }
   }
 
-  public void setComments(final String comments) {
+  public final void setComments(final String comments) {
     this.comments = comments;
   }
 
   @Override
-  public void setIPaddr(final String value) throws NetException {
+  public final void setIPaddr(final String value) throws NetException {
 
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
@@ -145,7 +143,7 @@ public class NetServicesImpl implements NetServices {
   }
 
   @Override
-  public void setNetMask(final String value) throws NetException {
+  public final void setNetMask(final String value) throws NetException {
 
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
@@ -157,7 +155,7 @@ public class NetServicesImpl implements NetServices {
   }
 
   @Override
-  public void setNetwork(final String value) throws NetException {
+  public final void setNetwork(final String value) throws NetException {
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
         NETWORK, value, this.comments);

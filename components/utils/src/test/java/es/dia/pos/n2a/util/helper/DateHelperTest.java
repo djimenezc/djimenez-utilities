@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
+import com.djimenez.model.DefaultValues;
 import com.djimenez.util.helper.DateHelper;
 
 /**
@@ -16,6 +17,8 @@ import com.djimenez.util.helper.DateHelper;
  */
 public class DateHelperTest extends TestCase {
 
+  private static final int BEGIN_YEAR_DATE = 1970;
+  private static final int MILLISECONDS_1970 = 345600000;
   private static final String DATE_PATTERN = "ddMMyyyy";
   private static final String FORMAT_DATE_SLASH = "dd/MM/yyyy";
   private static final String FORMAT_DATE_HYPHEN = "dd-MM-yyyy";
@@ -24,107 +27,131 @@ public class DateHelperTest extends TestCase {
   private static final String FORMAT_DATE_SLASH_INVERTED = "yyyy/MM/dd";
 
   @Test
-  public void testCheckDateBeforeToday() {
-    Date date = new Date(System.currentTimeMillis() + 345600000);
+  public final void testCheckDateBeforeToday() {
+
+    Date date = new Date(System.currentTimeMillis() + MILLISECONDS_1970);
     assertTrue(DateHelper.getInstance().checkDateBeforeToday(date)
       .booleanValue());
-    date = new Date(System.currentTimeMillis() - 345600000);
+    date = new Date(System.currentTimeMillis() - MILLISECONDS_1970);
     assertFalse(DateHelper.getInstance().checkDateBeforeToday(date)
       .booleanValue());
   }
 
   @Test
-  public void testCheckDateIntoRange() {
+  public final void testCheckDateIntoRange() {
+
     final Calendar calendar = new GregorianCalendar();
-    calendar.set(Calendar.DAY_OF_MONTH, 4);
-    calendar.set(Calendar.MONTH, 0);
-    calendar.set(Calendar.YEAR, 1970);
-    calendar.set(Calendar.HOUR_OF_DAY, 0);
-    calendar.set(Calendar.MINUTE, 0);
-    calendar.set(Calendar.SECOND, 0);
+    final int value = 4;
+    calendar.set(Calendar.DAY_OF_MONTH, value);
+    calendar.set(Calendar.MONTH, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.YEAR, BEGIN_YEAR_DATE);
+    calendar.set(Calendar.HOUR_OF_DAY, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.MINUTE, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.SECOND, DefaultValues.ZERO_INT);
     final Date date1 = calendar.getTime();
 
-    calendar.set(Calendar.DAY_OF_MONTH, 1);
-    calendar.set(Calendar.MONTH, 0);
-    calendar.set(Calendar.YEAR, 1970);
-    calendar.set(Calendar.HOUR_OF_DAY, 0);
-    calendar.set(Calendar.MINUTE, 0);
-    calendar.set(Calendar.SECOND, 0);
+    final int value2 = 1;
+    calendar.set(Calendar.DAY_OF_MONTH, value2);
+    calendar.set(Calendar.MONTH, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.YEAR, BEGIN_YEAR_DATE);
+    calendar.set(Calendar.HOUR_OF_DAY, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.MINUTE, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.SECOND, DefaultValues.ZERO_INT);
     final Date date2 = calendar.getTime();
-    assertTrue(DateHelper.getInstance().checkDateIntoRange(date1, date2, 6)
+
+    final int days = 6;
+
+    assertTrue(DateHelper.getInstance().checkDateIntoRange(date1, date2, days)
       .booleanValue());
-    assertTrue(DateHelper.getInstance().checkDateIntoRange(date1, date2, 4)
+    final int days2 = 4;
+    assertTrue(DateHelper.getInstance().checkDateIntoRange(date1, date2, days2)
       .booleanValue());
-    assertFalse(DateHelper.getInstance().checkDateIntoRange(date1, date2, 2)
-      .booleanValue());
+    final int days3 = 2;
+    assertFalse(DateHelper.getInstance()
+      .checkDateIntoRange(date1, date2, days3).booleanValue());
   }
 
   @Test
-  public void testCheckDateNotAfterLimit() {
+  public final void testCheckDateNotAfterLimit() {
 
     // 4 days before today
     final Calendar calendar = new GregorianCalendar();
 
-    calendar.roll(Calendar.DAY_OF_MONTH, -4);
+    final int amount = -4;
+    calendar.roll(Calendar.DAY_OF_MONTH, amount);
 
     final Date dateLimit = calendar.getTime();
 
+    final int i = 30;
     assertTrue(DateHelper.getInstance().checkDateNotAfterLimit(dateLimit,
-      Integer.valueOf(30)).booleanValue());
+      Integer.valueOf(i)).booleanValue());
 
+    final int i2 = 15;
     assertTrue(DateHelper.getInstance().checkDateNotAfterLimit(dateLimit,
-      Integer.valueOf(15)).booleanValue());
+      Integer.valueOf(i2)).booleanValue());
 
+    final int i3 = 5;
     assertTrue(DateHelper.getInstance().checkDateNotAfterLimit(dateLimit,
-      Integer.valueOf(5)).booleanValue());
+      Integer.valueOf(i3)).booleanValue());
 
+    final int i4 = 3;
     assertFalse(DateHelper.getInstance().checkDateNotAfterLimit(dateLimit,
-      Integer.valueOf(3)).booleanValue());
+      Integer.valueOf(i4)).booleanValue());
   }
 
   @Test
-  public void testCheckDateNotExceedLimit() {
+  public final void testCheckDateNotExceedLimit() {
 
     final Calendar calendar = new GregorianCalendar();
 
-    calendar.set(Calendar.DAY_OF_MONTH, 4);
-    calendar.set(Calendar.MONTH, 0);
-    calendar.set(Calendar.YEAR, 1970);
-    calendar.set(Calendar.HOUR_OF_DAY, 0);
-    calendar.set(Calendar.MINUTE, 0);
-    calendar.set(Calendar.SECOND, 0);
+    final int value = 4;
+    calendar.set(Calendar.DAY_OF_MONTH, value);
+    calendar.set(Calendar.MONTH, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.YEAR, BEGIN_YEAR_DATE);
+    calendar.set(Calendar.HOUR_OF_DAY, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.MINUTE, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.SECOND, DefaultValues.ZERO_INT);
 
     final Date date1 = calendar.getTime();
 
     calendar.set(Calendar.DAY_OF_MONTH, 1);
-    calendar.set(Calendar.MONTH, 0);
-    calendar.set(Calendar.YEAR, 1970);
-    calendar.set(Calendar.HOUR_OF_DAY, 0);
-    calendar.set(Calendar.MINUTE, 0);
-    calendar.set(Calendar.SECOND, 0);
+    calendar.set(Calendar.MONTH, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.YEAR, BEGIN_YEAR_DATE);
+    calendar.set(Calendar.HOUR_OF_DAY, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.MINUTE, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.SECOND, DefaultValues.ZERO_INT);
 
     final Date date2 = calendar.getTime();
 
+    final int days = 2;
     assertFalse(DateHelper.getInstance().checkDateNotExceedLimit(date1, date2,
-      2).booleanValue());
-    assertTrue(DateHelper.getInstance()
-      .checkDateNotExceedLimit(date1, date2, 4).booleanValue());
-    assertTrue(DateHelper.getInstance()
-      .checkDateNotExceedLimit(date1, date2, 6).booleanValue());
+      days).booleanValue());
+
+    final int days2 = 4;
+    assertTrue(DateHelper.getInstance().checkDateNotExceedLimit(date1, date2,
+      days2).booleanValue());
+
+    final int days3 = 6;
+    assertTrue(DateHelper.getInstance().checkDateNotExceedLimit(date1, date2,
+      days3).booleanValue());
   }
 
   @Test
-  public void testCheckDateToday() {
-    Date date = new Date(System.currentTimeMillis() - 345600000);
+  public final void testCheckDateToday() {
+
+    Date date = new Date(System.currentTimeMillis() - MILLISECONDS_1970);
+
     assertFalse(DateHelper.getInstance().checkDateToday(date).booleanValue());
+
     assertTrue(DateHelper.getInstance().checkDateToday(new Date())
       .booleanValue());
-    date = new Date(System.currentTimeMillis() + 345600000);
+
+    date = new Date(System.currentTimeMillis() + MILLISECONDS_1970);
     assertFalse(DateHelper.getInstance().checkDateToday(date).booleanValue());
   }
 
   @Test
-  public void testDateToString() {
+  public final void testDateToString() {
     final Date date = new Date();
     date.setTime(0L);
     assertEquals("01011970", DateHelper.getInstance().dateToString(date,
@@ -142,14 +169,14 @@ public class DateHelperTest extends TestCase {
   }
 
   @Test
-  public void testStringToDate() {
+  public final void testStringToDate() {
     final Calendar calendar = new GregorianCalendar();
     calendar.set(Calendar.DAY_OF_MONTH, 1);
-    calendar.set(Calendar.MONTH, 0);
-    calendar.set(Calendar.YEAR, 1970);
-    calendar.set(Calendar.HOUR_OF_DAY, 0);
-    calendar.set(Calendar.MINUTE, 0);
-    calendar.set(Calendar.SECOND, 0);
+    calendar.set(Calendar.MONTH, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.YEAR, BEGIN_YEAR_DATE);
+    calendar.set(Calendar.HOUR_OF_DAY, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.MINUTE, DefaultValues.ZERO_INT);
+    calendar.set(Calendar.SECOND, DefaultValues.ZERO_INT);
     final Date date = calendar.getTime();
     assertEquals(date.toString(), DateHelper.getInstance().stringToDate(
       "01011970", DATE_PATTERN).toString());
@@ -172,11 +199,15 @@ public class DateHelperTest extends TestCase {
   }
 
   @Test
-  public void testStringToDateLimitYear() {
+  public final void testStringToDateLimitYear() {
+
+    final int limitYear = 2001;
+
     assertNotNull(DateHelper.getInstance().stringToDateLimitYear("01011970",
-      DATE_PATTERN, 2001));
+      DATE_PATTERN, limitYear));
+
     assertNull(DateHelper.getInstance().stringToDateLimitYear("01012010",
-      DATE_PATTERN, 2001));
+      DATE_PATTERN, limitYear));
   }
 
 }

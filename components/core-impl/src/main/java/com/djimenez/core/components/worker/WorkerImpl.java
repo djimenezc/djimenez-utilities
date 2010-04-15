@@ -30,7 +30,7 @@ public class WorkerImpl implements Worker {
   // Map<ClassName, Map< Notification name , WorkerClass name > >
   private final Map<String, Map<String, String>> classMap;
   // Logger
-  protected static final Logger logger = Logger.getLogger(WorkerImpl.class);
+  private static Logger logger = Logger.getLogger(WorkerImpl.class);
 
   /**
    * @return WorkerImpl singleton instance
@@ -56,7 +56,8 @@ public class WorkerImpl implements Worker {
    * method
    */
   @Override
-  public void doExecute(final Notification notification, final Command command) {
+  public final void doExecute(final Notification notification,
+    final Command command) {
     // String getClassName
     final String className = command.getClass().getName();
     // Check if exist inner object in mapObject
@@ -90,7 +91,7 @@ public class WorkerImpl implements Worker {
    * onNotification method. Set current WorkerMediator for doOnSubmit method
    */
   @Override
-  public void doOnNotification(final Notification notification,
+  public final void doOnNotification(final Notification notification,
     final Mediator mediator) {
     // Get className
     final String className = mediator.getClass().getName();
@@ -128,8 +129,8 @@ public class WorkerImpl implements Worker {
    * Invoke onSubmit method of current WorkerMediator
    */
   @Override
-  public void doOnSubmit(final KeyType submitKey, final String operatorLine,
-    final Mediator mediator) {
+  public final void doOnSubmit(final KeyType submitKey,
+    final String operatorLine, final Mediator mediator) {
 
     final String currentMediatorClassName =
       ViewImpl.getInstance().getCurrentMediator().getClass().getName();
@@ -152,7 +153,7 @@ public class WorkerImpl implements Worker {
    * Add a new Class value with notificationName key
    */
   @Override
-  public void registerClass(final Class<?> outerClass,
+  public final void registerClass(final Class<?> outerClass,
     final String notificationName, final Class<?> workerClass) {
 
     final Map<String, String> stepCommandOrMediator =

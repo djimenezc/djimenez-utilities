@@ -40,14 +40,15 @@ import com.djimenez.core.patterns.interfaces.dao.GenericDaoExtend;
  * @param <PK>
  *          the primary key for that type
  */
-public class GenericDaoHibernate<T, PK extends Serializable> implements
-  GenericDaoExtend<T, PK> {
+public abstract class GenericDaoHibernate<T, PK extends Serializable>
+  implements GenericDaoExtend<T, PK> {
 
   /**
    * Log variable for all child classes. Uses LogFactory.getLog(getClass()) from
    * Commons Logging
    */
-  protected final Log log = LogFactory.getLog(getClass());
+  private final Log log = LogFactory.getLog(getClass());
+
   private final Class<T> persistentClass;
   private HibernateTemplate hibernateTemplate;
   private SessionFactory sessionFactory;
@@ -82,7 +83,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
   /**
    * {@inheritDoc}
    */
-  public boolean exists(final PK id) {
+  public final boolean exists(final PK id) {
     final T entity = hibernateTemplate.get(this.persistentClass, id);
     return entity != null;
   }
@@ -90,8 +91,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
   /**
    * {@inheritDoc}
    */
-  @SuppressWarnings("unchecked")
-  public List<T> findByNamedQuery(final String queryName,
+  public final List<T> findByNamedQuery(final String queryName,
     final Map<String, Object> queryParams) {
 
     final String[] params = new String[queryParams.size()];
@@ -110,19 +110,24 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
       values[index++] = entry.getValue();
     }
 
-    return hibernateTemplate.findByNamedQueryAndNamedParam(queryName, params,
-      values);
+    @SuppressWarnings("unchecked")
+    final List<T> queryList =
+      hibernateTemplate
+        .findByNamedQueryAndNamedParam(queryName, params, values);
+
+    return queryList;
   }
 
   /**
    * {@inheritDoc}
    */
-  public T get(final PK id) {
+  public final T get(final PK id) {
     final T entity = hibernateTemplate.get(this.persistentClass, id);
 
     if (entity == null) {
-      log.warn("Uh oh, '" + this.persistentClass + "' object with id '" + id
-        + "' not found...");
+      getLog().warn(
+        "Uh oh, '" + this.persistentClass + "' object with id '" + id
+          + "' not found...");
       throw new ObjectRetrievalFailureException(this.persistentClass, id);
     }
 
@@ -132,45 +137,53 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
   /**
    * {@inheritDoc}
    */
-  public List<T> getAll() {
+  public final List<T> getAll() {
     return hibernateTemplate.loadAll(this.persistentClass);
   }
 
   /**
    * {@inheritDoc}
    */
-  public List<T> getAllDistinct() {
+  public final List<T> getAllDistinct() {
 
     final Collection<T> result = new LinkedHashSet<T>(getAll());
 
     return new ArrayList<T>(result);
   }
 
-  public HibernateTemplate getHibernateTemplate() {
+  public final HibernateTemplate getHibernateTemplate() {
     return this.hibernateTemplate;
   }
 
-  public SessionFactory getSessionFactory() {
+  /**
+   * @return the log
+   */
+  public final Log getLog() {
+    return log;
+  }
+
+  public final SessionFactory getSessionFactory() {
     return this.sessionFactory;
   }
 
   /**
    * {@inheritDoc}
    */
-  public void remove(final PK id) {
+  public final void remove(final PK id) {
     hibernateTemplate.delete(this.get(id));
   }
 
   /**
    * {@inheritDoc}
    */
-  public T save(final T object) {
+  public final T save(final T object) {
+
     return hibernateTemplate.merge(object);
   }
 
   @Autowired
   @Required
-  public void setSessionFactory(final SessionFactory sessionFactory) {
+  public final void setSessionFactory(final SessionFactory sessionFactory) {
     this.sessionFactory = sessionFactory;
     this.hibernateTemplate = new HibernateTemplate(sessionFactory);
   }

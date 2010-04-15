@@ -28,14 +28,14 @@ public class INIFileHelper {
   // Caracter por defecto para asignar a los comentarios
   private char characterComment = '#';
 
-  public char getCharacterComment() {
+  public final char getCharacterComment() {
     return this.characterComment;
   }
 
   //
   // Getters and Setters
   //
-  public String getPathFile() {
+  public final String getPathFile() {
     return this.pathFile;
   }
 
@@ -49,7 +49,7 @@ public class INIFileHelper {
    * @throws IOException
    *           On loading file error.
    */
-  public String getProperty(final String section, final String key)
+  public final String getProperty(final String section, final String key)
     throws IOException {
 
     this.load();
@@ -71,11 +71,11 @@ public class INIFileHelper {
     this.iniFile = new Wini(new File(this.pathFile));
   }
 
-  public void setCharacterComment(final char characterComment) {
+  public final void setCharacterComment(final char characterComment) {
     this.characterComment = characterComment;
   }
 
-  public void setPathFile(final String pathFile) {
+  public final void setPathFile(final String pathFile) {
     this.pathFile = pathFile;
   }
 
@@ -95,7 +95,7 @@ public class INIFileHelper {
    * @throws IOException
    *           On storing file error or validation error
    */
-  public void setProperty(final String section, final String key,
+  public final void setProperty(final String section, final String key,
     final String value, final String comment) throws IOException {
 
     this.load();
@@ -129,7 +129,7 @@ public class INIFileHelper {
    * @throws IOException
    *           On storing file error or validation error
    */
-  public void setProperty(final Validator<String> validator,
+  public final void setProperty(final Validator<String> validator,
     final String section, final String key, final String value,
     final String comment) throws IOException {
 

@@ -10,6 +10,8 @@ import javax.persistence.Table;
 
 import org.springframework.core.style.ToStringCreator;
 
+import com.djimenez.model.constants.JpaConstants;
+
 /**
  * Created by IntelliJ IDEA. User: mjimenez Date: 01-ago-2007 Time: 10:28:04
  */
@@ -18,32 +20,32 @@ import org.springframework.core.style.ToStringCreator;
 @Table(name = "events")
 public class Event {
 
-  protected Long id;
-  protected String name;
-  protected String description;
+  private Long id;
+  private String name;
+  private String description;
   private Date date;
 
   /**
    * @return the date
    */
   @Column
-  public Date getDate() {
+  public final Date getDate() {
     return date;
   }
 
-  @Column(length = 150)
-  public String getDescription() {
+  @Column(length = JpaConstants.LENGTH_DESCRIPTION)
+  public final String getDescription() {
     return description;
   }
 
   @Id
   @GeneratedValue
-  public Long getId() {
+  public final Long getId() {
     return id;
   }
 
-  @Column(nullable = false, length = 50, unique = true)
-  public String getName() {
+  @Column(nullable = false, length = JpaConstants.DEFAULT_LENGTH, unique = true)
+  public final String getName() {
     return name;
   }
 
@@ -51,24 +53,24 @@ public class Event {
    * @param date
    *          the date to set
    */
-  public void setDate(final Date date) {
+  public final void setDate(final Date date) {
     this.date = date;
   }
 
-  public void setDescription(final String description) {
+  public final void setDescription(final String description) {
     this.description = description;
   }
 
-  public void setId(final Long id) {
+  public final void setId(final Long id) {
     this.id = id;
   }
 
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return new ToStringCreator(this).append("id", getId()).append("name",
       getName()).append("description", getDescription()).toString();
   }

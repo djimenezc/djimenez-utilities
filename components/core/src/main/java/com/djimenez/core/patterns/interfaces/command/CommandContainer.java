@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-
 /**
  * The Command container.
  * 
@@ -12,18 +11,19 @@ import org.apache.log4j.Logger;
  */
 public class CommandContainer {
 
-  private static final Logger logger = Logger.getLogger(CommandContainer.class);
+  private static Logger logger = Logger.getLogger(CommandContainer.class);
+
   private Map<String, Command> commandMap;
 
   public CommandContainer() {
     // do nothing yet
   }
 
-  public Map<String, Command> getCommandMap() {
+  public final Map<String, Command> getCommandMap() {
     return this.commandMap;
   }
 
-  public void setCommandMap(final Map<String, Command> commandMap) {
+  public final void setCommandMap(final Map<String, Command> commandMap) {
     this.commandMap = commandMap;
     if (logger.isTraceEnabled()) {
       int i = 0;
@@ -35,7 +35,7 @@ public class CommandContainer {
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return "CommandContainer [" + "commandMap " + this.commandMap + "]";
   }
 

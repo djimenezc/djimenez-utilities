@@ -7,18 +7,19 @@ import junit.framework.TestCase;
 
 public class StringUtilTest extends TestCase {
 
-  public void testDeleteAccents() {
+  public final void testDeleteAccents() {
 
     final String stringWithAccents = "holá";
 
     final String cleanString =
-      com.djimenez.util.string.StringUtils.deleteStrangeSimbols(stringWithAccents);
+      com.djimenez.util.string.StringUtils
+        .deleteStrangeSimbols(stringWithAccents);
 
     assertFalse(org.apache.commons.lang.StringUtils.contains(cleanString, 'á'));
 
   }
 
-  public void testEncodeString() throws UnsupportedEncodingException {
+  public final void testEncodeString() throws UnsupportedEncodingException {
 
     final String stringWithAccents = "holá";
 

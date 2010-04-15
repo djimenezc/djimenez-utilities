@@ -2,7 +2,6 @@ package com.djimenez.persistence.dao.user;
 
 import java.util.List;
 
-import org.springframework.security.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +44,6 @@ public interface UserDao extends GenericDaoExtend<User, Long> {
    *           thrown when user not found in database
    */
   @Transactional
-  User loadUserByUsername(String username) throws UsernameNotFoundException;
+  User loadUserByUsername(String username);
 
 }

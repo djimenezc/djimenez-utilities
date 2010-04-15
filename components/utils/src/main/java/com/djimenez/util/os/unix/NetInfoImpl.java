@@ -45,7 +45,7 @@ public class NetInfoImpl implements NetInfo {
   }
 
   @Override
-  public String getGateWay() throws NetException {
+  public final String getGateWay() throws NetException {
 
     try {
       return this.systemFilePropertiesHelper.getProperty(GATEWAY);
@@ -56,7 +56,7 @@ public class NetInfoImpl implements NetInfo {
   }
 
   @Override
-  public String getHostName() throws NetException {
+  public final String getHostName() throws NetException {
     try {
       return this.systemFilePropertiesHelper.getProperty(HOSTNAME);
     }
@@ -66,7 +66,7 @@ public class NetInfoImpl implements NetInfo {
   }
 
   @Override
-  public void setGateWay(final String value) throws NetException {
+  public final void setGateWay(final String value) throws NetException {
 
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
@@ -79,7 +79,7 @@ public class NetInfoImpl implements NetInfo {
   }
 
   @Override
-  public void setHostName(final String value) throws NetException {
+  public final void setHostName(final String value) throws NetException {
 
     try {
       this.systemFilePropertiesHelper.setProperty(HOSTNAME, value,

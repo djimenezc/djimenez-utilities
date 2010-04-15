@@ -14,7 +14,7 @@ import org.compass.core.converter.ConversionException;
  * 
  * @author <a href="mailto:dan@getrolling.com">Dan Kibler</a>
  */
-public class TimestampConverter extends DateConverter {
+public class TimestampConverter {
 
   /**
    * i18n-ized timestamp format - based on values in
@@ -32,7 +32,7 @@ public class TimestampConverter extends DateConverter {
    *          the String value
    * @return a converted date
    */
-  protected Object convertToDate(final Class<?> type, final Object value) {
+  public final Object convertToDate(final Class<?> type, final Object value) {
     final DateFormat df = new SimpleDateFormat(TS_FORMAT);
     if (value instanceof String) {
       try {
@@ -60,8 +60,7 @@ public class TimestampConverter extends DateConverter {
    *          the date instance
    * @return string version of date using default date pattern
    */
-  @Override
-  protected Object convertToString(final Class<?> type, final Object value) {
+  public final Object convertToString(final Class<?> type, final Object value) {
     final DateFormat df = new SimpleDateFormat(TS_FORMAT);
     if (value instanceof Date) {
       try {

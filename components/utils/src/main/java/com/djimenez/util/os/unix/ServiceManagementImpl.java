@@ -20,17 +20,18 @@ public class ServiceManagementImpl implements ServiceManagement {
   private static final String CMD_SERVICE_STATUS = "status";
 
   // Logger
-  private static final Logger logger =
-    Logger.getLogger(ServiceManagementImpl.class);
+  private static Logger logger = Logger.getLogger(ServiceManagementImpl.class);
 
   @Override
-  public void restart(final String service) throws ServiceManagementException {
+  public final void restart(final String service)
+    throws ServiceManagementException {
     this.start(service);
     this.stop(service);
   }
 
   @Override
-  public void start(final String service) throws ServiceManagementException {
+  public final void start(final String service)
+    throws ServiceManagementException {
 
     final String command =
       ServiceManagementImpl.CMD_SERVICE + " " + service + " "
@@ -46,7 +47,8 @@ public class ServiceManagementImpl implements ServiceManagement {
   }
 
   @Override
-  public int status(final String service) throws ServiceManagementException {
+  public final int status(final String service)
+    throws ServiceManagementException {
 
     final int status = 0;
 
@@ -66,7 +68,8 @@ public class ServiceManagementImpl implements ServiceManagement {
   }
 
   @Override
-  public void stop(final String service) throws ServiceManagementException {
+  public final void stop(final String service)
+    throws ServiceManagementException {
 
     final String command =
       ServiceManagementImpl.CMD_SERVICE + " " + service + " "

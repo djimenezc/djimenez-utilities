@@ -14,6 +14,8 @@ import java.nio.channels.FileChannel;
  */
 public final class FileUtil {
 
+  private static final int BUFFER_SIZE = 256;
+
   public static void copy(final File from, final File to) throws IOException {
     FileChannel source = null;
     FileChannel target = null;
@@ -58,7 +60,7 @@ public final class FileUtil {
 
   public static String readBytes(final InputStream inputStream, final int count)
     throws Exception {
-    final byte[] buffer = new byte[256];
+    final byte[] buffer = new byte[BUFFER_SIZE];
 
     if (inputStream.read(buffer, 0, count) < count) {
       throw new Exception("Expected to read " + count

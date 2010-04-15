@@ -13,7 +13,7 @@ import com.djimenez.core.patterns.interfaces.Observer;
  */
 public class ObserverEntry {
 
-  private static final Logger logger = Logger.getLogger(ObserverEntry.class);
+  private static Logger logger = Logger.getLogger(ObserverEntry.class);
   private Observer observer;
   private String notificationName;
 
@@ -28,7 +28,7 @@ public class ObserverEntry {
     }
   }
 
-  public void addObserver(final Observer observerNew) {
+  public final void addObserver(final Observer observerNew) {
     if (this.observer != null) {
       if (logger.isDebugEnabled()) {
         logger.debug("Overridding observer: " + this.observer + "to "
@@ -41,7 +41,7 @@ public class ObserverEntry {
     }
   }
 
-  public void deleteObserver(final Observer observerDeleted) {
+  public final void deleteObserver(final Observer observerDeleted) {
     if (observerDeleted != null) {
       if (this.observer.equals(observerDeleted)) {
         this.observer = null;
@@ -52,15 +52,16 @@ public class ObserverEntry {
     }
   }
 
-  public String getNotificationName() {
+  public final String getNotificationName() {
     return this.notificationName;
   }
 
-  public Observer getObserver() {
+  public final Observer getObserver() {
     return this.observer;
   }
 
-  public void notifyObservers(final Notification notification) throws Throwable {
+  public final void notifyObservers(final Notification notification)
+    throws Exception {
     if (notification != null) {
       if (this.observer != null) {
         this.observer.notifyObserver(notification);

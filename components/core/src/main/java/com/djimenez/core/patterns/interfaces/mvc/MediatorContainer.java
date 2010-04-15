@@ -4,25 +4,23 @@ import java.util.Collection;
 
 import org.apache.log4j.Logger;
 
-
 /**
  * @author djimenez
  */
 public class MediatorContainer {
 
-  private static final Logger logger =
-    Logger.getLogger(MediatorContainer.class);
+  private static Logger logger = Logger.getLogger(MediatorContainer.class);
 
   private Collection<Mediator> mediatorCollection;
 
   public MediatorContainer() {
   }
 
-  public Collection<Mediator> getMediatorCollection() {
+  public final Collection<Mediator> getMediatorCollection() {
     return mediatorCollection;
   }
 
-  public void setMediatorCollection(
+  public final void setMediatorCollection(
     final Collection<Mediator> mediatorCollection) {
     this.mediatorCollection = mediatorCollection;
 
@@ -37,7 +35,7 @@ public class MediatorContainer {
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return "MediatorContainer [" + "mediatorCollection " + mediatorCollection
       + "]";
   }

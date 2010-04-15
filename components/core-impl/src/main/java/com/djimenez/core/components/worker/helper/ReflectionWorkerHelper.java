@@ -25,11 +25,11 @@ import com.djimenez.model.keys.KeyType;
  * 
  * @author Ben Jhonson
  */
-public class ReflectionWorkerHelper {
+public final class ReflectionWorkerHelper {
 
   private static final String SUBMIT_METHOD_PREFIX = "submitKey";
-  protected static final Logger logger =
-    Logger.getLogger(ReflectionWorkerHelper.class);
+
+  private static Logger logger = Logger.getLogger(ReflectionWorkerHelper.class);
 
   /**
    * Create a new instance of AbstractNotificationCommand with reflection.
@@ -280,6 +280,10 @@ public class ReflectionWorkerHelper {
     // Se ha hecho publico porque teniamos una dependencia con
     // mvc-componentes
     // ((AbstractMediator) mediator).setSubmitKeys(keyTypes);
+  }
+
+  private ReflectionWorkerHelper() {
+
   }
 
 }

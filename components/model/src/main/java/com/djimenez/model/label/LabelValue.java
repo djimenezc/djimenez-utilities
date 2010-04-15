@@ -74,7 +74,7 @@ public class LabelValue implements Comparable<Object>, Serializable {
    *          LabelValue object to compare to
    * @return 0 if labels match for compared objects
    */
-  public int compareTo(final Object o) {
+  public final int compareTo(final Object o) {
     // Implicitly tests for the correct type, throwing
     // ClassCastException as required by interface
     final String otherLabel = ((LabelValue) o).getLabel();
@@ -91,7 +91,7 @@ public class LabelValue implements Comparable<Object>, Serializable {
    * @return true/false based on whether values match or not
    */
   @Override
-  public boolean equals(final Object obj) {
+  public final boolean equals(final Object obj) {
     if (obj == this) {
       return true;
     }
@@ -117,11 +117,11 @@ public class LabelValue implements Comparable<Object>, Serializable {
 
   }
 
-  public String getLabel() {
+  public final String getLabel() {
     return this.label;
   }
 
-  public String getValue() {
+  public final String getValue() {
     return this.value;
   }
 
@@ -134,15 +134,18 @@ public class LabelValue implements Comparable<Object>, Serializable {
    * @return hashCode
    */
   @Override
-  public int hashCode() {
-    return (this.getValue() == null) ? 17 : this.getValue().hashCode();
+  public final int hashCode() {
+
+    final int i = 17;
+
+    return (this.getValue() == null) ? i : this.getValue().hashCode();
   }
 
-  public void setLabel(final String label) {
+  public final void setLabel(final String label) {
     this.label = label;
   }
 
-  public void setValue(final String value) {
+  public final void setValue(final String value) {
     this.value = value;
   }
 
@@ -152,7 +155,7 @@ public class LabelValue implements Comparable<Object>, Serializable {
    * @return object as a string
    */
   @Override
-  public String toString() {
+  public final String toString() {
     final StringBuffer sb = new StringBuffer("LabelValue[");
     sb.append(this.label);
     sb.append(", ");

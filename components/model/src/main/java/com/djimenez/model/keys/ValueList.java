@@ -18,18 +18,18 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 public class ValueList {
 
   @XmlAttribute(required = true)
-  protected String value;
+  private String value;
 
-  public String getValue() {
+  public final String getValue() {
     return this.value;
   }
 
-  public void setValue(final String value) {
+  public final void setValue(final String value) {
     this.value = value;
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return new ToStringBuilder(this).append("value", this.value).toString();
   }
 

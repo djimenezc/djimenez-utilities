@@ -19,14 +19,14 @@ import com.djimenez.util.os.configuration.files.validators.ValidatorIPFormat;
 public class DCSInfoImpl implements DCSInfo {
 
   // Logger
-  private static final Logger logger = Logger.getLogger(DCSInfoImpl.class);
+  private static Logger logger = Logger.getLogger(DCSInfoImpl.class);
 
   // Fichero asociado a la informacion de red de DCS
-  private final String DEFAULT_FILE =
+  private static final String DEFAULT_FILE =
     "/usr/local/n2a/lib/i386/gcc32/dcs/dcs.ini";
 
-  private final String SECTION_DCS = "Dcs";
-  private final String KEY_ADDRESS = "Address";
+  private static final String SECTION_DCS = "Dcs";
+  private static final String KEY_ADDRESS = "Address";
 
   // Wrapper for INI-DOS file
   private final INIFileHelper iniFileHelper = new INIFileHelper();
@@ -35,7 +35,7 @@ public class DCSInfoImpl implements DCSInfo {
   private final String comments = null;
 
   public DCSInfoImpl() {
-    this.iniFileHelper.setPathFile(this.DEFAULT_FILE);
+    this.iniFileHelper.setPathFile(DEFAULT_FILE);
   }
 
   public DCSInfoImpl(final String pathFile) {
@@ -43,13 +43,13 @@ public class DCSInfoImpl implements DCSInfo {
   }
 
   @Override
-  public String getIP() throws NetException {
+  public final String getIP() throws NetException {
 
     try {
 
       logger.debug("Retrieve DCS ip address");
 
-      return this.iniFileHelper.getProperty(this.SECTION_DCS, this.KEY_ADDRESS);
+      return this.iniFileHelper.getProperty(SECTION_DCS, KEY_ADDRESS);
 
     }
     catch (final IOException e) {
@@ -58,11 +58,11 @@ public class DCSInfoImpl implements DCSInfo {
   }
 
   @Override
-  public void setIP(final String value) throws NetException {
+  public final void setIP(final String value) throws NetException {
 
     try {
-      this.iniFileHelper.setProperty(new ValidatorIPFormat(), this.SECTION_DCS,
-        this.KEY_ADDRESS, value, this.comments);
+      this.iniFileHelper.setProperty(new ValidatorIPFormat(), SECTION_DCS,
+        KEY_ADDRESS, value, this.comments);
 
     }
     catch (final IOException e) {

@@ -11,10 +11,10 @@ import org.apache.log4j.Logger;
  */
 public abstract class AbstractSimpleCommand extends AbstractCommand {
 
-  protected static final Logger logger =
-    Logger.getLogger(AbstractSimpleCommand.class);
+  private static Logger logger = Logger.getLogger(AbstractSimpleCommand.class);
 
   protected AbstractSimpleCommand() {
+
     if (logger.isDebugEnabled()) {
       logger.debug("Command " + this.getClass().getSimpleName()
         + " initialized");

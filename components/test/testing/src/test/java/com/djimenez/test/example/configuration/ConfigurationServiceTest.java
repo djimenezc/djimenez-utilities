@@ -32,7 +32,7 @@ public class ConfigurationServiceTest extends AbstractTestCase {
     final User userCompare =
       ConfigurationServiceTestConfiguration.getInstance().buildTestUser();
 
-    org.junit.Assert.assertEquals(
+    org.unitils.reflectionassert.ReflectionAssert.assertLenientEquals(
       "User retrievement from the xml has been incorrected", userCompare,
       ConfigurationServiceTestConfiguration.getInstance().retrieveUserData());
 

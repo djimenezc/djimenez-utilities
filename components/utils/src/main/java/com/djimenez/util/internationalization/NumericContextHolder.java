@@ -13,8 +13,7 @@ import org.apache.log4j.Logger;
  */
 public final class NumericContextHolder implements NumericContext {
 
-  private static final Logger logger =
-    Logger.getLogger(NumericContextHolder.class);
+  private static Logger logger = Logger.getLogger(NumericContextHolder.class);
   private static NumericContextHolder instance;
 
   public static NumericContextHolder getInstance(final Locale locale) {

@@ -16,13 +16,13 @@ public class ValidatorIPFormat implements Validator<String> {
     "n2a-core-utils-messages";
 
   @Override
-  public String getErrorMesg() {
+  public final String getErrorMesg() {
     return ResourceBundle.getBundle(UTIL_MESSAGES_FILE_NAME).getString(
       "invalid.ip");
   }
 
   @Override
-  public boolean validate(final String ip) {
+  public final boolean validate(final String ip) {
 
     try {
       InetAddress.getByName(ip);

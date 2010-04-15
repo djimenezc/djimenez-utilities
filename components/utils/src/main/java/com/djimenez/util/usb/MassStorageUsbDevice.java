@@ -12,8 +12,9 @@ import com.djimenez.util.configuration.main.MainConfigurationFileHelper;
  */
 public class MassStorageUsbDevice {
 
-  private static final Logger logger =
-    Logger.getLogger(MassStorageUsbDevice.class);
+  private static final int BUFFER_SIZE = 256;
+
+  private static Logger logger = Logger.getLogger(MassStorageUsbDevice.class);
 
   private static final String N2A_HOME = System.getProperty("N2A_HOME");
   private static final String USB_SCRIPT =
@@ -30,7 +31,7 @@ public class MassStorageUsbDevice {
   public MassStorageUsbDevice() {
   }
 
-  public boolean close() {
+  public final boolean close() {
     boolean result = false;
     try {
       if (isMounted) {
@@ -66,19 +67,20 @@ public class MassStorageUsbDevice {
 
     while (counter >= 0) {
 
-      final byte[] b = new byte[256];
+      final byte[] b = new byte[BUFFER_SIZE];
+
       counter = process.getErrorStream().read(b);
       reason = reason.concat(new String(b));
     }
     return reason;
   }
 
-  public File getMassStorageUsbDevice() {
+  public final File getMassStorageUsbDevice() {
     final File file = new File(USB_PATH);
     return file;
   }
 
-  public boolean open() {
+  public final boolean open() {
     boolean result = false;
     try {
       if (!isMounted) {

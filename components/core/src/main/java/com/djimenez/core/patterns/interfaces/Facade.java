@@ -33,7 +33,7 @@ public interface Facade extends Notifier {
 
   View getView();
 
-  void notifyObservers(Notification note) throws Throwable;
+  void notifyObservers(Notification note) throws Exception;
 
   void pauseAllRemoteEvents();
 

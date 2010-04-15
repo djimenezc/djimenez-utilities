@@ -37,7 +37,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
   }
 
   @Override
-  public int calculateUserNumber() {
+  public final int calculateUserNumber() {
     // TODO Auto-generated method stub
     return 0;
   }
@@ -45,7 +45,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
   /**
    * {@inheritDoc}
    */
-  public String getUserPassword(final String username) {
+  public final String getUserPassword(final String username) {
     final SimpleJdbcTemplate jdbcTemplate =
       new SimpleJdbcTemplate(SessionFactoryUtils
         .getDataSource(getSessionFactory()));
@@ -59,7 +59,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
    * {@inheritDoc}
    */
   @SuppressWarnings("unchecked")
-  public List<User> getUsers() {
+  public final List<User> getUsers() {
     return getHibernateTemplate()
       .find("from User u order by upper(u.username)");
   }
@@ -67,8 +67,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
   /**
    * {@inheritDoc}
    */
-  public User loadUserByUsername(final String username)
-    throws UsernameNotFoundException {
+  public final User loadUserByUsername(final String username) {
 
     @SuppressWarnings("unchecked")
     final List<User> users =
@@ -91,14 +90,15 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
    *          the user to save
    * @return the modified user (with a primary key set if they're new)
    */
-  @Override
-  public User save(final User user) {
-    if (log.isDebugEnabled()) {
-      log.debug("user's id: " + user.getId());
+  public final User saveUser(final User user) {
+
+    if (getLog().isDebugEnabled()) {
+      getLog().debug("user's id: " + user.getId());
     }
     getHibernateTemplate().saveOrUpdate(user);
     // necessary to throw a DataIntegrityViolation and catch it in UserManager
     getHibernateTemplate().flush();
+
     return user;
   }
 

@@ -11,17 +11,17 @@ public interface UserService {
    * @param user
    * @return
    */
-  public int addUser(User user);
+  int addUser(User user);
 
   /**
    * @return
    */
-  public int getUserNumber();
+  int getUserNumber();
 
   /**
    * @param id
    * @return
    */
-  public User retrieveUser(int id);
+  User retrieveUser(int id);
 
 }

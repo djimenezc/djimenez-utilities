@@ -17,7 +17,7 @@ import com.djimenez.core.patterns.interfaces.command.CommandNotification;
  */
 public class TemplateCompositeCommand extends AbstractCommand {
 
-  protected static final Logger logger =
+  private static Logger logger =
     Logger.getLogger(TemplateCompositeCommand.class);
 
   private List<CommandNotification> subCommands = null;
@@ -26,16 +26,17 @@ public class TemplateCompositeCommand extends AbstractCommand {
     this.subCommands = new ArrayList<CommandNotification>();
   }
 
-  public void addSubCommand(final CommandNotification command) {
+  public final void addSubCommand(final CommandNotification command) {
     this.subCommands.add(command);
   }
 
-  public void addSubCommands(final List<CommandNotification> newSubCommands) {
+  public final void addSubCommands(
+    final List<CommandNotification> newSubCommands) {
     this.subCommands.addAll(newSubCommands);
   }
 
   @Override
-  public void execute() {
+  public final void execute() {
 
     for (final CommandNotification command : this.subCommands) {
       command.execute();
@@ -43,14 +44,14 @@ public class TemplateCompositeCommand extends AbstractCommand {
   }
 
   @Override
-  public void execute(final Notification notification) throws Exception {
+  public final void execute(final Notification notification) throws Exception {
 
     for (final CommandNotification command : this.subCommands) {
       command.execute(notification);
     }
   }
 
-  public void setSubCommands(final List<CommandNotification> subCommands) {
+  public final void setSubCommands(final List<CommandNotification> subCommands) {
     this.subCommands = subCommands;
     if (logger.isDebugEnabled()) {
       for (final CommandNotification command : subCommands) {
