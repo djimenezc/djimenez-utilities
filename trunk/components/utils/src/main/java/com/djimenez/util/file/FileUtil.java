@@ -12,7 +12,7 @@ import java.nio.channels.FileChannel;
  * @author f.soberon.diego
  * @version 1.0
  */
-public class FileUtil {
+public final class FileUtil {
 
   public static void copy(final File from, final File to) throws IOException {
     FileChannel source = null;
@@ -66,5 +66,8 @@ public class FileUtil {
     }
 
     return new String(buffer, 0, count);
+  }
+
+  private FileUtil() {
   }
 }

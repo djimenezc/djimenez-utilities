@@ -141,4 +141,7 @@ public final class StringHelperFO {
     }
   }
 
+  private StringHelperFO() {
+  }
+
 }

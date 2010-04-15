@@ -4,14 +4,11 @@ import java.io.Serializable;
 
 public class Response implements Serializable {
 
-  /**
-   * 
-   */
   private static final long serialVersionUID = -4349542390716335469L;
 
-  String name;
+  private String name;
 
-  String surname;
+  private String surname;
 
   public Response() {
 
@@ -26,14 +23,14 @@ public class Response implements Serializable {
   /**
    * @return the name
    */
-  public String getName() {
+  public final String getName() {
     return name;
   }
 
   /**
    * @return the surname
    */
-  public String getSurname() {
+  public final String getSurname() {
     return surname;
   }
 
@@ -41,7 +38,7 @@ public class Response implements Serializable {
    * @param name
    *          the name to set
    */
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 
@@ -49,7 +46,7 @@ public class Response implements Serializable {
    * @param surname
    *          the surname to set
    */
-  public void setSurname(final String surname) {
+  public final void setSurname(final String surname) {
     this.surname = surname;
   }
 }

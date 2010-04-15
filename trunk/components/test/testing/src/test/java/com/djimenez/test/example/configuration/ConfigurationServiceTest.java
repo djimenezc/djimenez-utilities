@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.djimenez.model.user.User;
-import com.djimenez.test.AbstractTest;
+import com.djimenez.test.AbstractTestCase;
 
 /**
  * Test that use a Configuration test class to retrieve a dummy information
@@ -14,7 +14,7 @@ import com.djimenez.test.AbstractTest;
  * @author djimenez
  */
 
-public class ConfigurationServiceTest extends AbstractTest {
+public class ConfigurationServiceTest extends AbstractTestCase {
 
   @BeforeClass
   public static void setUpGeneral() throws ConfigurationException {

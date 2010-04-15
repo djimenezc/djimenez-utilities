@@ -23,12 +23,12 @@ public class ObserverImpl implements Observer {
   }
 
   @Override
-  public boolean compareNotifyContext(final Object contextObject) {
+  public final boolean compareNotifyContext(final Object contextObject) {
     return this.context.equals(contextObject);
   }
 
   @Override
-  public boolean equals(final Object object) {
+  public final boolean equals(final Object object) {
     boolean eval = false;
     if (object instanceof ObserverImpl) {
       final ObserverImpl rhs = (ObserverImpl) object;
@@ -38,36 +38,37 @@ public class ObserverImpl implements Observer {
   }
 
   @Override
-  public Object getNotifyContext() {
+  public final Object getNotifyContext() {
     return this.context;
   }
 
-  public Function getNotifyMethod() {
+  public final Function getNotifyMethod() {
     return this.notify;
   }
 
   @Override
-  public int hashCode() {
+  public final int hashCode() {
     return super.hashCode();
   }
 
   @Override
-  public void notifyObserver(final Notification notification) throws Throwable {
+  public final void notifyObserver(final Notification notification)
+    throws Exception {
     this.getNotifyMethod().onNotification(notification);
   }
 
   @Override
-  public void setNotifyContext(final Object context) {
+  public final void setNotifyContext(final Object context) {
     this.context = context;
   }
 
   @Override
-  public void setNotifyMethod(final Function notifyMethod) {
+  public final void setNotifyMethod(final Function notifyMethod) {
     this.notify = notifyMethod;
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return new ToStringBuilder(this).append("notifyContext",
       this.getNotifyContext()).append("notifyMethod", this.getNotifyMethod())
       .toString();

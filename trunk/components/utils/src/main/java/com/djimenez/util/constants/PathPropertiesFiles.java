@@ -16,4 +16,7 @@ public final class PathPropertiesFiles {
   public static final String DATE_PROPERTIES_FILE_PATH =
     "properties/common/date-config.properties";
 
+  private PathPropertiesFiles() {
+
+  }
 }

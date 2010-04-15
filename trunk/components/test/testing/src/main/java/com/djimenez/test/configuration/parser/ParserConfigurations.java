@@ -12,7 +12,7 @@ import org.apache.commons.configuration.HierarchicalConfiguration;
 import com.djimenez.model.DefaultValues;
 import com.djimenez.util.helper.DateHelper;
 
-public class ParserConfigurations {
+public final class ParserConfigurations {
 
   private static ParserConfigurations instance;
 

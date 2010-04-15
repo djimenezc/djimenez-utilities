@@ -12,10 +12,9 @@ import org.apache.log4j.Logger;
  * 
  * @author Rodrigo Villamil Perez
  */
-public class LauncherProcesses {
+public final class LauncherProcesses {
 
-  private static final Logger logger =
-    Logger.getLogger(LauncherProcesses.class);
+  private static Logger logger = Logger.getLogger(LauncherProcesses.class);
 
   // Exit process status
   private static final int STATUS_ERR = -1;
@@ -168,5 +167,8 @@ public class LauncherProcesses {
     }
 
     return exitStatus;
+  }
+
+  private LauncherProcesses() {
   }
 }

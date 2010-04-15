@@ -1,10 +1,9 @@
 package com.djimenez.util.properties.main;
 
 import com.djimenez.util.constants.PathPropertiesFiles;
-import com.djimenez.util.properties.PropertyException;
 import com.djimenez.util.properties.PropertyHelper;
 
-public class MainPropertyHelper {
+public final class MainPropertyHelper {
 
   private PropertyHelper propertyHelper;
 

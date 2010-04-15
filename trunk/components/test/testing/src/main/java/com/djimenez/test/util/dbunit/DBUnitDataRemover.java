@@ -33,8 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Deprecated
 public class DBUnitDataRemover {
 
-  private static final Logger logger =
-    Logger.getLogger(DBUnitDataRemover.class);
+  public static final Logger logger = Logger.getLogger(DBUnitDataRemover.class);
 
   private IDatabaseConnection databaseConection = null;
 

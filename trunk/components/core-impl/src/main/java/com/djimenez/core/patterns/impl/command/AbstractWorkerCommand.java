@@ -8,10 +8,17 @@ import com.djimenez.core.patterns.interfaces.worker.WorkerCommand;
  */
 public abstract class AbstractWorkerCommand implements WorkerCommand {
 
-  protected final Facade facade;
+  private final Facade facade;
 
   protected AbstractWorkerCommand(final Facade facade) {
     this.facade = facade;
+  }
+
+  /**
+   * @return the facade
+   */
+  public final Facade getFacade() {
+    return facade;
   }
 
 }

@@ -10,7 +10,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class DataBaseUtils {
 
-  protected final transient Log log = LogFactory.getLog(getClass());
+  private final transient Log log = LogFactory.getLog(getClass());
 
   private final String password;
   private final String userName;

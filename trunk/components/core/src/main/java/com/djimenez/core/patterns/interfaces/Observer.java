@@ -11,7 +11,7 @@ public interface Observer {
 
   Object getNotifyContext();
 
-  void notifyObserver(Notification notification) throws Throwable;
+  void notifyObserver(Notification notification) throws Exception;
 
   void setNotifyContext(Object context);
 

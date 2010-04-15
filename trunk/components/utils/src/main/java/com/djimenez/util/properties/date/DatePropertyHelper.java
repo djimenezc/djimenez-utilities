@@ -1,10 +1,9 @@
 package com.djimenez.util.properties.date;
 
 import com.djimenez.util.constants.PathPropertiesFiles;
-import com.djimenez.util.properties.PropertyException;
 import com.djimenez.util.properties.PropertyHelper;
 
-public class DatePropertyHelper {
+public final class DatePropertyHelper {
 
   private final PropertyHelper propertyHelper;
 

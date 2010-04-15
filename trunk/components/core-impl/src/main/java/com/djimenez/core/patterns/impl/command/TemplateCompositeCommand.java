@@ -43,7 +43,7 @@ public class TemplateCompositeCommand extends AbstractCommand {
   }
 
   @Override
-  public void execute(final Notification notification) throws Throwable {
+  public void execute(final Notification notification) throws Exception {
 
     for (final CommandNotification command : this.subCommands) {
       command.execute(notification);

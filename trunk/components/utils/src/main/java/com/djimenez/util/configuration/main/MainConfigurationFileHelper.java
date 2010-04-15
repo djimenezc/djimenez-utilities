@@ -6,7 +6,7 @@ import com.djimenez.util.constants.PathPropertiesFiles;
 /**
  * @author djimenez
  */
-public class MainConfigurationFileHelper extends
+public final class MainConfigurationFileHelper extends
   AbstractConfigurationFileHelper {
 
   private static MainConfigurationFileHelper instance;

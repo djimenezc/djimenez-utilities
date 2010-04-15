@@ -4,7 +4,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
-public class ExecuteDBUnitExport {
+public final class ExecuteDBUnitExport {
 
   public static void main(final String... args) {
 
@@ -18,6 +18,9 @@ public class ExecuteDBUnitExport {
 
     dbUnitMysqlUtils.exportDatabase();
 
+  }
+
+  private ExecuteDBUnitExport() {
   }
 
 }
