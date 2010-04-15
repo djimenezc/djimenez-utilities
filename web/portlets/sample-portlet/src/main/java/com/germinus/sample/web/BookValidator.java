@@ -9,11 +9,11 @@ import com.germinus.sample.model.Book;
 public class BookValidator implements Validator {
 
   @SuppressWarnings("unchecked")
-  public boolean supports(final Class clazz) {
+  public final boolean supports(final Class clazz) {
     return Book.class.isAssignableFrom(clazz);
   }
 
-  public void validate(final Object obj, final Errors errors) {
+  public final void validate(final Object obj, final Errors errors) {
     final Book book = (Book) obj;
     validateAuthor(book, errors);
     validateTitle(book, errors);
@@ -22,7 +22,7 @@ public class BookValidator implements Validator {
     validateCount(book, errors);
   }
 
-  public void validateAuthor(final Book book, final Errors errors) {
+  public final void validateAuthor(final Book book, final Errors errors) {
     ValidationUtils.rejectIfEmpty(errors, "author", "AUTHOR_REQUIRED",
       "Author is required.");
   }
@@ -30,7 +30,7 @@ public class BookValidator implements Validator {
   public void validateAvailability(final Book book, final Errors errors) {
   }
 
-  public void validateCount(final Book book, final Errors errors) {
+  public final void validateCount(final Book book, final Errors errors) {
     ValidationUtils.rejectIfEmpty(errors, "count", "COUNT_REQUIRED",
       "Current count is required.");
   }
@@ -38,7 +38,7 @@ public class BookValidator implements Validator {
   public void validateDescription(final Book book, final Errors errors) {
   }
 
-  public void validateTitle(final Book book, final Errors errors) {
+  public final void validateTitle(final Book book, final Errors errors) {
     ValidationUtils.rejectIfEmpty(errors, "title", "TITLE_REQUIRED",
       "Title is required.");
   }

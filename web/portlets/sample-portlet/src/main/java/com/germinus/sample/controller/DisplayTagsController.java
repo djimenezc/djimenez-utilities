@@ -14,37 +14,40 @@ import org.springframework.web.portlet.mvc.AbstractController;
 import com.djimenez.model.item.Item;
 import com.germinus.sample.dao.GenericDao;
 
-public class DisplayTagsController extends AbstractController implements InitializingBean{
-	
-	private static final Log log = LogFactory.getLog(SampleController.class);
-	
-	private GenericDao<Item, Long> itemDao;
-	
-    public void setItemDao(GenericDao<Item, Long> itemDao) {
-        this.itemDao = itemDao;
-    }
+public class DisplayTagsController extends AbstractController implements
+  InitializingBean {
 
-    /**
-     * Process the action request. There is nothing to return.
-     */
-    public void handleActionRequestVoid(ActionRequest request, ActionResponse response)
-        throws Exception    {
-	
-    }
-    
-    /**
-     * Process the render request and return a ModelAndView object which the
-     * DispatcherPortlet will render.
-     */
-    @Override
-    public ModelAndView handleRenderRequestInternal(RenderRequest request, RenderResponse response) throws Exception {
-        log.debug("handleRenderRequestInternal");
-        return new ModelAndView("display-tags", "items", itemDao.getAll());
-    }
+  private final Log log = LogFactory.getLog(SampleController.class);
 
-	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
-		//if (this.itemDao == null)
-           // throw new IllegalArgumentException("A Item is required");
-	}
+  private GenericDao<Item, Long> itemDao;
+
+  public void afterPropertiesSet() throws Exception {
+    // TODO Auto-generated method stub
+    // if (this.itemDao == null)
+    // throw new IllegalArgumentException("A Item is required");
+  }
+
+  /**
+   * Process the action request. There is nothing to return.
+   */
+  public void handleActionRequestVoid(final ActionRequest request,
+    final ActionResponse response) throws Exception {
+
+  }
+
+  /**
+   * Process the render request and return a ModelAndView object which the
+   * DispatcherPortlet will render.
+   */
+  @Override
+  public final ModelAndView handleRenderRequestInternal(
+    final RenderRequest request, final RenderResponse response)
+    throws Exception {
+    log.debug("handleRenderRequestInternal");
+    return new ModelAndView("display-tags", "items", itemDao.getAll());
+  }
+
+  public final void setItemDao(final GenericDao<Item, Long> itemDao) {
+    this.itemDao = itemDao;
+  }
 }

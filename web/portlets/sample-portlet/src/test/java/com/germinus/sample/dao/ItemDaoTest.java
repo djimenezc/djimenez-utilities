@@ -18,7 +18,7 @@ public class ItemDaoTest extends BaseDaoTestCase {
   private GenericDao<Item, Long> itemDao;
 
   @Test
-  public void testGetItemInvalid() throws Exception {
+  public final void testGetItemInvalid() throws Exception {
 
     try {
 
@@ -33,7 +33,7 @@ public class ItemDaoTest extends BaseDaoTestCase {
   }
 
   @Test
-  public void testSaveItem() throws Exception {
+  public final void testSaveItem() throws Exception {
 
     final Item newItem = new Item();
 
@@ -50,5 +50,4 @@ public class ItemDaoTest extends BaseDaoTestCase {
     org.junit.Assert.assertNotNull(items.size() > 0);
 
   }
-
 }

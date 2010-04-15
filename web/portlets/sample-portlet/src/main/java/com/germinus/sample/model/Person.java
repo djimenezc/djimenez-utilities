@@ -1,17 +1,12 @@
 /*
- * Copyright 2005 Joe Walker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * Copyright 2005 Joe Walker Licensed under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
+ * or agreed to in writing, software distributed under the License is
+ * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
  */
 package com.germinus.sample.model;
 
@@ -20,123 +15,119 @@ import org.directwebremoting.Security;
 /**
  * @author Joe Walker [joe at getahead dot ltd dot uk]
  */
-public class Person
-{
-    /**
-     * @return the address
-     */
-    public String getAddress()
-    {
-        return address;
+public class Person {
+
+  private String name;
+
+  private String address;
+
+  private float salary;
+
+  private int id;
+
+  /*
+   * (non-Javadoc)
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public final boolean equals(final Object obj) {
+    if (obj == null) {
+      return false;
     }
 
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address)
-    {
-        this.address = Security.escapeHtml(address);
+    if (obj == this) {
+      return true;
     }
 
-    /**
-     * @return the id
-     */
-    public int getId()
-    {
-        return id;
+    if (!this.getClass().equals(obj.getClass())) {
+      return false;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id)
-    {
-        this.id = id;
+    final Person that = (Person) obj;
+
+    if (this.id != that.id) {
+      return false;
     }
 
-    /**
-     * @return the name
-     */
-    public String getName()
-    {
-        return name;
-    }
+    return true;
+  }
 
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name)
-    {
-        this.name = Security.escapeHtml(name);
-    }
+  /**
+   * @return the address
+   */
+  public final String getAddress() {
+    return address;
+  }
 
-    /**
-     * @return the salary
-     */
-    public float getSalary()
-    {
-        return salary;
-    }
+  /**
+   * @return the id
+   */
+  public final int getId() {
+    return id;
+  }
 
-    /**
-     * @param salary the salary to set
-     */
-    public void setSalary(float salary)
-    {
-        this.salary = salary;
-    }
+  /**
+   * @return the name
+   */
+  public final String getName() {
+    return name;
+  }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (obj == null)
-        {
-            return false;
-        }
+  /**
+   * @return the salary
+   */
+  public final float getSalary() {
+    return salary;
+  }
 
-        if (obj == this)
-        {
-            return true;
-        }
+  /*
+   * (non-Javadoc)
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public final int hashCode() {
+    final int i = 5924;
+    return i + id;
+  }
 
-        if (!this.getClass().equals(obj.getClass()))
-        {
-            return false;
-        }
+  /**
+   * @param address
+   *          the address to set
+   */
+  public final void setAddress(final String address) {
+    this.address = Security.escapeHtml(address);
+  }
 
-        Person that = (Person) obj;
+  /**
+   * @param id
+   *          the id to set
+   */
+  public final void setId(final int id) {
+    this.id = id;
+  }
 
-        if (this.id != that.id)
-        {
-            return false;
-        }
+  /**
+   * @param name
+   *          the name to set
+   */
+  public final void setName(final String name) {
+    this.name = Security.escapeHtml(name);
+  }
 
-        return true;
-    }
+  /**
+   * @param salary
+   *          the salary to set
+   */
+  public final void setSalary(final float salary) {
+    this.salary = salary;
+  }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        return 5924 + id;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString()
-    {
-        return "Person[id=" + id + ",name=" + name + "]";
-    }
-
-    private String name;
-    private String address;
-    private float salary;
-    private int id;
+  /*
+   * (non-Javadoc)
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public final String toString() {
+    return "Person[id=" + id + ",name=" + name + "]";
+  }
 }

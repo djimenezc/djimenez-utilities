@@ -12,7 +12,7 @@ import org.springframework.web.portlet.mvc.AbstractController;
 
 public class JQueryController extends AbstractController {
 
-  private static final Log log = LogFactory.getLog(SampleController.class);
+  private final Log log = LogFactory.getLog(SampleController.class);
 
   /**
    * Process the action request. There is nothing to return.
@@ -27,8 +27,9 @@ public class JQueryController extends AbstractController {
    * DispatcherPortlet will render.
    */
   @Override
-  public ModelAndView handleRenderRequestInternal(final RenderRequest request,
-    final RenderResponse response) throws Exception {
+  public final ModelAndView handleRenderRequestInternal(
+    final RenderRequest request, final RenderResponse response)
+    throws Exception {
     log.debug("handleRenderRequestInternal");
     return new ModelAndView("jquery", "", null);
   }

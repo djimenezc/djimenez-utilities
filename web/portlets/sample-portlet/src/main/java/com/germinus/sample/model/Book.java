@@ -31,7 +31,7 @@ public class Book implements Comparable<Object>, Serializable {
     setCount(count);
   }
 
-  public int compareTo(final Object obj) {
+  public final int compareTo(final Object obj) {
     if (obj == null) {
       throw new NullPointerException("Cannot compare to null object");
     }
@@ -54,7 +54,7 @@ public class Book implements Comparable<Object>, Serializable {
   }
 
   @Override
-  public boolean equals(final Object obj) {
+  public final boolean equals(final Object obj) {
     if (obj == null) {
       return false;
     }
@@ -69,32 +69,32 @@ public class Book implements Comparable<Object>, Serializable {
       .getTitle()));
   }
 
-  public synchronized String getAuthor() {
+  public final synchronized String getAuthor() {
     return author;
   }
 
-  public Date getAvailability() {
+  public final Date getAvailability() {
     return availability;
   }
 
-  public synchronized Integer getCount() {
+  public final synchronized Integer getCount() {
     return count;
   }
 
-  public synchronized String getDescription() {
+  public final synchronized String getDescription() {
     return description;
   }
 
-  public synchronized Integer getKey() {
+  public final synchronized Integer getKey() {
     return key;
   }
 
-  public synchronized String getTitle() {
+  public final synchronized String getTitle() {
     return title;
   }
 
   @Override
-  public int hashCode() {
+  public final int hashCode() {
     if (Integer.MIN_VALUE == this.hashCode) {
       final String hashStr = this.getClass().getName() + ":" + this.toString();
       this.hashCode = hashStr.hashCode();
@@ -102,15 +102,19 @@ public class Book implements Comparable<Object>, Serializable {
     return this.hashCode;
   }
 
-  public synchronized void incrementCount(final Integer increment) {
-    int count = this.count.intValue() + increment.intValue();
-    if (count < 0) {
-      count = 0;
+  public final synchronized void incrementCount(final Integer increment) {
+
+    int countAux = this.count.intValue() + increment.intValue();
+
+    if (countAux < 0) {
+
+      countAux = 0;
     }
-    this.count = Integer.valueOf(count);
+    this.count = Integer.valueOf(countAux);
   }
 
-  public synchronized void setAuthor(final String author) {
+  public final synchronized void setAuthor(final String author) {
+
     if (author == null) {
       throw new NullPointerException("author may not be null");
     }
@@ -118,23 +122,25 @@ public class Book implements Comparable<Object>, Serializable {
     this.hashCode = Integer.MIN_VALUE;
   }
 
-  public void setAvailability(final Date availability) {
+  public final void setAvailability(final Date availability) {
+
     this.availability = availability;
   }
 
-  public synchronized void setCount(final Integer count) {
+  public final synchronized void setCount(final Integer count) {
+
     this.count = count;
   }
 
-  public synchronized void setDescription(final String description) {
+  public final synchronized void setDescription(final String description) {
     this.description = description;
   }
 
-  public synchronized void setKey(final Integer key) {
+  public final synchronized void setKey(final Integer key) {
     this.key = key;
   }
 
-  public synchronized void setTitle(final String title) {
+  public final synchronized void setTitle(final String title) {
     if (title == null) {
       throw new NullPointerException("title may not be null");
     }
@@ -143,7 +149,7 @@ public class Book implements Comparable<Object>, Serializable {
   }
 
   @Override
-  public String toString() {
+  public final String toString() {
     return this.author + ":" + this.title;
   }
 }

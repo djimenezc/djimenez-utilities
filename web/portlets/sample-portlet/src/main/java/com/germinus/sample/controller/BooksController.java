@@ -19,15 +19,16 @@ public class BooksController extends AbstractController implements
 
   private BookService bookService;
 
-  public void afterPropertiesSet() throws Exception {
+  public final void afterPropertiesSet() throws Exception {
     if (this.bookService == null) {
       throw new IllegalArgumentException("A BookService is required");
     }
   }
 
   @Override
-  public ModelAndView handleRenderRequestInternal(final RenderRequest request,
-    final RenderResponse response) throws Exception {
+  public final ModelAndView handleRenderRequestInternal(
+    final RenderRequest request, final RenderResponse response)
+    throws Exception {
 
     final Map<String, SortedSet<Book>> model =
       new HashMap<String, SortedSet<Book>>();
@@ -37,7 +38,7 @@ public class BooksController extends AbstractController implements
     return new ModelAndView("booksView", "model", model);
   }
 
-  public void setBookService(final BookService bookService) {
+  public final void setBookService(final BookService bookService) {
     this.bookService = bookService;
   }
 }

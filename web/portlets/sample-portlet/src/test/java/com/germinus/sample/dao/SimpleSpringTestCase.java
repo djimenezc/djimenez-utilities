@@ -7,21 +7,21 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public abstract class SimpleSpringTestCase extends junit.framework.TestCase {
 
-  protected final Log logger = LogFactory.getLog(getClass());
+  private final Log logger = LogFactory.getLog(getClass());
 
-  protected static final ApplicationContext appContext;
-  protected static final ApplicationContext booksPortletContext;
+  private ApplicationContext appContext;
+  private ApplicationContext booksPortletContext;
+
   // protected static final ApplicationContext dwrPortletContext;
 
-  static {
+  public SimpleSpringTestCase() {
+
     try {
-      appContext =
-        new FileSystemXmlApplicationContext(
-          new String[] { "classpath*:/context/applicationContext-web.xml" });
-      booksPortletContext =
-        new FileSystemXmlApplicationContext(
-          new String[] { "classpath*:/context/portlet/book-sample.xml" },
-          appContext);
+      setAppContext(new FileSystemXmlApplicationContext(
+        new String[] { "classpath*:/context/applicationContext-web.xml" }));
+      setBooksPortletContext(new FileSystemXmlApplicationContext(
+        new String[] { "classpath*:/context/portlet/book-sample.xml" },
+        getAppContext()));
       /*
        * dwrPortletContext = new FileSystemXmlApplicationContext( new
        * String[]{"classpath*:/context/portlet/dwr-sample.xml"}, appContext);
@@ -32,4 +32,41 @@ public abstract class SimpleSpringTestCase extends junit.framework.TestCase {
     }
   }
 
+  /**
+   * @return the appContext
+   */
+  public final ApplicationContext getAppContext() {
+    return appContext;
+  }
+
+  /**
+   * @return the booksPortletContext
+   */
+  public final ApplicationContext getBooksPortletContext() {
+    return booksPortletContext;
+  }
+
+  /**
+   * @return the logger
+   */
+  public final Log getLogger() {
+    return logger;
+  }
+
+  /**
+   * @param appContext
+   *          the appContext to set
+   */
+  public final void setAppContext(final ApplicationContext appContext) {
+    this.appContext = appContext;
+  }
+
+  /**
+   * @param booksPortletContext
+   *          the booksPortletContext to set
+   */
+  public final void setBooksPortletContext(
+    final ApplicationContext booksPortletContext) {
+    this.booksPortletContext = booksPortletContext;
+  }
 }

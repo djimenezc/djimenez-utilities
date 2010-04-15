@@ -9,29 +9,31 @@ import org.springframework.web.portlet.mvc.AbstractController;
 import com.germinus.sample.model.Book;
 import com.germinus.sample.web.BookService;
 
+public class BookIncrementController extends AbstractController implements
+  InitializingBean {
 
-public class BookIncrementController extends AbstractController implements InitializingBean {
+  private BookService bookService;
 
-    private BookService bookService;
-    
-    public void afterPropertiesSet() throws Exception {
-        if (this.bookService == null)
-            throw new IllegalArgumentException("A BookService is required");
+  public final void afterPropertiesSet() throws Exception {
+    if (this.bookService == null) {
+      throw new IllegalArgumentException("A BookService is required");
     }
+  }
 
-	@Override
-  public void handleActionRequestInternal(ActionRequest request, ActionResponse response) throws Exception {
-	    // get the id and delete it
-	    Integer id = new Integer(request.getParameter("book"));
-	    Integer increment = new Integer(request.getParameter("increment"));
-		Book book = bookService.getBook(id);
-		book.incrementCount(increment);
-        bookService.saveBook(book);
-		// change action parameter to go to default view
-		response.setRenderParameter("action","books");
-	}
+  @Override
+  public final void handleActionRequestInternal(final ActionRequest request,
+    final ActionResponse response) throws Exception {
+    // get the id and delete it
+    final Integer id = new Integer(request.getParameter("book"));
+    final Integer increment = new Integer(request.getParameter("increment"));
+    final Book book = bookService.getBook(id);
+    book.incrementCount(increment);
+    bookService.saveBook(book);
+    // change action parameter to go to default view
+    response.setRenderParameter("action", "books");
+  }
 
-	public void setBookService(BookService bookService) {
-	    this.bookService = bookService;
-	}
+  public final void setBookService(final BookService bookService) {
+    this.bookService = bookService;
+  }
 }

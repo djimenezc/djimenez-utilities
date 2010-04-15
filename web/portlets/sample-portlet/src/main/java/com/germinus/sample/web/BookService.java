@@ -6,9 +6,9 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import org.springframework.beans.BeansException;
 import org.springframework.context.support.ApplicationObjectSupport;
 
+import com.djimenez.model.DefaultValues;
 import com.germinus.sample.model.Book;
 
 public class BookService extends ApplicationObjectSupport {
@@ -18,7 +18,7 @@ public class BookService extends ApplicationObjectSupport {
 
   private int initBooks = -1;
 
-  public int addBook(final Book book) {
+  public final int addBook(final Book book) {
     int key;
     synchronized (books) {
       if (books.isEmpty()) {
@@ -34,74 +34,107 @@ public class BookService extends ApplicationObjectSupport {
     return key;
   }
 
-  public int addBook(final String author, final String title, final int count) {
+  public final int addBook(final String author, final String title,
+    final int count) {
     final Book book = new Book(author, title, count);
     return addBook(book);
   }
 
-  public int addBook(final String author, final String title,
+  public final int addBook(final String author, final String title,
     final Integer count) {
     final Book book = new Book(author, title, count);
     return addBook(book);
   }
 
-  public void deleteBook(final Book book) {
+  public final void deleteBook(final Book book) {
     deleteBook(book.getKey());
   }
 
-  public void deleteBook(final int key) {
+  public final void deleteBook(final int key) {
     deleteBook(Integer.valueOf(key));
   }
 
-  public void deleteBook(final Integer key) {
+  public final void deleteBook(final Integer key) {
     synchronized (books) {
       this.books.remove(key);
     }
   }
 
-  public SortedSet<Book> getAllBooks() {
+  /**
+   * 
+   */
+  private void fillBooksPart1() {
+
+    if ((initBooks < DefaultValues.ZERO_INT)
+      || (initBooks > DefaultValues.ZERO_INT)) {
+      final int count = 50;
+      addBook("Neal Stephenson", "Snow Crash", count);
+    }
+
+    final int i = 1;
+    if ((initBooks < DefaultValues.ZERO_INT) || (initBooks > i)) {
+      final int count = 92;
+      addBook("William Gibson", "Neuromancer", count);
+    }
+
+    final int j = 2;
+    if ((initBooks < DefaultValues.ZERO_INT) || (initBooks > j)) {
+      final int count = 12;
+      addBook("Bruce Bethke", "Headcrash", count);
+    }
+  }
+
+  /**
+   * 
+   */
+  private void fillBooksPart2() {
+
+    final int j2 = 3;
+
+    if ((initBooks < DefaultValues.ZERO_INT) || (initBooks > j2)) {
+      final int count = 44;
+      addBook("Eric S. Nylund", "Signal To Noise", count);
+    }
+
+    final int k = 4;
+    if ((initBooks < DefaultValues.ZERO_INT) || (initBooks > k)) {
+      final int count = 10;
+      addBook("Noman", "Shouldn't See This Book", count);
+    }
+  }
+
+  public final SortedSet<Book> getAllBooks() {
     synchronized (books) {
 
       return new TreeSet<Book>(this.books.values());
     }
   }
 
-  public Book getBook(final int key) {
+  public final Book getBook(final int key) {
     return getBook(Integer.valueOf(key));
   }
 
-  public Book getBook(final Integer key) {
+  public final Book getBook(final Integer key) {
     synchronized (books) {
       return this.books.get(key);
     }
   }
 
   @Override
-  public void initApplicationContext() throws BeansException {
-    if ((initBooks < 0) || (initBooks > 0)) {
-      addBook("Neal Stephenson", "Snow Crash", 50);
-    }
-    if ((initBooks < 0) || (initBooks > 1)) {
-      addBook("William Gibson", "Neuromancer", 92);
-    }
-    if ((initBooks < 0) || (initBooks > 2)) {
-      addBook("Bruce Bethke", "Headcrash", 12);
-    }
-    if ((initBooks < 0) || (initBooks > 3)) {
-      addBook("Eric S. Nylund", "Signal To Noise", 44);
-    }
-    if ((initBooks < 0) || (initBooks > 4)) {
-      addBook("Noman", "Shouldn't See This Book", 10);
-    }
+  public final void initApplicationContext() {
+
+    fillBooksPart1();
+
+    fillBooksPart2();
   }
 
-  public void saveBook(final Book book) {
+  public final void saveBook(final Book book) {
     synchronized (books) {
       this.books.put(book.getKey(), book);
     }
   }
 
-  public void setInitBooks(final int initBooks) {
+  public final void setInitBooks(final int initBooks) {
     this.initBooks = initBooks;
   }
 

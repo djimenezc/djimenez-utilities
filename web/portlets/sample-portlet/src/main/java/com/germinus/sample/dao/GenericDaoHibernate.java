@@ -28,26 +28,26 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 public class GenericDaoHibernate<T, PK extends Serializable> extends
   HibernateDaoSupport implements GenericDao<T, PK> {
 
-  protected final Log log = LogFactory.getLog(getClass());
+  private final Log log = LogFactory.getLog(getClass());
+
   private final Class<T> persistentClass;
 
   public GenericDaoHibernate(final Class<T> persistentClass) {
     this.persistentClass = persistentClass;
   }
 
-  public boolean exists(final PK id) {
+  public final boolean exists(final PK id) {
 
     final T entity = super.getHibernateTemplate().get(this.persistentClass, id);
 
     if (entity == null) {
       return false;
     }
-    else {
-      return true;
-    }
+
+    return true;
   }
 
-  public T get(final PK id) {
+  public final T get(final PK id) {
 
     final T entity = super.getHibernateTemplate().get(this.persistentClass, id);
 
@@ -60,16 +60,16 @@ public class GenericDaoHibernate<T, PK extends Serializable> extends
     return entity;
   }
 
-  public List<T> getAll() {
+  public final List<T> getAll() {
     return super.getHibernateTemplate().loadAll(this.persistentClass);
   }
 
-  public void remove(final PK id) {
+  public final void remove(final PK id) {
 
     super.getHibernateTemplate().delete(this.get(id));
   }
 
-  public T save(final T object) {
+  public final T save(final T object) {
 
     return super.getHibernateTemplate().merge(object);
   }

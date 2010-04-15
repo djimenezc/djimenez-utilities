@@ -12,24 +12,26 @@ import org.springframework.web.portlet.mvc.AbstractController;
 
 public class DwrViewController extends AbstractController {
 
-    private static final Log log = LogFactory.getLog(SampleController.class);
+  private final Log log = LogFactory.getLog(SampleController.class);
 
-    /**
-     * Process the action request. There is nothing to return.
-     */
-    public void handleActionRequestVoid(ActionRequest request, ActionResponse response)
-        throws Exception    {
-	
-    }
-    
-    /**
-     * Process the render request and return a ModelAndView object which the
-     * DispatcherPortlet will render.
-     */
-    @Override
-    public ModelAndView handleRenderRequestInternal(RenderRequest request, RenderResponse response) throws Exception {
-        log.debug("handleRenderRequestInternal");
-        return new ModelAndView("dwrPage","", null);
-    }
+  /**
+   * Process the action request. There is nothing to return.
+   */
+  public void handleActionRequestVoid(final ActionRequest request,
+    final ActionResponse response) throws Exception {
+
+  }
+
+  /**
+   * Process the render request and return a ModelAndView object which the
+   * DispatcherPortlet will render.
+   */
+  @Override
+  public final ModelAndView handleRenderRequestInternal(
+    final RenderRequest request, final RenderResponse response)
+    throws Exception {
+    log.debug("handleRenderRequestInternal");
+    return new ModelAndView("dwrPage", "", null);
+  }
 
 }

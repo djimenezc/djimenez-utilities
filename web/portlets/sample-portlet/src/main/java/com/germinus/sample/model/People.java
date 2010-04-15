@@ -64,14 +64,17 @@ public class People {
   /**
    * The log stream
    */
-  private static final Logger log = Logger.getLogger(People.class);
+  private final Logger log = Logger.getLogger(People.class);
 
   /**
    * Pre-populate with random people
    */
   public People() {
+
     log.debug("Generating a new set of random people");
-    for (int i = 0; i < 5; i++) {
+
+    final int j = 5;
+    for (int i = 0; i < j; i++) {
       people.add(getRandomPerson());
     }
   }
@@ -79,7 +82,7 @@ public class People {
   /**
    * List the current people so we know what is going on
    */
-  protected void debug() {
+  protected final void debug() {
     for (final Object element : people) {
       final Person person = (Person) element;
       log.debug(person.toString());
@@ -92,7 +95,7 @@ public class People {
    * @param person
    *          The person to delete
    */
-  public void deletePerson(final Person person) {
+  public final void deletePerson(final Person person) {
     log.debug("Removing person: " + person);
     people.remove(person);
     debug();
@@ -103,7 +106,7 @@ public class People {
    * 
    * @return the current list of people
    */
-  public Set<Person> getAllPeople() {
+  public final Set<Person> getAllPeople() {
 
     return people;
   }
@@ -121,14 +124,19 @@ public class People {
     final String surname = SURNAMES[random.nextInt(SURNAMES.length)];
     person.setName(firstname + " " + surname);
 
-    final String housenum = (random.nextInt(99) + 1) + " ";
+    final int n = 99;
+    final int i = 1;
+    final String housenum = (random.nextInt(n) + i) + " ";
     final String road1 = ROADS1[random.nextInt(ROADS1.length)];
     final String road2 = ROADS2[random.nextInt(ROADS2.length)];
     final String town = TOWNS[random.nextInt(TOWNS.length)];
     final String address = housenum + road1 + " " + road2 + ", " + town;
     person.setAddress(address);
 
-    final float salary = Math.round(10 + 90 * random.nextFloat()) * 1000;
+    final int j = 10;
+    final int k = 90;
+    final int l = 1000;
+    final float salary = Math.round(j + k * random.nextFloat()) * l;
     person.setSalary(salary);
 
     return person;
@@ -140,7 +148,7 @@ public class People {
    * @param person
    *          The person to add or update
    */
-  public void setPerson(final Person person) {
+  public final void setPerson(final Person person) {
     log.debug("Adding person: " + person);
     if (person.getId() == -1) {
       person.setId(getNextId());
