@@ -36,12 +36,14 @@ public final class ControllerImpl implements Controller, ControllerImplMBean {
 
   protected static final Logger logger = Logger.getLogger(ControllerImpl.class);
   private volatile static Controller instance;
+
   public static Controller getInstance() {
     if (instance == null) {
       instance = new ControllerImpl();
     }
     return instance;
   }
+
   private final Map<String, CommandNotification> commandMap;
   private View view;
   private Worker worker;
@@ -55,7 +57,7 @@ public final class ControllerImpl implements Controller, ControllerImplMBean {
   }
 
   @Override
-  public void executeCommand(final Notification notification) throws Throwable {
+  public void executeCommand(final Notification notification) throws Exception {
 
     this.view.setCommandRunning(true);
 
@@ -68,7 +70,7 @@ public final class ControllerImpl implements Controller, ControllerImplMBean {
     try {
       this.currentCommand.execute(notification);
     }
-    catch (final Throwable e) {
+    catch (final Exception e) {
       // Check workable to set command running to view
       if (!(this.currentCommand instanceof Workable)) {
         this.view.setCommandRunning(false);
@@ -137,7 +139,7 @@ public final class ControllerImpl implements Controller, ControllerImplMBean {
 
         @Override
         public void onNotification(final Notification notification)
-          throws Throwable {
+          throws Exception {
 
           ControllerImpl.this.executeCommand(notification);
 

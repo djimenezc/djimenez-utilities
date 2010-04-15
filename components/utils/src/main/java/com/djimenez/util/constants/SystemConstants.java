@@ -1,10 +1,10 @@
 package com.djimenez.util.constants;
 
-public class SystemConstants {
+public interface SystemConstants {
 
-  public static final String DEFAULT_LANGUAGE = "es";
+  String DEFAULT_LANGUAGE = "es";
 
-  public static final String DEFAULT_COUNTRY = "ES";
+  String DEFAULT_COUNTRY = "ES";
 
-  public static final String DEFAULT_TIMEZONE = "Europe/Madrid";
+  String DEFAULT_TIMEZONE = "Europe/Madrid";
 }

@@ -56,6 +56,7 @@ public final class ConfigurationServiceTestConfiguration {
     userCompare.setSecondSurname("calvo");
     userCompare.setUserName("djimenez");
     userCompare.setTelephoneNumber("6666666");
+    userCompare.setDescription("");
 
     return userCompare;
 

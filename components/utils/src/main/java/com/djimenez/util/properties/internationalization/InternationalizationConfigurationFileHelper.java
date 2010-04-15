@@ -1,13 +1,12 @@
 package com.djimenez.util.properties.internationalization;
 
 import com.djimenez.util.constants.PathPropertiesFiles;
-import com.djimenez.util.properties.PropertyException;
 import com.djimenez.util.properties.PropertyHelper;
 
 /**
  * @author djimenez
  */
-public class InternationalizationConfigurationFileHelper {
+public final class InternationalizationConfigurationFileHelper {
 
   private final PropertyHelper propertyHelper;
 

@@ -9,7 +9,7 @@ import com.djimenez.util.os.services.ServiceManagementException;
  * @author Rodrigo Villamil Perez
  * @version 1.0
  */
-public class ServiceManagementApplication {
+public final class ServiceManagementApplication {
 
   /**
    * @param args
@@ -28,16 +28,23 @@ public class ServiceManagementApplication {
       services.start(serviceName);
 
     }
-    else if (operation.equals("stop")) {
-      services.stop(serviceName);
+    else
+      if (operation.equals("stop")) {
+        services.stop(serviceName);
 
-    }
-    else if (operation.equals("restart")) {
-      services.restart(serviceName);
+      }
+      else
+        if (operation.equals("restart")) {
+          services.restart(serviceName);
 
-    }
-    else if (operation.equals("status")) {
-      services.status(serviceName);
-    }
+        }
+        else
+          if (operation.equals("status")) {
+            services.status(serviceName);
+          }
+  }
+
+  private ServiceManagementApplication() {
+
   }
 }

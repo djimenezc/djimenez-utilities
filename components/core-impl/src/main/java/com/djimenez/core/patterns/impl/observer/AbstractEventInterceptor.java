@@ -6,25 +6,25 @@ import com.djimenez.core.patterns.interfaces.Facade;
 
 public abstract class AbstractEventInterceptor implements EventInterceptor {
 
-  protected String name;
-  protected Facade facade;
+  private String name;
+  private Facade facade;
 
   @Override
-  public void dispatchInterceptedEvent(final Event event) {
+  public final void dispatchInterceptedEvent(final Event event) {
     this.facade.dispatchEvent(event);
   }
 
   @Override
-  public String getName() {
+  public final String getName() {
     return this.name;
   }
 
   @Override
-  public void setFacade(final Facade facade) {
+  public final void setFacade(final Facade facade) {
     this.facade = facade;
   }
 
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 }

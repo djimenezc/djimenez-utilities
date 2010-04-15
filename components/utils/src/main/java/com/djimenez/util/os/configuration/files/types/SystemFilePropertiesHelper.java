@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import com.djimenez.util.net.NetException;
 import com.djimenez.util.os.configuration.files.validators.Validator;
 
 /**
@@ -133,7 +132,7 @@ public class SystemFilePropertiesHelper {
    * Store the properties file.
    * 
    * @param comments
-   * @throws NetException
+   * @throws IOException
    */
   private void store(final String comments) throws IOException {
 

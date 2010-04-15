@@ -5,7 +5,7 @@ import org.apache.commons.configuration.HierarchicalConfiguration;
 import com.djimenez.model.user.User;
 import com.djimenez.test.configuration.parser.ParserConfigurations;
 
-public class ParserUtilTestExample {
+public final class ParserUtilTestExample {
 
   private static ParserConfigurations parserConfigurations =
     ParserConfigurations.getInstance();

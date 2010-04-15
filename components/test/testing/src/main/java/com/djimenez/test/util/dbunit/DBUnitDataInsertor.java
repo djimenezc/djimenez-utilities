@@ -33,16 +33,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Deprecated
 public class DBUnitDataInsertor {
 
-  private static final Logger logger =
+  public static final Logger logger =
     Logger.getLogger(DBUnitDataInsertor.class);
 
-  private IDatabaseConnection databaseConection = null;
+  private transient IDatabaseConnection databaseConection = null;
 
   private static final String TEST_FILE_XML =
     "src/test/resources/dbunit/test.xml";
 
   @Autowired
-  private DataSourceTransactionManager transactionManager;
+  private transient DataSourceTransactionManager transactionManager;
 
   /**
    * @return Connection from transactionManager bean

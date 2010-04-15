@@ -2,10 +2,10 @@ package com.djimenez.test.utils.dbunit;
 
 import org.junit.Test;
 
-import com.djimenez.test.AbstractTest;
+import com.djimenez.test.AbstractTestCase;
 import com.djimenez.test.util.dbunit.DBUnitUtils;
 
-public class DBUnitUtilsTest extends AbstractTest {
+public class DBUnitUtilsTest extends AbstractTestCase {
 
   private static final String USER_DATABASE = "root";
   private static final String PASSWORD_DATABASE = "root";

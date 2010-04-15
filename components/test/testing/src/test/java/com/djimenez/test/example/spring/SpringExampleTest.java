@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.djimenez.model.user.User;
-import com.djimenez.test.spring.AbstractSpringTest;
+import com.djimenez.test.spring.AbstractSpringTestCase;
 import com.djimenez.test.spring.service.SpringTestService;
 
 @ContextConfiguration(locations = { "/context/test-springExample-applicationContext.xml" })
-public class SpringExampleTest extends AbstractSpringTest {
+public class SpringExampleTest extends AbstractSpringTestCase {
 
   @Autowired
   private SpringTestService springTestService;

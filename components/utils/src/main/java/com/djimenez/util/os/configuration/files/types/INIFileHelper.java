@@ -8,7 +8,6 @@ import java.util.Date;
 import org.ini4j.Ini;
 import org.ini4j.Wini;
 
-import com.djimenez.util.net.NetException;
 import com.djimenez.util.os.configuration.files.validators.Validator;
 
 /**
@@ -146,7 +145,7 @@ public class INIFileHelper {
    * Store the properties file.
    * 
    * @param comments
-   * @throws NetException
+   * @throws IOException
    */
   private void store(final String comments) throws IOException {
     FileOutputStream output = null;

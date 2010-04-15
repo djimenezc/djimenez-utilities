@@ -1,6 +1,5 @@
 package com.djimenez.test.dbunit;
 
-import org.apache.log4j.Logger;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,11 +18,11 @@ import com.carbonfive.testutils.spring.dbunit.AbstractTransactionalDataSetTestCa
 @ContextConfiguration(locations = { "classpath:/context/database/database-test-config.xml" })
 @Transactional
 @TransactionConfiguration(defaultRollback = true, transactionManager = "transactionManager")
-public abstract class AbstractDBUnitTest extends
+public abstract class AbstractDBUnitTestCase extends
   AbstractTransactionalDataSetTestCase {
 
-  // Logger
-  protected static final Logger logger =
-    Logger.getLogger(AbstractDBUnitTest.class);
+  protected AbstractDBUnitTestCase() {
 
+    super();
+  }
 }

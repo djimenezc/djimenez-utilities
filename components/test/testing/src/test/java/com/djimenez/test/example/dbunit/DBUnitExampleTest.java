@@ -9,13 +9,13 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.carbonfive.testutils.spring.dbunit.DataSet;
 import com.djimenez.model.user.User;
-import com.djimenez.test.dbunit.AbstractDBUnitTest;
+import com.djimenez.test.dbunit.AbstractDBUnitTestCase;
 import com.djimenez.test.example.spring.SpringExampleTestConfiguration;
 import com.djimenez.test.spring.service.SpringTestService;
 
 @ContextConfiguration(locations = { "classpath:context/test-persistence-dbunit-context.xml" })
 @TransactionConfiguration(defaultRollback = true)
-public class DBUnitExampleTest extends AbstractDBUnitTest {
+public class DBUnitExampleTest extends AbstractDBUnitTestCase {
 
   @BeforeClass
   public static void generalTearDown() {

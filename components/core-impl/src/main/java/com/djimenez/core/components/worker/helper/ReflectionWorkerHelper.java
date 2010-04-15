@@ -136,13 +136,14 @@ public class ReflectionWorkerHelper {
         }
       }
       // Constructor
-      final Constructor<?> constructor =
-        innerClass.getDeclaredConstructors()[0];
-      // Set accessible to create instancemapClasses
-      constructor.setAccessible(true);
-      // Get new instance of innerObject
-      innerObject = constructor.newInstance(new Object[] { enclosingObject });
-
+      if (innerClass != null) {
+        final Constructor<?> constructor =
+          innerClass.getDeclaredConstructors()[0];
+        // Set accessible to create instancemapClasses
+        constructor.setAccessible(true);
+        // Get new instance of innerObject
+        innerObject = constructor.newInstance(new Object[] { enclosingObject });
+      }
     }
     catch (final ClassNotFoundException e) {
       logger.debug("WorkerCommand inner class not found. Reflection failed. ");
@@ -184,14 +185,15 @@ public class ReflectionWorkerHelper {
           break;
         }
       }
-      // Constructor
-      final Constructor<?> constructor =
-        innerClass.getDeclaredConstructors()[0];
-      // Set accessible to create instancemapClasses
-      constructor.setAccessible(true);
-      // Get new instance of innerObject
-      innerObject = constructor.newInstance(new Object[] { enclosingObject });
-
+      if (innerClass != null) {
+        // Constructor
+        final Constructor<?> constructor =
+          innerClass.getDeclaredConstructors()[0];
+        // Set accessible to create instancemapClasses
+        constructor.setAccessible(true);
+        // Get new instance of innerObject
+        innerObject = constructor.newInstance(new Object[] { enclosingObject });
+      }
     }
     catch (final ClassNotFoundException e) {
       logger.debug("WorkerMediator inner class not found. Reflection failed. ");

@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Static default values of basic types
  */
-public abstract class DefaultValues {
+public final class DefaultValues {
 
   // String
   public static final String DEFAULT_STRING = "";
@@ -34,4 +34,7 @@ public abstract class DefaultValues {
 
   /************************************ STATIC METHODS **********************************/
 
+  private DefaultValues() {
+
+  }
 }

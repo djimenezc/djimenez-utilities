@@ -6,7 +6,7 @@ import com.djimenez.util.constants.PathConfigurationFiles;
 /**
  * @author djimenez
  */
-public class DateConfigurationFileHelper extends
+public final class DateConfigurationFileHelper extends
   AbstractConfigurationFileHelper {
 
   private static DateConfigurationFileHelper instance;

@@ -1,6 +1,6 @@
 package com.djimenez.util.string;
 
-public class StringUtils {
+public final class StringUtils {
 
   public static String deleteStrangeSimbols(final String string) {
 
@@ -54,6 +54,9 @@ public class StringUtils {
     encodeString = encodeString.replace('û', 'u');
 
     return encodeString;
+  }
+
+  private StringUtils() {
   }
 
 }

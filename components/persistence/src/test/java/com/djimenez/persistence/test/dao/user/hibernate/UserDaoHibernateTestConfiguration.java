@@ -7,7 +7,7 @@ import com.djimenez.model.user.User;
 import com.djimenez.test.configuration.retrieve.RetrieveConfiguration;
 import com.djimenez.test.util.ParserUtilTestExample;
 
-public class UserDaoHibernateTestConfiguration {
+public final class UserDaoHibernateTestConfiguration {
 
   private static final String CONFIGURATION_USER_TEST_XML =
     "configuration/user/configurationUserDaoTest.xml";

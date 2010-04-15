@@ -10,23 +10,24 @@ package com.djimenez.util.helper;
 
 public final class NumberHelper {
 
-  public static long stringToLong(final String value) {
-    return Long.parseLong(value);
+  public static double stringToDouble(final String value) {
+    return new Double(value).doubleValue();
   }
 
   public static int stringToInt(final String value) {
     return Integer.parseInt(value);
   }
 
-  public static double stringToDouble(final String value) {
-    return new Double(value).doubleValue();
+  public static long stringToLong(final String value) {
+    return Long.parseLong(value);
   }
 
-  public static boolean validateNumberLong(final String number) {
+  public static boolean validateNumberDouble(final String number) {
     boolean bOk = true;
     try {
-      Long.parseLong(number);
-    } catch (final NumberFormatException e) {
+      Double.parseDouble(number);
+    }
+    catch (final NumberFormatException e) {
       bOk = false;
     }
     return bOk;
@@ -36,20 +37,26 @@ public final class NumberHelper {
     boolean bOk = true;
     try {
       Integer.parseInt(number);
-    } catch (final NumberFormatException e) {
+    }
+    catch (final NumberFormatException e) {
       bOk = false;
     }
     return bOk;
   }
 
-  public static boolean validateNumberDouble(final String number) {
+  public static boolean validateNumberLong(final String number) {
     boolean bOk = true;
     try {
-      Double.parseDouble(number);
-    } catch (final NumberFormatException e) {
+      Long.parseLong(number);
+    }
+    catch (final NumberFormatException e) {
       bOk = false;
     }
     return bOk;
+  }
+
+  private NumberHelper() {
+
   }
 
 }
