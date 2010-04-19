@@ -11,33 +11,33 @@ public abstract class AbstractHttpCommand implements Command {
   private HttpUtilities httpUtilities;
 
   /**
-   * @param httpClient
-   *          the httpClient to set
+   * @return the httpClient
    */
-  public void setHttpClient(final HttpClient httpClient) {
-    this.httpClient = httpClient;
+  public final HttpClient getHttpClient() {
+    return httpClient;
   }
 
   /**
-   * @return the httpClient
+   * @return the httpUtilities
    */
-  public HttpClient getHttpClient() {
-    return httpClient;
+  public final HttpUtilities getHttpUtilities() {
+    return httpUtilities;
+  }
+
+  /**
+   * @param httpClient
+   *          the httpClient to set
+   */
+  public final void setHttpClient(final HttpClient httpClient) {
+    this.httpClient = httpClient;
   }
 
   /**
    * @param httpUtilities
    *          the httpUtilities to set
    */
-  public void setHttpUtilities(final HttpUtilities httpUtilities) {
+  public final void setHttpUtilities(final HttpUtilities httpUtilities) {
     this.httpUtilities = httpUtilities;
-  }
-
-  /**
-   * @return the httpUtilities
-   */
-  public HttpUtilities getHttpUtilities() {
-    return httpUtilities;
   }
 
 }

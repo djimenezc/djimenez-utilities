@@ -14,7 +14,7 @@ public class LoginCommandTest extends AbstractSpringTestCase {
   private Command loginCommand;
 
   @Test
-  public void testExecute() {
+  public final void testExecute() {
 
     loginCommand.execute();
 
