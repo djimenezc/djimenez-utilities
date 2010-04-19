@@ -55,9 +55,11 @@ import org.apache.commons.httpclient.methods.GetMethod;
  * @author Ortwin Glück
  * @author Michael Becke
  */
-public class ClientApp {
+public final class ClientApp {
 
   public static class HttpClientFrame extends JFrame {
+
+    private static final int CONECTION_TIME_OUT = 30000;
 
     private static final long serialVersionUID = 3993595664069855531L;
 
@@ -69,7 +71,8 @@ public class ClientApp {
 
     public HttpClientFrame() {
       client = new HttpClient(new MultiThreadedHttpConnectionManager());
-      client.getHttpConnectionManager().getParams().setConnectionTimeout(30000);
+      client.getHttpConnectionManager().getParams().setConnectionTimeout(
+        CONECTION_TIME_OUT);
 
       final JPanel panInput = new JPanel(new FlowLayout());
 
@@ -113,7 +116,9 @@ public class ClientApp {
         new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, new JScrollPane(
           taTextResponse), new JScrollPane(htmlPane));
       splitResponsePane.setOneTouchExpandable(false);
-      splitResponsePane.setDividerLocation(350);
+
+      final int locationDivider = 350;
+      splitResponsePane.setDividerLocation(locationDivider);
       // it would be better to set resizeWeight, but this method does
       // not exist in JRE 1.2.2
       // splitResponsePane.setResizeWeight(0.5);
@@ -201,7 +206,11 @@ public class ClientApp {
   public static void main(final String[] args) {
     final HttpClientFrame f = new HttpClientFrame();
     f.setTitle("HttpClient demo application");
-    f.setSize(700, 500);
+
+    final int width = 700;
+    final int height = 500;
+    f.setSize(width, height);
+
     f.addWindowListener(new WindowAdapter() {
 
       @Override
@@ -210,6 +219,10 @@ public class ClientApp {
       }
     });
     f.setVisible(true);
+  }
+
+  private ClientApp() {
+
   }
 
 }

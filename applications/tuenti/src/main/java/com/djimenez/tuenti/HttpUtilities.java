@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.NameValuePair;
@@ -16,7 +15,19 @@ import org.apache.commons.httpclient.methods.PostMethod;
 
 public class HttpUtilities {
 
-  public HttpClient configureRequest(final HttpClient client,
+  /**
+   * @param header
+   * @return
+   */
+  private String buildNewUri(final Header header) {
+    String newuri = header.getValue();
+    if ((newuri == null) || (newuri.equals(""))) {
+      newuri = "/";
+    }
+    return newuri;
+  }
+
+  public final HttpClient configureRequest(final HttpClient client,
     final String site, final int port) {
 
     client.getHostConfiguration().setHost(site, port, "http");
@@ -26,7 +37,7 @@ public class HttpUtilities {
     return client;
   }
 
-  public Cookie[] getCookies(final HttpClient client, final String site,
+  public final Cookie[] getCookies(final HttpClient client, final String site,
     final int port) {
 
     // See if we got any cookies
@@ -49,8 +60,8 @@ public class HttpUtilities {
     return cookies;
   }
 
-  public GetMethod getMethod(final HttpClient client, final String path)
-    throws HttpException, IOException {
+  public final GetMethod getMethod(final HttpClient client, final String path)
+    throws IOException {
 
     final GetMethod getMethod = new GetMethod(path);
 
@@ -70,7 +81,7 @@ public class HttpUtilities {
    * 
    * @param url
    */
-  public void loadPage(final String url, final HttpClient client) {
+  public final void loadPage(final String url, final HttpClient client) {
 
     final GetMethod get = new GetMethod(url);
     get.setFollowRedirects(true);
@@ -94,8 +105,8 @@ public class HttpUtilities {
     }
   }
 
-  public PostMethod postAuthMethod(final HttpClient client, final String path)
-    throws HttpException, IOException {
+  public final PostMethod postAuthMethod(final HttpClient client,
+    final String path) throws IOException {
 
     final PostMethod authpost = new PostMethod(path);
 
@@ -129,8 +140,8 @@ public class HttpUtilities {
    * @throws IOException
    * @throws HttpException
    */
-  public int redirectSucessUrl(final HttpClient client,
-    final HttpMethodBase httpMethod) throws HttpException, IOException {
+  public final int redirectSucessUrl(final HttpClient client,
+    final HttpMethodBase httpMethod) throws IOException {
 
     final int statuscode = httpMethod.getStatusCode();
 
@@ -140,13 +151,12 @@ public class HttpUtilities {
       || (statuscode == HttpStatus.SC_TEMPORARY_REDIRECT)) {
 
     }
+
     final Header header = httpMethod.getResponseHeader("location");
 
     if (header != null) {
-      String newuri = header.getValue();
-      if ((newuri == null) || (newuri.equals(""))) {
-        newuri = "/";
-      }
+
+      final String newuri = buildNewUri(header);
       System.out.println("Redirect target: " + newuri);
       final GetMethod redirect = new GetMethod(newuri);
 

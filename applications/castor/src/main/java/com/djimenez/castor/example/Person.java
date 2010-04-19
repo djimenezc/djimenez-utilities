@@ -27,26 +27,26 @@ public class Person implements java.io.Serializable {
   }
 
   /** * @return date of birth of the person */
-  public Date getDateOfBirth() {
+  public final Date getDateOfBirth() {
     return dob;
   }
 
   /** * @return name of the person */
-  public String getName() {
+  public final String getName() {
     return name;
   }
 
   /**
    * * Sets the date of birth of the person * @param name the name of the person
    */
-  public void setDateOfBirth(final Date dob) {
+  public final void setDateOfBirth(final Date dob) {
     this.dob = dob;
   }
 
   /**
    * * Sets the name of the person * @param name the name of the person
    */
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 }
