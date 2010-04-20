@@ -7,5 +7,5 @@ package com.djimenez.core.patterns.interfaces;
  */
 public interface Function {
 
-  void onNotification(Notification notification) throws Exception;
+  void onNotification(Notification notification);
 }

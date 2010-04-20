@@ -87,14 +87,15 @@ public final class ViewImpl implements View, ViewImplMBean {
 
     while (iterator.hasNext()) {
 
-      // FIXME check
-      // final String key = iterator.next();
-      //
-      // final Observer observer = this.observerMap.get(key).getObserver();
-      // value =
-      // value.concat("[Observer for context "
-      // + observer.getNotifyContext().getClass().getSimpleName() + "] ");
-      // map.put(key, value);
+      final String key = iterator.next();
+
+      String value = new String();
+
+      final Observer observer = this.observerMap.get(key).getObserver();
+      value =
+        value.concat("[Observer for context "
+          + observer.getNotifyContext().getClass().getSimpleName() + "] ");
+      map.put(key, value);
     }
     return map;
   }
@@ -118,7 +119,7 @@ public final class ViewImpl implements View, ViewImplMBean {
   }
 
   @Override
-  public void notifyObservers(final Notification note) throws Exception {
+  public void notifyObservers(final Notification note) {
 
   }
 

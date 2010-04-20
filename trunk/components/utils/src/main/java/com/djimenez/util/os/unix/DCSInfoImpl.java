@@ -32,7 +32,7 @@ public class DCSInfoImpl implements DCSInfo {
   private final INIFileHelper iniFileHelper = new INIFileHelper();
 
   // Getters and setters
-  private final String comments = null;
+  private static final String COMMENTS = null;
 
   public DCSInfoImpl() {
     this.iniFileHelper.setPathFile(DEFAULT_FILE);
@@ -50,7 +50,6 @@ public class DCSInfoImpl implements DCSInfo {
       logger.debug("Retrieve DCS ip address");
 
       return this.iniFileHelper.getProperty(SECTION_DCS, KEY_ADDRESS);
-
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -62,8 +61,7 @@ public class DCSInfoImpl implements DCSInfo {
 
     try {
       this.iniFileHelper.setProperty(new ValidatorIPFormat(), SECTION_DCS,
-        KEY_ADDRESS, value, this.comments);
-
+        KEY_ADDRESS, value, COMMENTS);
     }
     catch (final IOException e) {
       throw new NetException(e);

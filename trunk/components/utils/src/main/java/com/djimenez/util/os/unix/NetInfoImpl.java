@@ -29,7 +29,7 @@ public class NetInfoImpl implements NetInfo {
   private final SystemFilePropertiesHelper systemFilePropertiesHelper;
 
   // Getters and setters
-  private final String comments = null;
+  private static final String COMMENTS = null;
 
   public NetInfoImpl() {
 
@@ -70,7 +70,7 @@ public class NetInfoImpl implements NetInfo {
 
     try {
       this.systemFilePropertiesHelper.setProperty(new ValidatorIPFormat(),
-        GATEWAY, value, this.comments);
+        GATEWAY, value, COMMENTS);
     }
     catch (final IOException e) {
       throw new NetException(e);
@@ -82,8 +82,7 @@ public class NetInfoImpl implements NetInfo {
   public final void setHostName(final String value) throws NetException {
 
     try {
-      this.systemFilePropertiesHelper.setProperty(HOSTNAME, value,
-        this.comments);
+      this.systemFilePropertiesHelper.setProperty(HOSTNAME, value, COMMENTS);
     }
     catch (final IOException e) {
       throw new NetException(e);

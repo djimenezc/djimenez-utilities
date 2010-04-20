@@ -9,12 +9,9 @@ import org.apache.log4j.Logger;
  */
 public class MediatorContainer {
 
-  private static Logger logger = Logger.getLogger(MediatorContainer.class);
+  private static final Logger LOG = Logger.getLogger(MediatorContainer.class);
 
   private Collection<Mediator> mediatorCollection;
-
-  public MediatorContainer() {
-  }
 
   public final Collection<Mediator> getMediatorCollection() {
     return mediatorCollection;
@@ -24,11 +21,11 @@ public class MediatorContainer {
     final Collection<Mediator> mediatorCollection) {
     this.mediatorCollection = mediatorCollection;
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("Added " + mediatorCollection.size() + "mediator(s)");
-      logger.debug("Detail as follows: ");
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("Added " + mediatorCollection.size() + "mediator(s)");
+      LOG.debug("Detail as follows: ");
       for (final Mediator mediator : mediatorCollection) {
-        logger.debug("[MEDIATOR] " + mediator.getMediatorName());
+        LOG.debug("[MEDIATOR] " + mediator.getMediatorName());
       }
     }
 

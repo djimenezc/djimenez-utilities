@@ -72,8 +72,9 @@ public abstract class ApplicationFacade implements Facade {
       }
 
     }
-    catch (final Throwable throwable) {
-      this.processException(throwable);
+    catch (final Exception exception) {
+
+      this.processException(exception);
     }
   }
 
@@ -162,8 +163,7 @@ public abstract class ApplicationFacade implements Facade {
   }
 
   @Override
-  public final void notifyObservers(final Notification notification)
-    throws Exception {
+  public final void notifyObservers(final Notification notification) {
     if (this.view != null) {
       this.view.notifyObservers(notification);
     }
@@ -254,10 +254,10 @@ public abstract class ApplicationFacade implements Facade {
       // catch (final UnexpectedRollbackException e) {
       // logger.warn(e.getMessage(), e.getCause());
     }
-    catch (final Throwable throwable) {
+    catch (final Exception exception) {
       logger.error("Error sending Notification: " + notificationName + "!! "
-        + throwable.getMessage(), throwable.getCause());
-      this.processException(throwable);
+        + exception.getMessage(), exception.getCause());
+      this.processException(exception);
     }
   }
 

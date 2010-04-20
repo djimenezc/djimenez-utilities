@@ -18,7 +18,7 @@ import com.djimenez.core.patterns.interfaces.command.CommandNotification;
  */
 public interface Controller extends EventListener {
 
-  void executeCommand(Notification notification) throws Exception;
+  void executeCommand(Notification notification);
 
   void registerCommand(String notificationName, CommandNotification command);
 

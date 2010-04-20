@@ -16,7 +16,7 @@ public interface CommandNotification extends Command {
 
   void assignFacade(Facade facade);
 
-  void execute(Notification notification) throws Exception;
+  void execute(Notification notification);
 
   void handleEvent(Event event);
 

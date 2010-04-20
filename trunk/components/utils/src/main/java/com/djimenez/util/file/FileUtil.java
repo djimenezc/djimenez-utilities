@@ -60,6 +60,7 @@ public final class FileUtil {
 
   public static String readBytes(final InputStream inputStream, final int count)
     throws Exception {
+
     final byte[] buffer = new byte[BUFFER_SIZE];
 
     if (inputStream.read(buffer, 0, count) < count) {

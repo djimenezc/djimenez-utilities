@@ -1,5 +1,7 @@
 package com.djimenez.util.configuration.main;
 
+import java.io.IOException;
+
 import com.djimenez.util.configuration.AbstractConfigurationFileHelper;
 import com.djimenez.util.constants.PathPropertiesFiles;
 
@@ -11,7 +13,7 @@ public final class MainConfigurationFileHelper extends
 
   private static MainConfigurationFileHelper instance;
 
-  public static MainConfigurationFileHelper getInstance() {
+  public static MainConfigurationFileHelper getInstance() throws IOException {
 
     if (instance == null) {
       instance = new MainConfigurationFileHelper();
@@ -20,7 +22,7 @@ public final class MainConfigurationFileHelper extends
     return instance;
   }
 
-  private MainConfigurationFileHelper() {
+  private MainConfigurationFileHelper() throws IOException {
 
     loadBundle(PathPropertiesFiles.DEFAULT_PROPERTIES_FILE_PATH);
   }

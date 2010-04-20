@@ -60,9 +60,10 @@ public final class DateUtil {
       aDate = convertStringToDate(getDatePattern(), strDate);
     }
     catch (final ParseException pe) {
+      
       log.error("Could not convert '" + strDate
-        + "' to a date, throwing exception");
-      pe.printStackTrace();
+        + "' to a date, throwing exception. "+ pe.getMessage());
+      
       throw new ParseException(pe.getMessage(), pe.getErrorOffset());
     }
 

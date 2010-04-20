@@ -52,8 +52,8 @@ public class ObserverImpl implements Observer {
   }
 
   @Override
-  public final void notifyObserver(final Notification notification)
-    throws Exception {
+  public final void notifyObserver(final Notification notification) {
+
     this.getNotifyMethod().onNotification(notification);
   }
 

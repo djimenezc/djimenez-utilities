@@ -1,5 +1,7 @@
 package com.djimenez.util.configuration.date;
 
+import java.io.IOException;
+
 import com.djimenez.util.configuration.AbstractConfigurationFileHelper;
 import com.djimenez.util.constants.PathConfigurationFiles;
 
@@ -11,7 +13,7 @@ public final class DateConfigurationFileHelper extends
 
   private static DateConfigurationFileHelper instance;
 
-  public static DateConfigurationFileHelper getInstance() {
+  public static DateConfigurationFileHelper getInstance() throws IOException {
 
     if (instance == null) {
       instance = new DateConfigurationFileHelper();
@@ -20,7 +22,7 @@ public final class DateConfigurationFileHelper extends
     return instance;
   }
 
-  private DateConfigurationFileHelper() {
+  private DateConfigurationFileHelper() throws IOException {
 
     loadBundle(PathConfigurationFiles.DATE_CONFIGURATION_FILE_PATH);
   }

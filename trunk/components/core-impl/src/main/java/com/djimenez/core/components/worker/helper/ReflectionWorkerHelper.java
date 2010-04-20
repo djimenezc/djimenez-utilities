@@ -1,7 +1,6 @@
 package com.djimenez.core.components.worker.helper;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,8 @@ public final class ReflectionWorkerHelper {
 
   private static final String SUBMIT_METHOD_PREFIX = "submitKey";
 
-  private static Logger logger = Logger.getLogger(ReflectionWorkerHelper.class);
+  private static final Logger LOG =
+    Logger.getLogger(ReflectionWorkerHelper.class);
 
   /**
    * Create a new instance of AbstractNotificationCommand with reflection.
@@ -59,11 +59,10 @@ public final class ReflectionWorkerHelper {
 
     }
     catch (final ClassNotFoundException e) {
-      logger
-        .debug("AbstractWorkerCommand class not found. Reflection failed. ");
+      LOG.debug("AbstractWorkerCommand class not found. Reflection failed. ");
     }
     catch (final Exception e) {
-      e.printStackTrace();
+      LOG.error(e.getStackTrace());
     }
 
     // Return new instance of AbstractWorkerCommand
@@ -98,11 +97,10 @@ public final class ReflectionWorkerHelper {
 
     }
     catch (final ClassNotFoundException e) {
-      logger
-        .debug("AbstractWorkerMediator class not found. Reflection failed. ");
+      LOG.debug("AbstractWorkerMediator class not found. Reflection failed. ");
     }
     catch (final Exception e) {
-      e.printStackTrace();
+      LOG.error(e.getStackTrace());
     }
     // Return new instance of AbstractWorkerMediator
     return abstractObject;
@@ -146,10 +144,10 @@ public final class ReflectionWorkerHelper {
       }
     }
     catch (final ClassNotFoundException e) {
-      logger.debug("WorkerCommand inner class not found. Reflection failed. ");
+      LOG.debug("WorkerCommand inner class not found. Reflection failed. ");
     }
     catch (final Exception e) {
-      e.printStackTrace();
+      LOG.error(e.getStackTrace());
     }
 
     // Return new object
@@ -196,10 +194,10 @@ public final class ReflectionWorkerHelper {
       }
     }
     catch (final ClassNotFoundException e) {
-      logger.debug("WorkerMediator inner class not found. Reflection failed. ");
+      LOG.debug("WorkerMediator inner class not found. Reflection failed. ");
     }
     catch (final Exception e) {
-      e.printStackTrace();
+      LOG.error(e.getStackTrace());
     }
 
     // Return new object
@@ -227,20 +225,8 @@ public final class ReflectionWorkerHelper {
       // Invoke submitKey method of WorkerMediator object
       method.invoke(workerObject, operatorLine);
     }
-    catch (final SecurityException e) {
-      e.printStackTrace();
-    }
-    catch (final NoSuchMethodException e) {
-      e.printStackTrace();
-    }
-    catch (final IllegalArgumentException e) {
-      e.printStackTrace();
-    }
-    catch (final IllegalAccessException e) {
-      e.printStackTrace();
-    }
-    catch (final InvocationTargetException e) {
-      e.printStackTrace();
+    catch (final Exception e) {
+      LOG.error(e.getStackTrace());
     }
 
   }

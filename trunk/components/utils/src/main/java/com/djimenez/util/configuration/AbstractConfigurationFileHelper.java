@@ -6,8 +6,6 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
-import com.djimenez.util.configuration.exception.ConfigurationFileException;
-
 /**
  * @author djimenez
  * @version 1.0
@@ -28,20 +26,14 @@ public abstract class AbstractConfigurationFileHelper {
     return this.properties.getProperty(key);
   }
 
-  protected final void loadBundle(final String filePath) {
+  protected final void loadBundle(final String filePath) throws IOException {
 
     this.properties = new Properties();
 
-    try {
-      final InputStream inputStream =
-        AbstractConfigurationFileHelper.class.getClassLoader()
-          .getResourceAsStream(filePath);
-      this.properties.load(inputStream);
-      logger.debug("Found properties file " + filePath);
-    }
-    catch (final IOException e) {
-      logger.warn(e.getMessage(), e.getCause());
-      throw new ConfigurationFileException(e.getMessage(), e.getCause());
-    }
+    final InputStream inputStream =
+      AbstractConfigurationFileHelper.class.getClassLoader()
+        .getResourceAsStream(filePath);
+    this.properties.load(inputStream);
+    logger.debug("Found properties file " + filePath);
   }
 }

@@ -1,5 +1,8 @@
 package com.djimenez.util.os.unix;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.djimenez.util.os.services.ServiceManagement;
 import com.djimenez.util.os.services.ServiceManagementException;
 
@@ -10,6 +13,9 @@ import com.djimenez.util.os.services.ServiceManagementException;
  * @version 1.0
  */
 public final class ServiceManagementApplication {
+
+  private static final Log LOG =
+    LogFactory.getLog(ServiceManagementApplication.class);
 
   /**
    * @param args
@@ -22,7 +28,7 @@ public final class ServiceManagementApplication {
     final String serviceName = args[0];
     final String operation = args[1];
 
-    System.out.println(operation + " service " + serviceName);
+    LOG.info(operation + " service " + serviceName);
 
     if (operation.equals("start")) {
       services.start(serviceName);

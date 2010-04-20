@@ -29,13 +29,8 @@ public abstract class AbstractPersistenceTemplate implements
 
   @Override
   public final void batchUpdate(final String sql, final List<Object[]> batchArgs) {
-    try {
-      this.getSimpleJdbcTemplate().batchUpdate(sql, batchArgs);
-    }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
+    this.getSimpleJdbcTemplate().batchUpdate(sql, batchArgs);
   }
 
   protected final SimpleJdbcInsert createSimpleJdbcInsert() {
@@ -47,28 +42,20 @@ public abstract class AbstractPersistenceTemplate implements
   public final KeyHolder executeAndReturnKeyHolderJdbcInsert(
     final Map<String, Object> args) {
     KeyHolder keyHolder = null;
-    try {
-      keyHolder = this.getSimpleJdbcInsert().executeAndReturnKeyHolder(args);
-    }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
+    keyHolder = this.getSimpleJdbcInsert().executeAndReturnKeyHolder(args);
+
     return keyHolder;
   }
 
   @Override
   public final KeyHolder executeAndReturnKeyHolderJdbcInsert(
     final SqlParameterSource parameterSource) {
+
     KeyHolder keyHolder = null;
-    try {
-      keyHolder =
-        this.getSimpleJdbcInsert().executeAndReturnKeyHolder(parameterSource);
-    }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+    keyHolder =
+      this.getSimpleJdbcInsert().executeAndReturnKeyHolder(parameterSource);
+
     return keyHolder;
   }
 
@@ -76,13 +63,9 @@ public abstract class AbstractPersistenceTemplate implements
   public final Number executeAndReturnKeyJdbcInsert(
     final Map<String, Object> args) {
     Number number = null;
-    try {
-      number = this.getSimpleJdbcInsert().executeAndReturnKey(args);
-    }
-    catch (final Exception e) {
-      logger.error(e);
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
+    number = this.getSimpleJdbcInsert().executeAndReturnKey(args);
+
     return number;
   }
 
@@ -90,59 +73,36 @@ public abstract class AbstractPersistenceTemplate implements
   public final Number executeAndReturnKeyJdbcInsert(
     final SqlParameterSource parameterSource) {
     Number number = null;
-    try {
-      number = this.getSimpleJdbcInsert().executeAndReturnKey(parameterSource);
-    }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
+    number = this.getSimpleJdbcInsert().executeAndReturnKey(parameterSource);
+
     return number;
   }
 
   @Override
   public final void executeBatchJdbcInsert(final Map<String, Object>[] batch) {
-    try {
-      this.getSimpleJdbcInsert().executeBatch(batch);
-    }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
+    this.getSimpleJdbcInsert().executeBatch(batch);
+
   }
 
   @Override
   public final void executeBatchJdbcInsert(final SqlParameterSource[] batch) {
-    try {
-      this.getSimpleJdbcInsert().executeBatch(batch);
-    }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
+    this.getSimpleJdbcInsert().executeBatch(batch);
   }
 
   @Override
   public final void executeInsertJdbcInsert(
     final SqlParameterSource parameterSource) {
-    try {
-      this.getSimpleJdbcInsert().execute(parameterSource);
-    }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
+    this.getSimpleJdbcInsert().execute(parameterSource);
   }
 
   @Override
   public final void executeJdbcInsert(final Map<String, Object> args) {
-    try {
-      this.getSimpleJdbcInsert().execute(args);
-    }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
+    this.getSimpleJdbcInsert().execute(args);
   }
 
   public final DataSource getDataSource() {
@@ -179,10 +139,7 @@ public abstract class AbstractPersistenceTemplate implements
       logger.debug(erdae);
       result = null;
     }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
     return result;
   }
 
@@ -197,16 +154,15 @@ public abstract class AbstractPersistenceTemplate implements
       logger.debug(erdae);
       result = null;
     }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
     return result;
   }
 
   @Override
   public final Long queryForLong(final String sql, final Object... args) {
+
     Long result = null;
+
     try {
       result =
         Long.valueOf(this.getSimpleJdbcTemplate().queryForLong(sql, args));
@@ -215,16 +171,14 @@ public abstract class AbstractPersistenceTemplate implements
       logger.debug(erdae);
       result = null;
     }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
     return result;
   }
 
   @Override
   public final Long queryForLongLocal(final String sql, final Object... args) {
     Long result = null;
+
     try {
       result =
         Long.valueOf(this.getSimpleJdbcTemplate().queryForLong(sql, args));
@@ -233,17 +187,16 @@ public abstract class AbstractPersistenceTemplate implements
       logger.debug(erdae);
       result = null;
     }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
     return result;
   }
 
   @Override
   public final Object queryForObject(final String sql,
     final Class<?> requiredType, final Object... args) {
+
     Object result;
+
     try {
       result =
         this.getSimpleJdbcTemplate().queryForObject(sql, requiredType, args);
@@ -252,10 +205,7 @@ public abstract class AbstractPersistenceTemplate implements
       logger.debug(erdae);
       result = null;
     }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
     return result;
   }
 
@@ -273,10 +223,7 @@ public abstract class AbstractPersistenceTemplate implements
       logger.debug(erdae);
       result = null;
     }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
     return result;
   }
 
@@ -292,10 +239,7 @@ public abstract class AbstractPersistenceTemplate implements
       logger.debug(erdae);
       result = null;
     }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
     return result;
   }
 
@@ -307,13 +251,8 @@ public abstract class AbstractPersistenceTemplate implements
   @Override
   public final int update(final String sql, final Object... args) {
     int result = 0;
-    try {
-      result = this.getSimpleJdbcTemplate().update(sql, args);
-    }
-    catch (final Exception e) {
-      logger.error(e.getMessage(), e.getCause());
-      throw new PersistenceTemplateException(e.getMessage(), e.getCause());
-    }
+
+    result = this.getSimpleJdbcTemplate().update(sql, args);
     return result;
   }
 }

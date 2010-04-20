@@ -30,7 +30,7 @@ public interface View extends EventListener {
 
   boolean isCommandRunning();
 
-  void notifyObservers(Notification notification) throws Exception;
+  void notifyObservers(Notification notification);
 
   void registerMediator(Mediator mediator);
 
