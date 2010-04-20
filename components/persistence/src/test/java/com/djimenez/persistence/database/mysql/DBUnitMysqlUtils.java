@@ -1,8 +1,13 @@
 package com.djimenez.persistence.database.mysql;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.djimenez.test.util.dbunit.DBUnitUtils;
 
 public class DBUnitMysqlUtils {
+
+  private static final Log LOG = LogFactory.getLog(DBUnitMysqlUtils.class);
 
   private String driverName;
   private String urlDB;
@@ -21,8 +26,8 @@ public class DBUnitMysqlUtils {
         schemaBD, destinationXML);
     }
     catch (final Exception e) {
-      e.printStackTrace();
 
+      LOG.error(e.getMessage());
       status = -1;
     }
 
@@ -81,8 +86,8 @@ public class DBUnitMysqlUtils {
         destinationXML);
     }
     catch (final Exception e) {
-      e.printStackTrace();
 
+      LOG.error(e.getMessage());
       status = -1;
     }
 

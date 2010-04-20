@@ -60,8 +60,8 @@ public class ObserverEntry {
     return this.observer;
   }
 
-  public final void notifyObservers(final Notification notification)
-    throws Exception {
+  public final void notifyObservers(final Notification notification) {
+
     if (notification != null) {
       if (this.observer != null) {
         this.observer.notifyObserver(notification);

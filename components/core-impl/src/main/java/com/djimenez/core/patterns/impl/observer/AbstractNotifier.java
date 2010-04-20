@@ -50,8 +50,8 @@ public abstract class AbstractNotifier implements Notifier {
       this.facade.sendNotification(notificationName, body, type);
       this.postNotification();
     }
-    catch (final Throwable throwable) {
-      this.facade.processException(throwable);
+    catch (final Exception exception) {
+      this.facade.processException(exception);
     }
   }
 

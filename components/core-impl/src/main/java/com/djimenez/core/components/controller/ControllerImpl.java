@@ -57,7 +57,7 @@ public final class ControllerImpl implements Controller, ControllerImplMBean {
   }
 
   @Override
-  public void executeCommand(final Notification notification) throws Exception {
+  public void executeCommand(final Notification notification) {
 
     this.view.setCommandRunning(true);
 
@@ -74,7 +74,7 @@ public final class ControllerImpl implements Controller, ControllerImplMBean {
       // Check workable to set command running to view
       if (!(this.currentCommand instanceof Workable)) {
         this.view.setCommandRunning(false);
-        throw e;
+        // throw e;
       }
     }
     final long totalTime = System.currentTimeMillis() - before;
@@ -138,8 +138,7 @@ public final class ControllerImpl implements Controller, ControllerImplMBean {
       new Function() {
 
         @Override
-        public void onNotification(final Notification notification)
-          throws Exception {
+        public void onNotification(final Notification notification) {
 
           ControllerImpl.this.executeCommand(notification);
 

@@ -11,25 +11,25 @@ import org.apache.log4j.Logger;
  */
 public class CommandContainer {
 
-  private static Logger logger = Logger.getLogger(CommandContainer.class);
+  private static final Logger LOG = Logger.getLogger(CommandContainer.class);
 
   private Map<String, Command> commandMap;
-
-  public CommandContainer() {
-    // do nothing yet
-  }
 
   public final Map<String, Command> getCommandMap() {
     return this.commandMap;
   }
 
   public final void setCommandMap(final Map<String, Command> commandMap) {
+
     this.commandMap = commandMap;
-    if (logger.isTraceEnabled()) {
-      int i = 0;
+
+    if (LOG.isTraceEnabled()) {
+
+      int pos = 0;
+
       for (final Map.Entry<String, Command> entry : commandMap.entrySet()) {
-        i++;
-        logger.trace(i + ". " + entry.getKey() + " - " + entry.getValue());
+        pos++;
+        LOG.trace(pos + ". " + entry.getKey() + " - " + entry.getValue());
       }
     }
   }

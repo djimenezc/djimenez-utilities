@@ -62,13 +62,9 @@ public class TimestampConverter {
    */
   public final Object convertToString(final Class<?> type, final Object value) {
     final DateFormat df = new SimpleDateFormat(TS_FORMAT);
+
     if (value instanceof Date) {
-      try {
-        return df.format(value);
-      }
-      catch (final Exception e) {
-        throw new ConversionException("Error converting Timestamp to String");
-      }
+      return df.format(value);
     }
 
     return value.toString();

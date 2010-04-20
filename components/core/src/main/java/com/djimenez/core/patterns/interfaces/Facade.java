@@ -33,11 +33,11 @@ public interface Facade extends Notifier {
 
   View getView();
 
-  void notifyObservers(Notification note) throws Exception;
+  void notifyObservers(Notification note);
 
   void pauseAllRemoteEvents();
 
-  void processException(Throwable throwable);
+  void processException(Exception exception);
 
   void registerCommand(String notificationName, Command command);
 

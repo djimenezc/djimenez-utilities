@@ -31,23 +31,27 @@ public class DataBaseUtils {
     this.password = password;
   }
 
-  public final boolean executeQuery(final String query) {
+  public final boolean executeQuery(final String query) throws SQLException {
 
     Statement sentencias = null;
 
     final Connection con = getConnection(userName, password);
 
     try {
+
       sentencias = con.createStatement();
       sentencias.executeUpdate(query);
-      sentencias.close();
-      con.close();
     }
     catch (final Exception e) {
 
       log.error(e.getMessage());
 
       return false;
+    }
+    finally {
+
+      sentencias.close();
+      con.close();
     }
 
     return true;

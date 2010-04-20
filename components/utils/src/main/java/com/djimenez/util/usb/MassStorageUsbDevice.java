@@ -16,30 +16,34 @@ public class MassStorageUsbDevice {
 
   private static Logger logger = Logger.getLogger(MassStorageUsbDevice.class);
 
-  private static final String N2A_HOME = System.getProperty("N2A_HOME");
-  private static final String USB_SCRIPT =
-    MainConfigurationFileHelper.getInstance().getProperty(
-      "massStorageUsbDeviceMountScriptPath");
-  private static final String USB_PATH =
-    MainConfigurationFileHelper.getInstance().getProperty(
-      "massStorageUsbDevicePath");
+  private final String n2aHome;
+  private final String usbScript;
+  private final String usbPath;
   private static final String MOUNT = "mount";
   private static final String UMOUNT = "umount";
 
   private boolean isMounted = false;
 
-  public MassStorageUsbDevice() {
+  public MassStorageUsbDevice() throws IOException {
+
+    n2aHome = System.getProperty("N2A_HOME");
+    usbScript =
+      MainConfigurationFileHelper.getInstance().getProperty(
+        "massStorageUsbDeviceMountScriptPath");
+    usbPath =
+      MainConfigurationFileHelper.getInstance().getProperty(
+        "massStorageUsbDevicePath");
   }
 
   public final boolean close() {
     boolean result = false;
     try {
       if (isMounted) {
-        logger.debug("MassStorageUsbDevice umount: " + N2A_HOME + USB_SCRIPT
-          + " " + UMOUNT + " " + USB_PATH);
+        logger.debug("MassStorageUsbDevice umount: " + n2aHome + usbScript
+          + " " + UMOUNT + " " + usbPath);
         final Process process =
           Runtime.getRuntime().exec(
-            new String[] { N2A_HOME + USB_SCRIPT, UMOUNT, USB_PATH });
+            new String[] { n2aHome + usbScript, UMOUNT, usbPath });
         if (process.waitFor() > 0) {
           logger.error("MassStorageUsbDevice umount failed: Reason: "
             + getError(process));
@@ -76,19 +80,19 @@ public class MassStorageUsbDevice {
   }
 
   public final File getMassStorageUsbDevice() {
-    final File file = new File(USB_PATH);
-    return file;
+
+    return new File(usbPath);
   }
 
   public final boolean open() {
     boolean result = false;
     try {
       if (!isMounted) {
-        logger.debug("MassStorageUsbDevice mount: " + N2A_HOME + USB_SCRIPT
-          + " " + MOUNT + " " + USB_PATH);
+        logger.debug("MassStorageUsbDevice mount: " + n2aHome + usbScript + " "
+          + MOUNT + " " + usbPath);
         final Process process =
           Runtime.getRuntime().exec(
-            new String[] { N2A_HOME + USB_SCRIPT, MOUNT, USB_PATH });
+            new String[] { n2aHome + usbScript, MOUNT, usbPath });
         if (process.waitFor() > 0) {
           logger.error("MassStorageUsbDevice mount failed: Reason: "
             + getError(process));

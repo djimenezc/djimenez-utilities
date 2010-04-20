@@ -20,21 +20,20 @@ import java.util.regex.Pattern;
 public final class ValidateExpresionRegularHelperFO {
 
   private final Pattern pattern;
-  private final String patterDescription;
 
-  public ValidateExpresionRegularHelperFO(final String patterDescription) {
-    this.patterDescription = patterDescription;
-    this.pattern = Pattern.compile(this.patterDescription);
-  }
+  public ValidateExpresionRegularHelperFO(final String patternDescription) {
 
-  public boolean isValid(final String input) {
-    final Matcher matcher = pattern.matcher(input);
-    return matcher.matches();
+    this.pattern = Pattern.compile(patternDescription);
   }
 
   public void getMatcher(final String input) {
     final Matcher matcher = pattern.matcher(input);
     matcher.find();
+  }
+
+  public boolean isValid(final String input) {
+    final Matcher matcher = pattern.matcher(input);
+    return matcher.matches();
   }
 
 }

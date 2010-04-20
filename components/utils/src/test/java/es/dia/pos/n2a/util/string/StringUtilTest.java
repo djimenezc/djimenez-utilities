@@ -5,7 +5,12 @@ import java.net.URLEncoder;
 
 import junit.framework.TestCase;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class StringUtilTest extends TestCase {
+
+  private static final Log LOG = LogFactory.getLog(StringUtilTest.class);
 
   public final void testDeleteAccents() {
 
@@ -25,7 +30,7 @@ public class StringUtilTest extends TestCase {
 
     final String stringEncode = URLEncoder.encode(stringWithAccents, "UTF-8");
 
-    System.out.println("Encode accents from " + stringWithAccents);
-    System.out.println("The result string is " + stringEncode);
+    LOG.info("Encode accents from " + stringWithAccents);
+    LOG.info("The result string is " + stringEncode);
   }
 }

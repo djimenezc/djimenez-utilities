@@ -10,7 +10,6 @@ import java.util.Properties;
 import java.util.Set;
 
 import com.djimenez.util.configuration.AbstractConfigurationFileHelper;
-import com.djimenez.util.configuration.exception.ConfigurationFileException;
 
 public final class UnicodeToAscii437MapperHelper {
 
@@ -22,7 +21,7 @@ public final class UnicodeToAscii437MapperHelper {
   private static final String CHARACTERS_ASCII437_FILE_NAME =
     "characters-ascii437.properties";
 
-  public static UnicodeToAscii437MapperHelper getInstance() {
+  public static UnicodeToAscii437MapperHelper getInstance() throws IOException {
 
     if (instance == null) {
       instance = new UnicodeToAscii437MapperHelper();
@@ -31,7 +30,7 @@ public final class UnicodeToAscii437MapperHelper {
     return instance;
   }
 
-  private UnicodeToAscii437MapperHelper() {
+  private UnicodeToAscii437MapperHelper() throws IOException {
 
     final Properties charactersUnicode = new Properties();
     final Properties charactersAscii437 = new Properties();
@@ -64,20 +63,12 @@ public final class UnicodeToAscii437MapperHelper {
       }
 
     }
-    catch (final IOException e) {
-      throw new ConfigurationFileException(e.getMessage(), e.getCause());
-    }
     finally {
-      try {
-        if (inputStreamUnicode != null) {
-          inputStreamUnicode.close();
-        }
-        if (inputStreamAscii437 != null) {
-          inputStreamAscii437.close();
-        }
+      if (inputStreamUnicode != null) {
+        inputStreamUnicode.close();
       }
-      catch (final IOException e) {
-        throw new ConfigurationFileException(e.getMessage(), e.getCause());
+      if (inputStreamAscii437 != null) {
+        inputStreamAscii437.close();
       }
     }
   }
