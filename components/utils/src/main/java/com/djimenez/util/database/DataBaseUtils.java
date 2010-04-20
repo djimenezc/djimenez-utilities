@@ -59,9 +59,7 @@ public class DataBaseUtils {
   }
 
   public final Connection getConnection(final String username,
-    final String password) {
-
-    Connection con = null;
+    final String password) throws SQLException {
 
     try {
       Class.forName(dbDriver).newInstance();
@@ -83,18 +81,19 @@ public class DataBaseUtils {
     }
 
     try {
-      con = DriverManager.getConnection(this.dbUrl, username, password);
+      final Connection con =
+        DriverManager.getConnection(this.dbUrl, username, password);
+      return con;
     }
     catch (final SQLException sqle) {
 
       log.error(sqle.getMessage());
+
       return null;
     }
-
-    return con;
   }
 
-  public final boolean resetSchema(final String schemaName) {
+  public final boolean resetSchema(final String schemaName) throws SQLException {
 
     Statement sentencias = null;
 
@@ -104,8 +103,6 @@ public class DataBaseUtils {
       sentencias = con.createStatement();
       sentencias.executeUpdate("DROP SCHEMA " + schemaName);
       sentencias.executeUpdate("CREATE SCHEMA " + schemaName);
-      sentencias.close();
-      con.close();
     }
     catch (final Exception e) {
 
@@ -113,9 +110,13 @@ public class DataBaseUtils {
 
       return false;
     }
+    finally {
+
+      sentencias.close();
+      con.close();
+    }
 
     return true;
-
   }
 
 }

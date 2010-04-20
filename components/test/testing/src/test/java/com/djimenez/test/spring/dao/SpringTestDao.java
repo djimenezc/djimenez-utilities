@@ -5,6 +5,6 @@ import com.djimenez.model.user.User;
 
 public interface SpringTestDao extends GenericDao<Integer, User> {
 
-  public void calculateUserNumber();
+  void calculateUserNumber();
 
 }

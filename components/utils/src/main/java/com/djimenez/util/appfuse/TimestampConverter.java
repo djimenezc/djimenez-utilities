@@ -1,6 +1,7 @@
 package com.djimenez.util.appfuse;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,20 +32,19 @@ public class TimestampConverter {
    * @param value
    *          the String value
    * @return a converted date
+   * @throws ParseException
    */
-  public final Object convertToDate(final Class<?> type, final Object value) {
-    final DateFormat df = new SimpleDateFormat(TS_FORMAT);
-    if (value instanceof String) {
-      try {
-        if (StringUtils.isEmpty(value.toString())) {
-          return null;
-        }
+  public final Object convertToDate(final Class<?> type, final Object value)
+    throws ParseException {
 
-        return df.parse((String) value);
+    final DateFormat df = new SimpleDateFormat(TS_FORMAT);
+
+    if (value instanceof String) {
+      if (StringUtils.isEmpty(value.toString())) {
+        return null;
       }
-      catch (final Exception pe) {
-        throw new ConversionException("Error converting String to Timestamp");
-      }
+
+      return df.parse((String) value);
     }
 
     throw new ConversionException("Could not convert "

@@ -69,7 +69,7 @@ public abstract class BaseDaoTestCase extends
    * @throws Exception
    *           if BeanUtils fails to copy properly
    */
-  protected Object populate(final Object obj) throws Exception {
+  protected Object populate(final Object obj) {
     // loop through all the beans methods and set its properties from
     // its .properties file
     final Map<String, String> map = new HashMap<String, String>();

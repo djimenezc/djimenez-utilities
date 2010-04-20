@@ -17,7 +17,8 @@ import org.apache.commons.logging.LogFactory;
  */
 public class CurrencyConverter implements Converter {
 
-  private final Log log = LogFactory.getLog(CurrencyConverter.class);
+  private static final Log LOG = LogFactory.getLog(CurrencyConverter.class);
+
   private DecimalFormat formatter = new DecimalFormat("###,###.00");
 
   /**
@@ -42,9 +43,9 @@ public class CurrencyConverter implements Converter {
       }
       else
         if (value instanceof Double) {
-          if (log.isDebugEnabled()) {
-            log.debug("value (" + value + ") instance of Double");
-            log.debug("returning double: " + formatter.format(value));
+          if (LOG.isDebugEnabled()) {
+            LOG.debug("value (" + value + ") instance of Double");
+            LOG.debug("returning double: " + formatter.format(value));
           }
 
           return formatter.format(value);
@@ -64,8 +65,8 @@ public class CurrencyConverter implements Converter {
    */
   private Double stringConvert(final Object value) {
 
-    if (log.isDebugEnabled()) {
-      log.debug("value (" + value + ") instance of String");
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("value (" + value + ") instance of String");
     }
 
     try {
@@ -73,8 +74,8 @@ public class CurrencyConverter implements Converter {
         return null;
       }
 
-      if (log.isDebugEnabled()) {
-        log.debug("converting '" + value + "' to a decimal");
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("converting '" + value + "' to a decimal");
       }
 
       // formatter.setDecimalSeparatorAlwaysShown(true);
@@ -83,7 +84,7 @@ public class CurrencyConverter implements Converter {
       return Double.valueOf(num.doubleValue());
     }
     catch (final ParseException pe) {
-      pe.printStackTrace();
+      LOG.error(pe.getStackTrace());
     }
     return null;
   }

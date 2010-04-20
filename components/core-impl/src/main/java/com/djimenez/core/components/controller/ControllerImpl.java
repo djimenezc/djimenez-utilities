@@ -119,13 +119,13 @@ public final class ControllerImpl implements Controller, ControllerImplMBean {
       throw new ControllerException("Trying to register null Command");
     }
 
-    if (logger.isDebugEnabled()) {
-      if (this.commandMap.containsKey(notificationName)) {
-        throw new DuplicateNotificationException("Notification "
-          + notificationName
-          + " already exists. Try to register with another name");
-      }
+    if (logger.isDebugEnabled()
+      && this.commandMap.containsKey(notificationName)) {
+      throw new DuplicateNotificationException("Notification "
+        + notificationName
+        + " already exists. Try to register with another name");
     }
+
     this.commandMap.put(notificationName, command);
 
     if (logger.isDebugEnabled()) {

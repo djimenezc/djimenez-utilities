@@ -2,12 +2,15 @@ package com.djimenez.util.appfuse;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * This class is converts a java.util.Date to a String and a String to a
@@ -16,6 +19,8 @@ import org.apache.commons.lang.StringUtils;
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
 public class DateConverter implements Converter {
+
+  private static final Log LOG = LogFactory.getLog(DateConverter.class);
 
   /**
    * Convert a date to a String and a String to a Date
@@ -33,11 +38,21 @@ public class DateConverter implements Converter {
     }
     else
       if (type == Timestamp.class) {
-        return convertToDate(type, value, DateUtil.getDateTimePattern());
+        try {
+          return convertToDate(type, value, DateUtil.getDateTimePattern());
+        }
+        catch (final ParseException e) {
+          LOG.error(e.getStackTrace());
+        }
       }
       else
         if (type == Date.class) {
-          return convertToDate(type, value, DateUtil.getDatePattern());
+          try {
+            return convertToDate(type, value, DateUtil.getDatePattern());
+          }
+          catch (final ParseException e) {
+            LOG.error(e.getStackTrace());
+          }
         }
         else
           if (type == String.class) {
@@ -58,27 +73,22 @@ public class DateConverter implements Converter {
    * @param pattern
    *          date pattern to parse with
    * @return Converted value for property population
+   * @throws ParseException
    */
   public final Object convertToDate(final Class<?> type, final Object value,
-    final String pattern) {
+    final String pattern) throws ParseException {
 
     final DateFormat df = new SimpleDateFormat(pattern);
     if (value instanceof String) {
-      try {
-        if (StringUtils.isEmpty(value.toString())) {
-          return null;
-        }
+      if (StringUtils.isEmpty(value.toString())) {
+        return null;
+      }
 
-        final Date date = df.parse((String) value);
-        if (type.equals(Timestamp.class)) {
-          return new Timestamp(date.getTime());
-        }
-        return date;
+      final Date date = df.parse((String) value);
+      if (type.equals(Timestamp.class)) {
+        return new Timestamp(date.getTime());
       }
-      catch (final Exception pe) {
-        pe.printStackTrace();
-        throw new ConversionException("Error converting String to Date");
-      }
+      return date;
     }
 
     throw new ConversionException("Could not convert "
@@ -97,18 +107,14 @@ public class DateConverter implements Converter {
   public final Object convertToString(final Class<?> type, final Object value) {
 
     if (value instanceof Date) {
+
       DateFormat df = new SimpleDateFormat(DateUtil.getDatePattern());
+
       if (value instanceof Timestamp) {
         df = new SimpleDateFormat(DateUtil.getDateTimePattern());
       }
 
-      try {
-        return df.format(value);
-      }
-      catch (final Exception e) {
-        e.printStackTrace();
-        throw new ConversionException("Error converting Date to String");
-      }
+      return df.format(value);
     }
     else {
       return value.toString();

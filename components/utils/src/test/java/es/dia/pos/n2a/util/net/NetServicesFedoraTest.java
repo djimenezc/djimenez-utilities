@@ -24,6 +24,9 @@ public class NetServicesFedoraTest {
   // Clase a testear
   private NetServicesImpl netServices = null;
 
+  private static final String DATA_TEST1 = "3.4.5.J";
+  private static final String DATA_TEST2 = "3.4.5.6";
+
   @After
   public final void finalizeTest() throws IOException {
     // Eliminamos el fichero temporal para pruebas
@@ -101,9 +104,8 @@ public class NetServicesFedoraTest {
   public final void testSetNotWellFormedBroadCastIP() {
     boolean result = false;
 
-    final String dataTest = "3.4.5.J";
     try {
-      this.netServices.setBroadCast(dataTest);
+      this.netServices.setBroadCast(DATA_TEST1);
     }
     catch (final NetException e) {
       result = true;
@@ -115,9 +117,8 @@ public class NetServicesFedoraTest {
   public final void testSetNotWellFormedIPaddr() {
     boolean result = false;
 
-    final String dataTest = "3.4.5.J";
     try {
-      this.netServices.setIPaddr(dataTest);
+      this.netServices.setIPaddr(DATA_TEST1);
     }
     catch (final NetException e) {
       result = true;
@@ -129,9 +130,8 @@ public class NetServicesFedoraTest {
   public final void testSetNotWellFormedNetMask() {
     boolean result = false;
 
-    final String dataTest = "3.4.5.J";
     try {
-      this.netServices.setNetMask(dataTest);
+      this.netServices.setNetMask(DATA_TEST1);
     }
     catch (final NetException e) {
       result = true;
@@ -143,9 +143,8 @@ public class NetServicesFedoraTest {
   public final void testSetNotWellFormedNetWorkIP() {
     boolean result = false;
 
-    final String dataTest = "3.4.5.J";
     try {
-      this.netServices.setNetwork(dataTest);
+      this.netServices.setNetwork(DATA_TEST1);
     }
     catch (final NetException e) {
       result = true;
@@ -155,33 +154,29 @@ public class NetServicesFedoraTest {
 
   @Test
   public final void testSetWellFormedBroadCastIP() throws NetException {
-    final String dataTest = "3.4.5.6";
 
-    this.netServices.setBroadCast(dataTest);
-    Assert.assertEquals(dataTest, this.netServices.getBroadCast());
+    this.netServices.setBroadCast(DATA_TEST2);
+    Assert.assertEquals(DATA_TEST2, this.netServices.getBroadCast());
   }
 
   @Test
   public final void testSetWellFormedIPaddr() throws NetException {
-    final String dataTest = "3.4.5.6";
 
-    this.netServices.setIPaddr(dataTest);
-    Assert.assertEquals(dataTest, this.netServices.getIPaddr());
+    this.netServices.setIPaddr(DATA_TEST2);
+    Assert.assertEquals(DATA_TEST2, this.netServices.getIPaddr());
   }
 
   @Test
   public final void testSetWellFormedNetMask() throws NetException {
-    final String dataTest = "3.4.5.6";
 
-    this.netServices.setNetMask(dataTest);
-    Assert.assertEquals(dataTest, this.netServices.getNetMask());
+    this.netServices.setNetMask(DATA_TEST2);
+    Assert.assertEquals(DATA_TEST2, this.netServices.getNetMask());
   }
 
   @Test
   public final void testSetWellFormedNetWorkIP() throws NetException {
-    final String dataTest = "3.4.5.6";
 
-    this.netServices.setNetwork(dataTest);
-    Assert.assertEquals(dataTest, this.netServices.getNetwork());
+    this.netServices.setNetwork(DATA_TEST2);
+    Assert.assertEquals(DATA_TEST2, this.netServices.getNetwork());
   }
 }
