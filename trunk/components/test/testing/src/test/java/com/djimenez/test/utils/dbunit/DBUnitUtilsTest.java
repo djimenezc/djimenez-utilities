@@ -23,6 +23,7 @@ public class DBUnitUtilsTest extends AbstractTestCase {
 
   /**
    * @throws Exception
+   * @throws Exception
    */
   private void insertData() throws Exception {
 

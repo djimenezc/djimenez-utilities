@@ -24,7 +24,7 @@ public final class PropertyHelper {
 
   private static PropertyHelper instance;
 
-  private static Logger logger = Logger.getLogger(PropertyHelper.class);
+  private static final Logger LOG = Logger.getLogger(PropertyHelper.class);
 
   public static PropertyHelper getInstance() {
 
@@ -77,14 +77,14 @@ public final class PropertyHelper {
 
       properties.load(inputSteam);
 
-      logger.debug("Found properties file " + filePath);
+      LOG.debug("Found properties file " + filePath);
 
     }
     catch (final FileNotFoundException e) {
       throw new PropertyException("Properties file not found " + filePath);
     }
     catch (final IOException e) {
-      e.printStackTrace();
+      LOG.error(e.getStackTrace());
     }
 
     return properties;

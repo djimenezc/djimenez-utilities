@@ -20,25 +20,55 @@
 
 	<property file="build.${user.name}.properties" />
 	<property environment="env" />
-	
-	<property name="local.sql.user" value="root"/>
-	<property name="local.sql.pass" value="root"/>
-	<property name="local.sql.driver" value="com.mysql.jdbc.Driver"/>
+
+	<property name="local.sql.user" value="root" />
+	<property name="local.sql.pass" value="root" />
+	<property name="local.sql.driver" value="com.mysql.jdbc.Driver" />
 	<property name="local.sql.url" value="jdbc:mysql://localhost:3306/" />
 
-	<property name="log.dir" value="/tmp"/>
-	<property name="src.dir" value="${basedir}"/>
-	<property name="compile.dir" value="${basedir}"/>
-	<property name="scripts.dir" value="${compile.dir}/scripts"/>
-	<property name="bbdd.dir" value="${src.dir}/schema/target/classes/schemas"/>
-	<property name="compile.projects" value="archetypes,plugins,schema,components,applications,web"/>
-	
+	<property name="log.dir" value="/tmp" />
+	<property name="src.dir" value="${basedir}" />
+	<property name="compile.dir" value="${basedir}" />
+	<property name="scripts.dir" value="${compile.dir}/scripts" />
+	<property name="bbdd.dir"
+	          value="${src.dir}/schema/target/classes/schemas" />
+	<property name="compile.projects"
+	          value="archetypes,plugins,schema,components,applications,web" />
+
 	<target name="clean-log">
 
 		<delete>
 			<fileset dir="${log.dir}" includes="compile-error.log" />
 			<fileset dir="${log.dir}" includes="compile.log" />
 		</delete>
+
+	</target>
+
+	<target name="sonar" depends="clean-log" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			     ------------------------------------------
+				Compile djimenez-utilities : ${start.timestamp}
+				Projetcs: ${compile.projects}
+				PATH= ${env.PATH}:${maven.home}/bin
+			     ------------------------------------------
+		    </echo>
+
+		<exec executable="${scripts.dir}/mvnsonar.sh" failonerror="true">
+			<arg value="${compile.dir}" />
+			<arg value="${compile.projects}" />
+			<arg value="${log.dir}" />
+			<env key="PATH" path="${env.PATH}:${maven.home}/bin" />
+		</exec>
+
+		<subant>
+			<fileset dir="." includes="build.xml" />
+			<target name="last-operation-summary" />
+		</subant>
 
 	</target>
 
@@ -190,7 +220,7 @@
 		     password="${local.sql.pass}">
 			<transaction src="${bbdd.dir}/createDatabaseTest.sql" />
 		</sql>
-	
+
 	</target>
 
 </project>

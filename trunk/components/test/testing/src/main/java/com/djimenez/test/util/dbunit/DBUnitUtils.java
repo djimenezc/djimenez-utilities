@@ -133,7 +133,7 @@ public class DBUnitUtils {
 
   public static void importData(final String driverName, final String urlDB,
     final String userDB, final String passwordDB, final String destinationXML)
-    throws Exception {
+    throws SQLException {
 
     IDatabaseConnection connection = null;
 
@@ -147,7 +147,6 @@ public class DBUnitUtils {
     }
     catch (final Exception exc) {
       exc.printStackTrace();
-      throw exc;
     }
     finally {
       connection.close();

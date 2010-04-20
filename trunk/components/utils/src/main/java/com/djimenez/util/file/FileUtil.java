@@ -64,7 +64,7 @@ public final class FileUtil {
     final byte[] buffer = new byte[BUFFER_SIZE];
 
     if (inputStream.read(buffer, 0, count) < count) {
-      throw new Exception("Expected to read " + count
+      throw new FileUtilException("Expected to read " + count
         + " bytes from file but EOF");
     }
 

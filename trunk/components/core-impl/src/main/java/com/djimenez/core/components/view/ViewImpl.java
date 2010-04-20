@@ -85,16 +85,18 @@ public final class ViewImpl implements View, ViewImplMBean {
 
     final Iterator<String> iterator = this.observerMap.keySet().iterator();
 
+    String value;
+
     while (iterator.hasNext()) {
 
       final String key = iterator.next();
 
-      String value = new String();
-
       final Observer observer = this.observerMap.get(key).getObserver();
+
       value =
-        value.concat("[Observer for context "
-          + observer.getNotifyContext().getClass().getSimpleName() + "] ");
+        "[Observer for context "
+          + observer.getNotifyContext().getClass().getSimpleName() + "] ";
+
       map.put(key, value);
     }
     return map;
@@ -150,9 +152,11 @@ public final class ViewImpl implements View, ViewImplMBean {
 
   @Override
   public Mediator removeMediator(final String mediatorName) {
+
     for (final Enumeration<ObserverEntry> enumObserversList =
       ((Hashtable<String, ObserverEntry>) this.observerMap).elements(); enumObserversList
       .hasMoreElements();) {
+
       final ObserverEntry observersList = enumObserversList.nextElement();
       final Observer observer = observersList.getObserver();
       final Mediator mediator = this.retrieveMediator(mediatorName);

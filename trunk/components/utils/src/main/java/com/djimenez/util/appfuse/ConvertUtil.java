@@ -93,7 +93,7 @@ public final class ConvertUtil {
       BeanUtils.copyProperties(obj, map);
     }
     catch (final Exception e) {
-      e.printStackTrace();
+      log.error(e.getStackTrace());
       log.error("Exception occurred populating object: " + e.getMessage());
     }
 
