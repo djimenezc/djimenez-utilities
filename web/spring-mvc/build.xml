@@ -16,23 +16,11 @@
    specific language governing permissions and limitations
    under the License.    
 -->
-<project name="djimenez-utilities" default="compile-all-quick" basedir=".">
+<project name="spring-mvc" default="" basedir="." >
 
-	<property name="parent.dir" value="." />
-	<import file="${parent.dir}/build-parent.xml" />
-
+	<property name="parent.dir" value="../.."/>
+	<import file="${parent.dir}/build-parent.xml"/>
+	
 	<property name="compile.projects" value="." />
-
-	<target name="database-clean" description="">
-		<antcall target="-database">
-			<param name="sql.file" value="createDatabase.sql" />
-		</antcall>
-	</target>
-
-	<target name="database-load-test" description="">
-		<antcall target="-database">
-			<param name="sql.file" value="createDatabaseTest.sql" />
-		</antcall>
-	</target>
 
 </project>

@@ -1,9 +1,11 @@
 #/bin/bash
 
 export srcFolder=$1
-export projects=$2
+export commands=$2
 export errorLogFile=$3/compile-error.log
 export logFile=$3/compile.log
+export project=$4
+
 
 trasformCommaList()
 {
@@ -33,7 +35,7 @@ logError()
 main()
 {
 	
-	projects=$(trasformCommaList "$projects")
+	commands=$(trasformCommaList "$commands")
 	
 	if [ -d $projectDir/src ]; then
 		rm $logFile
@@ -42,24 +44,17 @@ main()
 	touch $errorLogFile
 	touch $logFile
 	
+	cd $srcFolder/${project}
+	mvn $commands >> $logFile
+    res=$?
 	
-	
-	for project in $projects
-	do
-		echo Limpiando proyecto: $project 
-
-		cd $srcFolder/$project
-		mvn clean >> $logFile
-	        res=$?
-		
-		if [ ! $res -eq 0 ];then
-			cd - 1> $errorLogFile
-			logError "Compilando el proyecto $project"            
-			exit -1
-       		 fi
-		echo Proyecto $project limpiado con éxito
-       		 cd - 1> /dev/null
-	done
+	if [ ! $res -eq 0 ];then
+		cd - 1> $errorLogFile
+		logError "Proyecto $project"            
+		exit -1
+    fi
+	echo Proyecto $project limpiado con éxito
+	cd - 1> /dev/null
 }
 
 echo $PATH
