@@ -4,13 +4,13 @@
 	<parent>
 		<artifactId>components</artifactId>
 		<groupId>com.djimenez.utilities</groupId>
-		<version>1.0</version>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.djimenez.utilities.components</groupId>
 	<artifactId>persistence</artifactId>
 	<name>Persistence component</name>
-	<version>1.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<url>http://maven.apache.org</url>
 
 	<properties>

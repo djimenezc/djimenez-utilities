@@ -6,12 +6,12 @@
 	<artifactId>portlets</artifactId>
 	<packaging>pom</packaging>
 	<name>Portlets Projects</name>
-	<version>1.0</version>
+	<version>1.0-SNAPSHOT</version>
 
 	<parent>
 		<artifactId>web</artifactId>
 		<groupId>com.djimenez.utilities</groupId>
-		<version>1.0</version>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 	<modules>
