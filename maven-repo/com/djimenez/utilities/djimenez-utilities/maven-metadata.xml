@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.djimenez.utilities</groupId>
+  <artifactId>djimenez-utilities</artifactId>
+  <version>1.0</version>
+  <versioning>
+    <versions>
+      <version>1.0</version>
+    </versions>
+    <lastUpdated>20100422152250</lastUpdated>
+  </versioning>
+</metadata>
