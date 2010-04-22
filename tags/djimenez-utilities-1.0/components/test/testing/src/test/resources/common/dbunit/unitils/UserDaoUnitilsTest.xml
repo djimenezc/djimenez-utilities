@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+    <usergroup id="1" name="admin" />  
+    
+<!--    <user userName="jdoe"  name="doe" firstName="john"   userGroup="admin" />-->
+<!--    -->
+<!--    <usergroup name="2" />    -->
+    
+</dataset>

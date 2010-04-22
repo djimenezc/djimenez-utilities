@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<testclass>UserDaoTest</testclass>
+	<testcases>
+		<testcase name="getDefaultUser">
+			<user>
+				<id>1</id>
+
+				<userName>djimenez</userName>
+				
+				<description>default description</description>
+
+				<password>david</password>
+
+				<nif>12345</nif>
+
+				<active>true</active>
+
+				<activeDate>2009-10-02</activeDate>
+
+				<name>david</name>
+
+				<firstSurname>jimenez</firstSurname>
+
+				<secondSurname>calvo</secondSurname>
+
+				<address>C/Castellana 21</address>
+
+				<email>djimenezcalvo@gmail.com</email>
+
+				<telephoneNumber>6666666</telephoneNumber>
+
+				<postalCode>28529</postalCode>
+
+				<nacionality>spanish</nacionality>
+
+				<bornDate>1983-01-29</bornDate>
+				
+				<telephoneNumber>6666666</telephoneNumber>
+			</user>
+		</testcase>
+
+	</testcases>
+</root>
