@@ -4,7 +4,7 @@
 
 	<artifactId>djimenez-utilities</artifactId>
 	<groupId>com.djimenez.utilities</groupId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<name>Djimenez Project</name>
 	<url>http://maven.apache.org</url>
 	<packaging>pom</packaging>
@@ -15,10 +15,9 @@
     </description>
 
 	<scm>
-		<connection>scm:svn:http://djimenez-utilities.googlecode.com/svn/tags/djimenez-utilities-1.0</connection>
-		<developerConnection>scm:svn:https://djimenez-utilities.googlecode.com/svn/tags/djimenez-utilities-1.0</developerConnection>
-		<tag>https://djimenez-utilities.googlecode.com/svn/tags</tag>
-		<url>https://djimenez-utilities.googlecode.com/svn/tags/djimenez-utilities-1.0</url>
+		<connection>scm:svn:http://djimenez-utilities.googlecode.com/svn/trunk</connection>
+		<developerConnection>scm:svn:https://djimenez-utilities.googlecode.com/svn/trunk</developerConnection>
+		<url>https://djimenez-utilities.googlecode.com/svn/trunk</url>
 	</scm>
 
 	<issueManagement>
