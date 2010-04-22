@@ -21,7 +21,7 @@
     </description>
 	
 	<modules>
-<!--		<module>remote-deploy</module>-->
+		<module>remote-deploy</module>
 
 	</modules>
 	

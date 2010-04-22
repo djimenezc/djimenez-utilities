@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>spring-mvc</artifactId>
 		<groupId>com.djimenez.utilities.web</groupId>
-		<version>1.0</version>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
 	<artifactId>model</artifactId>
