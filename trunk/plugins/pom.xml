@@ -7,13 +7,13 @@
 	<artifactId>plugins</artifactId>
 	<packaging>pom</packaging>
 	<name>Plugins djimenez utilities</name>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<inceptionYear>2010</inceptionYear>
 
 	<parent>
 		<artifactId>djimenez-utilities</artifactId>
 		<groupId>com.djimenez.utilities</groupId>
-		<version>1.0</version>
+		<version>1.1-SNAPSHOT</version>
 	</parent>
 	
 	<description>
