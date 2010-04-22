@@ -6,7 +6,7 @@
 		<version>1.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.djimenez.utilities</groupId>
+	<groupId>com.djimenez.utilities.test</groupId>
 	<artifactId>test-support</artifactId>
 	<name>test-support</name>
 	<version>1.0</version>

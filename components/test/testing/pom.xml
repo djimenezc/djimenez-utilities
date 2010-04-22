@@ -8,7 +8,7 @@
 		<groupId>com.djimenez.utilities</groupId>
 		<version>1.0</version>
 	</parent>
-	<groupId>com.djimenez.utilities</groupId>
+	<groupId>com.djimenez.utilities.test</groupId>
 	<artifactId>testing</artifactId>
 	<version>1.0</version>
 	<name>testing</name>
@@ -162,11 +162,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
-			<artifactId>utils</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.concordion</groupId>
 			<artifactId>concordion</artifactId>
 			<scope>test</scope>
@@ -194,22 +189,6 @@
 			<groupId>ognl</groupId>
 			<artifactId>ognl</artifactId>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
-			<artifactId>test-support</artifactId>
-			<scope>compile</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
-			<artifactId>model</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
-			<artifactId>core</artifactId>
 		</dependency>
 
 		<dependency>
@@ -263,6 +242,26 @@
 			<artifactId>mockito-all</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.djimenez.utilities.test</groupId>
+			<artifactId>test-support</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.djimenez.utilities.components</groupId>
+			<artifactId>model</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.djimenez.utilities.components</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.djimenez.utilities.components</groupId>
+			<artifactId>utils</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

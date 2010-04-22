@@ -6,7 +6,7 @@
 		<version>1.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.djimenez.utilities</groupId>
+	<groupId>com.djimenez.utilities.components</groupId>
 	<artifactId>utils</artifactId>
 	<name>utils</name>
 	<version>1.0</version>
@@ -33,10 +33,6 @@
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
-			<artifactId>model</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>commons-beanutils</groupId>
@@ -48,5 +44,9 @@
 			<artifactId>spring-context</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.djimenez.utilities.components</groupId>
+			<artifactId>model</artifactId>
+		</dependency>
 	</dependencies>
 </project>

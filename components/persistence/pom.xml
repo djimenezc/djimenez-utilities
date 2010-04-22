@@ -7,9 +7,9 @@
 		<version>1.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.djimenez.utilities</groupId>
+	<groupId>com.djimenez.utilities.components</groupId>
 	<artifactId>persistence</artifactId>
-	<name>persistence</name>
+	<name>Persistence component</name>
 	<version>1.0</version>
 	<url>http://maven.apache.org</url>
 
@@ -231,21 +231,6 @@
 			<artifactId>compass</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
-			<artifactId>model</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
-			<artifactId>core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
-			<artifactId>testing</artifactId>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>${jdbc.groupId}</groupId>
@@ -277,5 +262,20 @@
 			<artifactId>ehcache</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.djimenez.utilities.components</groupId>
+			<artifactId>model</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.djimenez.utilities.components</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.djimenez.utilities.test</groupId>
+			<artifactId>testing</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

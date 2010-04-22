@@ -6,7 +6,7 @@
 		<version>1.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.djimenez.utilities</groupId>
+	<groupId>com.djimenez.utilities.applications</groupId>
 	<artifactId>system-payment</artifactId>
 	<version>1.0</version>
 	<name>System Payment</name>
