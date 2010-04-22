@@ -72,11 +72,9 @@
 
 		<echo>
 			------------------------------------------
-			Analize spring-mvc :
+			Analyze:
 			${start.timestamp}
-			Projetcs: ${compile.projects}
-			PATH=
-			${env.PATH}:${maven.home}/bin
+			Projects: ${compile.projects}
 			------------------------------------------
 		    </echo>
 
@@ -113,7 +111,7 @@
 
 		<echo>
 			------------------------------------------
-			Compile spring-mvc :
+			Compile:
 			${start.timestamp}
 			------------------------------------------
 		    </echo>
@@ -132,7 +130,7 @@
 
 		<echo>
 			------------------------------------------
-			Clean spring-mvc :
+			Compile quickly:
 			${start.timestamp}
 			------------------------------------------
 		    </echo>
@@ -140,6 +138,44 @@
 		<antcall target="-maven-projects">
 			<param name="projects" value="${compile.projects}" />
 			<param name="tasks" value="install,-Dmaven.test.skip=true" />
+		</antcall>
+	</target>
+	
+	<target name="prepare-release" depends="" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Generating release:
+			${start.timestamp}
+			------------------------------------------
+		    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="release:prepare" />
+		</antcall>
+	</target>
+
+	<target name="deploy-release-repository" depends="" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Deploy release in repotitory:
+			${start.timestamp}
+			------------------------------------------
+		    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="deploy" />
 		</antcall>
 	</target>
 

@@ -6,9 +6,9 @@
 		<version>1.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.djimenez.utilities</groupId>
+	<groupId>com.djimenez.utilities.components</groupId>
 	<artifactId>model</artifactId>
-	<name>model</name>
+	<name>Model component</name>
 	<version>1.0</version>
 	<url>http://maven.apache.org</url>
 	<dependencies>

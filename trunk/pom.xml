@@ -16,8 +16,8 @@
     </description>
 
 	<scm>
-		<connection>scm:http://djimenez-utilities.googlecode.com/svn/trunk</connection>
-		<developerConnection>scm:https://djimenez-utilities.googlecode.com/svn/trunk</developerConnection>
+		<connection>scm:svn:http://djimenez-utilities.googlecode.com/svn/trunk</connection>
+		<developerConnection>scm:svn:https://djimenez-utilities.googlecode.com/svn/trunk</developerConnection>
 		<tag>https://djimenez-utilities.googlecode.com/svn/tags</tag>
 		<url>https://djimenez-utilities.googlecode.com/svn/trunk</url>
 	</scm>
@@ -402,45 +402,51 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.djimenez.utilities</groupId>
+				<groupId>com.djimenez.utilities.components</groupId>
 				<artifactId>model</artifactId>
 				<version>1.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.djimenez.utilities</groupId>
+				<groupId>com.djimenez.utilities.components</groupId>
 				<artifactId>core</artifactId>
 				<version>1.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.djimenez.utilities</groupId>
+				<groupId>com.djimenez.utilities.components</groupId>
 				<artifactId>persistence</artifactId>
 				<version>1.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.djimenez.utilities</groupId>
+				<groupId>com.djimenez.utilities.components</groupId>
 				<artifactId>utils</artifactId>
 				<version>1.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.djimenez.utilities</groupId>
+				<groupId>com.djimenez.utilities.components</groupId>
 				<artifactId>service</artifactId>
 				<version>1.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.djimenez.utilities</groupId>
+				<groupId>com.djimenez.utilities.test</groupId>
 				<artifactId>testing</artifactId>
+				<version>1.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.djimenez.utilities.test</groupId>
+				<artifactId>test-support</artifactId>
 				<version>1.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.djimenez.utilities</groupId>
+				<groupId>com.djimenez.utilities.plugins</groupId>
 				<artifactId>remote-deploy-maven-plugin</artifactId>
-				<version>1.0</version>
+				<version>${remote-deploy-version}</version>
 			</dependency>
 
 			<dependency>
@@ -635,9 +641,9 @@
 				</plugin>
 
 				<plugin>
-					<groupId>com.djimenez.utilities</groupId>
+					<groupId>com.djimenez.utilities.plugins</groupId>
 					<artifactId>remote-deploy-maven-plugin</artifactId>
-					<version>1.0</version>
+					<version>${remote-deploy-version}</version>
 				</plugin>
 
 			</plugins>
@@ -889,7 +895,7 @@
 		<lib.ehcache.version>1.7.0</lib.ehcache.version>
 		<lib.ehcache.web.version>1.6.0-beta2</lib.ehcache.web.version>
 
-		<remote-deploy-version>1.0</remote-deploy-version>
+		<remote-deploy-version>1.1</remote-deploy-version>
 
 		<jdk.version>1.6</jdk.version>
 
@@ -1066,8 +1072,8 @@
 				<sonar.ip>debian</sonar.ip>
 				<sonar.jdbc.url><![CDATA[jdbc:mysql://${sonar.ip}:3306/sonar?useUnicode=true&characterEncoding=utf8]]></sonar.jdbc.url>
 				<sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
-				<sonar.jdbc.username>root</sonar.jdbc.username>
-				<sonar.jdbc.password>root</sonar.jdbc.password>
+				<sonar.jdbc.username>sonar</sonar.jdbc.username>
+				<sonar.jdbc.password>sonar</sonar.jdbc.password>
 				<!-- URL donde esta la instancia -->
 				<sonar.host.url>http://${sonar.ip}:10001/sonar</sonar.host.url>
 			</properties>

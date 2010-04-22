@@ -156,7 +156,7 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>com.djimenez.utilities</groupId>
+				<groupId>com.djimenez.utilities.plugins</groupId>
 				<artifactId>remote-deploy-maven-plugin</artifactId>
 				<version>${remote-deploy-version}</version>
 				<configuration>
@@ -338,12 +338,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
+			<groupId>com.djimenez.utilities.test</groupId>
 			<artifactId>testing</artifactId>
 		</dependency>
 		
 		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
+			<groupId>com.djimenez.utilities.components</groupId>
 			<artifactId>model</artifactId>
 		</dependency>
 		

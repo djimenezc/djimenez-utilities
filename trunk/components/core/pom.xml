@@ -7,7 +7,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.djimenez.utilities</groupId>
+	<groupId>com.djimenez.utilities.components</groupId>
 	<artifactId>core</artifactId>
 	<name>Core</name>
 	<version>1.0</version>
@@ -39,11 +39,6 @@
 			<artifactId>spring-jdbc</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
-			<artifactId>utils</artifactId>
-			<version>1.0</version>
-		</dependency>
 		
 		<dependency>
 			<groupId>junit</groupId>
@@ -56,9 +51,13 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>com.djimenez.utilities</groupId>
+			<groupId>com.djimenez.utilities.components</groupId>
 			<artifactId>model</artifactId>
 		</dependency>
 		
+		<dependency>
+			<groupId>com.djimenez.utilities.components</groupId>
+			<artifactId>utils</artifactId>
+		</dependency>
 	</dependencies>
 </project>
