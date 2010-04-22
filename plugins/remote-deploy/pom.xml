@@ -5,7 +5,7 @@
 
 	<groupId>com.djimenez.utilities.plugins</groupId>
 	<artifactId>remote-deploy-maven-plugin</artifactId>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>Plugin - Remote deploy</name>
 
@@ -48,10 +48,4 @@
 			<artifactId>commons-beanutils</artifactId>
 		</dependency>
 	</dependencies>
-
-  <scm>
-    <connection>scm:svn:http://djimenez-utilities.googlecode.com/svn/tags/remote-deploy-maven-plugin-1.1</connection>
-    <developerConnection>scm:svn:https://djimenez-utilities.googlecode.com/svn/tags/remote-deploy-maven-plugin-1.1</developerConnection>
-    <url>https://djimenez-utilities.googlecode.com/svn/tags/remote-deploy-maven-plugin-1.1</url>
-  </scm>
 </project>
