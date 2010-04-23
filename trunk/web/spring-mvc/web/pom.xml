@@ -95,13 +95,13 @@
 							-->
 						</goals>
 					</execution>
-<!--					<execution>-->
-<!--						<id>stop-container</id>-->
-<!--						<phase>post-integration-test</phase>-->
-<!--						<goals>-->
+					<execution>
+						<id>stop-container</id>
+						<phase>post-integration-test</phase>
+						<goals>
 <!--							<goal>undeploy</goal>-->
-<!--						</goals>-->
-<!--					</execution>-->
+						</goals>
+					</execution>
 					
 					<execution>
 						<id>verify-deploy</id>
@@ -114,7 +114,7 @@
 						<id>clean-undeploy</id>
 						<phase>pre-clean</phase>
 						<goals>
-							<goal>undeploy</goal>
+<!--							<goal>undeploy</goal>-->
 						</goals>
 					</execution>
 
@@ -126,11 +126,11 @@
 	</build>
 
 	<properties>
-		<containerId>tomcat6x</containerId>
+		<containerId>tomcat5x</containerId>
 		<serverHome>/usr/share/tomcat6.0/</serverHome>
 		<serverUser>hudson</serverUser>
 		<serverPassword>g0w3xhuds0n</serverPassword>
-		<serverUrl>https://localhost:10001</serverUrl>
+		<serverUrl>http://localhost:10001</serverUrl>
 		<tomcatManagerUrl>${serverUrl}/manager</tomcatManagerUrl>
 		<webContext>mywebapp</webContext>
 	</properties>
