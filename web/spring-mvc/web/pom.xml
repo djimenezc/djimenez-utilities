@@ -78,6 +78,8 @@
 								<properties>
 									<context>mywebapp</context>
 								</properties>
+								<pingURL>${serverUrl}/mywebapp</pingURL>
+								<pingTimeout>20000</pingTimeout>
 							</deployable>
 						</deployables>
 					</deployer>
@@ -93,16 +95,14 @@
 							-->
 						</goals>
 					</execution>
-					<!--
-						execution> <id>stop-container</id>
-						<phase>post-integration-test</phase> <goals>
-						<goal>deployer-undeploy</goal
-					-->
-					<!--
-						Only local containers can be started <goal>stop</goal>
-					-->
-					<!--/goals>
-                            </execution-->
+<!--					<execution>-->
+<!--						<id>stop-container</id>-->
+<!--						<phase>post-integration-test</phase>-->
+<!--						<goals>-->
+<!--							<goal>undeploy</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+					
 					<execution>
 						<id>verify-deploy</id>
 						<phase>install</phase>
@@ -110,13 +110,13 @@
 							<goal>deployer-deploy</goal>
 						</goals>
 					</execution>
-					<!--					<execution>-->
-					<!--						<id>clean-undeploy</id>-->
-					<!--						<phase>pre-clean</phase>-->
-					<!--						<goals>-->
-					<!--							<goal>deployer-undeploy</goal>-->
-					<!--						</goals>-->
-					<!--					</execution>-->
+					<execution>
+						<id>clean-undeploy</id>
+						<phase>pre-clean</phase>
+						<goals>
+							<goal>undeploy</goal>
+						</goals>
+					</execution>
 
 				</executions>
 			</plugin>
@@ -130,7 +130,9 @@
 		<serverHome>/usr/share/tomcat6.0/</serverHome>
 		<serverUser>hudson</serverUser>
 		<serverPassword>g0w3xhuds0n</serverPassword>
-		<tomcatManagerUrl>https://localhost:10001/manager</tomcatManagerUrl>
+		<serverUrl>https://localhost:10001</serverUrl>
+		<tomcatManagerUrl>${serverUrl}/manager</tomcatManagerUrl>
+		<webContext>mywebapp</webContext>
 	</properties>
 
 </project>
