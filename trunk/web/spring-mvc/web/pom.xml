@@ -1,23 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <artifactId>spring-mvc</artifactId>
-        <groupId>com.djimenez.utilities.web</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <groupId>com.djimenez.utilities.web.spring-mvc</groupId>
-    <artifactId>web</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <name>Spring MVC Web</name>
-    <url></url>
+	<parent>
+		<artifactId>spring-mvc</artifactId>
+		<groupId>com.djimenez.utilities.web</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
+	<artifactId>web</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>Spring MVC Web</name>
+	<url></url>
 
-    <licenses>
-        <license>
-        </license>
-    </licenses>
+	<licenses>
+		<license>
+		</license>
+	</licenses>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
+			<artifactId>model</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
+			<artifactId>persistence</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
+			<artifactId>service</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<configuration>
+					<wait>true</wait>
+					<container>
+						<containerId>${containerId}</containerId>
+						<type>installed</type>
+						<home>${serverHome}</home>
+					</container>
+					<configuration>
+						<type>existing</type>
+						<home>${serverHome}</home>
+						<properties>
+							<context>prueba</context>
+							<cargo.tomcat.manager.url>${tomcatManagerUrl}</cargo.tomcat.manager.url>
+							<cargo.remote.username>${serverUser}</cargo.remote.username>
+							<cargo.remote.password>${serverPassword}</cargo.remote.password>
+						</properties>
+					</configuration>
+					<deployer>
+						<type>installed</type>
+						<deployables>
+							<deployable>
+								<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
+								<artifactId>web</artifactId>
+								<type>war</type>
+								<properties>
+									<context>mywebapp</context>
+								</properties>
+							</deployable>
+						</deployables>
+					</deployer>
+				</configuration>
+				<executions>
+					<execution>
+						<id>start-container</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>deployer-deploy</goal>
+							<!--
+								Only local containers can be started <goal>start</goal>
+							-->
+						</goals>
+					</execution>
+					<!--
+						execution> <id>stop-container</id>
+						<phase>post-integration-test</phase> <goals>
+						<goal>deployer-undeploy</goal
+					-->
+					<!--
+						Only local containers can be started <goal>stop</goal>
+					-->
+					<!--/goals>
+                            </execution-->
+					<execution>
+						<id>verify-deploy</id>
+						<phase>install</phase>
+						<goals>
+							<goal>deployer-deploy</goal>
+						</goals>
+					</execution>
+					<!--					<execution>-->
+					<!--						<id>clean-undeploy</id>-->
+					<!--						<phase>pre-clean</phase>-->
+					<!--						<goals>-->
+					<!--							<goal>deployer-undeploy</goal>-->
+					<!--						</goals>-->
+					<!--					</execution>-->
+
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<properties>
+		<containerId>tomcat6x</containerId>
+		<serverHome>/usr/share/tomcat6.0/</serverHome>
+		<serverUser>hudson</serverUser>
+		<serverPassword>g0w3xhuds0n</serverPassword>
+		<tomcatManagerUrl>https://localhost:10001/manager</tomcatManagerUrl>
+	</properties>
 
 </project>
