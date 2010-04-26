@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <table name="items">
+        <column>id</column>
+        <column>name</column>
+        <column>description</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="name">item_1</value>
+            <value description="description">item_1 description</value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="name">item_2</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-3</value>
+            <value description="name">item_3</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-4</value>
+            <value description="name">item_4</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-5</value>
+            <value description="name">item_5</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-6</value>
+            <value description="name">item_6</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-7</value>
+            <value description="name">item_7</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-8</value>
+            <value description="name">item_8</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-9</value>
+            <value description="name">item_9</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-10</value>
+            <value description="name">item_10</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-11</value>
+            <value description="name">item_11</value>
+            <value description="description">item_2 description</value>
+        </row>
+        <row>
+            <value description="id">-12</value>
+            <value description="name">item_12</value>
+            <value description="description">item_2 description</value>
+        </row>
+    </table>
+</dataset>
