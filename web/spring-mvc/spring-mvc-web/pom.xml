@@ -10,7 +10,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
-	<artifactId>web</artifactId>
+	<artifactId>spring-mvc-web</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>Spring MVC Web</name>
@@ -25,17 +25,17 @@
 
 		<dependency>
 			<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
-			<artifactId>model</artifactId>
+			<artifactId>spring-mvc-model</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
-			<artifactId>persistence</artifactId>
+			<artifactId>spring-mvc-persistence</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
-			<artifactId>service</artifactId>
+			<artifactId>spring-mvc-service</artifactId>
 		</dependency>
 
 		<dependency>
@@ -73,7 +73,7 @@
 						<deployables>
 							<deployable>
 								<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
-								<artifactId>web</artifactId>
+								<artifactId>spring-mvc-web</artifactId>
 								<type>war</type>
 								<properties>
 									<context>mywebapp</context>
