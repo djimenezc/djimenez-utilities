@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="0.039" errors="0" skipped="0" tests="1" name="com.germinus.sample.dao.TestBookViewController">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="env.SESSION_MANAGER" value="local/djimenez:@/tmp/.ICE-unix/2221,unix/djimenez:/tmp/.ICE-unix/2221"/>
+    <property name="env.LESSOPEN" value="| /usr/bin/lesspipe %s"/>
+    <property name="localRepository" value="/home/djimenez/.m2/repository"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.management.compiler" value="HotSpot Tiered Compilers"/>
+    <property name="env.scripts" value="/home/djimenez/Dropbox/scripts"/>
+    <property name="env.COLORFGBG" value="15;0"/>
+    <property name="os.name" value="Linux"/>
+    <property name="env.proyectos" value="~/proyectos/sources"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/jdk1.6.0_18/jre/lib/resources.jar:/usr/lib/jvm/jdk1.6.0_18/jre/lib/rt.jar:/usr/lib/jvm/jdk1.6.0_18/jre/lib/sunrsasign.jar:/usr/lib/jvm/jdk1.6.0_18/jre/lib/jsse.jar:/usr/lib/jvm/jdk1.6.0_18/jre/lib/jce.jar:/usr/lib/jvm/jdk1.6.0_18/jre/lib/charsets.jar:/usr/lib/jvm/jdk1.6.0_18/jre/classes"/>
+    <property name="env.PWD" value="/home/djimenez/proyectos/sources/djimenez/djimenez-utilities"/>
+    <property name="env.XDG_SESSION_COOKIE" value="ba28dc5f598d6cc5e85e5cce4b8270aa-1272266237.724927-1048037119"/>
+    <property name="env.LANG" value="es_ES.UTF-8"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.runtime.version" value="1.6.0_18-b07"/>
+    <property name="env.DISPLAY" value=":0"/>
+    <property name="user.name" value="djimenez"/>
+    <property name="env._" value="/home/djimenez/programs/apache-maven-2.2.1/bin/mvn"/>
+    <property name="env.USER" value="djimenez"/>
+    <property name="env.SHELL" value="/bin/bash"/>
+    <property name="env.KDE_MULTIHEAD" value="false"/>
+    <property name="env.DESKTOP_SESSION" value="default"/>
+    <property name="env.XDG_DATA_DIRS" value="/usr/share:/usr/share:/usr/local/share"/>
+    <property name="env.NLSPATH" value="/usr/dt/lib/nls/msg/%L/%N.cat"/>
+    <property name="env.PATH" value="/home/djimenez/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/djimenez/Dropbox/scripts:/bin:/home/djimenez/Dropbox/scripts/programacion:/home/djimenez/bin:~/programs/apache-maven-2.2.1/bin:/usr/lib/jvm/java-6-sun/bin"/>
+    <property name="user.language" value="es"/>
+    <property name="env.GDK_NATIVE_WINDOWS" value="1"/>
+    <property name="env.GS_LIB" value="/home/djimenez/.fonts"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk1.6.0_18/jre/lib/i386"/>
+    <property name="classworlds.conf" value="/home/djimenez/programs/apache-maven-2.2.1/bin/m2.conf"/>
+    <property name="env.QT_PLUGIN_PATH" value="/home/djimenez/.kde/lib/kde4/plugins/:/usr/lib/kde4/plugins/"/>
+    <property name="env.KDE_SESSION_UID" value="1000"/>
+    <property name="java.version" value="1.6.0_18"/>
+    <property name="env.KDE_FULL_SESSION" value="true"/>
+    <property name="user.timezone" value="Europe/Madrid"/>
+    <property name="env.DBUS_SESSION_BUS_ADDRESS" value="unix:abstract=/tmp/dbus-hcM8jfhcXH,guid=18917a038808bb597cc27d074bd53dfe"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="env.SSH_AGENT_PID" value="2135"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/jdk1.6.0_18/jre/lib/endorsed"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="env.CATALINA_OPTS" value="-Xms512m -Xmx1024m -XX:MaxPermSize=128m"/>
+    <property name="env.SHLVL" value="1"/>
+    <property name="env.djimenez" value="/home/djimenez/proyectos/sources/djimenez/djimenez-utilities"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="env.XCURSOR_THEME" value="oxy-white"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="env.servers" value="/home/djimenez/proyectos/servers"/>
+    <property name="env.bin" value="/home/djimenez/bin"/>
+    <property name="env.KDE_SESSION_VERSION" value="4"/>
+    <property name="user.country" value="ES"/>
+    <property name="java.home" value="/usr/lib/jvm/jdk1.6.0_18/jre"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="env.TOMCAT_HOME" value="~/proyectos/servers/apache-tomcat-6.0.26"/>
+    <property name="env.LOGNAME" value="djimenez"/>
+    <property name="os.version" value="2.6.31-20-generic"/>
+    <property name="env.documentation" value="/home/djimenez/Documentacion"/>
+    <property name="env.sources" value="/home/djimenez/proyectos/sources"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.version" value="16.0-b13"/>
+    <property name="env.LANGUAGE" value="es_ES:es:en_GB:en"/>
+    <property name="env.DESKTOP_STARTUP_ID" value=""/>
+    <property name="env.DM_CONTROL" value="/var/run/xdmctl"/>
+    <property name="env.JAVA_HOME" value="/usr/lib/jvm/java-6-sun"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="env.TERM" value="xterm"/>
+    <property name="env.WINDOWPATH" value="7"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="env.workspace" value="/home/djimenez/proyectos/workspace"/>
+    <property name="env.ant" value=""/>
+    <property name="user.home" value="/home/djimenez"/>
+    <property name="env.OLDPWD" value="/home/djimenez/proyectos/sources/djimenez/djimenez-utilities"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="env.scripts_programacion" value="/home/djimenez/Dropbox/scripts/programacion"/>
+    <property name="env.WINDOWID" value="44040221"/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="java.library.path" value="/usr/lib/jvm/jdk1.6.0_18/jre/lib/i386/server:/usr/lib/jvm/jdk1.6.0_18/jre/lib/i386:/usr/lib/jvm/jdk1.6.0_18/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib"/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="maven.home" value="/home/djimenez/programs/apache-maven-2.2.1"/>
+    <property name="java.class.path" value="/home/djimenez/programs/apache-maven-2.2.1/boot/classworlds-1.1.jar"/>
+    <property name="env.KONSOLE_DBUS_SESSION" value="/Sessions/2"/>
+    <property name="env.XFILESEARCHPATH" value="/usr/dt/app-defaults/%L/Dt"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="env.XDM_MANAGED" value="method=classic"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="env.GTK_RC_FILES" value="/etc/gtk/gtkrc:/home/djimenez/.gtkrc::/home/djimenez/.kde/share/config/gtkrc"/>
+    <property name="env.HOME" value="/home/djimenez"/>
+    <property name="surefire.test.class.path" value="/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/web/portlets/sample-portlet/target/test-classes:/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/web/portlets/sample-portlet/target/classes:/home/djimenez/.m2/repository/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar:/home/djimenez/.m2/repository/portlet-api/portlet-api/1.0/portlet-api-1.0.jar:/home/djimenez/.m2/repository/liferay/util-taglib/5.2.3/util-taglib-5.2.3.jar:/home/djimenez/.m2/repository/liferay/portal-impl/5.2.3/portal-impl-5.2.3.jar:/home/djimenez/.m2/repository/junit/junit/4.5/junit-4.5.jar:/home/djimenez/.m2/repository/org/springframework/spring-test/3.0.2.RELEASE/spring-test-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/mysql/mysql-connector-java/5.0.4/mysql-connector-java-5.0.4.jar:/home/djimenez/.m2/repository/javassist/javassist/3.8.0.GA/javassist-3.8.0.GA.jar:/home/djimenez/.m2/repository/org/springframework/spring-core/3.0.2.RELEASE/spring-core-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/org/springframework/spring-asm/3.0.2.RELEASE/spring-asm-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar:/home/djimenez/.m2/repository/org/springframework/spring-orm/3.0.2.RELEASE/spring-orm-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/org/springframework/spring-beans/3.0.2.RELEASE/spring-beans-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/org/springframework/spring-jdbc/3.0.2.RELEASE/spring-jdbc-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/org/springframework/spring-tx/3.0.2.RELEASE/spring-tx-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/home/djimenez/.m2/repository/org/springframework/spring-aop/3.0.2.RELEASE/spring-aop-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/org/springframework/spring-context/3.0.2.RELEASE/spring-context-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/org/springframework/spring-expression/3.0.2.RELEASE/spring-expression-3.0.2.RELEASE.jar:/home/djimenez/.m2/repository/org/springframework/spring-webmvc-portlet/2.5.6/spring-webmvc-portlet-2.5.6.jar:/home/djimenez/.m2/repository/org/springframework/spring-web/2.5.6/spring-web-2.5.6.jar:/home/djimenez/.m2/repository/org/springframework/spring-webmvc/2.5.6/spring-webmvc-2.5.6.jar:/home/djimenez/.m2/repository/org/springframework/spring-context-support/2.5.6/spring-context-support-2.5.6.jar:/home/djimenez/.m2/repository/log4j/log4j/1.2.15/log4j-1.2.15.jar:/home/djimenez/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:/home/djimenez/.m2/repository/commons-fileupload/commons-fileupload/1.1/commons-fileupload-1.1.jar:/home/djimenez/.m2/repository/commons-io/commons-io/1.4/commons-io-1.4.jar:/home/djimenez/.m2/repository/javax/servlet/jstl/1.1.2/jstl-1.1.2.jar:/home/djimenez/.m2/repository/taglibs/standard/1.1.2/standard-1.1.2.jar:/home/djimenez/.m2/repository/displaytag/displaytag/1.1.1/displaytag-1.1.1.jar:/home/djimenez/.m2/repository/commons-lang/commons-lang/2.4/commons-lang-2.4.jar:/home/djimenez/.m2/repository/com/lowagie/itext/1.3/itext-1.3.jar:/home/djimenez/.m2/repository/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar:/home/djimenez/.m2/repository/org/slf4j/jcl104-over-slf4j/1.4.2/jcl104-over-slf4j-1.4.2.jar:/home/djimenez/.m2/repository/org/slf4j/slf4j-log4j12/1.5.2/slf4j-log4j12-1.5.2.jar:/home/djimenez/.m2/repository/org/slf4j/slf4j-api/1.5.2/slf4j-api-1.5.2.jar:/home/djimenez/.m2/repository/displaytag/displaytag-portlet/1.1.1/displaytag-portlet-1.1.1.jar:/home/djimenez/.m2/repository/net/sf/ehcache/ehcache/1.6.0-beta2/ehcache-1.6.0-beta2.jar:/home/djimenez/.m2/repository/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar:/home/djimenez/.m2/repository/org/hibernate/hibernate-annotations/3.4.0.GA/hibernate-annotations-3.4.0.GA.jar:/home/djimenez/.m2/repository/org/hibernate/ejb3-persistence/1.0.2.GA/ejb3-persistence-1.0.2.GA.jar:/home/djimenez/.m2/repository/org/hibernate/hibernate-commons-annotations/3.1.0.GA/hibernate-commons-annotations-3.1.0.GA.jar:/home/djimenez/.m2/repository/org/hibernate/hibernate-core/3.3.2.GA/hibernate-core-3.3.2.GA.jar:/home/djimenez/.m2/repository/antlr/antlr/2.7.6/antlr-2.7.6.jar:/home/djimenez/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar:/home/djimenez/.m2/repository/javax/transaction/jta/1.1/jta-1.1.jar:/home/djimenez/.m2/repository/commons-dbcp/commons-dbcp/1.2.2/commons-dbcp-1.2.2.jar:/home/djimenez/.m2/repository/commons-pool/commons-pool/1.3/commons-pool-1.3.jar:/home/djimenez/.m2/repository/org/directwebremoting/dwr/2.0.2/dwr-2.0.2.jar:/home/djimenez/.m2/repository/javax/portlet/portlet-api/2.0/portlet-api-2.0.jar:/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/components/test/testing/target/testing-1.0-SNAPSHOT.jar:/home/djimenez/.m2/repository/org/hibernate/hibernate-ehcache/3.3.2.GA/hibernate-ehcache-3.3.2.GA.jar:/home/djimenez/.m2/repository/c3p0/c3p0/0.9.1.2/c3p0-0.9.1.2.jar:/home/djimenez/.m2/repository/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar:/home/djimenez/.m2/repository/org/dbunit/dbunit/2.4.4/dbunit-2.4.4.jar:/home/djimenez/.m2/repository/commons-configuration/commons-configuration/1.6/commons-configuration-1.6.jar:/home/djimenez/.m2/repository/commons-digester/commons-digester/1.8/commons-digester-1.8.jar:/home/djimenez/.m2/repository/commons-beanutils/commons-beanutils-core/1.8.0/commons-beanutils-core-1.8.0.jar:/home/djimenez/.m2/repository/org/slf4j/slf4j-simple/1.5.2/slf4j-simple-1.5.2.jar:/home/djimenez/.m2/repository/net/sf/twip/twip/3.0/twip-3.0.jar:/home/djimenez/.m2/repository/org/jmock/jmock/2.5.1/jmock-2.5.1.jar:/home/djimenez/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/home/djimenez/.m2/repository/org/hamcrest/hamcrest-library/1.1/hamcrest-library-1.1.jar:/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/components/test/test-support/target/test-support-1.0-SNAPSHOT.jar:/home/djimenez/.m2/repository/org/easymock/easymock/2.4/easymock-2.4.jar:/home/djimenez/.m2/repository/org/easymock/easymockclassextension/2.4/easymockclassextension-2.4.jar:/home/djimenez/.m2/repository/org/codehaus/mojo/hibernate3-maven-plugin/2.2/hibernate3-maven-plugin-2.2.jar:/home/djimenez/.m2/repository/org/hibernate/hibernate-tools/3.2.3.GA/hibernate-tools-3.2.3.GA.jar:/home/djimenez/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar:/home/djimenez/.m2/repository/freemarker/freemarker/2.3.8/freemarker-2.3.8.jar:/home/djimenez/.m2/repository/org/hibernate/jtidy/r8-20060801/jtidy-r8-20060801.jar:/home/djimenez/.m2/repository/org/codehaus/mojo/hibernate3/maven-hibernate3-api/2.2/maven-hibernate3-api-2.2.jar:/home/djimenez/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar:/home/djimenez/.m2/repository/org/apache/maven/maven-plugin-api/2.0.7/maven-plugin-api-2.0.7.jar:/home/djimenez/.m2/repository/org/apache/maven/maven-project/2.0.7/maven-project-2.0.7.jar:/home/djimenez/.m2/repository/org/apache/maven/maven-settings/2.0.7/maven-settings-2.0.7.jar:/home/djimenez/.m2/repository/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.jar:/home/djimenez/.m2/repository/org/codehaus/plexus/plexus-utils/1.4.6/plexus-utils-1.4.6.jar:/home/djimenez/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar:/home/djimenez/.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar:/home/djimenez/.m2/repository/org/apache/maven/maven-profile/2.0.7/maven-profile-2.0.7.jar:/home/djimenez/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.7/maven-artifact-manager-2.0.7.jar:/home/djimenez/.m2/repository/org/apache/maven/maven-repository-metadata/2.0.7/maven-repository-metadata-2.0.7.jar:/home/djimenez/.m2/repository/org/apache/maven/maven-artifact/2.0.4/maven-artifact-2.0.4.jar:/home/djimenez/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-beta-2/wagon-provider-api-1.0-beta-2.jar:/home/djimenez/.m2/repository/org/apache/maven/maven-plugin-registry/2.0.7/maven-plugin-registry-2.0.7.jar:/home/djimenez/.m2/repository/org/apache/geronimo/specs/geronimo-jta_1.0.1B_spec/1.1.1/geronimo-jta_1.0.1B_spec-1.1.1.jar:/home/djimenez/.m2/repository/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.jar:/home/djimenez/.m2/repository/org/codehaus/mojo/hibernate3/maven-hibernate3-jdk14/2.2/maven-hibernate3-jdk14-2.2.jar:/home/djimenez/.m2/repository/org/codehaus/mojo/hibernate3/maven-hibernate3-jdk15/2.2/maven-hibernate3-jdk15-2.2.jar:/home/djimenez/.m2/repository/org/hibernate/hibernate-entitymanager/3.4.0.GA/hibernate-entitymanager-3.4.0.GA.jar:/home/djimenez/.m2/repository/jboss/jboss-common/4.0.2/jboss-common-4.0.2.jar:/home/djimenez/.m2/repository/slide/webdavlib/2.0/webdavlib-2.0.jar:/home/djimenez/.m2/repository/xerces/xercesImpl/2.6.2/xercesImpl-2.6.2.jar:/home/djimenez/.m2/repository/org/codehaus/mojo/sonar-maven-plugin/1.0-beta-1/sonar-maven-plugin-1.0-beta-1.jar:/home/djimenez/.m2/repository/org/apache/maven/plugins/maven-antrun-plugin/1.3/maven-antrun-plugin-1.3.jar:/home/djimenez/.m2/repository/org/apache/ant/ant-launcher/1.7.1/ant-launcher-1.7.1.jar:/home/djimenez/.m2/repository/org/apache/ant/ant/1.7.1/ant-1.7.1.jar:/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/components/model/target/model-1.0-SNAPSHOT.jar:/home/djimenez/.m2/repository/javax/persistence/persistence-api/1.0/persistence-api-1.0.jar:/home/djimenez/.m2/repository/org/compass-project/compass/2.1.3/compass-2.1.3.jar:/home/djimenez/.m2/repository/org/apache/lucene/lucene-core/2.4.1/lucene-core-2.4.1.jar:/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/components/core/target/core-1.0-SNAPSHOT.jar:/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/components/utils/target/utils-1.0-SNAPSHOT.jar:/home/djimenez/.m2/repository/org/ini4j/ini4j/0.5.1/ini4j-0.5.1.jar:"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="env.LD_LIBRARY_PATH" value="/usr/lib/jvm/jdk1.6.0_18/jre/lib/i386/server:/usr/lib/jvm/jdk1.6.0_18/jre/lib/i386:/usr/lib/jvm/jdk1.6.0_18/jre/../lib/i386"/>
+    <property name="env.LS_COLORS" value="rs=0:di=01;34:ln=01;36:hl=44;37:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="env.SSH_AUTH_SOCK" value="/tmp/ssh-pUkWHg2091/agent.2091"/>
+    <property name="env.MAVEN_OPTS" value="-Xms256m -Xmx256m -XX:PermSize=256m -XX:MaxPermSize=256m"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="os.arch" value="i386"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/jdk1.6.0_18/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="user.dir" value="/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/web/portlets/sample-portlet"/>
+    <property name="env.MAVEN_HOME" value="~/programs/apache-maven-2.2.1"/>
+    <property name="env.GTK_MODULES" value="canberra-gtk-module"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Server VM"/>
+    <property name="env.projects" value="/home/djimenez/proyectos"/>
+    <property name="env.GTK2_RC_FILES" value="/etc/gtk-2.0/gtkrc:/home/djimenez/.gtkrc-2.0:/home/djimenez/.gtkrc-2.0-kde4:/home/djimenez/.kde/share/config/gtkrc-2.0"/>
+    <property name="env.projectDocumentation" value="/home/djimenez/proyectos/documentacion"/>
+    <property name="basedir" value="/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/web/portlets/sample-portlet"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="env.KONSOLE_DBUS_SERVICE" value=":1.39"/>
+    <property name="env.GPG_AGENT_INFO" value="/tmp/gpg-gMngb8/S.gpg-agent:2136:1"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="env.PROFILEHOME" value="/home/djimenez"/>
+    <property name="env.LESSCLOSE" value="/usr/bin/lesspipe %s %s"/>
+  </properties>
+  <testcase time="0.037" classname="com.germinus.sample.dao.TestBookViewController" name="testBookViewController"/>
+</testsuite>

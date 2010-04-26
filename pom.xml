@@ -483,20 +483,13 @@
 			<dependency>
 				<groupId>org.jmock</groupId>
 				<artifactId>jmock</artifactId>
-				<version>2.5.1</version>
-				<scope>test</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>org.jmock</groupId>
-				<artifactId>jmock-junit4</artifactId>
 				<version>${lib.jmock.version}</version>
 				<scope>test</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>org.jmock</groupId>
-				<artifactId>jmock</artifactId>
+				<artifactId>jmock-junit4</artifactId>
 				<version>${lib.jmock.version}</version>
 				<scope>test</scope>
 			</dependency>

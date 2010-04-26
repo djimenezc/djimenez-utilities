@@ -1,0 +1,220 @@
+.flag_selected{
+	border:2px solid orange;
+	padding:0.25em;
+}
+.flags{
+	border:0px solid white;
+}	
+
+#divSearch{
+  width:390px;
+  height:220px;
+  overflow: auto;
+}
+
+.tabla{
+  border: 0px;
+  border-spacing: 0px;
+  empty-cells: hide; 
+  border-collapse: collapse;
+}
+
+
+.tabla a:hover, .boton a:hover{
+  text-decoration:none;
+  color:black;
+  background-color:#d2e7f7;
+}
+
+
+.tabla td{
+  text-align:right;
+  padding-right:0.5em;
+  padding-top:0.5em;
+  padding-bottom:0.5em;
+}
+
+
+
+.tabla th{
+  text-align:left;
+  padding-left:0.5em;
+  border-left:5px solid #d2e7f7;
+  font-weight:normal;
+}
+
+#selected_table{
+   border: 1px solid #00a4cd;
+}
+
+
+#selected_table th{
+  border-left:0px solid white;
+  text-align:center;
+  background-color:#00a4cd;
+  color: white;
+  padding:0.15em;
+}
+
+
+#selected_table td{
+  text-align:center;
+}
+
+
+.select_node{
+  opacity: 0.75;
+  display:block;
+  overflow:none;
+}
+
+.select_node option{
+   padding-top:0.35em;
+   padding-bottom:0.35em;
+}
+
+.select_node option.one{
+   background-color:#feeb9e;
+}
+.select_node option.two{
+   background-color:#f0eef0;
+}
+
+
+.tabla_resultado{margin:1em;padding:0.25em;border-spacing: 0px;}
+
+.tabla_resultado th{text-align:center;background-color:orange;color:white;font-weight:bold;border:1px solid orange;}
+
+.tabla_resultado td{
+	padding:0.5em;
+	padding-left:1em;
+	padding-right:1em;
+	border:1px solid orange;
+}
+
+.campoForm{
+   display:block;
+}
+
+#log{
+  margin:1em;
+  padding:1em;
+  border:1px dotted orange;
+  display:none;
+}
+
+#box{
+	border:1px dotted orange;
+	background-color: #fec868;
+	color: #004488;
+	padding:1em;
+	
+}
+
+#steps{
+  margin:0.5em;
+  border: 2px solid #00a4cd;
+  background-color:#d2e7f7;
+  padding:0.3em;
+  margin-bottom:1em;
+}
+
+#mainwin{
+  float:left;
+  background-color:#00a4cd;
+  padding:0.3em;
+}
+
+#mainwin2{
+  display:block;
+  background-color:#fefefe;
+  padding:0.5em;
+}
+
+#nav{
+  border:2px solid #00a4cd;
+  padding:0.5em;
+  background-color:#d2e7f7;
+}
+
+.boton, .thickbox {
+	font-family: sans-serif;
+	cursor:pointer;
+	border:1px solid grey;
+	background-color: #feeb9e;
+}
+.boton a,a:hover{
+  text-decoration:none;
+}
+
+#titulo{
+	display: block; 
+	width: 100%; 
+	text-align:center;
+	background-color:#fec868;
+	font-weight: bold;
+	color: #004488;
+}
+
+#error{
+	margin-bottom:1em;
+	padding:2em;
+	text-align:center;
+	background-color:red;
+	color:white;
+	font-weight: bold;
+}
+
+
+
+input{
+	font-weight:normal;
+}
+
+select{
+	font-weight:normal;
+}
+
+option{
+	background-color:white;
+}
+
+
+ .treeview, .treeview ul {
+ padding: 0;
+ margin: 0;
+ list-style: none;
+}
+
+.treeview li {
+ margin: 0;
+ padding: 3px 0pt 3px 16px;
+}
+
+ ul.dir li { padding: 2px 0 0 16px; }
+
+ .treeview li { text-align: left; background: url(alfresco/images/variazioni/tv-item.gif) 0 0 no-repeat; }
+ .treeview .collapsable { background-image: url(alfresco/images/variazioni/tv-collapsable.gif); }
+ .treeview .expandable { background-image: url(alfresco/images/variazioni/tv-expandable.gif); }
+ .treeview .last { background-image: url(alfresco/images/variazioni/tv-item-last.gif); }
+ .treeview .lastCollapsable { background-image: url(alfresco/images/variazioni/tv-collapsable-last.gif); }
+ .treeview .lastExpandable { background-image: url(alfresco/images/variazioni/tv-expandable-last.gif); }
+
+
+ #categories.treeview li { background: url(/alfresco/images/variazioni/black/tv-item.gif) 0 0 no-repeat; }
+ #categories.treeview .collapsable { background-image: url(/alfresco/images/variazioni/black/tv-collapsable.gif); }
+ #categories.treeview .expandable { background-image: url(/alfresco/images/variazioni/black/tv-expandable.gif); }
+ #categories.treeview .last { background-image: url(/alfresco/images/variazioni/black/tv-item-last.gif); }
+ #categories.treeview .lastCollapsable { background-image: url(/alfresco/images/variazioni/black/tv-collapsable-last.gif); }
+ #categories.treeview .lastExpandable { background-image: url(/alfresco/images/variazioni/black/tv-expandable-last.gif); }
+
+#treecontrol { margin: 1em 0; }
+
+.cat{
+	cursor:pointer;
+}
+
+.cat:hover{
+	background-color:#d2e7f7;
+	border:1px solid #00a4cd;
+}
