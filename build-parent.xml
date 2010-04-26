@@ -29,7 +29,8 @@
 	<property name="src.dir" value="${basedir}" />
 	<property name="compile.dir" value="${basedir}" />
 	<property name="bbdd.dir"
-		value="${parent.dir}/schema/src/main/resources/common/schemas"></property>
+	          value="${parent.dir}/schema/src/main/resources/common/schemas">
+	</property>
 
 	<target name="clean-log" depends="" description="">
 
@@ -81,6 +82,26 @@
 		<antcall target="-maven-projects">
 			<param name="projects" value="${compile.projects}" />
 			<param name="tasks" value="sonar:sonar" />
+		</antcall>
+	</target>
+
+	<target name="site" depends="" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+				------------------------------------------
+				Analyze:
+				${start.timestamp}
+				Projects: ${compile.projects}
+				------------------------------------------
+			    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="site:site" />
 		</antcall>
 	</target>
 
@@ -140,7 +161,7 @@
 			<param name="tasks" value="install,-Dmaven.test.skip=true" />
 		</antcall>
 	</target>
-	
+
 	<target name="prepare-release" depends="" description="">
 
 		<tstamp>
@@ -179,8 +200,9 @@
 		</antcall>
 	</target>
 
-	<target name="last-operation-summary" depends=""
-		description="Load the frontoffice data in local">
+	<target name="last-operation-summary"
+	        depends=""
+	        description="Load the frontoffice data in local">
 		<tstamp>
 			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
 		</tstamp>
@@ -219,8 +241,10 @@
 		
 			</echo>
 
-		<sql driver="${local.sql.driver}" url="${local.sql.url}" userid="${local.sql.user}"
-			password="${local.sql.pass}">
+		<sql driver="${local.sql.driver}"
+		     url="${local.sql.url}"
+		     userid="${local.sql.user}"
+		     password="${local.sql.pass}">
 			<transaction src="${bbdd.dir}/${sql.file}" />
 		</sql>
 
