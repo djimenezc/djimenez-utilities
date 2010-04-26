@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>djimenez-utilities</artifactId>
@@ -389,13 +390,6 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.unitils</groupId>
-				<artifactId>unitils-core</artifactId>
-				<version>3.1</version>
-				<scope>test</scope>
-			</dependency>
-
-			<dependency>
 				<groupId>org.ini4j</groupId>
 				<artifactId>ini4j</artifactId>
 				<version>0.5.1</version>
@@ -442,7 +436,7 @@
 				<artifactId>testing</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.djimenez.utilities.test</groupId>
 				<artifactId>test-support</artifactId>
@@ -538,12 +532,6 @@
 				<!--				</exclusions>-->
 			</dependency>
 
-			<!--			<dependency>-->
-			<!--				<groupId>org.hibernate</groupId>-->
-			<!--				<artifactId>hibernate</artifactId>-->
-			<!--				<version>${lib.hibernate.version}</version>-->
-			<!--			</dependency>-->
-
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-ehcache</artifactId>
@@ -554,12 +542,6 @@
 						<groupId>net.sf.ehcache</groupId>
 					</exclusion>
 				</exclusions>
-			</dependency>
-
-			<dependency>
-				<groupId>javassist</groupId>
-				<artifactId>javassist</artifactId>
-				<version>3.4.GA</version>
 			</dependency>
 
 			<dependency>
@@ -924,6 +906,11 @@
 	<repositories>
 
 		<repository>
+			<id>central</id>
+			<url>http://localhost:10001/artifactory/repo</url>
+		</repository>
+		
+		<repository>
 			<id>maven-central</id>
 			<name>Central Repository</name>
 			<url>http://repo1.maven.org/maven2</url>
@@ -1059,10 +1046,10 @@
 			<id>sonar</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
-<!--				<property>-->
-<!--					<name>sonar</name>-->
-<!--					<value>true</value>-->
-<!--				</property>-->
+				<!--				<property>-->
+				<!--					<name>sonar</name>-->
+				<!--					<value>true</value>-->
+				<!--				</property>-->
 			</activation>
 			<properties>
 				<!-- Si la base de datos es MySQL -->
@@ -1075,7 +1062,7 @@
 				<sonar.host.url>http://${sonar.ip}:10001/sonar</sonar.host.url>
 			</properties>
 		</profile>
-		
+
 	</profiles>
 
 </project>

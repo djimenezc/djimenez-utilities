@@ -10,7 +10,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
-	<artifactId>model</artifactId>
+	<artifactId>spring-mvc-model</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>Spring MVC Model</name>
@@ -23,9 +23,29 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.compass-project</groupId>
 			<artifactId>compass</artifactId>
+		</dependency>
 
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${lib.commons-lang.version}</version>
 		</dependency>
 	</dependencies>
 </project>
