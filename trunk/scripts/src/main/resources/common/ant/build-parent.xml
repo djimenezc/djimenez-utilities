@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="djimenez-utilities-parent" >
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="${ant.contribute.file}" />
+		</classpath>
+	</taskdef>
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="${ant.contribute.file}" />
+		</classpath>
+	</taskdef>
+
+	<property environment="env" />
+
+	<property name="log.dir" value="/tmp" />
+
+	<target name="info-config" description="">
+		<echo>parent.dir-> ${parent.dir}</echo>
+		<echo>compile.dir-> ${compile.dir}</echo>
+		<echo>scripts.dir-> ${scripts.dir}</echo>
+		<echo>bbdd.dir-> ${bbdd.dir}</echo>
+	</target>
+	
+	<target name="clean-log" depends="info-config" description="">
+
+		<delete>
+			<fileset dir="${log.dir}" includes="compile-error.log" />
+			<fileset dir="${log.dir}" includes="compile.log" />
+		</delete>
+
+	</target>
+
+	<target name="-maven-projects">
+		<for list="${projects}" param="project">
+			<sequential>
+				<antcall target="-maven">
+					<param name="project" value="@{project}" />
+					<param name="tasks" value="${tasks}" />
+				</antcall>
+			</sequential>
+		</for>
+	</target>
+
+	<target name="-maven">
+		<echo>Maven tasks: ${tasks} </echo>
+		<echo>Folder: ${compile.dir}</echo>
+		
+		<exec executable="${scripts.dir}/mvn.sh" failonerror="true">
+			<arg value="${compile.dir}" />
+			<arg value="${tasks}" />
+			<arg value="${log.dir}" />
+		</exec>
+	</target>
+
+	<target name="sonar" depends="info-config" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Analyze:
+			${start.timestamp}
+			Projects: ${compile.projects}
+			------------------------------------------
+		    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="sonar:sonar" />
+		</antcall>
+	</target>
+
+	<target name="site" depends="info-config" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+				------------------------------------------
+				Analyze:
+				${start.timestamp}
+				Projects: ${compile.projects}
+				------------------------------------------
+			    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="site:site" />
+		</antcall>
+	</target>
+
+	<target name="clean-all" depends="info-config" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Clean spring-mvc :
+			${start.timestamp}
+			------------------------------------------
+		    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="clean" />
+		</antcall>
+	</target>
+
+	<target name="compile-all" depends="info-config" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Compile:
+			${start.timestamp}
+			------------------------------------------
+		    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="install" />
+		</antcall>
+	</target>
+
+	<target name="compile-all-quick" depends="info-config" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Compile quickly:
+			${start.timestamp}
+			------------------------------------------
+		    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="install,-Dmaven.test.skip=true" />
+		</antcall>
+	</target>
+
+	<target name="prepare-release" depends="info-config" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Generating release:
+			${start.timestamp}
+			------------------------------------------
+		    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="release:prepare" />
+		</antcall>
+	</target>
+
+	<target name="deploy-release-repository" depends="info-config" description="">
+
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Deploy release in repotitory:
+			${start.timestamp}
+			------------------------------------------
+		    </echo>
+
+		<antcall target="-maven-projects">
+			<param name="projects" value="${compile.projects}" />
+			<param name="tasks" value="deploy" />
+		</antcall>
+	</target>
+
+	<target name="last-operation-summary"
+	        depends="info-config"
+	        description="Load the frontoffice data in local">
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Last operation
+			summary: ${start.timestamp}
+			Ip: Localhost
+			Projects: ${compile.dir}
+			PATH= ${env.PATH}:${maven.home}/bin
+			------------------------------------------
+			
+			</echo>
+
+		<exec executable="${scripts.dir}/mvnsummary.sh">
+			<arg value="${compile.dir}" />
+			<arg value="${compile.dir}" />
+			<arg value="${log.dir}" />
+			<env key="PATH" path="${env.PATH}" />
+		</exec>
+
+	</target>
+
+	<target name="-database">
+		<tstamp>
+			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>
+
+		<echo>
+			------------------------------------------
+			Database sql execution
+			${start.timestamp}
+			Ip: Localhost
+			Driver: ${local.sql.driver}
+			Executing ${sql.file.name}
+			------------------------------------------
+		
+			</echo>
+		
+		<!--<sql driver="${local.sql.driver}"
+		     url="${local.sql.url}"
+		     userid="${local.sql.user}"
+		     password="${local.sql.pass}">
+			<transaction src="${bbdd.dir}/${sql.file}" />
+		</sql>-->
+
+		<sql driver="${local.sql.driver}"
+		     url="jdbc:mysql://localhost:3306/"
+		     userid="lportal"
+		     password="lportal">
+			<transaction src="${bbdd.path}" />
+		</sql>
+
+	</target>
+
+	<target name="database-clean" depends="info-config" description="">
+
+		<antcall target="-database">
+			<param name="bbdd.path" value="${bbdd.dir}/createDatabase.sql" />
+		</antcall>
+	</target>
+
+	<target name="database-load-test" depends="info-config" description="">
+		<antcall target="-database">
+			<param name="bbdd.path" value="${bbdd.dir}/createDatabaseTest.sql" />
+		</antcall>
+	</target>
+
+</project>
