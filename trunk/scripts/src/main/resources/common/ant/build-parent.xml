@@ -132,6 +132,8 @@
 			<param name="projects" value="${compile.projects}" />
 			<param name="tasks" value="install" />
 		</antcall>
+		
+		<antcall target="last-operation-summary"></antcall>
 	</target>
 
 	<target name="compile-all-quick" depends="info-config" description="">
@@ -227,24 +229,17 @@
 			------------------------------------------
 			Database sql execution
 			${start.timestamp}
-			Ip: Localhost
 			Driver: ${local.sql.driver}
-			Executing ${sql.file.name}
+			URL: ${local.sql.url}
+			Executing ${bbdd.path}
 			------------------------------------------
 		
 			</echo>
 		
-		<!--<sql driver="${local.sql.driver}"
-		     url="${local.sql.url}"
+		<sql driver="${local.sql.driver}"
+		     url="${local.sql.url}/"
 		     userid="${local.sql.user}"
 		     password="${local.sql.pass}">
-			<transaction src="${bbdd.dir}/${sql.file}" />
-		</sql>-->
-
-		<sql driver="${local.sql.driver}"
-		     url="jdbc:mysql://localhost:3306/"
-		     userid="lportal"
-		     password="lportal">
 			<transaction src="${bbdd.path}" />
 		</sql>
 

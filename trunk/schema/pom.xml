@@ -28,19 +28,15 @@
 						</goals>
 						<configuration>
 							<tasks unless="maven.test.skip">
+
+								<echo level="info">Loading test databases</echo>
 								<property name="compile_classpath" refid="maven.compile.classpath" />
 								<property name="runtime_classpath" refid="maven.runtime.classpath" />
 								<property name="test_classpath" refid="maven.test.classpath" />
 								<property name="plugin_classpath" refid="maven.plugin.classpath" />
 
-								<echo level="info">Loading test databases</echo>
-
-								<ant antfile="${ant.build.dir}/build-parent.xml" target="database-load-test">
-									<property file="${ant.target.dir}/build.${user.name}.properties" />
-									<property file="${ant.target.dir}/build.properties" />
-									<property name="parent.dir" value="${ant.build.dir}"/>
-									<property name="parent.target.dir" value="${ant.target.dir}"/>
-									<property name="bbdd.dir" value="./target/classes/schemas"/>
+								<ant antfile="${ant.build.dir}/build.xml" target="database-load-test">
+									<property name="basedir" value="${basedir}/.."></property>
 								</ant>
 
 								<echo level="info">Finish load test databases</echo>
@@ -64,12 +60,8 @@
 
 								<echo level="info">Loading databases</echo>
 
-								<ant antfile="${ant.build.dir}/build-parent.xml" target="database-clean">
-								<property file="${ant.target.dir}/build.${user.name}.properties" />
-									<property file="${ant.target.dir}/build.properties" />
-									<property name="parent.dir" value="${ant.build.dir}"/>
-									<property name="parent.target.dir" value="${ant.target.dir}"/>
-									<property name="bbdd.dir" value="./target/classes/schemas"/>									
+								<ant antfile="${ant.build.dir}/build.xml" target="database-clean">
+									<property name="basedir" value="${basedir}/.."></property>
 								</ant>
 
 								<echo level="info">Finish load databases</echo>
@@ -80,8 +72,8 @@
 				</executions>
 				<dependencies>
 					<dependency>
-						<groupId>${jdbc.test.groupId}</groupId>
-						<artifactId>${jdbc.test.artifactId}</artifactId>
+						<groupId>${jdbc.groupId}</groupId>
+						<artifactId>${jdbc.artifactId}</artifactId>
 						<version>${jdbc.test.version}</version>
 					</dependency>
 
@@ -121,10 +113,8 @@
 	</build>
 
 	<properties>
-			<ant.build.dir>../scripts/src/main/resources/common/ant</ant.build.dir>
-			<ant.target.dir>../scripts/target/classes/ant</ant.target.dir>
-			
-		<jdbc.test.databaseName>djimenez_test</jdbc.test.databaseName>
+		<ant.build.dir>..</ant.build.dir>
+
 	</properties>
 
 </project>

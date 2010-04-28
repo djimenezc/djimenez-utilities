@@ -4,9 +4,11 @@
 	
 	<property name="parent.dir" value="${path.begin}/scripts/target/classes/ant" />
 	
-	<property file="${parent.dir}/build.properties" />
+	<property name="property.dir" value="${basedir}/spring-mvc-scripts/target/classes" />
+		
+	<property file="${property.dir}/build.properties" />
 	
-	<property name="bbdd.dir" value="${path.begin}/${bbdd.dir.relative}" />
+	<property name="bbdd.dir" value="${basedir}/${bbdd.dir.relative}" />
 	<property name="scripts.dir" value="${path.begin}/scripts/src/main/resources/common/linux" />
 	<property name="compile.dir" value="${basedir}" />
 	

@@ -13,8 +13,6 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>spring-mvc-schema</name>
 	<url>http://maven.apache.org</url>
-	<dependencies>
-	</dependencies>
 
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -37,12 +35,8 @@
 
 								<echo level="info">Loading test databases</echo>
 
-								<ant antfile="${ant.build.dir}/build-parent.xml" target="database-load-test">
-									<property file="${ant.target.dir}/build.${user.name}.properties" />
-									<property file="${ant.target.dir}/build.properties" />
-									<property name="parent.dir" value="${ant.build.dir}"/>
-									<property name="parent.target.dir" value="${ant.target.dir}"/>
-									<property name="bbdd.dir" value="./target/classes/schemas"/>
+								<ant antfile="${ant.build.dir}/build.xml" target="database-clean">
+									<property name="basedir" value="${basedir}/.."></property>
 								</ant>
 
 								<echo level="info">Finish load test databases</echo>
@@ -66,12 +60,8 @@
 
 								<echo level="info">Loading databases</echo>
 
-								<ant antfile="${ant.build.dir}/build-parent.xml" target="database-clean">
-									<property file="${ant.target.dir}/build.${user.name}.properties" />
-									<property file="${ant.target.dir}/build.properties" />
-									<property name="parent.dir" value="${ant.build.dir}"/>
-									<property name="parent.target.dir" value="${ant.target.dir}"/>
-									<property name="bbdd.dir" value="./target/classes/schemas"/>
+								<ant antfile="${ant.build.dir}/build.xml" target="database-clean">
+									<property name="basedir" value="${basedir}/.."></property>
 								</ant>
 
 								<echo level="info">Finish load databases</echo>
@@ -81,7 +71,7 @@
 					</execution>
 				</executions>
 				<dependencies>
-				
+
 					<dependency>
 						<groupId>${jdbc.groupId}</groupId>
 						<artifactId>${jdbc.artifactId}</artifactId>
@@ -111,12 +101,20 @@
 			</plugin>
 		</plugins>
 
+		<resources>
+			<resource>
+				<directory>src/main/resources/common</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>schemas/**/*</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 
 	<properties>
-			<ant.build.dir>../../../scripts/src/main/resources/common/ant</ant.build.dir>
-			<ant.target.dir>../../../scripts/target/classes/ant</ant.target.dir>
-			
+		<ant.build.dir>..</ant.build.dir>
+
 		<jdbc.test.databaseName>djimenez_test</jdbc.test.databaseName>
 	</properties>
 </project>
