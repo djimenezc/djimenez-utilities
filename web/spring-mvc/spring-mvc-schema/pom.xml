@@ -1,18 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-	<parent>
-		<artifactId>djimenez-utilities</artifactId>
-		<groupId>com.djimenez.utilities</groupId>
-		<version>1.1-SNAPSHOT</version>
-	</parent>
-
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>schema</groupId>
-	<artifactId>schema</artifactId>
-	<name>Schema</name>
-	<version>1.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<parent>
+		<artifactId>spring-mvc</artifactId>
+		<groupId>com.djimenez.utilities.web</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
+	<artifactId>spring-mvc-schema</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>spring-mvc-schema</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+	</dependencies>
 
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -51,7 +53,7 @@
 
 					<execution>
 						<id>default</id>
-						<phase>integration-test</phase>
+						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -65,11 +67,11 @@
 								<echo level="info">Loading databases</echo>
 
 								<ant antfile="${ant.build.dir}/build-parent.xml" target="database-clean">
-								<property file="${ant.target.dir}/build.${user.name}.properties" />
+									<property file="${ant.target.dir}/build.${user.name}.properties" />
 									<property file="${ant.target.dir}/build.properties" />
 									<property name="parent.dir" value="${ant.build.dir}"/>
 									<property name="parent.target.dir" value="${ant.target.dir}"/>
-									<property name="bbdd.dir" value="./target/classes/schemas"/>									
+									<property name="bbdd.dir" value="./target/classes/schemas"/>
 								</ant>
 
 								<echo level="info">Finish load databases</echo>
@@ -79,10 +81,11 @@
 					</execution>
 				</executions>
 				<dependencies>
+				
 					<dependency>
-						<groupId>${jdbc.test.groupId}</groupId>
-						<artifactId>${jdbc.test.artifactId}</artifactId>
-						<version>${jdbc.test.version}</version>
+						<groupId>${jdbc.groupId}</groupId>
+						<artifactId>${jdbc.artifactId}</artifactId>
+						<version>${jdbc.version}</version>
 					</dependency>
 
 					<dependency>
@@ -108,23 +111,12 @@
 			</plugin>
 		</plugins>
 
-		<resources>
-			<resource>
-				<directory>src/main/resources/common</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>schemas/**/*</include>
-				</includes>
-			</resource>
-		</resources>
-
 	</build>
 
 	<properties>
-			<ant.build.dir>../scripts/src/main/resources/common/ant</ant.build.dir>
-			<ant.target.dir>../scripts/target/classes/ant</ant.target.dir>
+			<ant.build.dir>../../../scripts/src/main/resources/common/ant</ant.build.dir>
+			<ant.target.dir>../../../scripts/target/classes/ant</ant.target.dir>
 			
 		<jdbc.test.databaseName>djimenez_test</jdbc.test.databaseName>
 	</properties>
-
 </project>

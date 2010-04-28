@@ -15,7 +15,7 @@
 	</parent>
 
 	<modules>
-		<module>spring-mvc</module>
+<!--		<module>spring-mvc</module>-->
 		<module>portlets</module>
 	</modules>
 

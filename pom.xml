@@ -32,6 +32,7 @@
 	</ciManagement>
 
 	<modules>
+		<module>scripts</module>
 		<module>schema</module>
 		<module>applications</module>
 		<module>archetypes</module>
@@ -876,7 +877,7 @@
 		<jdbc.test.groupId>mysql</jdbc.test.groupId>
 		<jdbc.test.artifactId>mysql-connector-java</jdbc.test.artifactId>
 		<jdbc.test.version>5.0.4</jdbc.test.version>
-		<jdbc.test.driverClassName>org.gjt.mm.mysql.Driver</jdbc.test.driverClassName>
+		<jdbc.test.driverClassName>com.mysql.jdbc.Driver</jdbc.test.driverClassName>
 		<jdbc.test.url><![CDATA[jdbc:mysql://localhost:3306/${jdbc.test.databaseName}]]></jdbc.test.url>
 		<jdbc.test.username>lportal</jdbc.test.username>
 		<jdbc.test.password>lportal</jdbc.test.password>
@@ -902,7 +903,7 @@
 			<id>central</id>
 			<url>http://localhost:10001/artifactory/repo</url>
 		</repository>
-		
+
 		<repository>
 			<id>maven-central</id>
 			<name>Central Repository</name>
@@ -1004,7 +1005,7 @@
 				<jdbc.groupId>mysql</jdbc.groupId>
 				<jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
 				<jdbc.version>5.0.4</jdbc.version>
-				<jdbc.driverClassName>org.gjt.mm.mysql.Driver</jdbc.driverClassName>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 				<jdbc.databaseName>djimenez</jdbc.databaseName>
 				<jdbc.url><![CDATA[jdbc:mysql://localhost:3306/${jdbc.databaseName}]]></jdbc.url>
 				<jdbc.username>lportal</jdbc.username>
