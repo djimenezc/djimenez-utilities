@@ -65,7 +65,7 @@ public class HibernateExtensionPostProcessor implements
    * @param configurableListableBeanFactory
    *          the good ol' bean factory
    */
-  public void postProcessBeanFactory(
+  public final void postProcessBeanFactory(
     final ConfigurableListableBeanFactory configurableListableBeanFactory) {
     if (configurableListableBeanFactory.containsBean(sessionFactoryBeanName)) {
       final BeanDefinition sessionFactoryBeanDefinition =
@@ -183,7 +183,7 @@ public class HibernateExtensionPostProcessor implements
    * @param annotatedClasses
    *          The list of annotated classes that need to be added.
    */
-  public void setAnnotatedClasses(final List<?> annotatedClasses) {
+  public final void setAnnotatedClasses(final List<?> annotatedClasses) {
     this.annotatedClasses = annotatedClasses;
   }
 
@@ -194,7 +194,7 @@ public class HibernateExtensionPostProcessor implements
    * @param configLocations
    *          The list of configuration locations that need to be added.
    */
-  public void setConfigLocations(final List<?> configLocations) {
+  public final void setConfigLocations(final List<?> configLocations) {
     this.configLocations = configLocations;
   }
 
@@ -204,7 +204,7 @@ public class HibernateExtensionPostProcessor implements
    * @param hibernateProperties
    *          The list of additional properties.
    */
-  public void setHibernateProperties(final Properties hibernateProperties) {
+  public final void setHibernateProperties(final Properties hibernateProperties) {
     this.hibernateProperties = hibernateProperties;
   }
 
@@ -215,7 +215,7 @@ public class HibernateExtensionPostProcessor implements
    * @param mappingResources
    *          The list of mapping resources.
    */
-  public void setMappingResources(final List<?> mappingResources) {
+  public final void setMappingResources(final List<?> mappingResources) {
     this.mappingResources = mappingResources;
   }
 
@@ -226,7 +226,8 @@ public class HibernateExtensionPostProcessor implements
    * @param sessionFactoryBeanName
    *          The name of the session factory bean.
    */
-  public void setSessionFactoryBeanName(final String sessionFactoryBeanName) {
+  public final void setSessionFactoryBeanName(
+    final String sessionFactoryBeanName) {
     this.sessionFactoryBeanName = sessionFactoryBeanName;
   }
 }

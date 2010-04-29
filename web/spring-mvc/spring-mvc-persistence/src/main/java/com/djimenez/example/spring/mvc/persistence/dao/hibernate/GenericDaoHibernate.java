@@ -80,7 +80,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
   /**
    * {@inheritDoc}
    */
-  public boolean exists(final PK id) {
+  public final boolean exists(final PK id) {
     final T entity = hibernateTemplate.get(this.persistentClass, id);
     return entity != null;
   }
@@ -89,7 +89,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
    * {@inheritDoc}
    */
   @SuppressWarnings("unchecked")
-  public List<T> findByNamedQuery(final String queryName,
+  public final List<T> findByNamedQuery(final String queryName,
     final Map<String, Object> queryParams) {
     final String[] params = new String[queryParams.size()];
     final Object[] values = new Object[queryParams.size()];
@@ -107,7 +107,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
   /**
    * {@inheritDoc}
    */
-  public T get(final PK id) {
+  public final T get(final PK id) {
     final T entity = hibernateTemplate.get(this.persistentClass, id);
 
     if (entity == null) {
@@ -122,7 +122,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
   /**
    * {@inheritDoc}
    */
-  public List<T> getAll() {
+  public final List<T> getAll() {
     return hibernateTemplate.loadAll(this.persistentClass);
   }
 
@@ -130,23 +130,23 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
    * {@inheritDoc}
    */
   @SuppressWarnings("unchecked")
-  public List<T> getAllDistinct() {
+  public final List<T> getAllDistinct() {
     final Collection result = new LinkedHashSet(getAll());
     return new ArrayList(result);
   }
 
-  public HibernateTemplate getHibernateTemplate() {
+  public final HibernateTemplate getHibernateTemplate() {
     return this.hibernateTemplate;
   }
 
-  public SessionFactory getSessionFactory() {
+  public final SessionFactory getSessionFactory() {
     return this.sessionFactory;
   }
 
   /**
    * {@inheritDoc}
    */
-  public void remove(final PK id) {
+  public final void remove(final PK id) {
     hibernateTemplate.delete(this.get(id));
   }
 
@@ -159,7 +159,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
 
   @Autowired
   @Required
-  public void setSessionFactory(final SessionFactory sessionFactory) {
+  public final void setSessionFactory(final SessionFactory sessionFactory) {
     this.sessionFactory = sessionFactory;
     this.hibernateTemplate = new HibernateTemplate(sessionFactory);
   }
