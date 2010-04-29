@@ -3,8 +3,6 @@ package com.djimenez.example.spring.mvc.persistence.dao.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,10 +14,10 @@ import com.djimenez.example.spring.mvc.persistence.dao.hibernate.GenericDaoHiber
 
 public class GenericDaoTest extends BaseDaoTestCase {
 
-  Log log = LogFactory.getLog(GenericDaoTest.class);
-  GenericDao<User, Long> genericDao;
+  private GenericDao<User, Long> genericDao;
+
   @Autowired
-  SessionFactory sessionFactory;
+  private SessionFactory sessionFactory;
 
   @Test
   public void getUser() {

@@ -45,7 +45,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
    * Log variable for all child classes. Uses LogFactory.getLog(getClass()) from
    * Commons Logging
    */
-  protected final Log log = LogFactory.getLog(getClass());
+  private static final Log LOG = LogFactory.getLog(GenericDaoHibernate.class);
   private final Class<T> persistentClass;
   private HibernateTemplate hibernateTemplate;
   private SessionFactory sessionFactory;
@@ -111,7 +111,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
     final T entity = hibernateTemplate.get(this.persistentClass, id);
 
     if (entity == null) {
-      log.warn("Uh oh, '" + this.persistentClass + "' object with id '" + id
+      LOG.warn("Uh oh, '" + this.persistentClass + "' object with id '" + id
         + "' not found...");
       throw new ObjectRetrievalFailureException(this.persistentClass, id);
     }

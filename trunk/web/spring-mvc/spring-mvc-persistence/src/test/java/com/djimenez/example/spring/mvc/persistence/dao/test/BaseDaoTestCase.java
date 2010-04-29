@@ -36,12 +36,12 @@ public abstract class BaseDaoTestCase extends
    * Log variable for all child classes. Uses LogFactory.getLog(getClass()) from
    * Commons Logging
    */
-  protected final Log log = LogFactory.getLog(getClass());
+  private static final Log LOG = LogFactory.getLog(BaseDaoTestCase.class);
   /**
    * ResourceBundle loaded from
    * src/test/resources/${package.name}/ClassName.properties (if exists)
    */
-  protected ResourceBundle rb;
+  private ResourceBundle rb;
 
   /**
    * Default constructor - populates "rb" variable if properties file exists for
@@ -54,9 +54,10 @@ public abstract class BaseDaoTestCase extends
 
     try {
       rb = ResourceBundle.getBundle(className);
+
     }
     catch (final MissingResourceException mre) {
-      // log.debug("No resource bundle found for: " + className);
+      LOG.debug("No resource bundle found for: " + className);
     }
   }
 
@@ -96,6 +97,8 @@ public abstract class BaseDaoTestCase extends
     }
 
     BeanUtils.copyProperties(obj, map);
+
+    LOG.debug("Populate objects");
 
     return obj;
   }
