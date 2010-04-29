@@ -65,7 +65,6 @@ public class HibernateExtensionPostProcessor implements
    * @param configurableListableBeanFactory
    *          the good ol' bean factory
    */
-  @SuppressWarnings("unchecked")
   public void postProcessBeanFactory(
     final ConfigurableListableBeanFactory configurableListableBeanFactory) {
     if (configurableListableBeanFactory.containsBean(sessionFactoryBeanName)) {
@@ -103,6 +102,47 @@ public class HibernateExtensionPostProcessor implements
   /**
    * @param propertyValues
    */
+  private void processAnnotatedClasses(
+    final MutablePropertyValues propertyValues) {
+    // do we have existing resources?
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("annotatedClasses");
+
+    if (propertyValue == null) {
+      propertyValue =
+        new PropertyValue("annotatedClasses", new ArrayList<Object>());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+
+    // value is expected to be a list.
+    @SuppressWarnings("unchecked")
+    final List<Object> existingMappingResources =
+      (List<Object>) propertyValue.getValue();
+
+    existingMappingResources.addAll(annotatedClasses);
+  }
+
+  /**
+   * @param propertyValues
+   */
+  private void processConfigLocations(final MutablePropertyValues propertyValues) {
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("configLocations");
+    if (propertyValue == null) {
+      propertyValue =
+        new PropertyValue("configLocations", new ArrayList<Object>());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+
+    @SuppressWarnings("unchecked")
+    final List<Object> existingConfigLocations =
+      (List<Object>) propertyValue.getValue();
+    existingConfigLocations.addAll(configLocations);
+  }
+
+  /**
+   * @param propertyValues
+   */
   private void processHibernateProperties(
     final MutablePropertyValues propertyValues) {
     PropertyValue propertyValue =
@@ -120,53 +160,20 @@ public class HibernateExtensionPostProcessor implements
   /**
    * @param propertyValues
    */
-  private void processConfigLocations(final MutablePropertyValues propertyValues) {
-    PropertyValue propertyValue =
-      propertyValues.getPropertyValue("configLocations");
-    if (propertyValue == null) {
-      propertyValue = new PropertyValue("configLocations", new ArrayList());
-      propertyValues.addPropertyValue(propertyValue);
-    }
-    final List existingConfigLocations = (List) propertyValue.getValue();
-    existingConfigLocations.addAll(configLocations);
-  }
-
-  /**
-   * @param propertyValues
-   */
-  private void processAnnotatedClasses(
-    final MutablePropertyValues propertyValues) {
-    // do we have existing resources?
-    PropertyValue propertyValue =
-      propertyValues.getPropertyValue("annotatedClasses");
-
-    if (propertyValue == null) {
-      propertyValue =
-        new PropertyValue("annotatedClasses", new ArrayList());
-      propertyValues.addPropertyValue(propertyValue);
-    }
-
-    // value is expected to be a list.
-    final List existingMappingResources = (List) propertyValue.getValue();
-    existingMappingResources.addAll(annotatedClasses);
-  }
-
-  /**
-   * @param propertyValues
-   */
+  @SuppressWarnings("unchecked")
   private void processResourceMapping(final MutablePropertyValues propertyValues) {
     // do we have existing resourses?
     PropertyValue propertyValue =
       propertyValues.getPropertyValue("mappingResources");
 
     if (propertyValue == null) {
-      propertyValue =
-        new PropertyValue("mappingResources", new ArrayList());
+      propertyValue = new PropertyValue("mappingResources", new ArrayList());
       propertyValues.addPropertyValue(propertyValue);
     }
 
     // value is expected to be a list.
-    final List existingMappingResources = (List) propertyValue.getValue();
+    final List<Object> existingMappingResources =
+      (List<Object>) propertyValue.getValue();
     existingMappingResources.addAll(mappingResources);
   }
 

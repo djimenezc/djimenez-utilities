@@ -1,5 +1,6 @@
 package com.djimenez.example.spring.mvc.persistence.dao.test;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,6 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.test.context.ContextConfiguration;
@@ -69,7 +69,8 @@ public abstract class BaseDaoTestCase extends
    * @throws org.springframework.beans.BeansException
    *           when can't find 'sessionFactory' bean
    */
-  protected void flush() throws BeansException {
+  protected void flush() {
+
     final HibernateTemplate hibernateTemplate =
       new HibernateTemplate(sessionFactory);
     hibernateTemplate.flush();
@@ -83,10 +84,13 @@ public abstract class BaseDaoTestCase extends
    * @param obj
    *          the model object to populate
    * @return Object populated object
+   * @throws InvocationTargetException
+   * @throws IllegalAccessException
    * @throws Exception
    *           if BeanUtils fails to copy properly
    */
-  protected Object populate(final Object obj) throws Exception {
+  protected Object populate(final Object obj) throws IllegalAccessException,
+    InvocationTargetException {
     // loop through all the beans methods and set its properties from its
     // .properties file
     final Map<String, String> map = new HashMap<String, String>();
