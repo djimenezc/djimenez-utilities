@@ -76,59 +76,19 @@ public class HibernateExtensionPostProcessor implements
         sessionFactoryBeanDefinition.getPropertyValues();
 
       if (mappingResources != null) {
-        // do we have existing resourses?
-        PropertyValue propertyValue =
-          propertyValues.getPropertyValue("mappingResources");
-
-        if (propertyValue == null) {
-          propertyValue =
-            new PropertyValue("mappingResources", new ArrayList());
-          propertyValues.addPropertyValue(propertyValue);
-        }
-
-        // value is expected to be a list.
-        final List existingMappingResources = (List) propertyValue.getValue();
-        existingMappingResources.addAll(mappingResources);
+        processResourceMapping(propertyValues);
       }
 
       if (annotatedClasses != null) {
-        // do we have existing resources?
-        PropertyValue propertyValue =
-          propertyValues.getPropertyValue("annotatedClasses");
-
-        if (propertyValue == null) {
-          propertyValue =
-            new PropertyValue("annotatedClasses", new ArrayList());
-          propertyValues.addPropertyValue(propertyValue);
-        }
-
-        // value is expected to be a list.
-        final List existingMappingResources = (List) propertyValue.getValue();
-        existingMappingResources.addAll(annotatedClasses);
+        processAnnotatedClasses(propertyValues);
       }
 
       if (configLocations != null) {
-        PropertyValue propertyValue =
-          propertyValues.getPropertyValue("configLocations");
-        if (propertyValue == null) {
-          propertyValue = new PropertyValue("configLocations", new ArrayList());
-          propertyValues.addPropertyValue(propertyValue);
-        }
-        final List existingConfigLocations = (List) propertyValue.getValue();
-        existingConfigLocations.addAll(configLocations);
+        processConfigLocations(propertyValues);
       }
 
       if (hibernateProperties != null) {
-        PropertyValue propertyValue =
-          propertyValues.getPropertyValue("hibernateProperties");
-        if (propertyValue == null) {
-          propertyValue =
-            new PropertyValue("hibernateProperties", new Properties());
-          propertyValues.addPropertyValue(propertyValue);
-        }
-        final Properties existingHibernateProperties =
-          (Properties) propertyValue.getValue();
-        existingHibernateProperties.putAll(hibernateProperties);
+        processHibernateProperties(propertyValues);
       }
     }
     else {
@@ -138,6 +98,76 @@ public class HibernateExtensionPostProcessor implements
           + "] exists within the bean factory. "
           + "Cannot post process session factory to add Hibernate resource definitions.");
     }
+  }
+
+  /**
+   * @param propertyValues
+   */
+  private void processHibernateProperties(
+    final MutablePropertyValues propertyValues) {
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("hibernateProperties");
+    if (propertyValue == null) {
+      propertyValue =
+        new PropertyValue("hibernateProperties", new Properties());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+    final Properties existingHibernateProperties =
+      (Properties) propertyValue.getValue();
+    existingHibernateProperties.putAll(hibernateProperties);
+  }
+
+  /**
+   * @param propertyValues
+   */
+  private void processConfigLocations(final MutablePropertyValues propertyValues) {
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("configLocations");
+    if (propertyValue == null) {
+      propertyValue = new PropertyValue("configLocations", new ArrayList());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+    final List existingConfigLocations = (List) propertyValue.getValue();
+    existingConfigLocations.addAll(configLocations);
+  }
+
+  /**
+   * @param propertyValues
+   */
+  private void processAnnotatedClasses(
+    final MutablePropertyValues propertyValues) {
+    // do we have existing resources?
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("annotatedClasses");
+
+    if (propertyValue == null) {
+      propertyValue =
+        new PropertyValue("annotatedClasses", new ArrayList());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+
+    // value is expected to be a list.
+    final List existingMappingResources = (List) propertyValue.getValue();
+    existingMappingResources.addAll(annotatedClasses);
+  }
+
+  /**
+   * @param propertyValues
+   */
+  private void processResourceMapping(final MutablePropertyValues propertyValues) {
+    // do we have existing resourses?
+    PropertyValue propertyValue =
+      propertyValues.getPropertyValue("mappingResources");
+
+    if (propertyValue == null) {
+      propertyValue =
+        new PropertyValue("mappingResources", new ArrayList());
+      propertyValues.addPropertyValue(propertyValue);
+    }
+
+    // value is expected to be a list.
+    final List existingMappingResources = (List) propertyValue.getValue();
+    existingMappingResources.addAll(mappingResources);
   }
 
   /**

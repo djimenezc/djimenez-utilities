@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Table;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
@@ -29,6 +31,8 @@ import com.djimenez.example.spring.mvc.persistence.dao.user.UserDao;
 @Repository("userDao")
 public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
   UserDao, UserDetailsService {
+
+  private static final Log LOG = LogFactory.getLog(GenericDaoHibernate.class);
 
   /**
    * Constructor that sets the entity to User.class.
@@ -92,8 +96,8 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
    * {@inheritDoc}
    */
   public User saveUser(final User user) {
-    if (log.isDebugEnabled()) {
-      log.debug("user's id: " + user.getId());
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("user's id: " + user.getId());
     }
     getHibernateTemplate().saveOrUpdate(user);
     // necessary to throw a DataIntegrityViolation and catch it in UserManager
