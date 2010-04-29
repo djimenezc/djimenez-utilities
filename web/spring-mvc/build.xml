@@ -2,16 +2,15 @@
 
 	<!--<property name="path.begin" value="${basedir}/../.."></property>-->
 	
-	<property name="path.begin" value="${basedir}"></property>
 	
-	<property name="parent.dir" value="${path.begin}/spring-mvc-scripts/target/classes/ant" />
+	<property name="parent.dir" value="${basedir}/spring-mvc-scripts/target/classes/ant" />
 	
 	<property name="property.dir" value="${basedir}/spring-mvc-scripts/target/classes/ant" />
 		
 	<property file="${property.dir}/build.properties" />
 	
 	<property name="bbdd.dir" value="${basedir}/${bbdd.dir.relative}" />
-	<property name="scripts.dir" value="${path.begin}/scripts/src/main/resources/common/linux" />
+	<property name="scripts.dir" value="${basedir}/spring-mvc-scripts/src/main/resources/common/linux" />
 	<property name="compile.dir" value="${basedir}" />
 	
 	<import file="${parent.dir}/build-parent.xml" />

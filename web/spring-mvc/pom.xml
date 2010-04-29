@@ -148,11 +148,11 @@
 				</exclusions>
 			</dependency>
 
-<!--			<dependency>-->
-<!--				<groupId>hsqldb</groupId>-->
-<!--				<artifactId>hsqldb</artifactId>-->
-<!--				<version>${lib.hsqldb.version}</version>-->
-<!--			</dependency>-->
+			<!--			<dependency>-->
+			<!--				<groupId>hsqldb</groupId>-->
+			<!--				<artifactId>hsqldb</artifactId>-->
+			<!--				<version>${lib.hsqldb.version}</version>-->
+			<!--			</dependency>-->
 
 			<dependency>
 				<groupId>javatar</groupId>
@@ -278,13 +278,13 @@
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-web</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-tx</artifactId>
@@ -395,17 +395,17 @@
 				<scope>test</scope>
 			</dependency>
 
-<!--			<dependency>-->
-<!--				<groupId>org.apache.maven</groupId>-->
-<!--				<artifactId>maven-plugin-api</artifactId>-->
-<!--				<version>2.0.7</version>-->
-<!--			</dependency>-->
+			<!--			<dependency>-->
+			<!--				<groupId>org.apache.maven</groupId>-->
+			<!--				<artifactId>maven-plugin-api</artifactId>-->
+			<!--				<version>2.0.7</version>-->
+			<!--			</dependency>-->
 <!---->
-<!--			<dependency>-->
-<!--				<groupId>org.apache.maven</groupId>-->
-<!--				<artifactId>maven-project</artifactId>-->
-<!--				<version>2.0.7</version>-->
-<!--			</dependency>-->
+			<!--			<dependency>-->
+			<!--				<groupId>org.apache.maven</groupId>-->
+			<!--				<artifactId>maven-project</artifactId>-->
+			<!--				<version>2.0.7</version>-->
+			<!--			</dependency>-->
 
 			<dependency>
 				<groupId>org.codehaus.plexus</groupId>
@@ -512,7 +512,7 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			
+
 			<!-- project modules dependencies -->
 			<dependency>
 				<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
@@ -877,10 +877,10 @@
 
 	<repositories>
 
-<!--		<repository>-->
-<!--			<id>central</id>-->
-<!--			<url>http://localhost:10001/artifactory/repo</url>-->
-<!--		</repository>-->
+		<!--		<repository>-->
+		<!--			<id>central</id>-->
+		<!--			<url>http://localhost:10001/artifactory/repo</url>-->
+		<!--		</repository>-->
 
 		<repository>
 			<id>maven-central</id>
