@@ -1,10 +1,12 @@
 <project name="spring-mvc-utilities" default="compile-all-quick" basedir=".">
 
-	<property name="path.begin" value="${basedir}/../.."></property>
+	<!--<property name="path.begin" value="${basedir}/../.."></property>-->
 	
-	<property name="parent.dir" value="${path.begin}/scripts/target/classes/ant" />
+	<property name="path.begin" value="${basedir}"></property>
 	
-	<property name="property.dir" value="${basedir}/spring-mvc-scripts/target/classes" />
+	<property name="parent.dir" value="${path.begin}/spring-mvc-scripts/target/classes/ant" />
+	
+	<property name="property.dir" value="${basedir}/spring-mvc-scripts/target/classes/ant" />
 		
 	<property file="${property.dir}/build.properties" />
 	
