@@ -545,6 +545,12 @@
 				<type>war</type>
 			</dependency>
 
+			<dependency>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>2.4</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -859,8 +865,8 @@
 		<jdbc.test.url><![CDATA[jdbc:mysql://localhost:3306/${jdbc.test.databaseName}]]></jdbc.test.url>
 		<jdbc.test.username>lportal</jdbc.test.username>
 		<jdbc.test.password>lportal</jdbc.test.password>
-		<jdbc.test.schema>djimenez_test</jdbc.test.schema>
-		<jdbc.test.databaseName>djimenez_test</jdbc.test.databaseName>
+		<jdbc.test.schema>spring_mvc_test</jdbc.test.schema>
+		<jdbc.test.databaseName>spring_mvc_test</jdbc.test.databaseName>
 		<jdbc.test.dialect>mysql</jdbc.test.dialect>
 
 	</properties>
@@ -975,7 +981,7 @@
 				<jdbc.artifactId>hsqldb</jdbc.artifactId>
 				<jdbc.version>1.8.0.1</jdbc.version>
 				<jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
-				<jdbc.databaseName>djimenez</jdbc.databaseName>
+				<jdbc.databaseName>spring_mvc</jdbc.databaseName>
 				<jdbc.url><![CDATA[jdbc:hsqldb:/tmp/hsqldb/${jdbc.databaseName};shutdown=true]]></jdbc.url>
 				<jdbc.username>sa</jdbc.username>
 				<jdbc.password />
@@ -993,7 +999,7 @@
 				<jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
 				<jdbc.version>5.0.4</jdbc.version>
 				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-				<jdbc.databaseName>djimenez</jdbc.databaseName>
+				<jdbc.databaseName>spring_mvc</jdbc.databaseName>
 				<jdbc.url.simple>jdbc:mysql://${database.ip}:3306</jdbc.url.simple>
 				<jdbc.url><![CDATA[${jdbc.url.simple}/${jdbc.databaseName}]]></jdbc.url>
 				<jdbc.username>user</jdbc.username>
@@ -1017,7 +1023,7 @@
 				<jdbc.artifactId>postgresql</jdbc.artifactId>
 				<jdbc.version>8.2-504.jdbc3</jdbc.version>
 				<jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-				<jdbc.databaseName>djimenez</jdbc.databaseName>
+				<jdbc.databaseName>spring_mvc</jdbc.databaseName>
 				<jdbc.url.simple>jdbc:postgresql://${database.ip}</jdbc.url.simple>
 				<jdbc.url><![CDATA[${jdbc.url.simple}/${jdbc.databaseName}]]></jdbc.url>
 				<jdbc.username>user</jdbc.username>

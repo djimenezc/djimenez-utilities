@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
 @ContextConfiguration(locations = {
-  "classpath:context/applicationContext-resources.xml",
+  "classpath:context/applicationContext-test-resources.xml",
   "classpath:context/applicationContext-dao.xml",
   // "classpath*:/applicationContext.xml",
   "classpath:**/applicationContext*.xml" })
