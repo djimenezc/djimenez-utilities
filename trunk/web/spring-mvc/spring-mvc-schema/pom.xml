@@ -35,7 +35,7 @@
 
 								<echo level="info">Loading test databases</echo>
 
-								<ant antfile="${ant.build.dir}/build.xml" target="database-clean">
+								<ant antfile="${ant.build.dir}/build.xml" target="database-load-test">
 									<property name="basedir" value="${basedir}/.."></property>
 								</ant>
 
@@ -115,6 +115,5 @@
 	<properties>
 		<ant.build.dir>..</ant.build.dir>
 
-		<jdbc.test.databaseName>djimenez_test</jdbc.test.databaseName>
 	</properties>
 </project>
