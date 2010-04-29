@@ -32,7 +32,7 @@ public class LookupDaoHibernate implements LookupDao {
    * {@inheritDoc}
    */
   @SuppressWarnings("unchecked")
-  public List<Role> getRoles() {
+  public final List<Role> getRoles() {
     log.debug("Retrieving all role names...");
 
     return hibernateTemplate.find("from Role order by name");

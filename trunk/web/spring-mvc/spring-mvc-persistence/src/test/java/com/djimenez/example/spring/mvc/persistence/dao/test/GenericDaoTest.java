@@ -20,14 +20,14 @@ public class GenericDaoTest extends BaseDaoTestCase {
   private SessionFactory sessionFactory;
 
   @Test
-  public void getUser() {
+  public final void getUser() {
     final User user = genericDao.get(-1L);
     assertNotNull(user);
     assertEquals("user", user.getUsername());
   }
 
   @Before
-  public void setUp() {
+  public final void setUp() {
     genericDao =
       new GenericDaoHibernate<User, Long>(User.class, sessionFactory);
   }

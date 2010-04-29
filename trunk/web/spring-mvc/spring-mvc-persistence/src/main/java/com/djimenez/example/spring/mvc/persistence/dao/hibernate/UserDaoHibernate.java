@@ -44,7 +44,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
   /**
    * {@inheritDoc}
    */
-  public String getUserPassword(final String username) {
+  public final String getUserPassword(final String username) {
     final SimpleJdbcTemplate jdbcTemplate =
       new SimpleJdbcTemplate(SessionFactoryUtils
         .getDataSource(getSessionFactory()));
@@ -58,7 +58,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
    * {@inheritDoc}
    */
   @SuppressWarnings("unchecked")
-  public List<User> getUsers() {
+  public final List<User> getUsers() {
     return getHibernateTemplate()
       .find("from User u order by upper(u.username)");
   }
@@ -66,7 +66,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
   /**
    * {@inheritDoc}
    */
-  public UserDetails loadUserByUsername(final String username) {
+  public final UserDetails loadUserByUsername(final String username) {
 
     final List<?> users =
       getHibernateTemplate().find("from User where username=?", username);
@@ -88,14 +88,14 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
    * @return the modified user (with a primary key set if they're new)
    */
   @Override
-  public User save(final User user) {
+  public final User save(final User user) {
     return this.saveUser(user);
   }
 
   /**
    * {@inheritDoc}
    */
-  public User saveUser(final User user) {
+  public final User saveUser(final User user) {
     if (LOG.isDebugEnabled()) {
       LOG.debug("user's id: " + user.getId());
     }

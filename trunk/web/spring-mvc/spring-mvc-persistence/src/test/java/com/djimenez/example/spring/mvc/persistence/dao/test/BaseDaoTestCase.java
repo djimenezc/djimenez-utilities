@@ -69,7 +69,7 @@ public abstract class BaseDaoTestCase extends
    * @throws org.springframework.beans.BeansException
    *           when can't find 'sessionFactory' bean
    */
-  protected void flush() {
+  protected final void flush() {
 
     final HibernateTemplate hibernateTemplate =
       new HibernateTemplate(sessionFactory);
@@ -89,8 +89,8 @@ public abstract class BaseDaoTestCase extends
    * @throws Exception
    *           if BeanUtils fails to copy properly
    */
-  protected Object populate(final Object obj) throws IllegalAccessException,
-    InvocationTargetException {
+  protected final Object populate(final Object obj)
+    throws IllegalAccessException, InvocationTargetException {
     // loop through all the beans methods and set its properties from its
     // .properties file
     final Map<String, String> map = new HashMap<String, String>();
