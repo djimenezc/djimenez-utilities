@@ -3,8 +3,8 @@
 
     <persistence-unit name="ApplicationEntityManager" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>com.gowex.model.User</class>
-        <class>com.gowex.model.Role</class>
+<!--        <class>com.djimenez.example.spring.mvc.model.User</class>-->
+<!--        <class>com.djimenez.example.spring.mvc.model.Role</class>-->
         
         <!-- 
         Adding more <class>f.q.c.Name</class> elements here is not required.  

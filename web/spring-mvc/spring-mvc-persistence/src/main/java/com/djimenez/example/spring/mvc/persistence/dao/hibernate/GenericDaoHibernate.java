@@ -3,6 +3,7 @@ package com.djimenez.example.spring.mvc.persistence.dao.hibernate;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -96,9 +97,15 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
     final Object[] values = new Object[queryParams.size()];
 
     int index = 0;
-    for (final String s : queryParams.keySet()) {
-      params[index] = s;
-      values[index++] = queryParams.get(s);
+
+    final Iterator<Map.Entry<String, Object>> itr =
+      queryParams.entrySet().iterator();
+
+    while (itr.hasNext()) {
+
+      final Map.Entry<String, Object> e = itr.next();
+      params[index] = e.getKey();
+      values[index++] = e.getValue();
     }
 
     return hibernateTemplate.findByNamedQueryAndNamedParam(queryName, params,
