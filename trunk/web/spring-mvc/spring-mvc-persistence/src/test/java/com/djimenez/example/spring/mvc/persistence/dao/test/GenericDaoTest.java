@@ -21,6 +21,7 @@ public class GenericDaoTest extends BaseDaoTestCase {
 
   @Test
   public final void getUser() {
+
     final User user = genericDao.get(-1L);
     assertNotNull(user);
     assertEquals("user", user.getUsername());
@@ -28,6 +29,7 @@ public class GenericDaoTest extends BaseDaoTestCase {
 
   @Before
   public final void setUp() {
+
     genericDao =
       new GenericDaoHibernate<User, Long>(User.class, sessionFactory);
   }

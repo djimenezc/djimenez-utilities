@@ -46,6 +46,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements
    * Commons Logging
    */
   private static final Log LOG = LogFactory.getLog(GenericDaoHibernate.class);
+
   private final Class<T> persistentClass;
   private HibernateTemplate hibernateTemplate;
   private SessionFactory sessionFactory;

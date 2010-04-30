@@ -17,6 +17,17 @@ public final class Constants {
    */
   public static final String FILE_SEP = System.getProperty("file.separator");
 
+  /**
+   * The name of the User role, as specified in web.xml
+   */
+  public static final String USER_ROLE = "ROLE_USER";
+
+  /**
+   * The name of the user's role list, a request-scoped attribute when
+   * adding/editing a user.
+   */
+  public static final String USER_ROLES = "userRoles";
+
   private Constants() {
     // hide me
   }
