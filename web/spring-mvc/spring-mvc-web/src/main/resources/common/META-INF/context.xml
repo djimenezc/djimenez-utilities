@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="${context.path}">
+	<Resource auth="Container" autoReconnect="true"
+		driverClassName="${jdbc.driverClassName}" logAbandoned="true" maxActive="20"
+		maxIdle="10" maxWait="5000" minEvictableIdleTimeMillis="60000" name="${jdbc.pool.name}"
+		numTestsPerEvictionRun="3" password="${jdbc.username}"
+		removeAbandoned="true" removeAbandonedTimeout="60" testOnBorrow="true"
+		testWhileIdle="true" timeBetweenEvictionRunsMillis="60000"
+		type="javax.sql.DataSource" url="${jdbc.url}"
+		username="${jdbc.username}" validationQuery="select 1" />
+</Context>
