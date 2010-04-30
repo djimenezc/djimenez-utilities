@@ -107,9 +107,9 @@
 								<artifactId>spring-mvc-web</artifactId>
 								<type>war</type>
 								<properties>
-									<context>mywebapp</context>
+									<context>${context}</context>
 								</properties>
-								<pingURL>${serverUrl}/mywebapp</pingURL>
+								<pingURL>${serverUrl}/${context}</pingURL>
 								<pingTimeout>20000</pingTimeout>
 							</deployable>
 						</deployables>

@@ -21,7 +21,7 @@ public class RoleDaoTest extends BaseDaoTestCase {
   private RoleDao dao;
 
   @Test
-  public void testAddAndRemoveRole() throws Exception {
+  public final void testAddAndRemoveRole() throws Exception {
     Role role = new Role("testrole");
     role.setDescription("new role descr");
     dao.save(role);
@@ -38,7 +38,7 @@ public class RoleDaoTest extends BaseDaoTestCase {
   }
 
   @Test
-  public void testFindByNamedQuery() {
+  public final void testFindByNamedQuery() {
     final HashMap<String, Object> queryParams = new HashMap<String, Object>();
     queryParams.put("name", ConstantsRole.USER_ROLE);
     final List<Role> roles =
