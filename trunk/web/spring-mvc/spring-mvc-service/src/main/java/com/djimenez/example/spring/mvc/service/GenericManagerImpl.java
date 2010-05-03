@@ -49,48 +49,63 @@ public class GenericManagerImpl<T, PK extends Serializable> implements
   /**
    * GenericDao instance, set by constructor of child classes
    */
-  protected GenericDao<T, PK> dao;
+  private GenericDao<T, PK> dao;
 
   public GenericManagerImpl() {
   }
 
   public GenericManagerImpl(final GenericDao<T, PK> genericDao) {
-    this.dao = genericDao;
+    this.setDao(genericDao);
   }
 
   /**
    * {@inheritDoc}
    */
   public final boolean exists(final PK id) {
-    return dao.exists(id);
+    return getDao().exists(id);
   }
 
   /**
    * {@inheritDoc}
    */
   public final T get(final PK id) {
-    return dao.get(id);
+    return getDao().get(id);
   }
 
   /**
    * {@inheritDoc}
    */
   public final List<T> getAll() {
-    return dao.getAll();
+    return getDao().getAll();
+  }
+
+  /**
+   * @return the dao
+   */
+  protected GenericDao<T, PK> getDao() {
+    return dao;
   }
 
   /**
    * {@inheritDoc}
    */
   public final void remove(final PK id) {
-    dao.remove(id);
+    getDao().remove(id);
   }
 
   /**
    * {@inheritDoc}
    */
   public final T save(final T object) {
-    return dao.save(object);
+    return getDao().save(object);
+  }
+
+  /**
+   * @param dao
+   *          the dao to set
+   */
+  protected void setDao(final GenericDao<T, PK> dao) {
+    this.dao = dao;
   }
 
 }

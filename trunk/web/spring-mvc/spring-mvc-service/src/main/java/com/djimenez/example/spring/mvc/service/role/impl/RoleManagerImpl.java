@@ -38,7 +38,7 @@ public class RoleManagerImpl extends GenericManagerImpl<Role, Long> implements
    * {@inheritDoc}
    */
   public final List<Role> getRoles(final Role role) {
-    return dao.getAll();
+    return getDao().getAll();
   }
 
   /**
@@ -52,6 +52,6 @@ public class RoleManagerImpl extends GenericManagerImpl<Role, Long> implements
    * {@inheritDoc}
    */
   public Role saveRole(final Role role) {
-    return dao.save(role);
+    return getDao().save(role);
   }
 }

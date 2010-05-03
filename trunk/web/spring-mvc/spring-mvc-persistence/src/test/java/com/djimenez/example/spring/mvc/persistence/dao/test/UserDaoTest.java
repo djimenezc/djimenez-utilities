@@ -16,9 +16,7 @@ import org.compass.gps.CompassGps;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.ExpectedException;
-import org.springframework.test.annotation.NotTransactional;
 
 import com.djimenez.example.spring.mvc.constants.Constants;
 import com.djimenez.example.spring.mvc.constants.ConstantsRole;
@@ -131,30 +129,7 @@ public class UserDaoTest extends BaseDaoTestCase {
   }
 
   @Test
-  @NotTransactional
-  @ExpectedException(DataIntegrityViolationException.class)
-  public void testUpdateUser() throws Exception {
-    User user = dao.get(-1L);
-
-    final Address address = user.getAddress();
-    address.setAddress("new address");
-
-    dao.saveUser(user);
-    flush();
-
-    user = dao.get(-1L);
-    assertEquals(address, user.getAddress());
-    assertEquals("new address", user.getAddress().getAddress());
-
-    // verify that violation occurs when adding new user with same username
-    user.setId(null);
-
-    // should throw DataIntegrityViolationException
-    dao.saveUser(user);
-  }
-
-  @Test
-  public void testUserExists() throws Exception {
+  public final void testUserExists() throws Exception {
     final boolean b = dao.exists(-1L);
     assertTrue(b);
   }
