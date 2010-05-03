@@ -63,7 +63,7 @@ public class MailEngine {
    *          a map containing key/value pairs
    */
   public final void sendMessage(final SimpleMailMessage msg,
-    final String templateName, final Map model) {
+    final String templateName, final Map<?, ?> model) {
     String result = null;
 
     try {

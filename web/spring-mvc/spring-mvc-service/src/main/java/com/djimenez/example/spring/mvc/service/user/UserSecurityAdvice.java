@@ -54,8 +54,8 @@ public class UserSecurityAdvice implements MethodBeforeAdvice,
    * @throws Throwable
    *           thrown when args[0] is null or not a User object
    */
-  public void afterReturning(final Object returnValue, final Method method,
-    final Object[] args, final Object target) throws Throwable {
+  public final void afterReturning(final Object returnValue,
+    final Method method, final Object[] args, final Object target) {
     final User user = (User) args[0];
 
     if (user.getVersion() != null) {
@@ -92,8 +92,8 @@ public class UserSecurityAdvice implements MethodBeforeAdvice,
    * @throws Throwable
    *           thrown when args[0] is null or not a User object
    */
-  public void before(final Method method, final Object[] args,
-    final Object target) throws Throwable {
+  public final void before(final Method method, final Object[] args,
+    final Object target) {
     final SecurityContext ctx = SecurityContextHolder.getContext();
 
     if (ctx.getAuthentication() != null) {

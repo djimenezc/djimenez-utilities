@@ -158,10 +158,10 @@
 
 	<properties>
 		<containerId>tomcat5x</containerId>
-		<serverHome>/usr/share/tomcat6.0/</serverHome>
+		<serverHome>/usr/share/tomcat5.5/</serverHome>
 		<serverUser>hudson</serverUser>
 		<serverPassword>g0w3xhuds0n</serverPassword>
-		<serverUrl>http://localhost:10001</serverUrl>
+		<serverUrl>http://localhost:8080</serverUrl>
 		<tomcatManagerUrl>${serverUrl}/manager</tomcatManagerUrl>
 		<webContext>mywebapp</webContext>
 	</properties>

@@ -137,7 +137,7 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements
 
   @Autowired
   public final void setUserDao(final UserDao userDao) {
-    this.dao = userDao;
+    this.setDao(userDao);
     this.userDao = userDao;
   }
 }
