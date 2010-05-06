@@ -26,7 +26,7 @@ import com.djimenez.example.spring.mvc.service.mail.MailEngine;
 /**
  * @author Bryan Noll
  */
-public class MailEngineTest extends BaseManagerTestCase {
+public class MailEngineTest extends BaseManagerIntegrationTestCase {
 
   @Autowired
   MailEngine mailEngine;
@@ -90,7 +90,7 @@ public class MailEngineTest extends BaseManagerTestCase {
         + dte;
 
     final ClassPathResource cpResource =
-      new ClassPathResource("/test-attachment.txt");
+      new ClassPathResource("/file/test-attachment.txt");
     mailEngine.sendMessage(new String[] { "foo@bar.com" }, mailMessage
       .getFrom(), cpResource, emailBody, emailSubject, ATTACHMENT_NAME);
 

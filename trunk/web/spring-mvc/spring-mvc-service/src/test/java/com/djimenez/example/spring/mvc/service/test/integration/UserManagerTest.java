@@ -14,7 +14,7 @@ import com.djimenez.example.spring.mvc.model.User;
 import com.djimenez.example.spring.mvc.service.role.RoleManager;
 import com.djimenez.example.spring.mvc.service.user.UserManager;
 
-public class UserManagerTest extends BaseManagerTestCase {
+public class UserManagerTest extends BaseManagerIntegrationTestCase {
 
   private final Log log = LogFactory.getLog(UserManagerTest.class);
 

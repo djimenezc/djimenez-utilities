@@ -70,11 +70,15 @@ public class FactoryMock {
     context.checking(new Expectations() {
 
       {
-        final String name = "david";
+
+        final String name = "user";
 
         final User user = new User(name);
-
+        user.addRole(new Role("user"));
         user.setId(Long.valueOf(-1L));
+
+        allowing(userDao).loadUserByUsername("user");
+        will(returnValue(user));
 
         allowing(userDao).get(with(any(Long.class)));
         will(returnValue(user));

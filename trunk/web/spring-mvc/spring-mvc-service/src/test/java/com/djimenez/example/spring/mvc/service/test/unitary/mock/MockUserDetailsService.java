@@ -1,4 +1,4 @@
-package com.djimenez.example.spring.mvc.service.test.unitary;
+package com.djimenez.example.spring.mvc.service.test.unitary.mock;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.userdetails.UserDetails;
