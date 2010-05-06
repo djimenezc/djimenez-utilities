@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 
 /**
@@ -32,6 +33,47 @@ public final class FileUtil {
       if (target != null) {
         target.close();
       }
+    }
+  }
+
+  public static void copy(final String fileIn, final String fileOut)
+    throws IOException {
+
+    final byte[] bytes = new byte[4096];
+
+    final OutputStream os = new FileOutputStream(new File(fileOut));
+
+    int len;
+
+    final InputStream input = new FileInputStream(new File(fileIn));
+
+    while ((len = input.read(bytes)) >= 0) {
+
+      os.write(bytes, 0, len);
+    }
+
+    input.close();
+    os.close();
+  }
+
+  /**
+   * if the method return 1 it has possibled delete the file <br/>
+   * -1 error deleting
+   * 
+   * @param fileName
+   * @return
+   */
+  public static int delete(final String fileName) {
+
+    final File file = new File(fileName);
+
+    if (file.delete()) {
+      System.out.println("El fichero ha sido borrado satisfactoriamente");
+      return 1;
+    }
+    else {
+      System.out.println("El fichero no puede ser borrado");
+      return -1;
     }
   }
 

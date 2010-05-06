@@ -335,6 +335,24 @@
 			</dependency>
 
 			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+
+			<dependency>
 				<groupId>javax.transaction</groupId>
 				<artifactId>jta</artifactId>
 				<version>${lib.jta.version}</version>
@@ -543,6 +561,12 @@
 			<dependency>
 				<groupId>com.djimenez.utilities.components</groupId>
 				<artifactId>utils</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.djimenez.utilities.test</groupId>
+				<artifactId>testing</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
 
@@ -861,6 +885,7 @@
 
 		<!-- Framework dependency versions -->
 		<spring.version>3.0.2.RELEASE</spring.version>
+		<aspectj.version>1.6.6</aspectj.version>
 		<lib.spring.security.version>2.0.4</lib.spring.security.version>
 		<lib.compass.version>2.1.3</lib.compass.version>
 		<lib.log4j.version>1.2.15</lib.log4j.version>

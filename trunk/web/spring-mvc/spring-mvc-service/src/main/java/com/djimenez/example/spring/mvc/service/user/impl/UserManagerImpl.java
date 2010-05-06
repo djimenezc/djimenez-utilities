@@ -18,7 +18,7 @@ import com.djimenez.example.spring.mvc.persistence.dao.user.UserDao;
 import com.djimenez.example.spring.mvc.service.GenericManagerImpl;
 import com.djimenez.example.spring.mvc.service.user.UserExistsException;
 import com.djimenez.example.spring.mvc.service.user.UserManager;
-import com.djimenez.example.spring.mvc.service.user.UserService;
+import com.djimenez.example.spring.mvc.service.web.user.UserService;
 
 /**
  * Implementation of UserManager interface.
@@ -39,7 +39,8 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements
    * {@inheritDoc}
    */
   public final User getUser(final String userId) {
-    return userDao.get(new Long(userId));
+
+    return userDao.get(Long.valueOf(userId));
   }
 
   /**
@@ -128,6 +129,7 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements
       throw new UserExistsException("User '" + user.getUsername()
         + "' already exists!");
     }
+
   }
 
   @Autowired

@@ -8,14 +8,14 @@ import org.springframework.test.context.ContextConfiguration;
 import com.djimenez.model.user.User;
 import com.djimenez.persistence.dao.user.UserDao;
 import com.djimenez.persistence.test.dao.user.UserDaoTest;
-import com.djimenez.test.dao.BaseDaoTestCase;
+import com.djimenez.test.dao.AbstracBaseDaoTransactionalTestCase;
 
 @ContextConfiguration(locations = {
   "classpath:/context/persistence/hibernate/applicationContext-hibernate-dao.xml",
   "classpath:/context/persistence/database/database-config.xml",
   "classpath:/context/persistence/properties/applicationContext-properties-dao-test.xml" })
-public class UserDaoHibernateTest extends BaseDaoTestCase implements
-  UserDaoTest {
+public class UserDaoHibernateTest extends AbstracBaseDaoTransactionalTestCase
+  implements UserDaoTest {
 
   @Autowired
   private UserDao userDao;
