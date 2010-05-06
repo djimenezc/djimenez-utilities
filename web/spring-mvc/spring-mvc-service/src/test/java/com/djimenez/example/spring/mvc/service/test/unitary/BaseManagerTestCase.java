@@ -13,9 +13,10 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import com.djimenez.util.appfuse.ConvertUtil;
 
 @ContextConfiguration(locations = {
-  "classpath:context/applicationContext-test-resources.xml",
   "classpath:context/applicationContext-mock-dao.xml",
+  "classpath:context/applicationContext-test-resources.xml",
   // "classpath:/applicationContext-dao.xml",
+  "classpath:context/applicationContext-service-resources.xml",
   "classpath:context/applicationContext-service.xml",
   "classpath*:/**/applicationContext.xml" })
 /**

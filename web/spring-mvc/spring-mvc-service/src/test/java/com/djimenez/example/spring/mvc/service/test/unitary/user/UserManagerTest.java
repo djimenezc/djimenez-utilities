@@ -1,4 +1,4 @@
-package com.djimenez.example.spring.mvc.service.test.unitary;
+package com.djimenez.example.spring.mvc.service.test.unitary.user;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.djimenez.example.spring.mvc.constants.ConstantsRole;
 import com.djimenez.example.spring.mvc.model.User;
 import com.djimenez.example.spring.mvc.service.role.RoleManager;
+import com.djimenez.example.spring.mvc.service.test.unitary.BaseManagerTestCase;
 import com.djimenez.example.spring.mvc.service.user.UserManager;
 
 public class UserManagerTest extends BaseManagerTestCase {
@@ -25,7 +26,7 @@ public class UserManagerTest extends BaseManagerTestCase {
   private User user;
 
   @Test
-  public void testAddAndRemoveUser() throws Exception {
+  public void testAddUser() throws Exception {
 
     user = new User();
 
@@ -38,23 +39,11 @@ public class UserManagerTest extends BaseManagerTestCase {
     user = mgr.saveUser(user);
     assertEquals("john", user.getUsername());
     assertEquals(1, user.getRoles().size());
-
-    // log.debug("removing user...");
-    //
-    // mgr.removeUser(user.getId().toString());
-    //
-    // try {
-    // user = mgr.getUserByUsername("john");
-    // fail("Expected 'Exception' not thrown");
-    // }
-    // catch (final Exception e) {
-    // log.debug(e);
-    // assertNotNull(e);
-    // }
   }
 
   @Test
   public void testGetUser() throws Exception {
+
     user = mgr.getUserByUsername("user");
     assertNotNull(user);
 
@@ -62,15 +51,4 @@ public class UserManagerTest extends BaseManagerTestCase {
     assertEquals(1, user.getRoles().size());
   }
 
-  @Test
-  public void testSaveUser() throws Exception {
-    user = mgr.getUserByUsername("user");
-    user.setPhoneNumber("303-555-1212");
-
-    log.debug("saving user with updated phone number: " + user);
-
-    user = mgr.saveUser(user);
-    assertEquals("303-555-1212", user.getPhoneNumber());
-    assertEquals(1, user.getRoles().size());
-  }
 }

@@ -8,19 +8,12 @@ import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.ExpectedException;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 import com.djimenez.example.spring.mvc.model.User;
 import com.djimenez.example.spring.mvc.service.user.UserExistsException;
 import com.djimenez.example.spring.mvc.service.user.UserManager;
 
-@ContextConfiguration(locations = {
-  "classpath:context/applicationContext-service.xml",
-  "classpath:context/applicationContext-test-resources.xml",
-  "classpath:context/applicationContext-mock-dao.xml" })
-public class UserExistsExceptionTest extends
-  AbstractTransactionalJUnit4SpringContextTests {
+public class UserExistsExceptionTest extends BaseManagerIntegrationTestCase {
 
   @Autowired
   private UserManager manager;

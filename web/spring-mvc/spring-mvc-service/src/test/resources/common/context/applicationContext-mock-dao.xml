@@ -6,7 +6,7 @@
 	default-lazy-init="true">
 
 	<bean id="factoryMock"
-		class="com.djimenez.example.spring.mvc.service.test.mock.FactoryMock"></bean>
+		class="com.djimenez.example.spring.mvc.service.test.unitary.mock.FactoryMock"></bean>
 		
 <!--	<bean id="transactionManager" -->
 <!--    class="org.springframework.transaction.jta.JtaTransactionManager"/>-->

@@ -13,8 +13,9 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import com.djimenez.util.appfuse.ConvertUtil;
 
 @ContextConfiguration(locations = {
-  "classpath:context/applicationContext-resources.xml",
+  "classpath:context/applicationContext-test-resources.xml",
   "classpath:context/applicationContext-dao.xml",
+  "classpath:context/applicationContext-persistence.xml",
   "classpath:context/applicationContext-service.xml",
   "classpath*:/**/applicationContext.xml" })
 /**
@@ -23,7 +24,7 @@ import com.djimenez.util.appfuse.ConvertUtil;
  *
  * @author mraible
  */
-public abstract class BaseManagerTestCase extends
+public abstract class BaseManagerIntegrationTestCase extends
   AbstractTransactionalJUnit4SpringContextTests {
 
   /**
@@ -38,7 +39,7 @@ public abstract class BaseManagerTestCase extends
   /**
    * Default constructor will set the ResourceBundle if needed.
    */
-  public BaseManagerTestCase() {
+  public BaseManagerIntegrationTestCase() {
     // Since a ResourceBundle is not required for each class, just
     // do a simple check to see if one exists
     final String className = this.getClass().getName();
