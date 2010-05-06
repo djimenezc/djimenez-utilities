@@ -3,13 +3,13 @@ package com.djimenez.persistence.test.dao.user.jdbc;
 import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 
-import com.djimenez.test.dao.BaseDaoTestCase;
+import com.djimenez.test.dao.AbstracBaseDaoTransactionalTestCase;
 
 @ContextConfiguration(locations = {
   "classpath:/context/persistence/jdbc/applicationContext-jdbc-dao.xml",
   "classpath:/context/persistence/database/database-config.xml",
   "classpath:/context/persistence/properties/applicationContext-properties-dao-test.xml" })
-public class UserDaoJdbcTest extends BaseDaoTestCase {
+public class UserDaoJdbcTest extends AbstracBaseDaoTransactionalTestCase {
 
   // TODO implement UserDaoJdbcTest
   // @Autowired

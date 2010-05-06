@@ -10,13 +10,14 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
-import com.djimenez.test.dao.BaseDaoTestCase;
+import com.djimenez.test.dao.AbstracBaseDaoTransactionalTestCase;
 
 @ContextConfiguration(locations = {
   "classpath:/context/persistence/hibernate/applicationContext-hibernate-dao.xml",
   "classpath:/context/persistence/database/database-config.xml",
   "classpath:/context/persistence/properties/applicationContext-properties-dao-test.xml" })
-public class HibernateConfigurationTest extends BaseDaoTestCase {
+public class HibernateConfigurationTest extends
+  AbstracBaseDaoTransactionalTestCase {
 
   @Autowired
   private SessionFactory sessionFactory;

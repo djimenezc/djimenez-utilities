@@ -1,21 +1,8 @@
 package com.djimenez.example.spring.mvc.persistence.dao.test;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.hibernate.SessionFactory;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.djimenez.test.dao.AbstractBaseDaoNonTransactionalTestCase;
 
 /**
  * Base class for running DAO tests.
@@ -26,85 +13,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
   "classpath:context/applicationContext-test-resources.xml",
   "classpath:context/applicationContext-persistence.xml",
   "classpath:context/applicationContext-dao.xml" })
-@RunWith(SpringJUnit4ClassRunner.class)
-public abstract class BaseDaoNonTransactionalTestCase {
-
-  @Autowired
-  private SessionFactory sessionFactory;
+public abstract class BaseDaoNonTransactionalTestCase extends
+  AbstractBaseDaoNonTransactionalTestCase {
 
   /**
    * Log variable for all child classes. Uses LogFactory.getLog(getClass()) from
    * Commons Logging
    */
-  private static final Log LOG =
-    LogFactory.getLog(BaseDaoNonTransactionalTestCase.class);
-  /**
-   * ResourceBundle loaded from
-   * src/test/resources/${package.name}/ClassName.properties (if exists)
-   */
-  private ResourceBundle rb;
+  // private static final Log LOG =
+  // LogFactory.getLog(BaseDaoNonTransactionalTestCase.class);
 
-  /**
-   * Default constructor - populates "rb" variable if properties file exists for
-   * the class in src/test/resources.
-   */
-  public BaseDaoNonTransactionalTestCase() {
-    // Since a ResourceBundle is not required for each class, just
-    // do a simple check to see if one exists
-    final String className = this.getClass().getName();
-
-    try {
-      rb = ResourceBundle.getBundle(className);
-
-    }
-    catch (final MissingResourceException mre) {
-      LOG.debug("No resource bundle found for: " + className);
-    }
-  }
-
-  /**
-   * Create a HibernateTemplate from the SessionFactory and call flush() and
-   * clear() on it. Designed to be used after "save" methods in tests:
-   * http://issues.appfuse.org/browse/APF-178.
-   * 
-   * @throws org.springframework.beans.BeansException
-   *           when can't find 'sessionFactory' bean
-   */
-  protected final void flush() {
-
-    final HibernateTemplate hibernateTemplate =
-      new HibernateTemplate(sessionFactory);
-    hibernateTemplate.flush();
-    hibernateTemplate.clear();
-  }
-
-  /**
-   * Utility method to populate a javabean-style object with values from a
-   * Properties file
-   * 
-   * @param obj
-   *          the model object to populate
-   * @return Object populated object
-   * @throws InvocationTargetException
-   * @throws IllegalAccessException
-   * @throws Exception
-   *           if BeanUtils fails to copy properly
-   */
-  protected final Object populate(final Object obj)
-    throws IllegalAccessException, InvocationTargetException {
-    // loop through all the beans methods and set its properties from its
-    // .properties file
-    final Map<String, String> map = new HashMap<String, String>();
-
-    for (final Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
-      final String key = keys.nextElement();
-      map.put(key, rb.getString(key));
-    }
-
-    BeanUtils.copyProperties(obj, map);
-
-    LOG.debug("Populate objects");
-
-    return obj;
-  }
 }

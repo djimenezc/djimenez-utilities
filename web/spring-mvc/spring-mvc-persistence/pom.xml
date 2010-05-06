@@ -35,6 +35,16 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.djimenez.utilities.test</groupId>
+			<artifactId>testing</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.djimenez.utilities.components</groupId>
+			<artifactId>utils</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 		</dependency>
@@ -90,7 +100,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
@@ -201,7 +211,7 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>dbunit-maven-plugin</artifactId>
