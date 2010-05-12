@@ -16,7 +16,7 @@ import com.djimenez.example.spring.mvc.service.user.UserManager;
 
 public class UserManagerTest extends BaseManagerIntegrationTestCase {
 
-  private final Log log = LogFactory.getLog(UserManagerTest.class);
+  private static final Log LOG = LogFactory.getLog(UserManagerTest.class);
 
   @Autowired
   private UserManager mgr;
@@ -40,7 +40,7 @@ public class UserManagerTest extends BaseManagerIntegrationTestCase {
     assertEquals("john", user.getUsername());
     assertEquals(1, user.getRoles().size());
 
-    log.debug("removing user...");
+    LOG.debug("removing user...");
 
     mgr.removeUser(user.getId().toString());
 
@@ -49,7 +49,7 @@ public class UserManagerTest extends BaseManagerIntegrationTestCase {
       fail("Expected 'Exception' not thrown");
     }
     catch (final Exception e) {
-      log.debug(e);
+      LOG.debug(e);
       assertNotNull(e);
     }
   }
@@ -59,7 +59,7 @@ public class UserManagerTest extends BaseManagerIntegrationTestCase {
     user = mgr.getUserByUsername("user");
     assertNotNull(user);
 
-    log.debug(user);
+    LOG.debug(user);
     assertEquals(1, user.getRoles().size());
   }
 
@@ -68,7 +68,7 @@ public class UserManagerTest extends BaseManagerIntegrationTestCase {
     user = mgr.getUserByUsername("user");
     user.setPhoneNumber("303-555-1212");
 
-    log.debug("saving user with updated phone number: " + user);
+    LOG.debug("saving user with updated phone number: " + user);
 
     user = mgr.saveUser(user);
     assertEquals("303-555-1212", user.getPhoneNumber());

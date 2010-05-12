@@ -14,7 +14,8 @@ public class UserNameEqual extends TypeSafeMatcher<User> {
   }
 
   public final void describeTo(final Description description) {
-    describeTo(description.appendText("a name equals to ").appendValue(name));
+
+    description.appendText("a name equals to ").appendValue(name);
   }
 
   @Override

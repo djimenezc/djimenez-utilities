@@ -17,23 +17,24 @@ import com.djimenez.example.spring.mvc.persistence.dao.role.RoleDao;
 
 public class RoleDaoTest extends BaseDaoTestCase {
 
+  private static final String TESTROLE = "testrole";
   @Autowired
   private RoleDao dao;
 
   @Test
   public final void testAddAndRemoveRole() throws Exception {
-    Role role = new Role("testrole");
+    Role role = new Role(TESTROLE);
     role.setDescription("new role descr");
     dao.save(role);
     flush();
 
-    role = dao.getRoleByName("testrole");
+    role = dao.getRoleByName(TESTROLE);
     assertNotNull(role.getDescription());
 
-    dao.removeRole("testrole");
+    dao.removeRole(TESTROLE);
     flush();
 
-    role = dao.getRoleByName("testrole");
+    role = dao.getRoleByName(TESTROLE);
     assertNull(role);
   }
 
@@ -48,19 +49,19 @@ public class RoleDaoTest extends BaseDaoTestCase {
   }
 
   @Test
-  public void testGetRole() throws Exception {
+  public final void testGetRole() throws Exception {
     final Role role = dao.getRoleByName(ConstantsRole.USER_ROLE);
     assertNotNull(role);
   }
 
   @Test
-  public void testGetRoleInvalid() throws Exception {
+  public final void testGetRoleInvalid() throws Exception {
     final Role role = dao.getRoleByName("badrolename");
     assertNull(role);
   }
 
   @Test
-  public void testUpdateRole() throws Exception {
+  public final void testUpdateRole() throws Exception {
     Role role = dao.getRoleByName("ROLE_USER");
     role.setDescription("test descr");
     dao.save(role);

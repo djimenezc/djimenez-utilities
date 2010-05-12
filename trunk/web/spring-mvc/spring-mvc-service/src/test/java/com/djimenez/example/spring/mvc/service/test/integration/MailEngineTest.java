@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Date;
+import java.util.Random;
 
 import javax.mail.BodyPart;
 import javax.mail.Part;
@@ -53,8 +54,12 @@ public class MailEngineTest extends BaseManagerIntegrationTestCase {
   public final void testSend() throws Exception {
     // mock smtp server
     final Wiser wiser = new Wiser();
+
     // set the port to a random value so there's no conflicts between tests
-    final int port = PORT_NUMBERS + (int) (Math.random() * PERCENT);
+    final Random ramdom = new Random();
+    final int port = PORT_NUMBERS + ramdom.nextInt(PERCENT);
+    // (int) (Math.random() * PERCENT);
+
     mailSender.setPort(port);
     wiser.setPort(port);
     wiser.start();
@@ -80,7 +85,8 @@ public class MailEngineTest extends BaseManagerIntegrationTestCase {
 
     // mock smtp server
     final Wiser wiser = new Wiser();
-    final int port = PORT_NUMBERS + (int) (Math.random() * PERCENT);
+    final Random ramdom = new Random();
+    final int port = PORT_NUMBERS + ramdom.nextInt(PERCENT);
     mailSender.setPort(port);
     wiser.setPort(port);
     wiser.start();

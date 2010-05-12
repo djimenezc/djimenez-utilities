@@ -33,12 +33,14 @@ import com.djimenez.example.spring.mvc.service.user.UserSecurityAdvice;
 @RunWith(JMock.class)
 public class UserSecurityAdviceTest {
 
+  private static final String USER_NAME = "user";
   private final Mockery context = new JUnit4Mockery();
   private UserDao userDao = null;
-  private ApplicationContext ctx = null;
   private SecurityContext initialSecurityContext = null;
 
   private UserManager makeInterceptedTarget() {
+
+    ApplicationContext ctx = null;
     ctx =
       new ClassPathXmlApplicationContext(
         "context/applicationContext-service-test.xml");
@@ -56,7 +58,7 @@ public class UserSecurityAdviceTest {
     // store initial security context for later restoration
     initialSecurityContext = SecurityContextHolder.getContext();
 
-    final User user = new User("user");
+    final User user = new User(USER_NAME);
     user.setId(1L);
     user.setPassword("password");
     user.addRole(new Role(ConstantsRole.USER_ROLE));
@@ -82,7 +84,7 @@ public class UserSecurityAdviceTest {
   @Test
   public final void testAddAdminRoleWhenAlreadyHasUserRole() throws Exception {
     final UserManager userManager = makeInterceptedTarget();
-    final User user = new User("user");
+    final User user = new User(USER_NAME);
     user.setId(1L);
     user.getRoles().add(new Role(ConstantsRole.ADMIN_ROLE));
     user.getRoles().add(new Role(ConstantsRole.USER_ROLE));
@@ -129,7 +131,7 @@ public class UserSecurityAdviceTest {
   @Test
   public final void testAddUserRoleWhenHasAdminRole() throws Exception {
     final SecurityContext securityContext = new SecurityContextImpl();
-    final User user1 = new User("user");
+    final User user1 = new User(USER_NAME);
     user1.setId(1L);
     user1.setPassword("password");
     user1.addRole(new Role(ConstantsRole.ADMIN_ROLE));
@@ -141,7 +143,7 @@ public class UserSecurityAdviceTest {
     SecurityContextHolder.setContext(securityContext);
 
     final UserManager userManager = makeInterceptedTarget();
-    final User user = new User("user");
+    final User user = new User(USER_NAME);
     user.setId(1L);
     user.getRoles().add(new Role(ConstantsRole.ADMIN_ROLE));
     user.getRoles().add(new Role(ConstantsRole.USER_ROLE));
@@ -180,7 +182,7 @@ public class UserSecurityAdviceTest {
   @Test
   public final void testChangeToAdminRoleFromUserRole() throws Exception {
     final UserManager userManager = makeInterceptedTarget();
-    final User user = new User("user");
+    final User user = new User(USER_NAME);
     user.setId(1L);
     user.getRoles().add(new Role(ConstantsRole.ADMIN_ROLE));
 
@@ -197,7 +199,7 @@ public class UserSecurityAdviceTest {
   @Test
   public final void testUpdateUserProfile() throws Exception {
     final UserManager userManager = makeInterceptedTarget();
-    final User user = new User("user");
+    final User user = new User(USER_NAME);
     user.setId(1L);
     user.getRoles().add(new Role(ConstantsRole.USER_ROLE));
 
@@ -215,7 +217,7 @@ public class UserSecurityAdviceTest {
   @Test
   public final void testUpdateUserWithUserRole() throws Exception {
     final UserManager userManager = makeInterceptedTarget();
-    final User user = new User("user");
+    final User user = new User(USER_NAME);
     user.setId(1L);
     user.getRoles().add(new Role(ConstantsRole.USER_ROLE));
 

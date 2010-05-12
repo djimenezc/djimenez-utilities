@@ -32,7 +32,7 @@ public class CountryTag extends TagSupport {
    * Class to compare LabelValues using their labels with locale-sensitive
    * behaviour.
    */
-  public class LabelValueComparator implements Comparator<Object> {
+  public static class LabelValueComparator implements Comparator<Object> {
 
     private final Collator c;
 
@@ -136,7 +136,8 @@ public class CountryTag extends TagSupport {
 
       if (prompt != null) {
         sb.append("    <option value=\"\" selected=\"selected\">");
-        sb.append(eval.evalString("prompt", prompt) + "</option>\n");
+        sb.append(eval.evalString("prompt", prompt));
+        sb.append("</option>\n");
       }
 
       markSelectedCountry(countries, sb);

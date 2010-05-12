@@ -35,19 +35,19 @@ public class FactoryMock {
 
   public FactoryMock() {
 
-    configureMockRoleDao();
+    final String name = "user";
+    configureMockRoleDao(name);
 
     userDao = context.mock(UserDao.class);
-    final String name = "user";
 
     final User user = configureUserDaoGet(name);
     configureUserDaoSave(user, name);
   }
 
   /**
-   * 
+   * @param name
    */
-  private void configureMockRoleDao() {
+  private void configureMockRoleDao(final String name) {
 
     roleDao = context.mock(RoleDao.class);
     lookupDao = context.mock(LookupDao.class);
@@ -55,7 +55,7 @@ public class FactoryMock {
     context.checking(new Expectations() {
 
       {
-        final Role role = new Role("user");
+        final Role role = new Role(name);
 
         allowing(roleDao).getRoleByName(with(any(String.class)));
         will(returnValue(role));
@@ -76,10 +76,10 @@ public class FactoryMock {
 
       {
 
-        user.addRole(new Role("user"));
+        user.addRole(new Role(name));
         user.setId(Long.valueOf(-1L));
 
-        allowing(userDao).loadUserByUsername("user");
+        allowing(userDao).loadUserByUsername(name);
         will(returnValue(user));
 
         allowing(userDao).get(with(any(Long.class)));
@@ -103,7 +103,7 @@ public class FactoryMock {
         BeanUtils.populate(userSaved, ResourceBundle
           .getBundle(FactoryMock.class.getName()));
 
-        userSaved.addRole(new Role("user"));
+        userSaved.addRole(new Role(name));
 
         allowing(userDao).saveUser(with(aUserNameEqual(name)));
         will(throwException(new DataIntegrityViolationException("User '"

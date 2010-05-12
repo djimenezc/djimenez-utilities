@@ -1,5 +1,6 @@
 package com.djimenez.example.spring.mvc.service.test.unitary.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -83,10 +84,13 @@ public abstract class BaseManagerMockTestCase {
    * @param obj
    *          the model object to populate
    * @return Object populated object
+   * @throws InvocationTargetException
+   * @throws IllegalAccessException
    * @throws Exception
    *           if BeanUtils fails to copy properly
    */
-  protected final Object populate(final Object obj) throws Exception {
+  protected final Object populate(final Object obj)
+    throws IllegalAccessException, InvocationTargetException {
     // loop through all the beans methods and set its properties from
     // its .properties file
     final Map<?, ?> map = ConvertUtil.convertBundleToMap(getRb());

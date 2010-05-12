@@ -14,8 +14,7 @@ public class StringStartsWithMatcher extends TypeSafeMatcher<String> {
   @Override
   public final void describeTo(final Description description) {
 
-    describeTo(description.appendText("a string starting with ").appendValue(
-      prefix));
+    description.appendText("a string starting with ").appendValue(prefix);
   }
 
   @Override
