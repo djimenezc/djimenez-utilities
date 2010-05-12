@@ -12,14 +12,14 @@ public class StringStartsWithMatcher extends TypeSafeMatcher<String> {
   }
 
   @Override
-  public void describeTo(final Description description) {
+  public final void describeTo(final Description description) {
 
     describeTo(description.appendText("a string starting with ").appendValue(
       prefix));
   }
 
   @Override
-  public boolean matchesSafely(final String s) {
+  public final boolean matchesSafely(final String s) {
     return s.startsWith(prefix);
   }
 }

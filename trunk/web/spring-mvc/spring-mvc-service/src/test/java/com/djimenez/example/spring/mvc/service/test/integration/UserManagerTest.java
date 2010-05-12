@@ -26,7 +26,7 @@ public class UserManagerTest extends BaseManagerIntegrationTestCase {
   private User user;
 
   @Test
-  public void testAddAndRemoveUser() throws Exception {
+  public final void testAddAndRemoveUser() throws Exception {
 
     user = new User();
 
@@ -55,7 +55,7 @@ public class UserManagerTest extends BaseManagerIntegrationTestCase {
   }
 
   @Test
-  public void testGetUser() throws Exception {
+  public final void testGetUser() throws Exception {
     user = mgr.getUserByUsername("user");
     assertNotNull(user);
 
@@ -64,7 +64,7 @@ public class UserManagerTest extends BaseManagerIntegrationTestCase {
   }
 
   @Test
-  public void testSaveUser() throws Exception {
+  public final void testSaveUser() throws Exception {
     user = mgr.getUserByUsername("user");
     user.setPhoneNumber("303-555-1212");
 

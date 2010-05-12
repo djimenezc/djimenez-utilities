@@ -5,8 +5,6 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
@@ -31,11 +29,11 @@ public abstract class BaseManagerTestCase extends
   /**
    * A simple logger
    */
-  protected final Log log = LogFactory.getLog(getClass());
+  // protected final Log log = LogFactory.getLog(getClass());
   /**
    * The resourceBundle
    */
-  protected ResourceBundle rb;
+  private ResourceBundle rb;
 
   /**
    * Default constructor will set the ResourceBundle if needed.
@@ -46,11 +44,18 @@ public abstract class BaseManagerTestCase extends
     final String className = this.getClass().getName();
 
     try {
-      rb = ResourceBundle.getBundle(className);
+      setRb(ResourceBundle.getBundle(className));
     }
     catch (final MissingResourceException mre) {
       // log.warn("No resource bundle found for: " + className);
     }
+  }
+
+  /**
+   * @return the rb
+   */
+  public final ResourceBundle getRb() {
+    return rb;
   }
 
   /**
@@ -63,13 +68,21 @@ public abstract class BaseManagerTestCase extends
    * @throws Exception
    *           if BeanUtils fails to copy properly
    */
-  protected Object populate(final Object obj) throws Exception {
+  protected final Object populate(final Object obj) throws Exception {
     // loop through all the beans methods and set its properties from
     // its .properties file
-    final Map<?, ?> map = ConvertUtil.convertBundleToMap(rb);
+    final Map<?, ?> map = ConvertUtil.convertBundleToMap(getRb());
 
     BeanUtils.copyProperties(obj, map);
 
     return obj;
+  }
+
+  /**
+   * @param rb
+   *          the rb to set
+   */
+  public final void setRb(final ResourceBundle rb) {
+    this.rb = rb;
   }
 }

@@ -65,6 +65,31 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements
     return userDao.getAllDistinct();
   }
 
+  private boolean isPasswordChanged(final User user) {
+
+    boolean passwordChanged = false;
+
+    // Check whether we have to encrypt (or re-encrypt) the password
+    if (user.getVersion() == null) {
+      // New user, always encrypt
+      passwordChanged = true;
+    }
+    else {
+      // Existing user, check password in DB
+      final String currentPassword =
+        userDao.getUserPassword(user.getUsername());
+      if (currentPassword == null) {
+        passwordChanged = true;
+      }
+      else {
+        if (!currentPassword.equals(user.getPassword())) {
+          passwordChanged = true;
+        }
+      }
+    }
+    return passwordChanged;
+  }
+
   /**
    * {@inheritDoc}
    */
@@ -76,7 +101,7 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements
   /**
    * {@inheritDoc}
    */
-  public User saveUser(final User user) throws UserExistsException {
+  public final User saveUser(final User user) throws UserExistsException {
 
     if (user.getVersion() == null) {
       // if new user, lowercase userId
@@ -84,26 +109,10 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements
     }
 
     // Get and prepare password management-related artifacts
-    boolean passwordChanged = false;
+    boolean passwordChanged;
     if (passwordEncoder != null) {
-      // Check whether we have to encrypt (or re-encrypt) the password
-      if (user.getVersion() == null) {
-        // New user, always encrypt
-        passwordChanged = true;
-      }
-      else {
-        // Existing user, check password in DB
-        final String currentPassword =
-          userDao.getUserPassword(user.getUsername());
-        if (currentPassword == null) {
-          passwordChanged = true;
-        }
-        else {
-          if (!currentPassword.equals(user.getPassword())) {
-            passwordChanged = true;
-          }
-        }
-      }
+
+      passwordChanged = isPasswordChanged(user);
 
       // If password was changed (or new user), encrypt it
       if (passwordChanged) {

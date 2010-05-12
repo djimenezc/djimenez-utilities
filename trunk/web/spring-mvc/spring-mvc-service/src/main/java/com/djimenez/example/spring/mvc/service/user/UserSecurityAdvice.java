@@ -94,18 +94,15 @@ public class UserSecurityAdvice implements MethodBeforeAdvice,
    */
   public final void before(final Method method, final Object[] args,
     final Object target) {
+
     final SecurityContext ctx = SecurityContextHolder.getContext();
 
     if (ctx.getAuthentication() != null) {
+
       final Authentication auth = ctx.getAuthentication();
       boolean administrator = false;
       final GrantedAuthority[] roles = auth.getAuthorities();
-      for (final GrantedAuthority role1 : roles) {
-        if (role1.getAuthority().equals(ConstantsRole.ADMIN_ROLE)) {
-          administrator = true;
-          break;
-        }
-      }
+      administrator = isAdministrator(roles);
 
       final User user = (User) args[0];
 
@@ -124,38 +121,26 @@ public class UserSecurityAdvice implements MethodBeforeAdvice,
             + "' tried to modify '" + user.getUsername() + "'!");
           throw new AccessDeniedException(ACCESS_DENIED);
         }
-        else
-          if ((user.getId() != null)
-            && user.getId().equals(currentUser.getId()) && !administrator) {
-            // get the list of roles the user is trying add
-            final Set<String> userRoles = new HashSet<String>();
-            if (user.getRoles() != null) {
-              for (final Object o : user.getRoles()) {
-                final Role role = (Role) o;
-                userRoles.add(role.getName());
-              }
-            }
-
-            // get the list of roles the user currently has
-            final Set<String> authorizedRoles = new HashSet<String>();
-            for (final GrantedAuthority role : roles) {
-              authorizedRoles.add(role.getAuthority());
-            }
-
-            // if they don't match - access denied
-            // regular users aren't allowed to change their roles
-            if (!CollectionUtils.isEqualCollection(userRoles, authorizedRoles)) {
-              log.warn("Access Denied: '" + currentUser.getUsername()
-                + "' tried to change their role(s)!");
-              throw new AccessDeniedException(ACCESS_DENIED);
-            }
-          }
+        else {
+          manageCurrentUser(administrator, roles, user, currentUser);
+        }
       }
       else {
         if (log.isDebugEnabled()) {
           log.debug("Registering new user '" + user.getUsername() + "'");
         }
       }
+    }
+  }
+
+  private void checkUserHaveRoleSuitable(final User currentUser,
+    final Set<String> userRoles, final Set<String> authorizedRoles) {
+    // if they don't match - access denied
+    // regular users aren't allowed to change their roles
+    if (!CollectionUtils.isEqualCollection(userRoles, authorizedRoles)) {
+      log.warn("Access Denied: '" + currentUser.getUsername()
+        + "' tried to change their role(s)!");
+      throw new AccessDeniedException(ACCESS_DENIED);
     }
   }
 
@@ -172,5 +157,56 @@ public class UserSecurityAdvice implements MethodBeforeAdvice,
         throw new AccessDeniedException("User not properly authenticated.");
       }
     return currentUser;
+  }
+
+  /**
+   * get the list of roles the user is trying add
+   * 
+   * @param user
+   * @return
+   */
+  private Set<String> getListRoles(final User user) {
+
+    final Set<String> userRoles = new HashSet<String>();
+
+    if (user.getRoles() != null) {
+      for (final Object o : user.getRoles()) {
+        final Role role = (Role) o;
+        userRoles.add(role.getName());
+      }
+    }
+
+    return userRoles;
+  }
+
+  private boolean isAdministrator(final GrantedAuthority[] roles) {
+
+    boolean administrator = false;
+
+    for (final GrantedAuthority role1 : roles) {
+      if (role1.getAuthority().equals(ConstantsRole.ADMIN_ROLE)) {
+        administrator = true;
+        break;
+      }
+    }
+    return administrator;
+  }
+
+  private void manageCurrentUser(final boolean administrator,
+    final GrantedAuthority[] roles, final User user, final User currentUser) {
+
+    if ((user.getId() != null) && user.getId().equals(currentUser.getId())
+      && !administrator) {
+
+      final Set<String> userRoles = getListRoles(user);
+
+      // get the list of roles the user currently has
+      final Set<String> authorizedRoles = new HashSet<String>();
+      for (final GrantedAuthority role : roles) {
+        authorizedRoles.add(role.getAuthority());
+      }
+
+      checkUserHaveRoleSuitable(currentUser, userRoles, authorizedRoles);
+    }
   }
 }

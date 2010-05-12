@@ -22,7 +22,7 @@ public class UserExistsExceptionTest extends BaseManagerIntegrationTestCase {
 
   @Test
   @ExpectedException(UserExistsException.class)
-  public void testAddExistingUser() throws Exception {
+  public final void testAddExistingUser() throws Exception {
 
     log.debug("entered 'testAddExistingUser' method");
     assertNotNull(manager);

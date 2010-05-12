@@ -82,7 +82,7 @@ public class GenericManagerImpl<T, PK extends Serializable> implements
   /**
    * @return the dao
    */
-  protected GenericDao<T, PK> getDao() {
+  protected final GenericDao<T, PK> getDao() {
     return dao;
   }
 
@@ -104,7 +104,7 @@ public class GenericManagerImpl<T, PK extends Serializable> implements
    * @param dao
    *          the dao to set
    */
-  protected void setDao(final GenericDao<T, PK> dao) {
+  protected final void setDao(final GenericDao<T, PK> dao) {
     this.dao = dao;
   }
 
