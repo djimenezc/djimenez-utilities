@@ -28,29 +28,33 @@ import com.djimenez.example.spring.mvc.service.mail.MailEngine;
  */
 public class MailEngineTest extends BaseManagerIntegrationTestCase {
 
+  private static final String ATTACHMENT_NAME = "boring-attachment.txt";
+  private static final int PERCENT = 100;
+  private static final int PORT_NUMBERS = 2525;
+
   @Autowired
-  MailEngine mailEngine;
+  private MailEngine mailEngine;
   @Autowired
-  SimpleMailMessage mailMessage;
-  JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+  private SimpleMailMessage mailMessage;
+  private final JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
   @Before
-  public void setUp() {
+  public final void setUp() {
     mailSender.setHost("localhost");
     mailEngine.setMailSender(mailSender);
   }
 
   @After
-  public void tearDown() {
+  public final void tearDown() {
     mailEngine.setMailSender(null);
   }
 
   @Test
-  public void testSend() throws Exception {
+  public final void testSend() throws Exception {
     // mock smtp server
     final Wiser wiser = new Wiser();
     // set the port to a random value so there's no conflicts between tests
-    final int port = 2525 + (int) (Math.random() * 100);
+    final int port = PORT_NUMBERS + (int) (Math.random() * PERCENT);
     mailSender.setPort(port);
     wiser.setPort(port);
     wiser.start();
@@ -72,12 +76,11 @@ public class MailEngineTest extends BaseManagerIntegrationTestCase {
   }
 
   @Test
-  public void testSendMessageWithAttachment() throws Exception {
-    final String ATTACHMENT_NAME = "boring-attachment.txt";
+  public final void testSendMessageWithAttachment() throws Exception {
 
     // mock smtp server
     final Wiser wiser = new Wiser();
-    final int port = 2525 + (int) (Math.random() * 100);
+    final int port = PORT_NUMBERS + (int) (Math.random() * PERCENT);
     mailSender.setPort(port);
     wiser.setPort(port);
     wiser.start();

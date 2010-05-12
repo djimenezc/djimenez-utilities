@@ -26,7 +26,7 @@ public class UserManagerTest extends BaseManagerTestCase {
   private User user;
 
   @Test
-  public void testAddUser() throws Exception {
+  public final void testAddUser() throws Exception {
 
     user = new User();
 
@@ -42,7 +42,7 @@ public class UserManagerTest extends BaseManagerTestCase {
   }
 
   @Test
-  public void testGetUser() throws Exception {
+  public final void testGetUser() throws Exception {
 
     user = mgr.getUserByUsername("user");
     assertNotNull(user);

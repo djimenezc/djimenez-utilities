@@ -28,7 +28,7 @@ public class FactoryMock {
   }
 
   private final Mockery context = new Mockery();
-  private UserDao userDao;
+  private final UserDao userDao;
   private RoleDao roleDao;
 
   private LookupDao lookupDao;
@@ -36,7 +36,12 @@ public class FactoryMock {
   public FactoryMock() {
 
     configureMockRoleDao();
-    configureUserDao();
+
+    userDao = context.mock(UserDao.class);
+    final String name = "user";
+
+    final User user = configureUserDaoGet(name);
+    configureUserDaoSave(user, name);
   }
 
   /**
@@ -63,17 +68,14 @@ public class FactoryMock {
   /**
    * 
    */
-  private void configureUserDao() {
+  private User configureUserDaoGet(final String name) {
 
-    userDao = context.mock(UserDao.class);
+    final User user = new User(name);
 
     context.checking(new Expectations() {
 
       {
 
-        final String name = "user";
-
-        final User user = new User(name);
         user.addRole(new Role("user"));
         user.setId(Long.valueOf(-1L));
 
@@ -82,7 +84,20 @@ public class FactoryMock {
 
         allowing(userDao).get(with(any(Long.class)));
         will(returnValue(user));
+      }
+    });
 
+    return user;
+  }
+
+  /**
+   * 
+   */
+  private void configureUserDaoSave(final User user, final String name) {
+
+    context.checking(new Expectations() {
+
+      {
         final User userSaved = new User();
 
         BeanUtils.populate(userSaved, ResourceBundle
@@ -105,18 +120,18 @@ public class FactoryMock {
   /**
    * @return the lookupRoleManager
    */
-  public LookupDao getLookupDao() {
+  public final LookupDao getLookupDao() {
     return lookupDao;
   }
 
   /**
    * @return the roleDaoHibernate
    */
-  public RoleDao getRoleDao() {
+  public final RoleDao getRoleDao() {
     return roleDao;
   }
 
-  public PlatformTransactionManager getTransactionManager() {
+  public final PlatformTransactionManager getTransactionManager() {
 
     final UserTransaction userTransaction = context.mock(UserTransaction.class);
 
@@ -162,7 +177,7 @@ public class FactoryMock {
   /**
    * @return the userDao
    */
-  public UserDao getUserDao() {
+  public final UserDao getUserDao() {
     return userDao;
   }
 

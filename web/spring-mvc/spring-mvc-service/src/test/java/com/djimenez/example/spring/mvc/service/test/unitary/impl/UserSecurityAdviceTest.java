@@ -33,10 +33,10 @@ import com.djimenez.example.spring.mvc.service.user.UserSecurityAdvice;
 @RunWith(JMock.class)
 public class UserSecurityAdviceTest {
 
-  Mockery context = new JUnit4Mockery();
-  UserDao userDao = null;
-  ApplicationContext ctx = null;
-  SecurityContext initialSecurityContext = null;
+  private final Mockery context = new JUnit4Mockery();
+  private UserDao userDao = null;
+  private ApplicationContext ctx = null;
+  private SecurityContext initialSecurityContext = null;
 
   private UserManager makeInterceptedTarget() {
     ctx =
@@ -52,11 +52,10 @@ public class UserSecurityAdviceTest {
   }
 
   @Before
-  public void setUp() throws Exception {
+  public final void setUp() throws Exception {
     // store initial security context for later restoration
     initialSecurityContext = SecurityContextHolder.getContext();
 
-    final SecurityContext context = new SecurityContextImpl();
     final User user = new User("user");
     user.setId(1L);
     user.setPassword("password");
@@ -65,19 +64,23 @@ public class UserSecurityAdviceTest {
     final UsernamePasswordAuthenticationToken token =
       new UsernamePasswordAuthenticationToken(user.getUsername(), user
         .getPassword(), user.getAuthorities());
+
     token.setDetails(user);
-    context.setAuthentication(token);
-    SecurityContextHolder.setContext(context);
+
+    final SecurityContext securityContext = new SecurityContextImpl();
+    securityContext.setAuthentication(token);
+
+    SecurityContextHolder.setContext(securityContext);
   }
 
   @After
-  public void tearDown() {
+  public final void tearDown() {
     SecurityContextHolder.setContext(initialSecurityContext);
   }
 
   // Test fix to http://issues.appfuse.org/browse/APF-96
   @Test
-  public void testAddAdminRoleWhenAlreadyHasUserRole() throws Exception {
+  public final void testAddAdminRoleWhenAlreadyHasUserRole() throws Exception {
     final UserManager userManager = makeInterceptedTarget();
     final User user = new User("user");
     user.setId(1L);
@@ -95,7 +98,7 @@ public class UserSecurityAdviceTest {
   }
 
   @Test
-  public void testAddUserAsAdmin() throws Exception {
+  public final void testAddUserAsAdmin() throws Exception {
     final SecurityContext securityContext = new SecurityContextImpl();
     final User user = new User("admin");
     user.setId(2L);
@@ -124,7 +127,7 @@ public class UserSecurityAdviceTest {
 
   // Test fix to http://issues.appfuse.org/browse/APF-96
   @Test
-  public void testAddUserRoleWhenHasAdminRole() throws Exception {
+  public final void testAddUserRoleWhenHasAdminRole() throws Exception {
     final SecurityContext securityContext = new SecurityContextImpl();
     final User user1 = new User("user");
     user1.setId(1L);
@@ -154,7 +157,7 @@ public class UserSecurityAdviceTest {
   }
 
   @Test
-  public void testAddUserWithoutAdminRole() throws Exception {
+  public final void testAddUserWithoutAdminRole() throws Exception {
     final Authentication auth =
       SecurityContextHolder.getContext().getAuthentication();
     assertTrue(auth.isAuthenticated());
@@ -175,7 +178,7 @@ public class UserSecurityAdviceTest {
 
   // Test fix to http://issues.appfuse.org/browse/APF-96
   @Test
-  public void testChangeToAdminRoleFromUserRole() throws Exception {
+  public final void testChangeToAdminRoleFromUserRole() throws Exception {
     final UserManager userManager = makeInterceptedTarget();
     final User user = new User("user");
     user.setId(1L);
@@ -192,7 +195,7 @@ public class UserSecurityAdviceTest {
   }
 
   @Test
-  public void testUpdateUserProfile() throws Exception {
+  public final void testUpdateUserProfile() throws Exception {
     final UserManager userManager = makeInterceptedTarget();
     final User user = new User("user");
     user.setId(1L);
@@ -210,7 +213,7 @@ public class UserSecurityAdviceTest {
 
   // Test fix to http://issues.appfuse.org/browse/APF-96
   @Test
-  public void testUpdateUserWithUserRole() throws Exception {
+  public final void testUpdateUserWithUserRole() throws Exception {
     final UserManager userManager = makeInterceptedTarget();
     final User user = new User("user");
     user.setId(1L);

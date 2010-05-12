@@ -19,13 +19,14 @@ public class UserExistsExceptionTest extends BaseManagerTestCase {
   @Autowired
   private UserManager manager;
 
-  private final Log log = LogFactory.getLog(UserExistsExceptionTest.class);
+  private static final Log LOG =
+    LogFactory.getLog(UserExistsExceptionTest.class);
 
   @Test
   @ExpectedException(UserExistsException.class)
-  public void testAddExistingUser() throws Exception {
+  public final void testAddExistingUser() throws Exception {
 
-    log.debug("entered 'testAddExistingUser' method");
+    LOG.debug("entered 'testAddExistingUser' method");
     assertNotNull(manager);
 
     final User user = manager.getUser("-1");

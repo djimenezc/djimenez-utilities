@@ -43,7 +43,7 @@ public class GoogleTraductorEspecificacionTest {
   @AfterClass
   public static void tearDownOnce() {
     selenium.stop();
-    seleniumServer.stop();
+    // seleniumServer.stop();
   }
 
   @Test

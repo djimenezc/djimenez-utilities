@@ -13,12 +13,12 @@ public class UserNameEqual extends TypeSafeMatcher<User> {
     this.name = name;
   }
 
-  public void describeTo(final Description description) {
+  public final void describeTo(final Description description) {
     describeTo(description.appendText("a name equals to ").appendValue(name));
   }
 
   @Override
-  public boolean matchesSafely(final User user) {
+  public final boolean matchesSafely(final User user) {
 
     return user.getUsername().equals(name);
     // return false;

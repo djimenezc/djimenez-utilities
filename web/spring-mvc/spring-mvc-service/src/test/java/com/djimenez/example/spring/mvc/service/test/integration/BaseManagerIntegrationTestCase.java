@@ -5,8 +5,6 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
@@ -30,11 +28,12 @@ public abstract class BaseManagerIntegrationTestCase extends
   /**
    * A simple logger
    */
-  protected final Log log = LogFactory.getLog(getClass());
+  // private static final Log LOG =
+  // LogFactory.getLog(BaseManagerIntegrationTestCase.class);
   /**
    * The resourceBundle
    */
-  protected ResourceBundle rb;
+  private ResourceBundle rb;
 
   /**
    * Default constructor will set the ResourceBundle if needed.
@@ -53,6 +52,13 @@ public abstract class BaseManagerIntegrationTestCase extends
   }
 
   /**
+   * @return the rb
+   */
+  public final ResourceBundle getRb() {
+    return rb;
+  }
+
+  /**
    * Utility method to populate a javabean-style object with values from a
    * Properties file
    * 
@@ -62,10 +68,10 @@ public abstract class BaseManagerIntegrationTestCase extends
    * @throws Exception
    *           if BeanUtils fails to copy properly
    */
-  protected Object populate(final Object obj) throws Exception {
+  protected final Object populate(final Object obj) throws Exception {
     // loop through all the beans methods and set its properties from
     // its .properties file
-    final Map<?, ?> map = ConvertUtil.convertBundleToMap(rb);
+    final Map<?, ?> map = ConvertUtil.convertBundleToMap(getRb());
 
     BeanUtils.copyProperties(obj, map);
 

@@ -341,6 +341,42 @@
 			</dependency>
 
 			<dependency>
+				<groupId>org.springmodules</groupId>
+				<artifactId>spring-modules-validation</artifactId>
+				<version>${springmodules.validation.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>spring</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>spring-support</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>xml-apis</artifactId>
+						<groupId>xml-apis</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-taglibs</artifactId>
+				<version>${lib.spring.security.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>spring-web</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>spring-support</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjweaver</artifactId>
 				<version>${aspectj.version}</version>
@@ -362,6 +398,7 @@
 				<groupId>javax.servlet</groupId>
 				<artifactId>servlet-api</artifactId>
 				<version>${lib.servlet-api.version}</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
@@ -605,6 +642,49 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
 				<version>2.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>displaytag</groupId>
+				<artifactId>displaytag</artifactId>
+				<version>${displaytag.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>${jsp.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>struts-menu</groupId>
+				<artifactId>struts-menu</artifactId>
+				<version>${struts.menu.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>xml-apis</artifactId>
+						<groupId>xml-apis</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>opensymphony</groupId>
+				<artifactId>sitemesh</artifactId>
+				<version>${sitemesh.version}</version>
 			</dependency>
 
 		</dependencies>
@@ -916,9 +996,16 @@
 		<lib.velocity.version>1.4</lib.velocity.version>
 		<lib.javamail.version>1.4.1</lib.javamail.version>
 
+		<!-- Web -->
+		<jstl.version>1.1.2</jstl.version>
+		<jsp.version>2.0</jsp.version>
+		<displaytag.version>1.2</displaytag.version>
+		<struts.menu.version>2.4.3</struts.menu.version>
+		<sitemesh.version>2.4.2</sitemesh.version>
+		<springmodules.validation.version>0.8</springmodules.validation.version>
+
 		<!-- Testing dependency versions -->
 		<lib.wiser.version>1.2</lib.wiser.version>
-
 		<remote-deploy-version>1.1</remote-deploy-version>
 
 
