@@ -39,7 +39,7 @@ import org.springmodules.validation.commons.ValidatorFactory;
 public class LabelTag extends TagSupport {
 
   private static final long serialVersionUID = -5310144023136517119L;
-  private RequestContext requestContext;
+  private transient RequestContext requestContext;
   // private transient final Log log = LogFactory.getLog(LabelTag.class);
   private String key = null;
   private String styleClass = null;
@@ -144,10 +144,9 @@ public class LabelTag extends TagSupport {
       if (form != null) {
         final Field field = form.getField(fieldName);
 
-        if (field != null) {
-          if (field.isDependency("required") || field.isDependency("validwhen")) {
-            requiredField = true;
-          }
+        if (((field != null) && field.isDependency("required"))
+          || field.isDependency("validwhen")) {
+          requiredField = true;
         }
       }
     }
@@ -185,9 +184,6 @@ public class LabelTag extends TagSupport {
     try {
       this.requestContext =
         new RequestContext((HttpServletRequest) this.pageContext.getRequest());
-    }
-    catch (final RuntimeException ex) {
-      throw ex;
     }
     catch (final Exception ex) {
       pageContext.getServletContext().log("Exception in custom tag", ex);

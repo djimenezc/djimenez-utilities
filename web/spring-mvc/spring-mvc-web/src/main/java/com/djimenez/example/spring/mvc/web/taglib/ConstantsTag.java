@@ -39,7 +39,7 @@ import com.djimenez.example.spring.mvc.constants.Constants;
 public class ConstantsTag extends TagSupport {
 
   private static final long serialVersionUID = 3258417209566116146L;
-  private final Log log = LogFactory.getLog(ConstantsTag.class);
+  private static final Log LOG = LogFactory.getLog(ConstantsTag.class);
 
   /**
    * The class to expose the variables from.
@@ -95,7 +95,7 @@ public class ConstantsTag extends TagSupport {
       c = Class.forName(clazz);
     }
     catch (final ClassNotFoundException cnf) {
-      log.error("ClassNotFound - maybe a typo?");
+      LOG.error("ClassNotFound - maybe a typo?");
       throw new JspException(cnf.getMessage());
     }
 
@@ -116,13 +116,13 @@ public class ConstantsTag extends TagSupport {
           pageContext.setAttribute(c.getField(var).getName(), value, toScope);
         }
         catch (final NoSuchFieldException nsf) {
-          log.error(nsf.getMessage());
+          LOG.error(nsf.getMessage());
           throw new JspException(nsf);
         }
       }
     }
     catch (final IllegalAccessException iae) {
-      log.error("Illegal Access Exception - maybe a classloader issue?");
+      LOG.error("Illegal Access Exception - maybe a classloader issue?");
       throw new JspException(iae);
     }
 
