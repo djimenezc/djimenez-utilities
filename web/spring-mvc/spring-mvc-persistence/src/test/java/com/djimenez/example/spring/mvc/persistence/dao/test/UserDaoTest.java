@@ -28,6 +28,14 @@ import com.djimenez.example.spring.mvc.persistence.dao.user.UserDao;
 
 public class UserDaoTest extends BaseDaoTestCase {
 
+  private static final int USER_ID_COMPASS_SEARCH = -2;
+
+  private static final long USER_ID = 1000L;
+
+  private static final long ID_TEST_1 = -2L;
+
+  private static final String FIRST_NAME_TEST = "Matt";
+
   private static final Log LOG = LogFactory.getLog(UserDaoTest.class);
 
   @Autowired
@@ -75,7 +83,7 @@ public class UserDaoTest extends BaseDaoTestCase {
   }
 
   @Test
-  public void testAddUserRole() throws Exception {
+  public final void testAddUserRole() throws Exception {
     User user = dao.get(-1L);
     assertEquals(1, user.getRoles().size());
 
@@ -104,7 +112,7 @@ public class UserDaoTest extends BaseDaoTestCase {
   }
 
   @Test
-  public void testGetUser() throws Exception {
+  public final void testGetUser() throws Exception {
     final User user = dao.get(-1L);
 
     assertNotNull(user);
@@ -114,13 +122,13 @@ public class UserDaoTest extends BaseDaoTestCase {
 
   @Test
   @ExpectedException(DataAccessException.class)
-  public void testGetUserInvalid() throws Exception {
+  public final void testGetUserInvalid() throws Exception {
     // should throw DataAccessException
-    dao.get(1000L);
+    dao.get(USER_ID);
   }
 
   @Test
-  public void testGetUserPassword() throws Exception {
+  public final void testGetUserPassword() throws Exception {
 
     final User user = dao.get(-1L);
     final String password = dao.getUserPassword(user.getUsername());
@@ -135,40 +143,41 @@ public class UserDaoTest extends BaseDaoTestCase {
   }
 
   @Test
-  public void testUserNotExists() throws Exception {
+  public final void testUserNotExists() throws Exception {
     final boolean b = dao.exists(111L);
     assertFalse(b);
   }
 
   @Test
-  public void testUserSearch() throws Exception {
+  public final void testUserSearch() throws Exception {
     // reindex all the data
     compassGps.index();
 
-    User user = compassTemplate.get(User.class, -2);
+    User user = compassTemplate.get(User.class, ID_TEST_1);
     assertNotNull(user);
-    assertEquals("Matt", user.getFirstName());
+    assertEquals(FIRST_NAME_TEST, user.getFirstName());
 
     compassTemplate.execute(new CompassCallbackWithoutResult() {
 
       @Override
       protected void doInCompassWithoutResult(
-        final CompassSession compassSession) throws CompassException {
-        final CompassHits hits = compassSession.find("Matt");
+        final CompassSession compassSession) {
+
+        final CompassHits hits = compassSession.find(FIRST_NAME_TEST);
         assertEquals(1, hits.length());
-        assertEquals("Matt", ((User) hits.data(0)).getFirstName());
-        assertEquals("Matt", hits.resource(0).getValue("firstName"));
+        assertEquals(FIRST_NAME_TEST, ((User) hits.data(0)).getFirstName());
+        assertEquals(FIRST_NAME_TEST, hits.resource(0).getValue("firstName"));
       }
     });
 
     // test mirroring
-    user = dao.get(-2L);
-    user.setFirstName("MattX");
+    user = dao.get(ID_TEST_1);
+    user.setFirstName(FIRST_NAME_TEST);
     dao.saveUser(user);
     flush();
 
     // now verify it is reflected in the index
-    user = compassTemplate.get(User.class, -2);
+    user = compassTemplate.get(User.class, USER_ID_COMPASS_SEARCH);
     assertNotNull(user);
     assertEquals("MattX", user.getFirstName());
 

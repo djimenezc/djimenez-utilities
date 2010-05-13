@@ -49,7 +49,7 @@ public class UserManagerTest extends BaseManagerIntegrationTestCase {
       fail("Expected 'Exception' not thrown");
     }
     catch (final Exception e) {
-      LOG.debug(e);
+      LOG.debug("Error getting user by name", e);
       assertNotNull(e);
     }
   }
