@@ -67,8 +67,7 @@ public class ConstantsTei extends TagExtraInfo {
       }
     }
     catch (final Exception cnf) {
-      log.error(cnf.getMessage());
-      cnf.printStackTrace();
+      log.error(cnf.getMessage(), cnf);
     }
 
     return vars.toArray(new VariableInfo[] {});

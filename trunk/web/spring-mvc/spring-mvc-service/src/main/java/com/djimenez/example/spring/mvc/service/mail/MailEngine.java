@@ -72,8 +72,7 @@ public class MailEngine {
           templateName, model);
     }
     catch (final VelocityException e) {
-      e.printStackTrace();
-      log.error(e.getMessage());
+      log.error(e.getMessage(), e);
     }
 
     msg.setText(result);
