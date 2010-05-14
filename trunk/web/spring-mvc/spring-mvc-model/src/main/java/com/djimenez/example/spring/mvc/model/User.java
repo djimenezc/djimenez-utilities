@@ -112,7 +112,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
 
   @Embedded
   @SearchableComponent
-  public final Address getAddress() {
+  public Address getAddress() {
     return address;
   }
 
@@ -121,24 +121,24 @@ public class User extends BaseObject implements Serializable, UserDetails {
    * @see org.springframework.security.userdetails.UserDetails#getAuthorities()
    */
   @Transient
-  public final GrantedAuthority[] getAuthorities() {
+  public GrantedAuthority[] getAuthorities() {
     return roles.toArray(new GrantedAuthority[0]);
   }
 
   @Transient
-  public final String getConfirmPassword() {
+  public String getConfirmPassword() {
     return confirmPassword;
   }
 
   @Column(nullable = false, unique = true)
   @SearchableProperty
-  public final String getEmail() {
+  public String getEmail() {
     return email;
   }
 
   @Column(name = "first_name", nullable = false, length = JpaConstants.NAME_LENGTH)
   @SearchableProperty
-  public final String getFirstName() {
+  public String getFirstName() {
     return firstName;
   }
 
@@ -148,36 +148,36 @@ public class User extends BaseObject implements Serializable, UserDetails {
    * @return firstName + ' ' + lastName
    */
   @Transient
-  public final String getFullName() {
+  public String getFullName() {
     return firstName + ' ' + lastName;
   }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @SearchableId
-  public final Long getId() {
+  public Long getId() {
     return id;
   }
 
   @Column(name = "last_name", nullable = false, length = JpaConstants.NAME_LENGTH)
   @SearchableProperty
-  public final String getLastName() {
+  public String getLastName() {
     return lastName;
   }
 
   @Column(nullable = false)
-  public final String getPassword() {
+  public String getPassword() {
     return password;
   }
 
   @Column(name = "password_hint")
-  public final String getPasswordHint() {
+  public String getPasswordHint() {
     return passwordHint;
   }
 
   @Column(name = "phone_number")
   @SearchableProperty
-  public final String getPhoneNumber() {
+  public String getPhoneNumber() {
     return phoneNumber;
   }
 
@@ -187,7 +187,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
    * @return a list of LabelValue objects with role information
    */
   @Transient
-  public final List<LabelValue> getRoleList() {
+  public List<LabelValue> getRoleList() {
     final List<LabelValue> userRoles = new ArrayList<LabelValue>();
 
     if (this.roles != null) {

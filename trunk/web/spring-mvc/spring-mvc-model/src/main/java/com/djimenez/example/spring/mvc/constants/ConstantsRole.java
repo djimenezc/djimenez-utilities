@@ -18,6 +18,12 @@ public final class ConstantsRole {
    */
   public static final String USER_ROLES = "userRoles";
 
+  /**
+   * The name of the available roles list, a request-scoped attribute when
+   * adding/editing a user.
+   */
+  public static final String AVAILABLE_ROLES = "availableRoles";
+
   private ConstantsRole() {
   }
 }
