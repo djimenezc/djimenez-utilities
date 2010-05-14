@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.test.annotation.ExpectedException;
 
-import com.djimenez.example.spring.mvc.constants.Constants;
 import com.djimenez.example.spring.mvc.constants.ConstantsRole;
 import com.djimenez.example.spring.mvc.model.Address;
 import com.djimenez.example.spring.mvc.model.Role;
@@ -64,7 +63,7 @@ public class UserDaoTest extends BaseDaoTestCase {
     user.setEmail("testuser@appfuse.org");
     user.setWebsite("http://raibledesigns.com");
 
-    final Role role = rdao.getRoleByName(Constants.USER_ROLE);
+    final Role role = rdao.getRoleByName(ConstantsRole.USER_ROLE);
     assertNotNull(role.getId());
     user.addRole(role);
 
@@ -179,16 +178,16 @@ public class UserDaoTest extends BaseDaoTestCase {
     // now verify it is reflected in the index
     user = compassTemplate.get(User.class, USER_ID_COMPASS_SEARCH);
     assertNotNull(user);
-    assertEquals("MattX", user.getFirstName());
+    assertEquals(FIRST_NAME_TEST, user.getFirstName());
 
     compassTemplate.execute(new CompassCallbackWithoutResult() {
 
       @Override
       protected void doInCompassWithoutResult(
         final CompassSession compassSession) throws CompassException {
-        final CompassHits hits = compassSession.find("MattX");
+        final CompassHits hits = compassSession.find(FIRST_NAME_TEST);
         assertEquals(1, hits.length());
-        assertEquals("MattX", ((User) hits.data(0)).getFirstName());
+        assertEquals(FIRST_NAME_TEST, ((User) hits.data(0)).getFirstName());
       }
     });
   }

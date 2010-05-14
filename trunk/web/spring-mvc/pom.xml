@@ -1138,6 +1138,7 @@
 				<jdbc.url><![CDATA[jdbc:hsqldb:/tmp/hsqldb/${jdbc.databaseName};shutdown=true]]></jdbc.url>
 				<jdbc.username>sa</jdbc.username>
 				<jdbc.password />
+				<jdbc.pool.name>jdbc/spring_mvc</jdbc.pool.name>
 			</properties>
 		</profile>
 
@@ -1157,7 +1158,7 @@
 				<jdbc.url><![CDATA[${jdbc.url.simple}/${jdbc.databaseName}?autoReconnect=true]]></jdbc.url>
 				<jdbc.username>user</jdbc.username>
 				<jdbc.password>user</jdbc.password>
-				<jdbc.pool.name>jdbc/spring_mvc</jdbc.pool.name>
+				<jdbc.pool.name>spring_mvc</jdbc.pool.name>
 
 			</properties>
 		</profile>
@@ -1182,7 +1183,7 @@
 				<jdbc.url><![CDATA[${jdbc.url.simple}/${jdbc.databaseName}]]></jdbc.url>
 				<jdbc.username>user</jdbc.username>
 				<jdbc.password>user</jdbc.password>
-				<jdbc.pool.name>jdbc/spring_mvc</jdbc.pool.name>
+				<jdbc.pool.name>spring_mvc</jdbc.pool.name>
 			</properties>
 		</profile>
 

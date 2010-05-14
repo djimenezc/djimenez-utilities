@@ -6,7 +6,7 @@
     <!-- Define the basename for a resource bundle for I18N -->
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-        <param-value>ApplicationResources</param-value>
+        <param-value>locale/ApplicationResources</param-value>
     </context-param>
     <!-- Fallback locale if no bundles found for browser's preferred locale -->
     <!-- Force a single locale using param-name 'javax.servlet.jsp.jstl.fmt.locale' -->
@@ -18,10 +18,12 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-<!--            classpath:/applicationContext-resources.xml-->
-<!--            classpath:/applicationContext-dao.xml-->
-<!--            classpath:/applicationContext-service.xml-->
-<!--            classpath*:/applicationContext.xml-->
+            classpath:/context/applicationContext-service-resources.xml
+            classpath:/context/applicationContext-datasources.xml
+            classpath:/context/applicationContext-persistence.xml
+            classpath:/context/applicationContext-dao.xml
+            classpath:/context/applicationContext-service.xml
+<!--            classpath*:/context/applicationContext.xml-->
 <!--            /WEB-INF/applicationContext*.xml-->
 <!--            /WEB-INF/cxf-servlet.xml-->
 <!--            /WEB-INF/security.xml-->
@@ -41,6 +43,12 @@
         </init-param>
     </filter>
     
+    <filter>
+        <filter-name>localeFilter</filter-name>
+        <filter-class>com.djimenez.example.spring.mvc.web.filter.LocaleFilter</filter-class>
+    </filter>
+    
+    <!-- listener -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>

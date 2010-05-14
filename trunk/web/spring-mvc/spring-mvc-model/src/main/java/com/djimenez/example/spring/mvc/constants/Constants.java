@@ -18,15 +18,22 @@ public final class Constants {
   public static final String FILE_SEP = System.getProperty("file.separator");
 
   /**
-   * The name of the User role, as specified in web.xml
+   * Session scope attribute that holds the locale set by the user. By setting
+   * this key to the same one that Struts uses, we get synchronization in Struts
+   * w/o having to do extra work or have two session-level variables.
    */
-  public static final String USER_ROLE = "ROLE_USER";
+  public static final String PREFERRED_LOCALE_KEY =
+    "org.apache.struts2.action.LOCALE";
 
   /**
-   * The name of the user's role list, a request-scoped attribute when
-   * adding/editing a user.
+   * The name of the configuration hashmap stored in application scope.
    */
-  public static final String USER_ROLES = "userRoles";
+  public static final String CONFIG = "appConfig";
+
+  /**
+   * The name of the CSS Theme setting.
+   */
+  public static final String CSS_THEME = "csstheme";
 
   private Constants() {
     // hide me
