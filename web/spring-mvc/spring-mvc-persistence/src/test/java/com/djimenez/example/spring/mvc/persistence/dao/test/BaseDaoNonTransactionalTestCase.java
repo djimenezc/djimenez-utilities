@@ -11,6 +11,7 @@ import com.djimenez.test.dao.AbstractBaseDaoNonTransactionalTestCase;
  */
 @ContextConfiguration(locations = {
   "classpath:context/applicationContext-test-resources.xml",
+  "classpath:context/applicationContext-test-datasources.xml",
   "classpath:context/applicationContext-persistence.xml",
   "classpath:context/applicationContext-dao.xml" })
 public abstract class BaseDaoNonTransactionalTestCase extends

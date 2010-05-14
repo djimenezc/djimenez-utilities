@@ -1,5 +1,3 @@
-<%@ include file="/jsp/common/taglibs.jsp"%>
-
 <%-- Error Messages --%>
 <c:if test="${not empty errors}">
     <div class="error" id="errorMessages">
