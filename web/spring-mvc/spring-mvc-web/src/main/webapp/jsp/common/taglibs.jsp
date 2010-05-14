@@ -11,8 +11,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
-
-<%@ taglib uri="http://www.djimenez.com/tags/spring" prefix="djimenez %>
+<%@ taglib uri="http://www.djimenez.com/tags/spring" prefix="djimenez"%>
 
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <c:set var="datePattern"><fmt:message key="date.format"/></c:set>
