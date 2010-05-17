@@ -30,6 +30,9 @@
             classpath:/context/applicationContext-persistence.xml
             classpath:/context/applicationContext-dao.xml
             classpath:/context/applicationContext-service.xml
+            classpath:/context/applicationContext-mvc.xml
+            classpath:/context/applicationContext-controllers.xml
+            classpath:/context/applicationContext-validation.xml
 <!--            classpath*:/context/applicationContext.xml-->
 <!--            /WEB-INF/applicationContext*.xml-->
 <!--            /WEB-INF/cxf-servlet.xml-->
