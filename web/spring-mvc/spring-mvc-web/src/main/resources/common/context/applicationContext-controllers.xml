@@ -10,15 +10,58 @@
 
 	<bean id="filenameController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
 
+	<bean id="fileUploadController" class="com.djimenez.example.spring.mvc.web.controller.FileUploadController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="cancelView" value="redirect:mainMenu.html"/>
+        <property name="formView" value="uploadForm"/>
+        <property name="successView" value="uploadDisplay"/>
+    </bean>
+
+    <bean id="passwordHintController" class="com.djimenez.example.spring.mvc.web.controller.PasswordHintController">
+        <property name="userManager" ref="userManager"/>
+        <property name="messageSource" ref="messageSource"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+    </bean>
+
+    <bean id="reloadController" class="com.djimenez.example.spring.mvc.web.controller.ReloadController"/>
+
+    <bean id="signupController" class="com.djimenez.example.spring.mvc.web.controller.SignupController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="signup"/>
+        <property name="successView" value="redirect:mainMenu.html"/>
+        <property name="userManager" ref="userManager"/>
+        <property name="roleManager" ref="roleManager"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+        <property name="templateName" value="accountCreated.vm"/>
+    </bean>
+
+    <bean id="userController" class="com.djimenez.example.spring.mvc.web.controller.UserController">
+        <property name="userManager" ref="userManager"/>
+    </bean>
+
+    <bean id="userFormController" class="com.djimenez.example.spring.mvc.web.controller.UserFormController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="userForm"/>
+        <property name="successView" value="redirect:users.html"/>
+        <property name="cancelView" value="redirect:mainMenu.html"/>
+        <property name="userManager" ref="userManager"/>
+        <property name="roleManager" ref="roleManager"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+        <property name="templateName" value="accountCreated.vm"/>
+    </bean>
+
 	<bean id="urlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
-<!--				/admin/activeUsers.html=filenameController-->
-<!--				/admin/reload.html=reloadController-->
-<!--				/admin/users.html=userController-->
+				/admin/activeUsers.html=filenameController
+				/admin/reload.html=reloadController
+				/admin/users.html=userController
 				/mainMenu.html=filenameController
-<!--				/passwordHint.html=passwordHintController-->
+				/passwordHint.html=passwordHintController
             </value>
 		</property>
 		<property name="order" value="0" />

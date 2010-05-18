@@ -87,7 +87,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
    * @param role
    *          the fully instantiated role
    */
-  public final void addRole(final Role role) {
+  public void addRole(final Role role) {
     getRoles().add(role);
   }
 
@@ -202,23 +202,23 @@ public class User extends BaseObject implements Serializable, UserDetails {
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = @JoinColumn(name = "role_id"))
-  public final Set<Role> getRoles() {
+  public Set<Role> getRoles() {
     return roles;
   }
 
   @Column(nullable = false, length = JpaConstants.NAME_LENGTH, unique = true)
   @SearchableProperty
-  public final String getUsername() {
+  public String getUsername() {
     return username;
   }
 
   @Version
-  public final Integer getVersion() {
+  public Integer getVersion() {
     return version;
   }
 
   @SearchableProperty
-  public final String getWebsite() {
+  public String getWebsite() {
     return website;
   }
 
@@ -231,12 +231,12 @@ public class User extends BaseObject implements Serializable, UserDetails {
   }
 
   @Column(name = "account_expired", nullable = false)
-  public final boolean isAccountExpired() {
+  public boolean isAccountExpired() {
     return accountExpired;
   }
 
   @Column(name = "account_locked", nullable = false)
-  public final boolean isAccountLocked() {
+  public boolean isAccountLocked() {
     return accountLocked;
   }
 
@@ -244,7 +244,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
    * @see org.springframework.security.userdetails.UserDetails#isAccountNonExpired()
    */
   @Transient
-  public final boolean isAccountNonExpired() {
+  public boolean isAccountNonExpired() {
     return !isAccountExpired();
   }
 
@@ -252,12 +252,12 @@ public class User extends BaseObject implements Serializable, UserDetails {
    * @see org.springframework.security.userdetails.UserDetails#isAccountNonLocked()
    */
   @Transient
-  public final boolean isAccountNonLocked() {
+  public boolean isAccountNonLocked() {
     return !isAccountLocked();
   }
 
   @Column(name = "credentials_expired", nullable = false)
-  public final boolean isCredentialsExpired() {
+  public boolean isCredentialsExpired() {
     return credentialsExpired;
   }
 
@@ -265,80 +265,80 @@ public class User extends BaseObject implements Serializable, UserDetails {
    * @see org.springframework.security.userdetails.UserDetails#isCredentialsNonExpired()
    */
   @Transient
-  public final boolean isCredentialsNonExpired() {
+  public boolean isCredentialsNonExpired() {
     return !credentialsExpired;
   }
 
   @Column(name = "account_enabled")
-  public final boolean isEnabled() {
+  public boolean isEnabled() {
     return enabled;
   }
 
-  public final void setAccountExpired(final boolean accountExpired) {
+  public void setAccountExpired(final boolean accountExpired) {
     this.accountExpired = accountExpired;
   }
 
-  public final void setAccountLocked(final boolean accountLocked) {
+  public void setAccountLocked(final boolean accountLocked) {
     this.accountLocked = accountLocked;
   }
 
-  public final void setAddress(final Address address) {
+  public void setAddress(final Address address) {
     this.address = address;
   }
 
-  public final void setConfirmPassword(final String confirmPassword) {
+  public void setConfirmPassword(final String confirmPassword) {
     this.confirmPassword = confirmPassword;
   }
 
-  public final void setCredentialsExpired(final boolean credentialsExpired) {
+  public void setCredentialsExpired(final boolean credentialsExpired) {
     this.credentialsExpired = credentialsExpired;
   }
 
-  public final void setEmail(final String email) {
+  public void setEmail(final String email) {
     this.email = email;
   }
 
-  public final void setEnabled(final boolean enabled) {
+  public void setEnabled(final boolean enabled) {
     this.enabled = enabled;
   }
 
-  public final void setFirstName(final String firstName) {
+  public void setFirstName(final String firstName) {
     this.firstName = firstName;
   }
 
-  public final void setId(final Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
-  public final void setLastName(final String lastName) {
+  public void setLastName(final String lastName) {
     this.lastName = lastName;
   }
 
-  public final void setPassword(final String password) {
+  public void setPassword(final String password) {
     this.password = password;
   }
 
-  public final void setPasswordHint(final String passwordHint) {
+  public void setPasswordHint(final String passwordHint) {
     this.passwordHint = passwordHint;
   }
 
-  public final void setPhoneNumber(final String phoneNumber) {
+  public void setPhoneNumber(final String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 
-  public final void setRoles(final Set<Role> roles) {
+  public void setRoles(final Set<Role> roles) {
     this.roles = roles;
   }
 
-  public final void setUsername(final String username) {
+  public void setUsername(final String username) {
     this.username = username;
   }
 
-  public final void setVersion(final Integer version) {
+  public void setVersion(final Integer version) {
     this.version = version;
   }
 
-  public final void setWebsite(final String website) {
+  public void setWebsite(final String website) {
     this.website = website;
   }
 

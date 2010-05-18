@@ -5,6 +5,12 @@
 
 	<display-name>Spring mvc</display-name>
 
+	 <!-- Define the default CSS Theme -->
+    <context-param>
+        <param-name>csstheme</param-name>
+        <param-value>default</param-value>
+    </context-param>
+
 	<!-- Define the basename for a resource bundle for I18N -->
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
@@ -36,7 +42,7 @@
 <!--            classpath*:/context/applicationContext.xml-->
 <!--            /WEB-INF/applicationContext*.xml-->
 <!--            /WEB-INF/cxf-servlet.xml-->
-<!--            /WEB-INF/security.xml-->
+            classpath:/context/security.xml
         </param-value>
 	</context-param>
 
@@ -55,8 +61,13 @@
 	</filter>
 
 	<filter>
-		<filter-name>sitemesh</filter-name>
-		<filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+		<filter-name>exportFilter</filter-name>
+		<filter-class>org.displaytag.filter.ResponseOverrideFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>gzipFilter</filter-name>
+		<filter-class>net.sf.ehcache.constructs.web.filter.GzipFilter</filter-class>
 	</filter>
 
 	<filter>
@@ -64,8 +75,90 @@
 		<filter-class>com.djimenez.example.spring.mvc.web.filter.LocaleFilter</filter-class>
 	</filter>
 
+	<filter>
+		<filter-name>rewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+		<init-param>
+			<param-name>logLevel</param-name>
+			<param-value>log4j</param-value>
+		</init-param>
+	</filter>
+
+	<filter>
+		<filter-name>securityFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetBeanName</param-name>
+			<param-value>springSecurityFilterChain</param-value>
+		</init-param>
+	</filter>
+
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>staticFilter</filter-name>
+		<filter-class>com.djimenez.example.spring.mvc.web.filter.StaticFilter</filter-class>
+		<init-param>
+			<param-name>includes</param-name>
+			<param-value>/scripts/dojo/*,/dwr/*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>servletName</param-name>
+			<param-value>dispatcher</param-value>
+		</init-param>
+	</filter>
 
 	<!-- Filter mappings -->
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>securityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>localeFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>gzipFilter</filter-name>
+		<url-pattern>*.css</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>gzipFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>gzipFilter</filter-name>
+		<url-pattern>*.js</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>gzipFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>exportFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>rewriteFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
 
 	<filter-mapping>
 		<filter-name>sitemesh</filter-name>
@@ -74,19 +167,40 @@
 		<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
 
+	<filter-mapping>
+		<filter-name>staticFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
 	<!-- listener -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+
 	<listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 	</listener>
+
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
+
 	<listener>
-        <listener-class>com.djimenez.example.spring.mvc.web.listener.StartupListener</listener-class>
-    </listener>
+		<listener-class>com.djimenez.example.spring.mvc.web.listener.StartupListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.djimenez.example.spring.mvc.web.listener.UserCounterListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>net.sf.navigator.menu.MenuContextListener</listener-class>
+	</listener>
+
+
+	<!-- Servlets -->
 
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
