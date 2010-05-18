@@ -82,23 +82,23 @@ public class Role extends BaseObject implements Serializable, GrantedAuthority {
    * @see org.springframework.security.GrantedAuthority#getAuthority()
    */
   @Transient
-  public final String getAuthority() {
+  public String getAuthority() {
     return getName();
   }
 
   @Column(length = JpaConstants.DESCRIPTION_LENGTH)
-  public final String getDescription() {
+  public String getDescription() {
     return this.description;
   }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  public final Long getId() {
+  public Long getId() {
     return id;
   }
 
   @Column(length = JpaConstants.NAME_LENGTH)
-  public final String getName() {
+  public String getName() {
     return this.name;
   }
 
@@ -110,15 +110,15 @@ public class Role extends BaseObject implements Serializable, GrantedAuthority {
     return (name != null ? name.hashCode() : 0);
   }
 
-  public final void setDescription(final String description) {
+  public void setDescription(final String description) {
     this.description = description;
   }
 
-  public final void setId(final Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
-  public final void setName(final String name) {
+  public void setName(final String name) {
     this.name = name;
   }
 
@@ -126,7 +126,7 @@ public class Role extends BaseObject implements Serializable, GrantedAuthority {
    * {@inheritDoc}
    */
   @Override
-  public final String toString() {
+  public String toString() {
     return new ToStringBuilder(this, ToStringStyle.SIMPLE_STYLE).append(
       this.name).toString();
   }

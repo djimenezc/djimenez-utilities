@@ -24,6 +24,16 @@ public final class ConstantsRole {
    */
   public static final String AVAILABLE_ROLES = "availableRoles";
 
+  /**
+   * The request scope attribute for indicating a newly-registered user
+   */
+  public static final String REGISTERED = "registered";
+
+  /**
+   * The request scope attribute that holds the user list
+   */
+  public static final String USER_LIST = "userList";
+
   private ConstantsRole() {
   }
 }
