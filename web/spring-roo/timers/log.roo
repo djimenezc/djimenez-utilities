@@ -1,0 +1,23 @@
+// Spring Roo 1.0.2.RELEASE [rev 638] log opened at 2010-05-18 15:35:32
+quit
+// Spring Roo 1.0.2.RELEASE [rev 638] log closed at 2010-05-18 15:35:55
+// Spring Roo 1.0.2.RELEASE [rev 638] log opened at 2010-05-18 15:36:42
+hint
+project --topLevelPackage com.gowex.test
+hint
+persistence setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY 
+hint 
+entity --class ~.Timer --testAutomatically 
+hint 
+field string --fieldName message --notNull
+hint 
+hint controllers
+controller all --package ~.web
+selenium test --controller ~.web.TimerController
+perform tests
+perform tests
+hint 
+perform package
+perform eclipse
+quit
+// Spring Roo 1.0.2.RELEASE [rev 638] log closed at 2010-05-18 15:50:52
