@@ -114,15 +114,18 @@ public class StaticFilter extends OncePerRequestFilter {
   }
 
   private String[] parsePatterns(final String delimitedPatterns) {
+
     // make sure no patterns are repeated.
-    final Set patternSet =
+    final Set<String> patternSet =
       org.springframework.util.StringUtils
         .commaDelimitedListToSet(delimitedPatterns);
     final String[] patterns = new String[patternSet.size()];
+
     int i = 0;
-    for (final Iterator iterator = patternSet.iterator(); iterator.hasNext(); i++) {
+    for (final Iterator<String> iterator = patternSet.iterator(); iterator
+      .hasNext(); i++) {
       // no trailing/leading white space.
-      final String pattern = (String) iterator.next();
+      final String pattern = iterator.next();
       patterns[i] = pattern.trim();
     }
     return patterns;

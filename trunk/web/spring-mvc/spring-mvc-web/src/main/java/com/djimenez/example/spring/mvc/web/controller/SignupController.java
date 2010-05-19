@@ -36,8 +36,8 @@ public class SignupController extends BaseFormController {
   public ModelAndView onSubmit(final HttpServletRequest request,
     final HttpServletResponse response, final Object command,
     final BindException errors) throws Exception {
-    if (log.isDebugEnabled()) {
-      log.debug("entering 'onSubmit' method...");
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("entering 'onSubmit' method...");
     }
 
     final User user = (User) command;
@@ -54,7 +54,7 @@ public class SignupController extends BaseFormController {
     catch (final AccessDeniedException ade) {
       // thrown by UserSecurityAdvice configured in aop:advisor
       // userManagerSecurity
-      log.warn(ade.getMessage());
+      LOG.warn(ade.getMessage());
       response.sendError(HttpServletResponse.SC_FORBIDDEN);
       return null;
     }
@@ -78,13 +78,13 @@ public class SignupController extends BaseFormController {
     SecurityContextHolder.getContext().setAuthentication(auth);
 
     // Send user an e-mail
-    if (log.isDebugEnabled()) {
-      log.debug("Sending user '" + user.getUsername()
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("Sending user '" + user.getUsername()
         + "' an account information e-mail");
     }
 
     // Send an account information e-mail
-    message.setSubject(getText("signup.email.subject", locale));
+    getMessage().setSubject(getText("signup.email.subject", locale));
 
     try {
       sendUserMessage(user, getText("signup.email.message", locale),

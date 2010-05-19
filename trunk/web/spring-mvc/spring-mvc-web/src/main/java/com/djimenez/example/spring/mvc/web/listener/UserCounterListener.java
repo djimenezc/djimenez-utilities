@@ -47,7 +47,7 @@ public class UserCounterListener implements ServletContextListener,
   private Set<User> users;
 
   @SuppressWarnings("unchecked")
-  synchronized void addUsername(final User user) {
+  final synchronized void addUsername(final User user) {
     users = (Set<User>) servletContext.getAttribute(USERS_KEY);
 
     if (users == null) {
@@ -68,7 +68,7 @@ public class UserCounterListener implements ServletContextListener,
    *          the event to process
    * @see javax.servlet.http.HttpSessionAttributeListener#attributeAdded(javax.servlet.http.HttpSessionBindingEvent)
    */
-  public void attributeAdded(final HttpSessionBindingEvent event) {
+  public final void attributeAdded(final HttpSessionBindingEvent event) {
     if (event.getName().equals(EVENT_KEY) && !isAnonymous()) {
       final SecurityContext securityContext =
         (SecurityContext) event.getValue();
@@ -87,7 +87,7 @@ public class UserCounterListener implements ServletContextListener,
    *          the session binding event
    * @see javax.servlet.http.HttpSessionAttributeListener#attributeRemoved(javax.servlet.http.HttpSessionBindingEvent)
    */
-  public void attributeRemoved(final HttpSessionBindingEvent event) {
+  public final void attributeRemoved(final HttpSessionBindingEvent event) {
     if (event.getName().equals(EVENT_KEY) && !isAnonymous()) {
       final SecurityContext securityContext =
         (SecurityContext) event.getValue();
@@ -108,7 +108,7 @@ public class UserCounterListener implements ServletContextListener,
    *          the session binding event
    * @see javax.servlet.http.HttpSessionAttributeListener#attributeReplaced(javax.servlet.http.HttpSessionBindingEvent)
    */
-  public void attributeReplaced(final HttpSessionBindingEvent event) {
+  public final void attributeReplaced(final HttpSessionBindingEvent event) {
     if (event.getName().equals(EVENT_KEY) && !isAnonymous()) {
       final SecurityContext securityContext =
         (SecurityContext) event.getValue();
@@ -127,7 +127,8 @@ public class UserCounterListener implements ServletContextListener,
    * @param event
    *          The servletContextEvent
    */
-  public synchronized void contextDestroyed(final ServletContextEvent event) {
+  public final synchronized void contextDestroyed(
+    final ServletContextEvent event) {
     servletContext = null;
     users = null;
     counter = 0;
@@ -139,24 +140,27 @@ public class UserCounterListener implements ServletContextListener,
    * @param sce
    *          the event
    */
-  public synchronized void contextInitialized(final ServletContextEvent sce) {
+  public final synchronized void contextInitialized(
+    final ServletContextEvent sce) {
     servletContext = sce.getServletContext();
     servletContext.setAttribute((COUNT_KEY), Integer.toString(counter));
   }
 
-  synchronized void decrementUserCounter() {
-    int counter =
-      Integer.parseInt((String) servletContext.getAttribute(COUNT_KEY));
-    counter--;
+  final synchronized void decrementUserCounter() {
 
-    if (counter < 0) {
-      counter = 0;
+    int counterKey =
+      Integer.parseInt((String) servletContext.getAttribute(COUNT_KEY));
+
+    counterKey--;
+
+    if (counterKey < 0) {
+      counterKey = 0;
     }
 
-    servletContext.setAttribute(COUNT_KEY, Integer.toString(counter));
+    servletContext.setAttribute(COUNT_KEY, Integer.toString(counterKey));
   }
 
-  synchronized void incrementUserCounter() {
+  final synchronized void incrementUserCounter() {
     counter = Integer.parseInt((String) servletContext.getAttribute(COUNT_KEY));
     counter++;
     servletContext.setAttribute(COUNT_KEY, Integer.toString(counter));
@@ -174,7 +178,7 @@ public class UserCounterListener implements ServletContextListener,
   }
 
   @SuppressWarnings("unchecked")
-  synchronized void removeUsername(final User user) {
+  final synchronized void removeUsername(final User user) {
     users = (Set<User>) servletContext.getAttribute(USERS_KEY);
 
     if (users != null) {

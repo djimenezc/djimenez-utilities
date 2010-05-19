@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="djimenez-utilities-parent" >
+<project name="djimenez-utilities-parent">
 
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
@@ -24,7 +24,7 @@
 		<echo>scripts.dir-> ${scripts.dir}</echo>
 		<echo>bbdd.dir-> ${bbdd.dir}</echo>
 	</target>
-	
+
 	<target name="clean-log" depends="info-config" description="">
 
 		<delete>
@@ -48,7 +48,7 @@
 	<target name="-maven">
 		<echo>Maven tasks: ${tasks} </echo>
 		<echo>Folder: ${compile.dir}</echo>
-		
+
 		<exec executable="${scripts.dir}/mvn.sh" failonerror="true">
 			<arg value="${compile.dir}" />
 			<arg value="${tasks}" />
@@ -132,11 +132,14 @@
 			<param name="projects" value="${compile.projects}" />
 			<param name="tasks" value="install" />
 		</antcall>
-		
-		<antcall target="last-operation-summary"></antcall>
+
+		<antcall target="last-operation-summary">
+		</antcall>
 	</target>
 
-	<target name="compile-all-quick" depends="info-config" description="">
+	<target name="compile-all-quick"
+	        depends="info-config"
+	        description="">
 
 		<tstamp>
 			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
@@ -174,7 +177,9 @@
 		</antcall>
 	</target>
 
-	<target name="deploy-release-repository" depends="info-config" description="">
+	<target name="deploy-release-repository"
+	        depends="info-config"
+	        description="">
 
 		<tstamp>
 			<format property="start.timestamp" pattern="dd-MMM-yy HH:mm:ss" />
@@ -235,7 +240,7 @@
 			------------------------------------------
 		
 			</echo>
-		
+
 		<sql driver="${local.sql.driver}"
 		     url="${local.sql.url}/"
 		     userid="${local.sql.user}"
@@ -254,7 +259,8 @@
 
 	<target name="database-load-test" depends="info-config" description="">
 		<antcall target="-database">
-			<param name="bbdd.path" value="${bbdd.dir}/createDatabaseTest.sql" />
+			<param name="bbdd.path"
+			       value="${bbdd.dir}/createDatabaseTest.sql" />
 		</antcall>
 	</target>
 
