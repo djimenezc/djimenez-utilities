@@ -12,7 +12,10 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class RequestUtil {
 
-  private static final Log log = LogFactory.getLog(RequestUtil.class);
+  private static final int EXPIRY = 3600 * 24 * 30;
+  private static final Log LOG = LogFactory.getLog(RequestUtil.class);
+  private static final int SECURE_WEB_PORT = 443;
+  private static final int WEB_PORT = 80;
 
   /**
    * Convenience method for deleting a cookie by name
@@ -50,14 +53,14 @@ public final class RequestUtil {
     final StringBuffer url = new StringBuffer();
     int port = request.getServerPort();
     if (port < 0) {
-      port = 80; // Work around java.net.URL bug
+      port = WEB_PORT; // Work around java.net.URL bug
     }
     final String scheme = request.getScheme();
     url.append(scheme);
     url.append("://");
     url.append(request.getServerName());
-    if ((scheme.equals("http") && (port != 80))
-      || (scheme.equals("https") && (port != 443))) {
+    if ((scheme.equals("http") && (port != WEB_PORT))
+      || (scheme.equals("https") && (port != SECURE_WEB_PORT))) {
       url.append(':');
       url.append(port);
     }
@@ -108,14 +111,14 @@ public final class RequestUtil {
    */
   public static void setCookie(final HttpServletResponse response,
     final String name, final String value, final String path) {
-    if (log.isDebugEnabled()) {
-      log.debug("Setting cookie '" + name + "' on path '" + path + "'");
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("Setting cookie '" + name + "' on path '" + path + "'");
     }
 
     final Cookie cookie = new Cookie(name, value);
     cookie.setSecure(false);
     cookie.setPath(path);
-    cookie.setMaxAge(3600 * 24 * 30); // 30 days
+    cookie.setMaxAge(EXPIRY); // 30 days
 
     response.addCookie(cookie);
   }
