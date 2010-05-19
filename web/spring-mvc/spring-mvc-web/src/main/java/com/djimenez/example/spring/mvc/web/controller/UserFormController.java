@@ -50,7 +50,7 @@ public class UserFormController extends BaseFormController {
 
       // if user logged in with remember me, display a warning that they can't
       // change passwords
-      log.debug("checking for remember me login...");
+      LOG.debug("checking for remember me login...");
 
       final AuthenticationTrustResolver resolver =
         new AuthenticationTrustResolverImpl();
@@ -119,7 +119,7 @@ public class UserFormController extends BaseFormController {
   public final ModelAndView onSubmit(final HttpServletRequest request,
     final HttpServletResponse response, final Object command,
     final BindException errors) throws Exception {
-    log.debug("entering 'onSubmit' method...");
+    LOG.debug("entering 'onSubmit' method...");
 
     final User user = (User) command;
     final Locale locale = request.getLocale();
@@ -153,7 +153,7 @@ public class UserFormController extends BaseFormController {
       catch (final AccessDeniedException ade) {
         // thrown by UserSecurityAdvice configured in aop:advisor
         // userManagerSecurity
-        log.warn(ade.getMessage());
+        LOG.warn(ade.getMessage());
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
         return null;
       }
@@ -181,7 +181,7 @@ public class UserFormController extends BaseFormController {
             getText("user.added", user.getFullName(), locale));
 
           // Send an account information e-mail
-          message.setSubject(getText("signup.email.subject", locale));
+          getMessage().setSubject(getText("signup.email.subject", locale));
 
           try {
             sendUserMessage(user, getText("newuser.email.message", user
@@ -234,7 +234,7 @@ public class UserFormController extends BaseFormController {
       && !isFormSubmission(request)) {
       if (isAdd(request) || (request.getParameter("id") != null)) {
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
-        log.warn("User '" + request.getRemoteUser()
+        LOG.warn("User '" + request.getRemoteUser()
           + "' is trying to edit user with id '" + request.getParameter("id")
           + "'");
 

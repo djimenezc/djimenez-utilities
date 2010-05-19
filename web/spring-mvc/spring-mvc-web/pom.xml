@@ -138,57 +138,100 @@
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
 				<artifactId>cargo-maven2-plugin</artifactId>
+				<!--				<configuration>-->
+				<!--					<wait>true</wait>-->
+				<!--					<container>-->
+				<!--						<containerId>${containerId}</containerId>-->
+				<!--						<type>installed</type>-->
+				<!--						<home>${server.home}</home>-->
+				<!--					</container>-->
+				<!--					<configuration>-->
+				<!--						<type>existing</type>-->
+				<!--						<home>${server.home}</home>-->
+				<!--						<properties>-->
+				<!--							<context>prueba</context>-->
+				<!--
+					<cargo.tomcat.manager.url>${tomcat.manager.url}</cargo.tomcat.manager.url>
+				-->
+				<!--
+					<cargo.remote.username>${server.user}</cargo.remote.username>
+				-->
+				<!--
+					<cargo.remote.password>${server.password}</cargo.remote.password>
+				-->
+				<!--						</properties>-->
+				<!--					</configuration>-->
+				<!--					<deployer>-->
+				<!--						<type>installed</type>-->
+				<!--						<deployables>-->
+				<!--							<deployable>-->
+				<!--								<groupId>com.djimenez.utilities.web.spring-mvc</groupId>-->
+				<!--								<artifactId>spring-mvc-web</artifactId>-->
+				<!--								<type>war</type>-->
+				<!--								<properties>-->
+				<!--									<context>${context}</context>-->
+				<!--								</properties>-->
+				<!--								<pingURL>${server.url}/${context}</pingURL>-->
+				<!--								<pingTimeout>20000</pingTimeout>-->
+				<!--							</deployable>-->
+				<!--						</deployables>-->
+				<!--					</deployer>-->
+				<!--				</configuration>-->
+
 				<configuration>
-					<wait>true</wait>
 					<container>
-						<containerId>${containerId}</containerId>
-						<type>installed</type>
-						<home>${serverHome}</home>
+						<containerId>tomcat6x</containerId>
+						<type>remote</type>
 					</container>
+
 					<configuration>
-						<type>existing</type>
-						<home>${serverHome}</home>
+						<type>runtime</type>
+
 						<properties>
-							<context>prueba</context>
-							<cargo.tomcat.manager.url>${tomcatManagerUrl}</cargo.tomcat.manager.url>
-							<cargo.remote.username>${serverUser}</cargo.remote.username>
-							<cargo.remote.password>${serverPassword}</cargo.remote.password>
+							<cargo.remote.username>${server.user}</cargo.remote.username>
+							<cargo.remote.password>${server.password}</cargo.remote.password>
+							<cargo.hostname>${server.hostName}</cargo.hostname>
+							<cargo.servlet.port>${server.port}</cargo.servlet.port>
 						</properties>
 					</configuration>
+
 					<deployer>
-						<type>installed</type>
+						<type>remote</type>
+
 						<deployables>
 							<deployable>
 								<groupId>com.djimenez.utilities.web.spring-mvc</groupId>
+								-->
 								<artifactId>spring-mvc-web</artifactId>
 								<type>war</type>
 								<properties>
 									<context>${context}</context>
 								</properties>
-								<pingURL>${serverUrl}/${context}</pingURL>
 								<pingTimeout>20000</pingTimeout>
+								<pingURL>${server.url}</pingURL>
 							</deployable>
 						</deployables>
 					</deployer>
 				</configuration>
+
 				<executions>
-					<execution>
-						<id>start-container</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>deployer-deploy</goal>
-							<!--
-								Only local containers can be started <goal>start</goal>
-							-->
-						</goals>
-					</execution>
-					<execution>
-						<id>stop-container</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<!--							<goal>undeploy</goal>-->
-						</goals>
-					</execution>
+<!--					<execution>-->
+<!--						<id>start-container</id>-->
+<!--						<phase>pre-integration-test</phase>-->
+<!--						<goals>-->
+<!--							<goal>deployer-deploy</goal>-->
+
+							<!--								Only local containers can be started <goal>start</goal>-->
+<!---->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--					<execution>-->
+<!--						<id>stop-container</id>-->
+<!--						<phase>post-integration-test</phase>-->
+<!--						<goals>-->
+<!--							<goal>undeploy</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
 
 					<execution>
 						<id>verify-deploy</id>
@@ -199,13 +242,14 @@
 					</execution>
 					<execution>
 						<id>clean-undeploy</id>
-						<phase>pre-clean</phase>
+						<phase>pre-integration-test</phase>
 						<goals>
-							<!--							<goal>undeploy</goal>-->
+							<goal>undeploy</goal>
 						</goals>
 					</execution>
 
 				</executions>
+
 			</plugin>
 
 			<plugin>
@@ -276,11 +320,13 @@
 
 	<properties>
 		<containerId>tomcat6x</containerId>
-		<serverHome>/usr/share/tomcat6.0/</serverHome>
-		<serverUser>hudson</serverUser>
-		<serverPassword>g0w3xhuds0n</serverPassword>
-		<serverUrl>http://localhost:10001</serverUrl>
-		<tomcatManagerUrl>${serverUrl}/manager</tomcatManagerUrl>
+		<server.home>/usr/share/tomcat6.0/</server.home>
+		<server.user>hudson</server.user>
+		<server.password>g0w3xhuds0n</server.password>
+		<server.port>10001</server.port>
+		<server.hostName>localhost</server.hostName>
+		<server.url>http://${server.hostName}:${server.port}/${context}</server.url>
+		<tomcat.manager.url>${server.url}/manager</tomcat.manager.url>
 		<webContext>mywebapp</webContext>
 	</properties>
 

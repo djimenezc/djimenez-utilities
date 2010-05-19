@@ -2,7 +2,6 @@ package com.djimenez.example.spring.mvc.web.spring;
 
 import java.util.List;
 
-import org.springframework.beans.BeansException;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -47,15 +46,16 @@ public class ValidatorExtensionPostProcessor implements
   BeanFactoryPostProcessor {
 
   private String validatorFactoryBeanName = "validatorFactory";
-  private List validationConfigLocations;
+  private List<?> validationConfigLocations;
 
   /**
    * Adds the validation configuration files to the list already held in the
    * validator factory bean configuration.
    */
-  public void postProcessBeanFactory(
-    final ConfigurableListableBeanFactory configurableListableBeanFactory)
-    throws BeansException {
+  @SuppressWarnings("unchecked")
+  public final void postProcessBeanFactory(
+    final ConfigurableListableBeanFactory configurableListableBeanFactory) {
+
     if (configurableListableBeanFactory.containsBean(validatorFactoryBeanName)) {
       final BeanDefinition validatorFactoryBeanDefinition =
         configurableListableBeanFactory
@@ -67,7 +67,8 @@ public class ValidatorExtensionPostProcessor implements
 
       // value is expected to be a list.
       final List existingValidationConfigLocations =
-        (List) propertyValue.getValue();
+        (List<?>) propertyValue.getValue();
+
       existingValidationConfigLocations.addAll(validationConfigLocations);
     }
   }
@@ -79,7 +80,8 @@ public class ValidatorExtensionPostProcessor implements
    * @param validationConfigLocations
    *          The list of additional validation configuration locations.
    */
-  public void setValidationConfigLocations(final List validationConfigLocations) {
+  public final void setValidationConfigLocations(
+    final List<?> validationConfigLocations) {
     this.validationConfigLocations = validationConfigLocations;
   }
 
@@ -90,7 +92,8 @@ public class ValidatorExtensionPostProcessor implements
    * @param validatorFactoryBeanName
    *          The validator factory bean name.
    */
-  public void setValidatorFactoryBeanName(final String validatorFactoryBeanName) {
+  public final void setValidatorFactoryBeanName(
+    final String validatorFactoryBeanName) {
     this.validatorFactoryBeanName = validatorFactoryBeanName;
   }
 }

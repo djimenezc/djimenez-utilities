@@ -41,15 +41,25 @@ import com.djimenez.example.spring.mvc.service.user.UserManager;
  */
 public abstract class BaseFormController extends SimpleFormController {
 
-  protected final transient Log log = LogFactory.getLog(getClass());
+  protected static final transient Log LOG =
+    LogFactory.getLog(BaseFormController.class);
+
   public static final String MESSAGES_KEY = "successMessages";
   private UserManager userManager = null;
-  protected MailEngine mailEngine = null;
-  protected SimpleMailMessage message = null;
-  protected String templateName = null;
-  protected String cancelView;
+  private MailEngine mailEngine = null;
+  private SimpleMailMessage message = null;
+  
+  /**
+   * @return the message
+   */
+  public SimpleMailMessage getMessage() {
+    return message;
+  }
 
-  public String getCancelView() {
+  private String templateName = null;
+  private String cancelView;
+
+  public final String getCancelView() {
     // Default to successView if cancelView is invalid
     if ((this.cancelView == null) || (this.cancelView.length() == 0)) {
       return getSuccessView();
@@ -63,9 +73,11 @@ public abstract class BaseFormController extends SimpleFormController {
    * 
    * @return the user's populated form from the session
    */
-  public Map getConfiguration() {
-    final Map config =
-      (HashMap) getServletContext().getAttribute(Constants.CONFIG);
+  @SuppressWarnings("unchecked")
+  public final Map<?, ?> getConfiguration() {
+
+    final Map<?, ?> config =
+      (HashMap<?, ?>) getServletContext().getAttribute(Constants.CONFIG);
 
     // so unit tests don't puke when nothing's been set
     if (config == null) {
@@ -113,12 +125,12 @@ public abstract class BaseFormController extends SimpleFormController {
    *          the current locale
    * @return
    */
-  public String getText(final String msgKey, final String arg,
+  public final String getText(final String msgKey, final String arg,
     final Locale locale) {
     return getText(msgKey, new Object[] { arg }, locale);
   }
 
-  public UserManager getUserManager() {
+  public final UserManager getUserManager() {
     return this.userManager;
   }
 
@@ -126,7 +138,7 @@ public abstract class BaseFormController extends SimpleFormController {
    * Set up a custom property editor for converting form inputs to real objects
    */
   @Override
-  protected void initBinder(final HttpServletRequest request,
+  protected final void initBinder(final HttpServletRequest request,
     final ServletRequestDataBinder binder) {
     binder.registerCustomEditor(Integer.class, null, new CustomNumberEditor(
       Integer.class, null, true));
@@ -146,32 +158,46 @@ public abstract class BaseFormController extends SimpleFormController {
    * cancel button has been pressed.
    */
   @Override
-  public ModelAndView processFormSubmission(final HttpServletRequest request,
-    final HttpServletResponse response, final Object command,
-    final BindException errors) throws Exception {
+  public ModelAndView processFormSubmission(
+
+  final HttpServletRequest request, final HttpServletResponse response,
+
+  final Object command, final BindException errors) throws Exception {
+
     if (request.getParameter("cancel") != null) {
       return new ModelAndView(getCancelView());
     }
 
-    return super.processFormSubmission(request, response, command, errors);
+    @SuppressWarnings("deprecation")
+    final ModelAndView modelAndView =
+      super.processFormSubmission(request, response, command, errors);
+
+    return modelAndView;
   }
 
   @SuppressWarnings("unchecked")
   public void saveError(final HttpServletRequest request, final String error) {
-    List errors = (List) request.getSession().getAttribute("errors");
+
+    List<String> errors =
+      (List<String>) request.getSession().getAttribute("errors");
+
     if (errors == null) {
-      errors = new ArrayList();
+      errors = new ArrayList<String>();
     }
+
     errors.add(error);
     request.getSession().setAttribute("errors", errors);
   }
 
   @SuppressWarnings("unchecked")
-  public void saveMessage(final HttpServletRequest request, final String msg) {
-    List messages = (List) request.getSession().getAttribute(MESSAGES_KEY);
+  public final void saveMessage(final HttpServletRequest request,
+    final String msg) {
+
+    List<String> messages =
+      (List<String>) request.getSession().getAttribute(MESSAGES_KEY);
 
     if (messages == null) {
-      messages = new ArrayList();
+      messages = new ArrayList<String>();
     }
 
     messages.add(msg);
@@ -185,10 +211,10 @@ public abstract class BaseFormController extends SimpleFormController {
    * @param msg
    * @param url
    */
-  protected void sendUserMessage(final User user, final String msg,
+  protected final void sendUserMessage(final User user, final String msg,
     final String url) {
-    if (log.isDebugEnabled()) {
-      log.debug("sending e-mail to user [" + user.getEmail() + "]...");
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("sending e-mail to user [" + user.getEmail() + "]...");
     }
 
     message.setTo(user.getFullName() + "<" + user.getEmail() + ">");
@@ -208,23 +234,23 @@ public abstract class BaseFormController extends SimpleFormController {
   /**
    * Indicates what view to use when the cancel button has been pressed.
    */
-  public void setCancelView(final String cancelView) {
+  public final void setCancelView(final String cancelView) {
     this.cancelView = cancelView;
   }
 
-  public void setMailEngine(final MailEngine mailEngine) {
+  public final void setMailEngine(final MailEngine mailEngine) {
     this.mailEngine = mailEngine;
   }
 
-  public void setMessage(final SimpleMailMessage message) {
+  public final void setMessage(final SimpleMailMessage message) {
     this.message = message;
   }
 
-  public void setTemplateName(final String templateName) {
+  public final void setTemplateName(final String templateName) {
     this.templateName = templateName;
   }
 
-  public void setUserManager(final UserManager userManager) {
+  public final void setUserManager(final UserManager userManager) {
     this.userManager = userManager;
   }
 
