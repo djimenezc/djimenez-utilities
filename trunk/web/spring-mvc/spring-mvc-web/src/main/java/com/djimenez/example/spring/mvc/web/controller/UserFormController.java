@@ -22,12 +22,11 @@ import com.djimenez.example.spring.mvc.model.Role;
 import com.djimenez.example.spring.mvc.model.User;
 import com.djimenez.example.spring.mvc.service.role.RoleManager;
 import com.djimenez.example.spring.mvc.service.user.UserExistsException;
-import com.djimenez.example.spring.mvc.service.user.UserManager;
 import com.djimenez.example.spring.mvc.web.util.RequestUtil;
 
 /**
  * Implementation of <strong>SimpleFormController</strong> that interacts with
- * the {@link UserManager} to retrieve/persist values to the database.
+ * the UserManager to retrieve/persist values to the database.
  * <p>
  * <a href="UserFormController.java.html"><i>View Source</i></a>
  * 
