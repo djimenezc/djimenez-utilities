@@ -104,6 +104,7 @@ privileged aspect PizzaOrderIntegrationTest_Roo_IntegrationTest {
         com.springsource.roo.pizzashop.domain.PizzaOrder obj = com.springsource.roo.pizzashop.domain.PizzaOrder.findPizzaOrder(id);
         org.junit.Assert.assertNotNull("Find method for 'PizzaOrder' illegally returned null for id '" + id + "'", obj);
         obj.remove();
+        obj.flush();
         org.junit.Assert.assertNull("Failed to remove 'PizzaOrder' with identifier '" + id + "'", com.springsource.roo.pizzashop.domain.PizzaOrder.findPizzaOrder(id));
     }
     

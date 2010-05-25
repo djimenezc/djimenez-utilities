@@ -1,4 +1,5 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');</script>
     <div id="_title_div">
@@ -56,4 +57,12 @@
             </div>
         </form:form>
     </div>
+<form:create id="fc:com.springsource.roo.pizzashop.domain.Pizza" modelAttribute="pizza" path="/pizza" render="${empty dependencies}" z="McGDOcYc76sJkvF3T20YGiguhgc=">
+        <field:input field="name" id="c:com.springsource.roo.pizzashop.domain.Pizza.name" min="2" required="true" z="ZPaCsOWG8PPVJBi9vd7YHMJegv0="/>
+        <field:input field="price" id="c:com.springsource.roo.pizzashop.domain.Pizza.price" validationMessageCode="field.invalid.number" z="PkVkbtWV1DvUlHsCwoqK8gUbjyk="/>
+        <field:select field="toppings" id="c:com.springsource.roo.pizzashop.domain.Pizza.toppings" itemValue="id" items="${toppings}" multiple="true" path="/toppings" z="HKLI66mBGxUgya4BgB151IhA9w0="/>
+        <field:select field="base" id="c:com.springsource.roo.pizzashop.domain.Pizza.base" itemValue="id" items="${bases}" path="/bases" z="3A98hHD4HYbpwI/7rTN9ekhELqA="/>
+    </form:create>
+    <form:page id="fs:com.springsource.roo.pizzashop.domain.Pizza" render="${not empty dependencies}" title="Pizza" z="ukMBKZwMPlnyWzZ6dXKcmATejRA="/>
+    <field:reference field="${dependency[0]}" id="s:com.springsource.roo.pizzashop.domain.Pizza.${dependency[0]}" path="/${dependency[1]}" z="VGwzkSG15Meg/9sB3gfabuIO38U="/>
 </div>

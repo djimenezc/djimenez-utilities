@@ -1,4 +1,5 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
     <div id="_title_div">
@@ -26,4 +27,9 @@
             </div>
         </form:form>
     </div>
+<form:create id="fc:com.springsource.roo.pizzashop.domain.Topping" modelAttribute="topping" path="/topping" render="${empty dependencies}" z="/isCBZcb2fUP+AcmfJgYY8Fadyg=">
+        <field:input field="name" id="c:com.springsource.roo.pizzashop.domain.Topping.name" min="2" required="true" z="r+dhnM52VVH+XTlzgL8IfNmhN4I="/>
+    </form:create>
+    <form:page id="fs:com.springsource.roo.pizzashop.domain.Topping" render="${not empty dependencies}" title="Topping" z="JktngcauRvX1wyRjAjVyWTcoZk0="/>
+    <field:reference field="${dependency[0]}" id="s:com.springsource.roo.pizzashop.domain.Topping.${dependency[0]}" path="/${dependency[1]}" z="Cy7pYtHyHtXy19D6cK/+TaA9+HA="/>
 </div>

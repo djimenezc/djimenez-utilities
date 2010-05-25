@@ -1,7 +1,6 @@
 package com.springsource.roo.pizzashop.domain;
 
 import com.springsource.roo.pizzashop.domain.Base;
-import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,7 @@ privileged aspect BaseDataOnDemand_Roo_DataOnDemand {
     
     declare @type: BaseDataOnDemand: @Component;
     
-    private Random BaseDataOnDemand.rnd = new SecureRandom();
+    private Random BaseDataOnDemand.rnd = new java.security.SecureRandom();
     
     private List<Base> BaseDataOnDemand.data;
     

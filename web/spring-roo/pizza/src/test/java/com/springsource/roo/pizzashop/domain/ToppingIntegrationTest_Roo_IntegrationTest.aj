@@ -104,6 +104,7 @@ privileged aspect ToppingIntegrationTest_Roo_IntegrationTest {
         com.springsource.roo.pizzashop.domain.Topping obj = com.springsource.roo.pizzashop.domain.Topping.findTopping(id);
         org.junit.Assert.assertNotNull("Find method for 'Topping' illegally returned null for id '" + id + "'", obj);
         obj.remove();
+        obj.flush();
         org.junit.Assert.assertNull("Failed to remove 'Topping' with identifier '" + id + "'", com.springsource.roo.pizzashop.domain.Topping.findTopping(id));
     }
     

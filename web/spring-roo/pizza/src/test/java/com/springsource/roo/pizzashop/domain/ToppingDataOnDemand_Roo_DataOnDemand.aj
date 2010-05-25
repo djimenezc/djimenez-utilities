@@ -1,7 +1,6 @@
 package com.springsource.roo.pizzashop.domain;
 
 import com.springsource.roo.pizzashop.domain.Topping;
-import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,7 @@ privileged aspect ToppingDataOnDemand_Roo_DataOnDemand {
     
     declare @type: ToppingDataOnDemand: @Component;
     
-    private Random ToppingDataOnDemand.rnd = new SecureRandom();
+    private Random ToppingDataOnDemand.rnd = new java.security.SecureRandom();
     
     private List<Topping> ToppingDataOnDemand.data;
     

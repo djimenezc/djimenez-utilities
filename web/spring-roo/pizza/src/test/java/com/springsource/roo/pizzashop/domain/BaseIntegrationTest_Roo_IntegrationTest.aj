@@ -104,6 +104,7 @@ privileged aspect BaseIntegrationTest_Roo_IntegrationTest {
         com.springsource.roo.pizzashop.domain.Base obj = com.springsource.roo.pizzashop.domain.Base.findBase(id);
         org.junit.Assert.assertNotNull("Find method for 'Base' illegally returned null for id '" + id + "'", obj);
         obj.remove();
+        obj.flush();
         org.junit.Assert.assertNull("Failed to remove 'Base' with identifier '" + id + "'", com.springsource.roo.pizzashop.domain.Base.findBase(id));
     }
     

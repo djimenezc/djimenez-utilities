@@ -3,6 +3,7 @@ package com.springsource.roo.pizzashop.domain;
 import com.springsource.roo.pizzashop.domain.Base;
 import java.lang.Integer;
 import java.lang.Long;
+import java.lang.SuppressWarnings;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
@@ -55,7 +56,7 @@ privileged aspect Base_Roo_Entity {
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            Base attached = this.entityManager.find(Base.class, this.id);
+            Base attached = this.entityManager.find(this.getClass(), this.id);
             this.entityManager.remove(attached);
         }
     }
@@ -67,11 +68,11 @@ privileged aspect Base_Roo_Entity {
     }
     
     @Transactional
-    public void Base.merge() {
+    public Base Base.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Base merged = this.entityManager.merge(this);
         this.entityManager.flush();
-        this.id = merged.getId();
+        return merged;
     }
     
     public static final EntityManager Base.entityManager() {
@@ -81,9 +82,10 @@ privileged aspect Base_Roo_Entity {
     }
     
     public static long Base.countBases() {
-        return (Long) entityManager().createQuery("select count(o) from Base o").getSingleResult();
+        return ((Number) entityManager().createQuery("select count(o) from Base o").getSingleResult()).longValue();
     }
     
+    @SuppressWarnings("unchecked")
     public static List<Base> Base.findAllBases() {
         return entityManager().createQuery("select o from Base o").getResultList();
     }
@@ -93,6 +95,7 @@ privileged aspect Base_Roo_Entity {
         return entityManager().find(Base.class, id);
     }
     
+    @SuppressWarnings("unchecked")
     public static List<Base> Base.findBaseEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("select o from Base o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }

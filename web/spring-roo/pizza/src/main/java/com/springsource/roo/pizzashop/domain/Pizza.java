@@ -18,7 +18,7 @@ import javax.persistence.JoinColumn;
 @Entity
 @RooJavaBean
 @RooToString
-@RooEntity
+@RooEntity(finders = { "findPizzasByBase" })
 public class Pizza {
 
     @NotNull

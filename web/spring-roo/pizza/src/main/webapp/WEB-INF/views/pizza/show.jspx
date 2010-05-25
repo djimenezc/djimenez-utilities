@@ -1,4 +1,5 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
     <div id="_title_div">
@@ -39,4 +40,10 @@
             <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
         </c:if>
     </div>
+<page:show id="ps:com.springsource.roo.pizzashop.domain.Pizza" object="${pizza}" z="icUx4sIj1VVB1bRr5Mky9JfaQTQ=">
+        <field:display field="name" id="s:com.springsource.roo.pizzashop.domain.Pizza.name" object="${pizza}" z="vJHmqIX6En1GgulDYZuPyv0gstY="/>
+        <field:display field="price" id="s:com.springsource.roo.pizzashop.domain.Pizza.price" object="${pizza}" z="UTKWfkV63fM9X1ZvqLC5xAICDH0="/>
+        <field:display field="toppings" id="s:com.springsource.roo.pizzashop.domain.Pizza.toppings" object="${pizza}" z="2107eTrl4AqPel5CWz7LdHLmQFI="/>
+        <field:display field="base" id="s:com.springsource.roo.pizzashop.domain.Pizza.base" object="${pizza}" z="HKZZuOLc300h5l/BcucK62RhVBU="/>
+    </page:show>
 </div>

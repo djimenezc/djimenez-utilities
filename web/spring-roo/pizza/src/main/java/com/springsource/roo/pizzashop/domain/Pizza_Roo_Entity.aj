@@ -3,6 +3,7 @@ package com.springsource.roo.pizzashop.domain;
 import com.springsource.roo.pizzashop.domain.Pizza;
 import java.lang.Integer;
 import java.lang.Long;
+import java.lang.SuppressWarnings;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
@@ -55,7 +56,7 @@ privileged aspect Pizza_Roo_Entity {
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            Pizza attached = this.entityManager.find(Pizza.class, this.id);
+            Pizza attached = this.entityManager.find(this.getClass(), this.id);
             this.entityManager.remove(attached);
         }
     }
@@ -67,11 +68,11 @@ privileged aspect Pizza_Roo_Entity {
     }
     
     @Transactional
-    public void Pizza.merge() {
+    public Pizza Pizza.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Pizza merged = this.entityManager.merge(this);
         this.entityManager.flush();
-        this.id = merged.getId();
+        return merged;
     }
     
     public static final EntityManager Pizza.entityManager() {
@@ -81,9 +82,10 @@ privileged aspect Pizza_Roo_Entity {
     }
     
     public static long Pizza.countPizzas() {
-        return (Long) entityManager().createQuery("select count(o) from Pizza o").getSingleResult();
+        return ((Number) entityManager().createQuery("select count(o) from Pizza o").getSingleResult()).longValue();
     }
     
+    @SuppressWarnings("unchecked")
     public static List<Pizza> Pizza.findAllPizzas() {
         return entityManager().createQuery("select o from Pizza o").getResultList();
     }
@@ -93,6 +95,7 @@ privileged aspect Pizza_Roo_Entity {
         return entityManager().find(Pizza.class, id);
     }
     
+    @SuppressWarnings("unchecked")
     public static List<Pizza> Pizza.findPizzaEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("select o from Pizza o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }

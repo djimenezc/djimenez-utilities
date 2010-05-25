@@ -1,4 +1,5 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
     <div id="_title_div">
@@ -28,4 +29,7 @@
             <form:hidden id="_version_id" path="version"/>
         </form:form>
     </div>
+<form:update id="fu:com.springsource.roo.pizzashop.domain.Topping" modelAttribute="topping" path="/topping" z="67/0vcB49CedzpYezzT1TIZ468U=">
+        <field:input field="name" id="c:com.springsource.roo.pizzashop.domain.Topping.name" min="2" required="true" z="r+dhnM52VVH+XTlzgL8IfNmhN4I="/>
+    </form:update>
 </div>

@@ -3,6 +3,7 @@ package com.springsource.roo.pizzashop.domain;
 import com.springsource.roo.pizzashop.domain.Topping;
 import java.lang.Integer;
 import java.lang.Long;
+import java.lang.SuppressWarnings;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
@@ -55,7 +56,7 @@ privileged aspect Topping_Roo_Entity {
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            Topping attached = this.entityManager.find(Topping.class, this.id);
+            Topping attached = this.entityManager.find(this.getClass(), this.id);
             this.entityManager.remove(attached);
         }
     }
@@ -67,11 +68,11 @@ privileged aspect Topping_Roo_Entity {
     }
     
     @Transactional
-    public void Topping.merge() {
+    public Topping Topping.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Topping merged = this.entityManager.merge(this);
         this.entityManager.flush();
-        this.id = merged.getId();
+        return merged;
     }
     
     public static final EntityManager Topping.entityManager() {
@@ -81,9 +82,10 @@ privileged aspect Topping_Roo_Entity {
     }
     
     public static long Topping.countToppings() {
-        return (Long) entityManager().createQuery("select count(o) from Topping o").getSingleResult();
+        return ((Number) entityManager().createQuery("select count(o) from Topping o").getSingleResult()).longValue();
     }
     
+    @SuppressWarnings("unchecked")
     public static List<Topping> Topping.findAllToppings() {
         return entityManager().createQuery("select o from Topping o").getResultList();
     }
@@ -93,6 +95,7 @@ privileged aspect Topping_Roo_Entity {
         return entityManager().find(Topping.class, id);
     }
     
+    @SuppressWarnings("unchecked")
     public static List<Topping> Topping.findToppingEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("select o from Topping o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
