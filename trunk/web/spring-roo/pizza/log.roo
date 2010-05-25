@@ -22,3 +22,42 @@ security setup
 // Spring Roo 1.0.2.RELEASE [rev 638] log opened at 2010-05-19 17:18:54
 hint
 finder list --class com.springsource.roo.pizzashop.domain.Pizza
+system properties
+dod 
+dod 
+exit
+// Spring Roo 1.0.2.RELEASE [rev 638] log closed at 2010-05-19 17:52:25
+// Spring Roo 1.0.2.RELEASE [rev 638] log opened at 2010-05-19 17:52:29
+dod --entity com.springsource.roo.pizzashop.domain.Base
+dod 
+// Spring Roo 1.0.2.RELEASE [rev 638] log opened at 2010-05-20 10:50:07
+logging setup --level INFO --package com/springsource/roo/pizzashop
+persistence setup --provider HIBERNATE --database HYPERSONIC_PERSISTENT 
+finder list --class com.springsource.roo.pizzashop.domain.Pizza
+finder add --class com.springsource.roo.pizzashop.domain.Pizza findPizzasByBase
+dod
+;
+// [failed] */
+help
+date
+metadata status
+// [failed] metadata for id --metadataId 1
+help
+hint
+finder list --class com.springsource.roo.pizzashop.domain.Pizza
+// [failed] finder add --class com.springsource.roo.pizzashop.domain.Pizza --finderName Mirar:
+// Spring Roo 1.0.2.RELEASE [rev 638] log opened at 2010-05-20 11:24:03
+finder list --class com.springsource.roo.pizzashop.domain.Pizza
+help
+database properties list
+selenium test --controller ~.web.ToppingController
+selenium test --controller ~.web.BaseController
+selenium test --controller ~.web.PizzaController
+selenium test --controller ~.web.PizzaOrderController
+exit
+// Spring Roo 1.0.2.RELEASE [rev 638] log closed at 2010-05-20 12:52:42
+// Spring Roo 1.1.0.M1 [rev 3a0b8a3] log opened at 2010-05-20 12:52:59
+system properties
+// Spring Roo 1.1.0.M1 [rev 3a0b8a3] log opened at 2010-05-20 13:18:29
+// Spring Roo 1.1.0.M1 [rev 3a0b8a3] log opened at 2010-05-20 13:27:29
+hint

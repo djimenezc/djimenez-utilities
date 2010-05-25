@@ -1,4 +1,5 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.DateTextBox');</script>
     <div id="_title_div">
@@ -71,4 +72,11 @@
             <form:hidden id="_version_id" path="version"/>
         </form:form>
     </div>
+<form:update id="fu:com.springsource.roo.pizzashop.domain.PizzaOrder" modelAttribute="pizzaOrder" path="/pizzaorder" z="wUan+zeS9UEM3yw/YIvS6WOCA4c=">
+        <field:input field="name" id="c:com.springsource.roo.pizzashop.domain.PizzaOrder.name" min="2" required="true" z="8L5BvU07IOyToyVvG1btdfWmn5o="/>
+        <field:input field="address" id="c:com.springsource.roo.pizzashop.domain.PizzaOrder.address" max="30" z="z2XTTzM6EQfeIJfvSz6QnAKEFho="/>
+        <field:input field="total" id="c:com.springsource.roo.pizzashop.domain.PizzaOrder.total" validationMessageCode="field.invalid.number" z="cRO+lW5whPIFbpiXWw2w385XtbQ="/>
+        <field:datetime dateTimePattern="${pizzaOrder_deliverydate_date_format}" field="deliveryDate" id="c:com.springsource.roo.pizzashop.domain.PizzaOrder.deliveryDate" z="EijwDWx74bUvK3D7h/OK41/F7QQ="/>
+        <field:select field="pizzas" id="c:com.springsource.roo.pizzashop.domain.PizzaOrder.pizzas" itemValue="id" items="${pizzas}" multiple="true" path="/pizzas" z="WIeNZKw/WlVsrFIj9h9bq40uHtM="/>
+    </form:update>
 </div>

@@ -3,6 +3,7 @@ package com.springsource.roo.pizzashop.domain;
 import com.springsource.roo.pizzashop.domain.PizzaOrder;
 import java.lang.Integer;
 import java.lang.Long;
+import java.lang.SuppressWarnings;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
@@ -55,7 +56,7 @@ privileged aspect PizzaOrder_Roo_Entity {
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            PizzaOrder attached = this.entityManager.find(PizzaOrder.class, this.id);
+            PizzaOrder attached = this.entityManager.find(this.getClass(), this.id);
             this.entityManager.remove(attached);
         }
     }
@@ -67,11 +68,11 @@ privileged aspect PizzaOrder_Roo_Entity {
     }
     
     @Transactional
-    public void PizzaOrder.merge() {
+    public PizzaOrder PizzaOrder.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         PizzaOrder merged = this.entityManager.merge(this);
         this.entityManager.flush();
-        this.id = merged.getId();
+        return merged;
     }
     
     public static final EntityManager PizzaOrder.entityManager() {
@@ -81,9 +82,10 @@ privileged aspect PizzaOrder_Roo_Entity {
     }
     
     public static long PizzaOrder.countPizzaOrders() {
-        return (Long) entityManager().createQuery("select count(o) from PizzaOrder o").getSingleResult();
+        return ((Number) entityManager().createQuery("select count(o) from PizzaOrder o").getSingleResult()).longValue();
     }
     
+    @SuppressWarnings("unchecked")
     public static List<PizzaOrder> PizzaOrder.findAllPizzaOrders() {
         return entityManager().createQuery("select o from PizzaOrder o").getResultList();
     }
@@ -93,6 +95,7 @@ privileged aspect PizzaOrder_Roo_Entity {
         return entityManager().find(PizzaOrder.class, id);
     }
     
+    @SuppressWarnings("unchecked")
     public static List<PizzaOrder> PizzaOrder.findPizzaOrderEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("select o from PizzaOrder o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }

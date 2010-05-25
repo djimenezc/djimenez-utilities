@@ -1,7 +1,6 @@
 package com.springsource.roo.pizzashop.domain;
 
 import com.springsource.roo.pizzashop.domain.Pizza;
-import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 import org.springframework.stereotype.Component;
@@ -12,12 +11,13 @@ privileged aspect PizzaDataOnDemand_Roo_DataOnDemand {
     
     declare @type: PizzaDataOnDemand: @Component;
     
-    private Random PizzaDataOnDemand.rnd = new SecureRandom();
+    private Random PizzaDataOnDemand.rnd = new java.security.SecureRandom();
     
     private List<Pizza> PizzaDataOnDemand.data;
     
     public Pizza PizzaDataOnDemand.getNewTransientPizza(int index) {
         com.springsource.roo.pizzashop.domain.Pizza obj = new com.springsource.roo.pizzashop.domain.Pizza();
+        obj.setBase(null);
         obj.setName("name_" + index);
         obj.setPrice(new Integer(index).floatValue());
         return obj;

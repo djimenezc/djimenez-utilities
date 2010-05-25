@@ -13,4 +13,7 @@
     <definition extends="default" name="pizza/update">
         <put-attribute name="body" value="/WEB-INF/views/pizza/update.jspx"/>
     </definition>
+<definition extends="default" name="pizza/findPizzasByBase">
+        <put-attribute name="body" value="/WEB-INF/views/pizza/findPizzasByBase.jspx"/>
+    </definition>
 </tiles-definitions>

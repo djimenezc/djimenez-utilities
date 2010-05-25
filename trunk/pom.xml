@@ -28,7 +28,7 @@
 
 	<ciManagement>
 		<system>hudson</system>
-		<url>http://debian:10001/hudson/</url>
+		<url>http://hudson:8081/hudson/</url>
 	</ciManagement>
 
 	<modules>
