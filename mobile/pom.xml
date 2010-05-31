@@ -14,16 +14,14 @@
 		
     </description>
 	
-	<modules>
-		<module>fiestasBurgos</module>
+	<modules></modules>
 
-	</modules>
-	
 	<dependencyManagement>
 		<dependencies>
-			
-		
+
+
 		</dependencies>
 	</dependencyManagement>
 
 </project>
+
