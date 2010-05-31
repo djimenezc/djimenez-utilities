@@ -39,6 +39,7 @@
 		<module>components</module>
 		<module>web</module>
 		<module>plugins</module>
+		<module>mobile</module>
 	</modules>
 
 	<dependencyManagement>
