@@ -3,6 +3,7 @@ package com.gowex.test;
 import com.gowex.test.Timer;
 import java.lang.Integer;
 import java.lang.Long;
+import java.lang.SuppressWarnings;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
@@ -55,7 +56,7 @@ privileged aspect Timer_Roo_Entity {
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            Timer attached = this.entityManager.find(Timer.class, this.id);
+            Timer attached = this.entityManager.find(this.getClass(), this.id);
             this.entityManager.remove(attached);
         }
     }
@@ -67,11 +68,11 @@ privileged aspect Timer_Roo_Entity {
     }
     
     @Transactional
-    public void Timer.merge() {
+    public Timer Timer.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Timer merged = this.entityManager.merge(this);
         this.entityManager.flush();
-        this.id = merged.getId();
+        return merged;
     }
     
     public static final EntityManager Timer.entityManager() {
@@ -81,9 +82,10 @@ privileged aspect Timer_Roo_Entity {
     }
     
     public static long Timer.countTimers() {
-        return (Long) entityManager().createQuery("select count(o) from Timer o").getSingleResult();
+        return ((Number) entityManager().createQuery("select count(o) from Timer o").getSingleResult()).longValue();
     }
     
+    @SuppressWarnings("unchecked")
     public static List<Timer> Timer.findAllTimers() {
         return entityManager().createQuery("select o from Timer o").getResultList();
     }
@@ -93,6 +95,7 @@ privileged aspect Timer_Roo_Entity {
         return entityManager().find(Timer.class, id);
     }
     
+    @SuppressWarnings("unchecked")
     public static List<Timer> Timer.findTimerEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("select o from Timer o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }

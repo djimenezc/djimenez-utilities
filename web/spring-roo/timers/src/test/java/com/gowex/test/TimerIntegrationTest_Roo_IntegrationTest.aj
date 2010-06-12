@@ -104,6 +104,7 @@ privileged aspect TimerIntegrationTest_Roo_IntegrationTest {
         com.gowex.test.Timer obj = com.gowex.test.Timer.findTimer(id);
         org.junit.Assert.assertNotNull("Find method for 'Timer' illegally returned null for id '" + id + "'", obj);
         obj.remove();
+        obj.flush();
         org.junit.Assert.assertNull("Failed to remove 'Timer' with identifier '" + id + "'", com.gowex.test.Timer.findTimer(id));
     }
     

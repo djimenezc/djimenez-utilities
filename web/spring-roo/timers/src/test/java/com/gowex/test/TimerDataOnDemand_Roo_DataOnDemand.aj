@@ -1,7 +1,6 @@
 package com.gowex.test;
 
 import com.gowex.test.Timer;
-import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,7 @@ privileged aspect TimerDataOnDemand_Roo_DataOnDemand {
     
     declare @type: TimerDataOnDemand: @Component;
     
-    private Random TimerDataOnDemand.rnd = new SecureRandom();
+    private Random TimerDataOnDemand.rnd = new java.security.SecureRandom();
     
     private List<Timer> TimerDataOnDemand.data;
     
