@@ -1,14 +1,20 @@
 package com.gowex.http;
 
-import org.apache.http.client.HttpClient;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.NameValuePair;
 
-import com.gowex.patterns.command.Command;
+import com.gowex.http.util.HttpUtil;
+import com.gowex.sms.sent.example.command.HttpCommand;
 
-public abstract class AbstractHttpCommand implements Command {
+public abstract class AbstractHttpCommand implements HttpCommand {
 
   private HttpClient httpClient;
 
   private HttpUtil httpUtil;
+
+  protected String response;
+
+  protected NameValuePair[] parametersList;
 
   /**
    * @return the httpClient
@@ -22,6 +28,14 @@ public abstract class AbstractHttpCommand implements Command {
    */
   public final HttpUtil getHttpUtilities() {
     return httpUtil;
+  }
+
+  /**
+   * @return the response
+   */
+  @Override
+  public String getResponse() {
+    return response;
   }
 
   /**
@@ -40,4 +54,9 @@ public abstract class AbstractHttpCommand implements Command {
     this.httpUtil = httpUtil;
   }
 
+  @Override
+  public void setParameters(final NameValuePair[] parametersList) {
+
+    this.parametersList = parametersList;
+  }
 }

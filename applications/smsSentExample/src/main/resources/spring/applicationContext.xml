@@ -3,10 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="loginCommand" class="com.djimenez.tuenti.LoginCommand"></bean>
+	<bean id="httpCommand" class="com.gowex.sms.sent.example.command.SentRequestCommand">
+		<property name="httpClient" ref="httpClient"></property>
+		<property name="httpUtilities" ref="httpUtilities"></property>
+	</bean>
 	
 	<bean id="httpClient" class="org.apache.commons.httpclient.HttpClient"></bean>
 	
-	<bean id="httpUtilities" class="com.djimenez.tuenti.HttpUtilities"></bean>
+	<bean id="httpUtilities" class="com.gowex.http.util.HttpUtil"></bean>
 	
 </beans>

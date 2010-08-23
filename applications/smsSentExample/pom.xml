@@ -91,7 +91,7 @@
 
 		<resources>
 			<resource>
-				<directory>src/main/resources/common</directory>
+				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 				<excludes>
 					<exclude>messages*.properties</exclude>
@@ -99,7 +99,7 @@
 				</excludes>
 			</resource>
 			<resource>
-				<directory>src/main/resources/common</directory>
+				<directory>src/main/resources</directory>
 				<filtering>false</filtering>
 				<includes>
 					<include>context/**/*</include>
@@ -108,7 +108,7 @@
 		</resources>
 		<testResources>
 			<testResource>
-				<directory>src/test/resources/common</directory>
+				<directory>src/test/resources</directory>
 				<filtering>true</filtering>
 				<excludes>
 					<exclude>messages*.properties</exclude>
