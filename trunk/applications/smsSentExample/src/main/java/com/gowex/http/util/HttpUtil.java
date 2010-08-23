@@ -1,4 +1,4 @@
-package com.gowex.http;
+package com.gowex.http.util;
 
 import java.io.IOException;
 
