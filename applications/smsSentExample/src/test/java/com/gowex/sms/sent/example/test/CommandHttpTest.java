@@ -48,7 +48,7 @@ public class CommandHttpTest {
     parametersList[2] = new NameValuePair("login", "gowex");
     parametersList[3] = new NameValuePair("passwd", "vtwibjyj");
     parametersList[4] = new NameValuePair("dest", "34615893501");
-    parametersList[5] = new NameValuePair("senderId", "David");
+    parametersList[5] = new NameValuePair("senderId", "gowex");
     parametersList[6] = new NameValuePair("msg", "Texto de prueba Gowex");
 
     return parametersList;
