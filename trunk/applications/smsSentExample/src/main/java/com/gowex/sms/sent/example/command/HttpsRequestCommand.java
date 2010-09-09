@@ -5,13 +5,13 @@ import org.apache.commons.httpclient.methods.PostMethod;
 
 import com.gowex.http.AbstractHttpCommand;
 
-public class SentRequestCommand extends AbstractHttpCommand {
+public class HttpsRequestCommand extends AbstractHttpCommand {
 
   private static final String CONTENT_TYPE =
     "application/x-www-form-urlencoded; charset=UTF-8";
   private static final String URL_SENT_SMS = "http://www.altiria.net/api/http";
 
-  public SentRequestCommand() {
+  public HttpsRequestCommand() {
 
     response = new String();
   }
