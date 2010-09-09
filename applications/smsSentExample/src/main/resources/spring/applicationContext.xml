@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="httpCommand" class="com.gowex.sms.sent.example.command.SentRequestCommand">
+	<bean id="httpCommand" class="com.gowex.sms.sent.example.command.HttpRequestCommand">
 		<property name="httpClient" ref="httpClient"></property>
 		<property name="httpUtilities" ref="httpUtilities"></property>
 	</bean>
