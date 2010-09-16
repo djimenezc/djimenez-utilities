@@ -13,7 +13,7 @@ import org.apache.commons.httpclient.cookie.CookieSpec;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 
-public class HttpUtilities {
+public class HttpUtil {
 
   /**
    * @param header
