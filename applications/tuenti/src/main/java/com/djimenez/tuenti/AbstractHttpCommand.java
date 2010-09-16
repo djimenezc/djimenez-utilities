@@ -8,7 +8,7 @@ public abstract class AbstractHttpCommand implements Command {
 
   private HttpClient httpClient;
 
-  private HttpUtilities httpUtilities;
+  private HttpUtil httpUtil;
 
   /**
    * @return the httpClient
@@ -20,8 +20,8 @@ public abstract class AbstractHttpCommand implements Command {
   /**
    * @return the httpUtilities
    */
-  public final HttpUtilities getHttpUtilities() {
-    return httpUtilities;
+  public final HttpUtil getHttpUtilities() {
+    return httpUtil;
   }
 
   /**
@@ -33,11 +33,11 @@ public abstract class AbstractHttpCommand implements Command {
   }
 
   /**
-   * @param httpUtilities
+   * @param httpUtil
    *          the httpUtilities to set
    */
-  public final void setHttpUtilities(final HttpUtilities httpUtilities) {
-    this.httpUtilities = httpUtilities;
+  public final void setHttpUtilities(final HttpUtil httpUtil) {
+    this.httpUtil = httpUtil;
   }
 
 }
