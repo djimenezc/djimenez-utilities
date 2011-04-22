@@ -33,8 +33,7 @@ import org.apache.commons.httpclient.methods.PostMethod;
 
 /**
  * <p>
- * A example that demonstrates how HttpClient APIs can be used to perform
- * form-based logon.
+ * A example that demonstrates how HttpClient APIs can be used to perform form-based logon.
  * </p>
  * 
  * @author Oleg Kalnichevski
@@ -65,8 +64,7 @@ public final class FormLoginDemo {
    * @throws IOException
    * @throws HttpException
    */
-  private static void checkHeader(final HttpClient client, final Header header)
-    throws IOException {
+  private static void checkHeader(final HttpClient client, final Header header) throws IOException {
 
     if (header != null) {
       String newuri = header.getValue();
@@ -107,8 +105,7 @@ public final class FormLoginDemo {
     // See if we got any cookies
     final CookieSpec cookiespec = CookiePolicy.getDefaultSpec();
     final Cookie[] initcookies =
-      cookiespec.match(LOGON_SITE, LOGON_PORT, "/", false, client.getState()
-        .getCookies());
+      cookiespec.match(LOGON_SITE, LOGON_PORT, "/", false, client.getState().getCookies());
     System.out.println("Initial set of cookies:");
 
     checkCookies(initcookies);
@@ -117,29 +114,26 @@ public final class FormLoginDemo {
 
     // Prepare login parameters
     final NameValuePair action = new NameValuePair("action", "do_login");
-    final NameValuePair url =
-      new NameValuePair("url", "/?m=Login&func=do_login");
-    final NameValuePair userid =
-      new NameValuePair("email", "david.jimenez19@gmail.com");
-    final NameValuePair password =
-      new NameValuePair("input_password", "linda1");
+    final NameValuePair url = new NameValuePair("url", "/?m=Login&func=do_login");
+    final NameValuePair userid = new NameValuePair("email", "david.jimenez19%40gmail.com");
+    final NameValuePair password = new NameValuePair("input_password", "linda1");
+    final NameValuePair timeZone = new NameValuePair("timezone", "1");
+    final NameValuePair timeStamp = new NameValuePair("timezone", "13034395121");
 
-    authpost
-      .setRequestBody(new NameValuePair[] { action, url, userid, password });
+    authpost.setRequestBody(new NameValuePair[] { action, url, userid, password, timeZone,
+      timeStamp });
 
     client.executeMethod(authpost);
 
-    System.out.println("Login form post: "
-      + authpost.getStatusLine().toString());
+    System.out.println("Login form post: " + authpost.getStatusLine().toString());
     // release any connection resources used by the method
     authpost.releaseConnection();
     // See if we got any cookies
     // The only way of telling whether logon succeeded is
     // by finding a session cookie
     final Cookie[] logoncookies =
-      cookiespec.match(LOGON_SITE, LOGON_PORT, "/", false, client.getState()
-        .getCookies());
-    System.out.println("Logon cookies:");
+      cookiespec.match(LOGON_SITE, LOGON_PORT, "/", false, client.getState().getCookies());
+    System.out.println("Logon cookies:" + logoncookies);
 
     checkCookies(logoncookies);
 
@@ -152,14 +146,13 @@ public final class FormLoginDemo {
    * @throws IOException
    * @throws HttpException
    */
-  private static void manageRequest(final HttpClient client,
-    final PostMethod authpost) throws IOException {
+  private static void manageRequest(final HttpClient client, final PostMethod authpost)
+    throws IOException {
     // Usually a successful form-based login results in a redicrect to
     // another url
     final int statuscode = authpost.getStatusCode();
     if ((statuscode == HttpStatus.SC_MOVED_TEMPORARILY)
-      || (statuscode == HttpStatus.SC_MOVED_PERMANENTLY)
-      || (statuscode == HttpStatus.SC_SEE_OTHER)
+      || (statuscode == HttpStatus.SC_MOVED_PERMANENTLY) || (statuscode == HttpStatus.SC_SEE_OTHER)
       || (statuscode == HttpStatus.SC_TEMPORARY_REDIRECT)) {
 
       final Header header = authpost.getResponseHeader("location");

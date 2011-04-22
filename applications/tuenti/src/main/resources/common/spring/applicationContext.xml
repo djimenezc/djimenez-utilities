@@ -7,6 +7,6 @@
 	
 	<bean id="httpClient" class="org.apache.commons.httpclient.HttpClient"></bean>
 	
-	<bean id="httpUtilities" class="com.djimenez.tuenti.HttpUtilities"></bean>
+	<bean id="httpUtilities" class="com.djimenez.tuenti.HttpUtil"></bean>
 	
 </beans>
