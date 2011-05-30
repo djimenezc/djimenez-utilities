@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+	<Displayers>
+		<Displayer name="TabbedMenu"
+			type="net.sf.navigator.displayer.TabbedMenuDisplayer" />
+		<Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
+	</Displayers>
+	<Menus>
+		<Menu name="indexMenu" title="menu.label.inicio" page="index.do"></Menu>
+		<Menu name="signupMenu" title="menu.label.altas" page="signupForm.do"></Menu>
+		<Menu name="rechargeMenu" title="menu.label.recargas" page="startRecharge.do"></Menu>
+		<Menu name="hireMenu" title="menu.label.contratar" page="startHire.do"></Menu>
+		<Menu name="historicMenu" title="menu.label.historico" page="historicSales.do"></Menu>
+	</Menus>
+</MenuConfig>
