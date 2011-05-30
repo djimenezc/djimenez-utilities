@@ -18,5 +18,6 @@
   	<module>systemPayment</module>	
     <module>castor</module>
     <module>tuenti</module>
+    <module>jcommander</module>
   </modules>
 </project>
