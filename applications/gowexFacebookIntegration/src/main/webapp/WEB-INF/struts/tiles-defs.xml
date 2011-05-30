@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	<definition name="app.layout" path="/jsp/layout/layout.jsp">
+		<put name="header" value="/jsp/layout/header.jsp" />
+		<put name="footer" value="/jsp/layout/footer.jsp" />
+	</definition>
+	
+	<definition name="app.clean" path="/jsp/layout/layoutClean.jsp">
+	</definition>
+
+	<definition name="app.index" extends="app.clean">
+		<put name="navigation" value="/jsp/index/index.jsp" />
+	</definition>
+
+	<definition name="app.facebook.authentication" extends="app.clean">
+		<put name="navigation" value="/jsp/facebook/authentication.jsp" />
+	</definition>
+	
+	<definition name="app.facebook.authenticated" extends="app.clean">
+		<put name="navigation" value="/jsp/facebook/authenticated.jsp" />
+	</definition>
+	
+	<definition name="app.facebook.error.authenticated" extends="app.clean">
+		<put name="navigation" value="/jsp/facebook/error/errorAuthenticated.jsp" />
+	</definition>
+
+</tiles-definitions>
