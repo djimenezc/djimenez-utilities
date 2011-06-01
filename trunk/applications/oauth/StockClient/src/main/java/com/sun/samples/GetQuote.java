@@ -19,6 +19,9 @@ package com.sun.samples;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -49,7 +52,7 @@ public class GetQuote extends HttpServlet {
   private static final String CONSUMER_SECRET = CONSUMER_NAME + "_secret";
   // The valid values of SIGNATURE_METHOD are:
   // HMAC-SHA1, RSA-SHA1, and PLAINTEXT
-  private static final String SIGNATURE_METHOD = "HMAC-SHA1";
+  // private static final String SIGNATURE_METHOD = "HMAC-SHA1";
   private static final Client client = Client.create();
   private static String oauth_token_str = null;
   private static String oauth_secret_str = null;
@@ -96,7 +99,7 @@ public class GetQuote extends HttpServlet {
       MultivaluedMap.class, data);
   }
 
-  private static void registerConsumer() {
+  private static MultivaluedMap<String, String> registerConsumer() {
 
     final WebResource resource =
       client.resource(TOKEN_SERVICE + "consumer_registration");
@@ -106,8 +109,20 @@ public class GetQuote extends HttpServlet {
     form.add("name", CONSUMER_NAME);
     form.add("certificate", CERTIFICATE);
 
-    final MultivaluedMap response = POST(resource, form);
+    final MultivaluedMap<String, String> response = POST(resource, form);
 
+    System.out.println("Registering consumer " + CONSUMER_KEY + ": ");
+
+    final Iterator itr = response.entrySet().iterator();
+
+    while (itr.hasNext()) {
+      final Map.Entry<String, String> e = (Entry<String, String>) itr.next();
+      final String value = e.getKey();
+
+      System.out.println(value);
+    }
+
+    return response;
   }
 
   // <editor-fold defaultstate="collapsed"
@@ -216,18 +231,24 @@ public class GetQuote extends HttpServlet {
    */
   protected void processRequest(final HttpServletRequest request,
     final HttpServletResponse response) throws ServletException, IOException {
+
     response.setContentType("text/html;charset=UTF-8");
+
     final PrintWriter out = response.getWriter();
     final String symbol = request.getParameter("symbol");
+
     if ((symbol == null) || (symbol.length() == 0)) {
       out.println("<h1>Invalid Stock Symbol</h1>");
       out.close();
       return;
     }
+
     final String sign_method = request.getParameter("sig");
+
     if (sign_method != null) {
       signature_method = sign_method;
     }
+
     if (!signature_method.equals("HMAC-SHA1")
       && !signature_method.equals("RSA-SHA1")
       && !signature_method.equals("PLAINTEXT")) {
@@ -265,6 +286,7 @@ public class GetQuote extends HttpServlet {
       }
       // Register the consumer. This can also be done offband.
       registerConsumer();
+      // TODO descomentar el registro del consumidor
       // Get StockQuote
       final WebResource resource = client.resource(url + symbol);
       final ClientResponse clr = resource.get(ClientResponse.class);
@@ -275,7 +297,10 @@ public class GetQuote extends HttpServlet {
             + request.getServerPort()
             + "/StockClient/GetQuote?callback=true&symbol=" + symbol;
         final MultivaluedMap rtresp = getRequestToken(callback);
-        redirectForAuthentication(request, response, rtresp, symbol);
+
+        // redirectForAuthentication(request, response, rtresp, symbol);
+        redirectForAuthenticationNotInteractive(request, response, rtresp,
+          symbol);
       }
       // out.println(clr.getEntity(String.class));
     }
@@ -297,6 +322,20 @@ public class GetQuote extends HttpServlet {
         + oauthtoken;
     response.sendRedirect(url);
 
+  }
+
+  private void redirectForAuthenticationNotInteractive(
+    final HttpServletRequest request, final HttpServletResponse response,
+    final MultivaluedMap rtResp, final String symbol) throws Exception {
+
+    final String oauthtoken = (String) rtResp.getFirst("oauth_token");
+    System.out.println("OAuth token: " + oauthtoken);
+
+    final String url =
+    // "<PROTOCOL>://<HOST>:<PORT>/<DEPLOYURI>/oauth/userconsole.jsp?"
+      "http://localhost:10001/TokenService/loginAuto.jsp?" + "oauth_token="
+        + oauthtoken;
+    response.sendRedirect(url);
   }
 
 }
