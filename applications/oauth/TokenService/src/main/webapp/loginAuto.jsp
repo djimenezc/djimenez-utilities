@@ -78,33 +78,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Authentication</title>
 
-        <script type="text/javascript">
-            function makeithappen(oauthtk, id) {
-                var path = window.location.pathname;
-                var strs = path.split("/");
-                var contextRoot = strs[1]; 
-                var redir = window.location.protocol;
-                redir += "//" + window.location.host;
-                redir += "/" + contextRoot;
-                redir += "/resources/1/oauth/AuthorizationFactory";
-                redir += "?oauth_token=" + oauthtk.toString();
-                redir += "&id=" + id.toString();
-                window.location = redir;
-            }
-            
-            function revoke(oauthtk) {
-                var redir = "./deletetoken.jsp?oauth_token=";
-                redir += oauthtk.toString();
-                window.location = redir;
-            }
-        </script>
-    </head>
-    <body>
-
-    <h1 align="center">OAuth User Authorization Page</h1><hr>
-
-
-    <%
+		 <%
         String otk = request.getParameter("oauth_token");
         if (otk == null) {
             out.println("<h1>Error</h1><h2>OAuth token is missing.</h2>");
@@ -156,6 +130,17 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             redirectURL.append("=");
             redirectURL.append(URLEncoder.encode(requestURL.toString()));
             httpResponse.sendRedirect(redirectURL.toString());
+            
+            redirectURL.append("&");
+            redirectURL.append("IDToken1");
+            redirectURL.append("=");
+            redirectURL.append("demo");
+            
+            redirectURL.append("&");
+            redirectURL.append("IDToken2");
+            redirectURL.append("=");
+            redirectURL.append("demodemo");
+            
             return;
         }
 
@@ -163,13 +148,33 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         uid = java.net.URLEncoder.encode(uid);
     %>
 
-    <hr><br>
-    <h2>Do you authorize the Service Consumer to access your resource?</h2>
-    <form name="AuthoriseToken" >
-        <input type="button" onclick="revoke('<%= otk%>')" value="Revoke" name="Revoke">
-        <input type="button" onclick="makeithappen('<%= otk%>', '<%= uid%>')" value="Authorize" name="Authorize">
-    </form>
 
-    <hr>
+        <script type="text/javascript">
+            function makeithappen(oauthtk, id) {
+                var path = window.location.pathname;
+                var strs = path.split("/");
+                var contextRoot = strs[1]; 
+                var redir = window.location.protocol;
+                redir += "//" + window.location.host;
+                redir += "/" + contextRoot;
+                redir += "/resources/1/oauth/AuthorizationFactory";
+                redir += "?oauth_token=" + oauthtk.toString();
+                redir += "&id=" + id.toString();
+                window.location = redir;
+            }
+            
+            function revoke(oauthtk) {
+                var redir = "./deletetoken.jsp?oauth_token=";
+                redir += oauthtk.toString();
+                window.location = redir;
+            }
+
+            makeithappen('<%= otk%>', '<%= uid%>');
+        </script>
+    </head>
+    <body>
+
+    <h1 align="center">Authorithing</h1><hr>
+    
     </body>
 </html>
