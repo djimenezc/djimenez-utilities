@@ -22,7 +22,7 @@
    your own identifying information:
    "Portions Copyrighted [year] [name of copyright owner]"
 
-   $Id: index.jsp,v 1.2 2009-12-15 01:28:22 huacui Exp $
+   $Id: deleteconsumer.jsp,v 1.1 2009-11-20 19:25:15 huacui Exp $
 
 --%>
 
@@ -34,27 +34,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Token Service</title>
+        <title>Consumer Deletion</title>
     </head>
     <body>
-        <h1>Service Consumers Metadata Management</h1>
-        <h2>
-            Register a service consumer<br>
-        </h2>
-        <form name="consumer_reg" action="registerconsumer.jsp" method="POST">
-            Service Consumer Name: <input type="text" name="name" value="" size="30" /><br><br>
-            Service Consumer X509 Certificate (optional): <br><textarea name="cert" rows="10" cols="80"></textarea><br><br><br>
-            Register this Service Consumer <input type="submit" value="Register" name="cons_reg" /><br>
-        </form>
-        <hr><br>
-        <h2>
-            Delete a service consumer<br>
-        </h2>
-        <form name="consumer_del" action="deleteconsumer.jsp" method="POST">
-            Service Consumer Key: <input type="text" name="conskey" value="" size="100" /><br><br>
+        <h1>Deleting the service consumer...</h1>
+        <%
+            String conskey = request.getParameter("conskey");
 
-            Delete this Service Consumer <input type="submit" value="Delete" name="cons_del" /><br>
-        </form>
+            try {
+
+                java.net.URL url = new java.net.URL(conskey);
+                java.net.HttpURLConnection conn = (java.net.HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("DELETE");
+                conn.connect();
+                int resp = conn.getResponseCode();
+                if (resp == 200) {
+                    out.println("Service consumer deleted.");
+                    }
+                else {
+                    out.println("Service could not be deleted - Unauthorized.");
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace(new java.io.PrintWriter(out));
+                    }
+        %>
         <hr><br>
+        <form name="return_ind" action="/TokenService/jsp/opensso/index.jsp" method="GET">
+            Return to Main Menu <input type="submit" value="Return" name="return_ind" /><br>
+        </form>
     </body>
 </html>

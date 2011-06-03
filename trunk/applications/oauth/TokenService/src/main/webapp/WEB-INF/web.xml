@@ -9,12 +9,31 @@
         <servlet-name>oauth</servlet-name>
         <url-pattern>/resources/*</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+		<servlet-name>Consumer Openid Servlet</servlet-name>
+		<servlet-class>com.sun.identity.openid.OpenidConsumerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Consumer Openid Servlet</servlet-name>
+		<url-pattern>/openid/consumer</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Openid Provider Servlet</servlet-name>
+		<servlet-class>com.sun.identity.openid.OpenidProviderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Openid Provider Servlet</servlet-name>
+		<url-pattern>/openid/provider</url-pattern>
+	</servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>/jsp/opensso/index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

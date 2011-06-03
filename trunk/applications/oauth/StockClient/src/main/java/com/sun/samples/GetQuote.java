@@ -333,8 +333,8 @@ public class GetQuote extends HttpServlet {
 
     final String url =
     // "<PROTOCOL>://<HOST>:<PORT>/<DEPLOYURI>/oauth/userconsole.jsp?"
-      "http://localhost:10001/TokenService/loginAuto.jsp?" + "oauth_token="
-        + oauthtoken;
+      "http://localhost:10001/TokenService/jsp/opensso/loginAuto.jsp?"
+        + "oauth_token=" + oauthtoken;
     response.sendRedirect(url);
   }
 
