@@ -34,7 +34,7 @@
   * You acknowledge that Software is not designed, licensed or
   * intended for use in the design, construction, operation or
   * maintenance of any nuclear facility.
-  */ 
+  */
 -->
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
@@ -53,34 +53,29 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Authorization</title>
+        <title>Profile</title>
     </head>
     <body>
 
-    <h1 align="center">Authorization Results</h1><hr>
+    <h1 align="center">Profile Results</h1><hr>
     <br>
     <%
         String type = request.getParameter("auth");
         String url = request.getParameter("url");
         String token = request.getParameter("token");
-        String uri = request.getParameter("resource");
-        String action = request.getParameter("action");
         try {
             if (type.equals("REST")) {
                 if (url == null || url.length() == 0) {
                     out.println("<h2>Invalid URL: </h2>" + url);
                 } else {
-                    uri = java.net.URLEncoder.encode(uri, "UTF-8");
                     token = java.net.URLEncoder.encode(token, "UTF-8");
-                    url += "/authorize?uri=" + uri +
-                        "&action=" + action + "&subjectid=" + token;
+                    url += "/attributes?subjectid=" + token;
                     java.net.URL iurl = new java.net.URL(url);
                     java.net.URLConnection connection = iurl.openConnection();
                     java.io.BufferedReader reader = new java.io.BufferedReader(
                         new java.io.InputStreamReader(
                         (java.io.InputStream) connection.getContent()));
                     out.println("<h2>Successful using REST</h2>");
-                    out.println("url-> "+url+"<br/>");
                     String line;
                     while ((line = reader.readLine()) != null) {
                         out.println(line + "<br>");
@@ -97,16 +92,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
     %>
     <br><br>
     <hr>
-        <h3><a href="index1.jsp">Return To Login</a></h3>
-    <%-- start web service invocation --%><hr/>
-    <%
-    try {
-	
-    } catch (Exception ex) {
-	// TODO handle custom exceptions here
-    }
-    %>
-    <%-- end web service invocation --%><hr/>
+        <h3><a href="/TokenService/jsp/opensso/index1.jsp">Return To Login</a></h3>
     </body>
     
 </html>

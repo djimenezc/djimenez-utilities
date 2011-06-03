@@ -85,7 +85,7 @@
                     }
         %>
         <hr><br>
-        <form name="return_ind" action="index.jsp" method="GET">
+        <form name="return_ind" action="/TokenService/jsp/opensso/index.jsp" method="GET">
             Return to Main Menu <input type="submit" value="Return" name="return_ind" /><br>
         </form>
     </body>

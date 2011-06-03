@@ -59,7 +59,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
     <h1 align="center">Identity Services Client</h1><hr>
     <br><br>
-    <form name="authn" action="authenticate.jsp" method="POST">
+    <form name="authn" action="/TokenService/jsp/opensso/authenticate.jsp" method="POST">
     
         Username: <input type="text" name="username" value="demo" size="25" /><br><br>
         Password: <input type="password" name="password" value="demodemo" size="25" /><br><br><br>

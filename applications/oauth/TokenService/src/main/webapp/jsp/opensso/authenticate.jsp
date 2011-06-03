@@ -129,7 +129,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <hr>
 <br>
 <h2>Obtain Profile Attributes</h2>
-<form name="profile" action="profile.jsp" method="POST"><input
+<form name="profile" action="./profile.jsp" method="POST"><input
 	type="hidden" name="token" value=<%=token%> /> Profile using Web
 Service (SOAP/WSDL) <input type="submit" value="WS" name="auth" /><br>
 <br>
@@ -138,7 +138,7 @@ Profile using REST <input type="submit" value="REST" name="auth" /><br>
 <hr>
 <br>
 <h2>Obtain Authorization Decision</h2>
-<form name="authorization" action="authorization.jsp" method="POST">
+<form name="authorization" action="/TokenService/jsp/opensso/authorization.jsp" method="POST">
 <input type="hidden" name="token" value=<%=token%> /> Resource (URL)
 <input type="text" name="resource"
 	value="http://localhost:10001/StockService" size="30" /> <br>

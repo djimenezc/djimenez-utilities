@@ -129,17 +129,18 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             redirectURL.append("goto");
             redirectURL.append("=");
             redirectURL.append(URLEncoder.encode(requestURL.toString()));
-            httpResponse.sendRedirect(redirectURL.toString());
             
             redirectURL.append("&");
             redirectURL.append("IDToken1");
             redirectURL.append("=");
-            redirectURL.append("demo");
+            redirectURL.append("david");
             
             redirectURL.append("&");
             redirectURL.append("IDToken2");
             redirectURL.append("=");
-            redirectURL.append("demodemo");
+            redirectURL.append("daviddavid");
+            
+            httpResponse.sendRedirect(redirectURL.toString());
             
             return;
         }
