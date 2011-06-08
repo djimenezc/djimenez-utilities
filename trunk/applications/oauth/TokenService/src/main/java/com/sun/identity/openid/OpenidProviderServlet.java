@@ -2,10 +2,12 @@ package com.sun.identity.openid;
 
 import java.io.IOException;
 import java.rmi.ServerException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,17 +16,26 @@ import org.openid4java.message.Message;
 import org.openid4java.message.ParameterList;
 import org.openid4java.server.ServerManager;
 
-public class OpenidProviderServlet extends javax.servlet.http.HttpServlet {
+public class OpenidProviderServlet extends HttpServlet {
+
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
+  private static final String END_POINT_URL =
+    "http://localhost:10001/TokenService/openid/provider";
 
   // instantiate a ServerManager object
   public ServerManager manager = new ServerManager();
 
   public OpenidProviderServlet() {
-    manager.setOPEndpointUrl("Http://my.openidprovider.com/server");
+    manager.setOPEndpointUrl(END_POINT_URL);
   }
 
   private String directResponse(final HttpServletResponse httpResp,
     final String response) throws IOException {
+
     final ServletOutputStream os = httpResp.getOutputStream();
     os.write(response.getBytes());
     os.close();
@@ -45,16 +56,30 @@ public class OpenidProviderServlet extends javax.servlet.http.HttpServlet {
    * {@inheritDoc}
    */
   @Override
-  protected void doPost(final HttpServletRequest req,
-    final HttpServletResponse resp) throws ServletException, IOException {
+  protected void doPost(final HttpServletRequest request,
+    final HttpServletResponse response) throws ServletException, IOException {
+
+    String processResponse = "Error when the reques was processed";
 
     try {
-      processRequest(req, resp);
+      processResponse = processRequest(request, response);
     }
     catch (final Exception e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
+
+    if (processResponse.startsWith("http://")) {
+
+      // TODO revisar si el usuario es valido
+      processResponse = processResponse + "&is_valid=true";
+      response.sendRedirect(processResponse);
+      System.out.println("Return to " + processResponse);
+    }
+    else {
+
+      directResponse(response, processResponse);
+    }
+
   }
 
   public String processRequest(final HttpServletRequest httpReq,
@@ -77,11 +102,12 @@ public class OpenidProviderServlet extends javax.servlet.http.HttpServlet {
     else
       if ("checkid_setup".equals(mode) || "checkid_immediate".equals(mode)) {
         // interact with the user and obtain data needed to continue
-        final List userData = userInteraction(request);
+        final List<String> userData = userInteraction(request);
 
-        final String userSelectedId = (String) userData.get(0);
-        final String userSelectedClaimedId = (String) userData.get(1);
-        final Boolean authenticatedAndApproved = (Boolean) userData.get(2);
+        final String userSelectedId = userData.get(0);
+        final String userSelectedClaimedId = userData.get(1);
+        final Boolean authenticatedAndApproved =
+          Boolean.valueOf(userData.get(2));
 
         // --- process an authentication request ---
         response =
@@ -123,8 +149,21 @@ public class OpenidProviderServlet extends javax.servlet.http.HttpServlet {
     return responseText;
   }
 
-  private List userInteraction(final ParameterList request)
+  private List<String> userInteraction(final ParameterList request)
     throws ServerException {
-    throw new ServerException("User-interaction not implemented.");
+
+    final List<String> userInfo = new ArrayList<String>();
+
+    final String identity = request.getParameterValue("openid.identity");
+    // TODO autenticar usuario
+    userInfo.add(identity);
+    final String claimId = request.getParameterValue("openid.claimed_id");
+    userInfo.add(claimId);
+    userInfo.add("true");
+
+    return userInfo;
+
+    // throw new ServerException("User-interaction not implemented.");
   }
+
 }

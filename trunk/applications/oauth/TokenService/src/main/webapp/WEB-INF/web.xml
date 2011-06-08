@@ -11,6 +11,16 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>openidOp</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>openidOp</servlet-name>
+        <url-pattern>/openidOp/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
 		<servlet-name>Consumer Openid Servlet</servlet-name>
 		<servlet-class>com.sun.identity.openid.OpenidConsumerServlet</servlet-class>
 	</servlet>
@@ -25,7 +35,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Openid Provider Servlet</servlet-name>
-		<url-pattern>/openid/provider</url-pattern>
+		<url-pattern>/openid/provider/*</url-pattern>
 	</servlet-mapping>
     
     <session-config>

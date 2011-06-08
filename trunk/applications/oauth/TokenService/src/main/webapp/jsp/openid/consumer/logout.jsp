@@ -1,4 +1,4 @@
 <%
 session.invalidate();
-response.sendRedirect("./index.jsp");
+response.sendRedirect("/TokenService/jsp/openid/consumer/index.jsp");
 %>

@@ -199,7 +199,7 @@ public class OpenidConsumerServlet extends javax.servlet.http.HttpServlet {
 
         final RequestDispatcher dispatcher =
           getServletContext().getRequestDispatcher(
-            "/WEB-INF/jsp/openid/consumer/formredirection.jsp");
+            "/jsp/openid/consumer/formredirection.jsp");
         httpReq.setAttribute("prameterMap", httpReq.getParameterMap());
         httpReq.setAttribute("message", authReq);
         // httpReq.setAttribute("destinationUrl", httpResp
@@ -240,7 +240,7 @@ public class OpenidConsumerServlet extends javax.servlet.http.HttpServlet {
       }
       else {
         this.getServletContext().getRequestDispatcher(
-          "/WEB-INF/jsp/openid/consumer/index.jsp").forward(req, resp);
+          "/jsp/openid/consumer/index.jsp").forward(req, resp);
       }
     }
   }
@@ -271,16 +271,19 @@ public class OpenidConsumerServlet extends javax.servlet.http.HttpServlet {
 
   private void processReturn(final HttpServletRequest req,
     final HttpServletResponse resp) throws ServletException, IOException {
+
     final Identifier identifier = this.verifyResponse(req);
+
     LOG.debug("identifier: " + identifier);
+
     if (identifier == null) {
       this.getServletContext().getRequestDispatcher(
-        "/WEB-INF/jsp/openid/consumer/index.jsp").forward(req, resp);
+        "/jsp/openid/consumer/index.jsp").forward(req, resp);
     }
     else {
       req.setAttribute("identifier", identifier.getIdentifier());
       this.getServletContext().getRequestDispatcher(
-        "/WEB-INF/jsp/openid/consumer/return.jsp").forward(req, resp);
+        "/jsp/openid/consumer/return.jsp").forward(req, resp);
     }
   }
 
