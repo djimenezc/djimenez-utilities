@@ -1,4 +1,4 @@
-package com.gowex.openid.html.parser;
+package com.gowex.integration.openid.html;
 
 import java.io.IOException;
 

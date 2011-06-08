@@ -1,7 +1,7 @@
 /**
  * Created on 2007-4-14 00:54:50
  */
-package com.sun.identity.openid;
+package com.gowex.openid;
 
 import java.io.IOException;
 import java.util.Iterator;

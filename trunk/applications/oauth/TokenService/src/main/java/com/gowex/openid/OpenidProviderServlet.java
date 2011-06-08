@@ -1,4 +1,4 @@
-package com.sun.identity.openid;
+package com.gowex.openid;
 
 import java.io.IOException;
 import java.rmi.ServerException;
@@ -25,6 +25,7 @@ public class OpenidProviderServlet extends HttpServlet {
 
   private static final String END_POINT_URL =
     "http://localhost:10001/TokenService/openid/provider";
+  // "http://83.150.206.13/TokenService/openid/provider";
 
   // instantiate a ServerManager object
   public ServerManager manager = new ServerManager();
@@ -68,7 +69,8 @@ public class OpenidProviderServlet extends HttpServlet {
       e.printStackTrace();
     }
 
-    if (processResponse.startsWith("http://")) {
+    if (processResponse.startsWith("http://")
+      || processResponse.startsWith("https://")) {
 
       // TODO revisar si el usuario es valido
       processResponse = processResponse + "&is_valid=true";
@@ -162,8 +164,6 @@ public class OpenidProviderServlet extends HttpServlet {
     userInfo.add("true");
 
     return userInfo;
-
-    // throw new ServerException("User-interaction not implemented.");
   }
 
 }

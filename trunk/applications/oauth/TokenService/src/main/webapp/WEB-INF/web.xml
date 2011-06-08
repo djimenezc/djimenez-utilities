@@ -22,7 +22,7 @@
     
     <servlet>
 		<servlet-name>Consumer Openid Servlet</servlet-name>
-		<servlet-class>com.sun.identity.openid.OpenidConsumerServlet</servlet-class>
+		<servlet-class>com.gowex.openid.OpenidConsumerServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Consumer Openid Servlet</servlet-name>
@@ -31,7 +31,7 @@
 	
 	<servlet>
 		<servlet-name>Openid Provider Servlet</servlet-name>
-		<servlet-class>com.sun.identity.openid.OpenidProviderServlet</servlet-class>
+		<servlet-class>com.gowex.openid.OpenidProviderServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Openid Provider Servlet</servlet-name>
