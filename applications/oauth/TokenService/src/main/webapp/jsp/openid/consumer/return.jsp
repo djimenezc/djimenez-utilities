@@ -11,7 +11,7 @@
 <body>
 	<div>
 		<div>Login Success! - 
-		<form action="./logout.jsp" method="post">
+		<form action="/TokenService/jsp/openid/consumer/logout.jsp" method="post">
 		<div>
 			<button type="submit" name="logout">Logout</button>
 		</div>
