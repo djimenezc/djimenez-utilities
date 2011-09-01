@@ -6,7 +6,7 @@
 <head>
 	<title>Openid Consumer</title>
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="consumer-servlet.css" />
+	<link rel="stylesheet" type="text/css" href="../css/consumer-servlet.css" />
 	<script type="text/javascript">
 	<!--
 	function changeAll(v) {
@@ -26,7 +26,7 @@
 			<legend>Sample 1:</legend>
 			<form action="/TokenService/openid/consumer" method="post">
 				<div>
-					<input type="text" name="openid_identifier" />
+					<input type="text" name="openid_identifier" class/>
 				</div>
 				<div>
 					<button type="submit" name="login">Login</button>

@@ -37,6 +37,14 @@
 		<servlet-name>Openid Provider Servlet</servlet-name>
 		<url-pattern>/openid/provider/*</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Openid Opensso Provider Servlet</servlet-name>
+		<servlet-class>com.gowex.openid.OpenidProviderOpenssoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Openid Provider Servlet</servlet-name>
+		<url-pattern>/openid/opensso/*</url-pattern>
+	</servlet-mapping>
     
     <session-config>
         <session-timeout>
