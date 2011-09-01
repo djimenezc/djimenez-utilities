@@ -32,7 +32,7 @@
 		<j2me.midlet.vendor>${project.organization.name}</j2me.midlet.vendor>
 		<j2me.midlet.name>${project.name}</j2me.midlet.name>
 		<j2me.midlet.version>0.0.1-SNAPSHOT</j2me.midlet.version>
-		<j2me.midlet.configuration>CLDC-1.1</j2me.midlet.configuration>
+		<j2me.midlet.configuration>CLDC-1.0</j2me.midlet.configuration>
 		<j2me.midlet.profile>MIDP-2.0</j2me.midlet.profile>
 
 		<!--

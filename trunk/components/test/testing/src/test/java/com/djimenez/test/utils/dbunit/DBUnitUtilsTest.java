@@ -16,7 +16,7 @@ public class DBUnitUtilsTest extends AbstractTestCase {
   private static final String MYSQL_DBUNIT_XML =
     "src/test/resources/common/dbunit/mysql-dbunit.xml";
   private static final String DESTINATION_DTD_XML = "target/mysql-dbunit.dtd";
-  private static final String DATABASE_NAME = "djimenez_test";
+  private static final String DATABASE_NAME = "BURGOS";
 
   private static final String URL_DB =
     "jdbc:mysql://localhost:3306/" + DATABASE_NAME;
@@ -44,6 +44,21 @@ public class DBUnitUtilsTest extends AbstractTestCase {
 
     DBUnitUtils.deleteData(DRIVER_CLASS, URL_DB, USER_DATABASE,
       PASSWORD_DATABASE, MYSQL_DBUNIT_XML);
+  }
+
+  @Test
+  public void testDbunitDatabase12() throws Exception {
+
+    // insertData();
+
+    DBUnitUtils.exportDatabase(DRIVER_CLASS, URL_DB, USER_DATABASE,
+      PASSWORD_DATABASE, SCHEMA, DESTINATION_DBUNIT_XML);
+
+    DBUnitUtils.exportDatabaseDtd(DRIVER_CLASS, URL_DB, USER_DATABASE,
+      PASSWORD_DATABASE, DESTINATION_DTD_XML);
+    //
+    // DBUnitUtils.deleteData(DRIVER_CLASS, URL_DB, USER_DATABASE,
+    // PASSWORD_DATABASE, MYSQL_DBUNIT_XML);
   }
 
 }
