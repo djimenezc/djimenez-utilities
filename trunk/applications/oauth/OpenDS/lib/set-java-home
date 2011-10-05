@@ -1,0 +1,171 @@
+#!/bin/sh
+
+# See if the environment variables for java home are set
+# in the path and try to figure it out.
+if test ! -f "${OPENDS_JAVA_BIN}"
+then
+  if test ! -d "${OPENDS_JAVA_HOME}"
+  then
+    TEMP="/usr/lib/jvm/jdk1.6.0_18/jre/bin/java"
+    if test -f ${TEMP}
+    then
+      OPENDS_JAVA_BIN=${TEMP}
+      export OPENDS_JAVA_BIN
+    fi
+  else
+    OPENDS_JAVA_BIN=${OPENDS_JAVA_HOME}/bin/java
+    export OPENDS_JAVA_BIN
+  fi
+fi
+
+
+# See if the environment variables for arguments are set.
+if test -z "${OPENDS_JAVA_ARGS}"
+then
+  if test "${SCRIPT_NAME}.java-args" = "ldapcompare.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "dsreplication.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "upgrade.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "base64.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "start-ds.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "ldifmodify.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "dbtest.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "backup.offline.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "manage-account.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "backup.online.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "ldapsearch.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "restore.online.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "export-ldif.offline.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "setup.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "encode-password.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "make-ldif.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "control-panel.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "manage-tasks.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "stop-ds.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "restore.offline.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "ldapmodify.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "uninstall.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "ldif-diff.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "import-ldif.offline.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "ldapdelete.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "create-rc-script.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "rebuild-index.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "export-ldif.online.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "import-ldif.online.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "dsframework.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "dsconfig.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "ldappasswordmodify.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "status.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "ldifsearch.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "verify-index.java-args"
+  then
+    OPENDS_JAVA_ARGS="-server"
+    export OPENDS_JAVA_ARGS
+  elif test "${SCRIPT_NAME}.java-args" = "list-backends.java-args"
+  then
+    OPENDS_JAVA_ARGS="-client -Xms8m"
+    export OPENDS_JAVA_ARGS
+  fi
+fi
+

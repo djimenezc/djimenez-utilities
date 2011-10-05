@@ -1,0 +1,6 @@
+#Version: 1.0
+#Fields: time	Data	LoginID	ContextID	IPAddr	LogLevel	Domain	LoggedBy	MessageID	ModuleName	NameID	HostName	
+"2011-09-07 08:26:13"	/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/applications/oauth/opensso/opensso/log/	"cn=dsameuser,ou=DSAME Users,dc=opensso,dc=java,dc=net"	c786c12cae4f041e01	"Not Available"	INFO	dc=opensso,dc=java,dc=net	"cn=dsameuser,ou=DSAME Users,dc=opensso,dc=java,dc=net"	LOG-1	IDFF.error	"Not Available"	127.0.0.1	
+"2011-09-07 08:31:19"	IDFF.error	"cn=dsameuser,ou=DSAME Users,dc=opensso,dc=java,dc=net"	c786c12cae4f041e01	"Not Available"	INFO	dc=opensso,dc=java,dc=net	"cn=dsameuser,ou=DSAME Users,dc=opensso,dc=java,dc=net"	LOG-2	IDFF.error	"Not Available"	127.0.0.1	
+"2011-09-07 08:32:09"	/home/djimenez/proyectos/sources/djimenez/djimenez-utilities/applications/oauth/opensso/opensso/log/	"cn=dsameuser,ou=DSAME Users,dc=opensso,dc=java,dc=net"	a1c3c81d7f98292501	"Not Available"	INFO	dc=opensso,dc=java,dc=net	"cn=dsameuser,ou=DSAME Users,dc=opensso,dc=java,dc=net"	LOG-1	IDFF.error	"Not Available"	127.0.0.1	
+"2011-09-07 13:04:13"	IDFF.error	"cn=dsameuser,ou=DSAME Users,dc=opensso,dc=java,dc=net"	a1c3c81d7f98292501	"Not Available"	INFO	dc=opensso,dc=java,dc=net	"cn=dsameuser,ou=DSAME Users,dc=opensso,dc=java,dc=net"	LOG-2	IDFF.error	"Not Available"	127.0.0.1	

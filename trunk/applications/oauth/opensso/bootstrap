@@ -1,0 +1,1 @@
+ldap://localhost:50389/http%3A%2F%2Flocalhost%3A8080%2Fopensso?user=cn%3Ddsameuser%2Cou%3DDSAME+Users%2Cdc%3Dopensso%2Cdc%3Djava%2Cdc%3Dnet&pwd=AQIC5wM2LY4Sfcyr%2BxMvCcFd9ZTq5sjFyl39&dsbasedn=dc%3Dopensso%2Cdc%3Djava%2Cdc%3Dnet&dsmgr=cn%3DDirectory+Manager&dspwd=AQIC5wM2LY4Sfcyr%2BxMvCcFd9ZTq5sjFyl39&ver=1.0
