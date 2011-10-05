@@ -1,0 +1,8 @@
+LDAPv3Repo:09/07/2011 08:26:09:832 AM CEST: Thread[main,5,main]
+**********************************************
+LDAPv3Repo:09/07/2011 08:26:09:832 AM CEST: Thread[main,5,main]
+ERROR: LDAPv3Repo: initConnectionPool ConnectionPool failed: 91; to server ldapServerHost:1389
+LDAPv3Repo:09/07/2011 08:26:09:833 AM CEST: Thread[main,5,main]
+ERROR: LDAPv3Repo: initConnectionPool: all servers offline: localhost:1389 connection pool create failed
+LDAPv3Repo:09/07/2011 08:26:09:833 AM CEST: Thread[main,5,main]
+ERROR: LDAPv3Repo: addListener failed. Incorrect ldap server configuration.[localhost:1389]

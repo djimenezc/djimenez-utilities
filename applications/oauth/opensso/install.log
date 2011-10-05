@@ -1,0 +1,87 @@
+Comprobando directorio de configuración /home/djimenez/proyectos/sources/djimenez/djimenez-utilities/applications/oauth/opensso....Realizado satisfactoriamente.
+Instalando almacén de configuración OpenAM...Realizado correctamente RSA/ECB/OAEPWithSHA1AndMGF1Padding.
+Extracting OpenDS, please wait...Complete
+Running OpenDS setupSetup command: --cli --adminConnectorPort 5444 --baseDN dc=opensso,dc=java,dc=net --rootUserDN cn=Directory Manager --ldapPort 50389 --skipPortCheck --rootUserPassword xxxxxxx --jmxPort 1689 --no-prompt --configFile /home/djimenez/proyectos/sources/djimenez/djimenez-utilities/applications/oauth/opensso/opends/config/config.ldif --doNotStart ...Realizado satisfactoriamente.
+...Success
+Instalando almacén de configuración OpenAM en /home/djimenez/proyectos/sources/djimenez/djimenez-utilities/applications/oauth/opensso/opends ...Realizado satisfactoriamente.
+Creando sufijo de OpenAM...Success
+Archivos de esquema de intercambio de etiquetas....Realizado satisfactoriamente.
+Cargando esquema opends_config_schema.ldif...Realizado satisfactoriamente.
+Cargando esquema opends_user_schema.ldif...Realizado satisfactoriamente.
+Cargando esquema opends_embinit.ldif...Realizado satisfactoriamente.
+Cargando esquema opends_user_index.ldif...Realizado satisfactoriamente.
+Cargando esquema opends_plugin.ldif...Realizado satisfactoriamente.
+...Realizado satisfactoriamente.
+Reinicializando propiedades del sistema....Realizado.
+Registrando servicio amEntrySpecific.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthConfig.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthHTTPBasic.xml...Realizado satisfactoriamente.
+Registrando servicio amAdminConsole.xml...Realizado satisfactoriamente.
+Registrando servicio idRepoService.xml...Realizado satisfactoriamente.
+Registrando servicio amAuth.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthAD.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthAnonymous.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthCert.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthDataStore.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthJDBC.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthLDAP.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthMSISDN.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthMembership.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthNT.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthWindowsDesktopSSO.xml...Realizado satisfactoriamente.
+Registrando servicio amClientData.xml...Realizado satisfactoriamente.
+Registrando servicio amClientDetection.xml...Realizado satisfactoriamente.
+Registrando servicio amDelegation.xml...Realizado satisfactoriamente.
+Registrando servicio amFilteredRole.xml...Realizado satisfactoriamente.
+Registrando servicio amG11NSettings.xml...Realizado satisfactoriamente.
+Registrando servicio amLogging.xml...Realizado satisfactoriamente.
+Registrando servicio amNaming.xml...Realizado satisfactoriamente.
+Registrando servicio amPlatform.xml...Realizado satisfactoriamente.
+Registrando servicio amPolicy.xml...Realizado satisfactoriamente.
+Registrando servicio amPolicyConfig.xml...Realizado satisfactoriamente.
+Registrando servicio amRealmService.xml...Realizado satisfactoriamente.
+Registrando servicio amSession.xml...Realizado satisfactoriamente.
+Registrando servicio amWebAgent.xml...Realizado satisfactoriamente.
+Registrando servicio amUser.xml...Realizado satisfactoriamente.
+Registrando servicio identityLocaleService.xml...Realizado satisfactoriamente.
+Registrando servicio amAgent70.xml...Realizado satisfactoriamente.
+Registrando servicio amPasswordReset.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthRadius.xml...Realizado satisfactoriamente.
+Registrando servicio amAuthHOTP.xml...Realizado satisfactoriamente.
+Registrando servicio amMonitoring.xml...Realizado satisfactoriamente.
+Registrando servicio AgentService.xml...Realizado satisfactoriamente.
+Registrando servicio policyIndex.xml...Realizado satisfactoriamente.
+Registrando servicio entitlement.xml...Realizado satisfactoriamente.
+Registrando servicio openProvisioning.xml...Realizado satisfactoriamente.
+Registrando servicio banking.xml...Realizado satisfactoriamente.
+Registrando servicio CoreTokenConfig.xml...Realizado satisfactoriamente.
+Registrando servicio CoreTokenStore.xml...Realizado satisfactoriamente.
+Registrando servicio fmAuthFederation.xml...Realizado satisfactoriamente.
+Registrando servicio fmAuthSAE.xml...Realizado satisfactoriamente.
+Registrando servicio fmAuthnSvc.xml...Realizado satisfactoriamente.
+Registrando servicio fmDisco.xml...Realizado satisfactoriamente.
+Registrando servicio fmIDFF.xml...Realizado satisfactoriamente.
+Registrando servicio fmLibertyPersonalProfile.xml...Realizado satisfactoriamente.
+Registrando servicio fmCOTConfig.xml...Realizado satisfactoriamente.
+Registrando servicio fmSAML2.xml...Realizado satisfactoriamente.
+Registrando servicio fmSAML.xml...Realizado satisfactoriamente.
+Registrando servicio fmSOAPBinding.xml...Realizado satisfactoriamente.
+Registrando servicio fmSAML2SOAPBinding.xml...Realizado satisfactoriamente.
+Registrando servicio fmWSFederation.xml...Realizado satisfactoriamente.
+Registrando servicio fmMultiProtocol.xml...Realizado satisfactoriamente.
+Registrando servicio famSTS.xml...Realizado satisfactoriamente.
+Registrando servicio famFederationCommon.xml...Realizado satisfactoriamente.
+Registrando servicio famIDFFConfig.xml...Realizado satisfactoriamente.
+Registrando servicio famLibertyInteraction.xml...Realizado satisfactoriamente.
+Registrando servicio famLibertySecurity.xml...Realizado satisfactoriamente.
+Registrando servicio famSAML2Config.xml...Realizado satisfactoriamente.
+Registrando servicio famWSSAuthService.xml...Realizado satisfactoriamente.
+Configurando sistema...Realizado.
+Configurando la instancia de servidor....Realizado.
+Cargando esquema /home/djimenez/proyectos/sources/djimenez/djimenez-utilities/applications/oauth/opensso/opends_user_schema.ldif...Realizado satisfactoriamente.
+Cargando esquema /home/djimenez/proyectos/sources/djimenez/djimenez-utilities/applications/oauth/opensso/opends_userinit.ldif...Realizado satisfactoriamente.
+Cargando esquema /home/djimenez/proyectos/sources/djimenez/djimenez-utilities/applications/oauth/opensso/opends_user_index.ldif...Realizado satisfactoriamente.
+Cargando esquema /home/djimenez/proyectos/sources/djimenez/djimenez-utilities/applications/oauth/opensso/opends_plugin.ldif...Realizado satisfactoriamente.
+Creando agentes de seguridad del servicio web....Realizado.
+Configurando archivos de registro....Realizado.
+Configurando archivo de autenticación de supervisión.

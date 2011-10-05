@@ -1,0 +1,8 @@
+amSetupServlet:09/07/2011 08:26:06:514 AM CEST: Thread[main,5,main]
+**********************************************
+amSetupServlet:09/07/2011 08:26:06:467 AM CEST: Thread[main,5,main]
+ERROR: EmbeddedOpenDS:syncReplication:cmd failed
+amSetupServlet:09/07/2011 08:32:05:487 AM CEST: Thread[main,5,main]
+**********************************************
+amSetupServlet:09/07/2011 08:32:05:458 AM CEST: Thread[main,5,main]
+ERROR: EmbeddedOpenDS:syncReplication:cmd failed

@@ -1,0 +1,1951 @@
+******************************************************
+09/06/2011 05:30:05:039 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:31:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:32:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:33:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:34:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:35:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:36:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:37:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:38:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:39:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:40:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:41:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:42:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:43:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:44:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:45:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:46:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:47:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:48:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:49:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:50:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:51:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:52:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:53:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:54:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:55:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:56:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:57:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:58:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 05:59:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:00:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:01:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:02:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:03:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:04:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:05:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:06:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:07:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:08:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:09:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:10:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:11:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:12:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:13:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:14:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:15:05:000 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:16:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:17:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:18:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:19:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:20:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:21:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:22:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:23:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:24:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:25:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:26:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:27:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:28:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:29:05:003 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:30:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:31:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:32:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:33:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:34:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:35:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:36:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:37:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:38:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:39:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:40:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:41:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:42:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:43:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:44:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:45:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:46:05:002 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+
+09/06/2011 06:47:05:001 PM CEST: Thread[SystemTimer,5,main]
+Entitlements statistics:
+-----------------------------
+NetworkMonitor: privilegesubtreeevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: privilegesinglelevelevaluation
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupreferrals
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+NetworkMonitor: dblookupprivileges
+Response Time(ms): 0.0
+Throughput: 0.0
+-----------------------------
+PolicyCache: 0
+ReferralCache: 0
+Total policies: 11
+Total referrals: 0
+-----------------------------
+

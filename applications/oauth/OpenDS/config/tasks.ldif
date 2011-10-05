@@ -1,0 +1,21 @@
+# El archivo contiene los datos utilizados por el servidor de fondo del
+# programador de tareas del servidor de directorios.  No modifique directamente
+# este archivo, ya que es posible que esos cambios se pierdan.  Las
+# definiciones de tareas programadas y periódicas sólo deben modificarse
+# mediante las utilidades de administración proporcionadas con el servidor de
+# directorios
+dn: cn=tasks
+objectClass: top
+objectClass: untypedObject
+cn: tasks
+
+dn: cn=Scheduled Tasks,cn=tasks
+objectClass: top
+objectClass: untypedObject
+cn: Scheduled Tasks
+
+dn: cn=Recurring Tasks,cn=tasks
+objectClass: top
+objectClass: untypedObject
+cn: Recurring Tasks
+
