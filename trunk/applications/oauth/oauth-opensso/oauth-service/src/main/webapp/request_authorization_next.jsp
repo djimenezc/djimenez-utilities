@@ -14,6 +14,7 @@
         <title>Token Service - Resource Owner Authorization</title>
     </head>
     <body>
+    
         <%
             if (request.getParameter("oauth_callback") == null) {
                 out.println("<h1>Error</h1><h2>No oauth_callback.</h1>");
@@ -22,7 +23,7 @@
                     out.println("<h1>Error</h1><h2>No oauth_token.</h1>");
                     }
                 String svcname = request.getParameter("consumer_name");
-                String svcpath = com.sun.oauth.resources.PathDefs.ServicePath;
+                String svcpath = com.sun.identity.oauth.service.resources.PathDefs.ServicePath;
                 String authenticate = svcpath + "/authenticate.jsp" + "?oauth_callback=" + request.getParameter("oauth_callback");
                 authenticate += "&oauth_token=" + request.getParameter("oauth_token");
         %>
